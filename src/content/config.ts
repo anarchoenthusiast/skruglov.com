@@ -10,13 +10,12 @@ const blog = defineCollection({
   }),
 });
 
-const work = defineCollection({
+const about = defineCollection({
   type: "content",
   schema: z.object({
-    company: z.string(),
-    role: z.string(),
-    dateStart: z.coerce.date(),
-    dateEnd: z.union([z.coerce.date(), z.string()]),
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
   }),
 });
 
@@ -27,9 +26,19 @@ const projects = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    role: z.string(),
+    duration: z.string(),
+    company: z.string(),
+    scope: z.string(),
+    contributions: z.string(),
+    collaborators: z.string(),
     demoURL: z.string().optional(),
-    repoURL: z.string().optional()
+    repoURL: z.string().optional(),
+    images: z.array(z.object({
+      url: z.string(),
+      alt: z.string()
+    })).optional()
   }),
 });
 
-export const collections = { blog, work, projects };
+export const collections = { blog, about, projects };

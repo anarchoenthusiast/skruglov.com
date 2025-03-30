@@ -1,0 +1,82 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<PageLayout title={project.data.title} description={project.data.description}>
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      {/* Левая колонка с информацией */}
+      <div class="md:col-span-4 space-y-6">
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Role</h6>
+          <p class="font-medium">{project.data.role}</p>
+        </div>
+
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Duration</h6>
+          <p class="font-medium">{project.data.duration}</p>
+        </div>
+
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Company</h6>
+          <p class="font-medium">{project.data.company}</p>
+        </div>
+
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Scope</h6>
+          <p class="font-medium">{project.data.scope}</p>
+        </div>
+
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Contributions</h6>
+          <p class="font-medium">{project.data.contributions}</p>
+        </div>
+
+        <div class="space-y-2">
+          <h6 class="text-sm text-gray-500">Collaborators</h6>
+          <p class="font-medium">{project.data.collaborators}</p>
+        </div>
+
+        {project.data.demoURL && (
+          <div class="pt-4">
+            <a 
+              href={project.data.demoURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+            >
+              View Demo
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* Правая колонка с контентом и изображениями */}
+      <div class="md:col-span-8">
+        <div class="prose prose-lg dark:prose-invert">
+          <Content />
+        </div>
+        
+        {/* Плитка с изображениями */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          {project.data.images?.map((image) => (
+            <img
+              src={image.url}
+              alt={image.alt}
+              class="w-full h-auto rounded-lg object-cover aspect-video"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</PageLayout> 
