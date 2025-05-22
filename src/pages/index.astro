@@ -2,8 +2,11 @@
 import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
+import PostList from "@components/PostList.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
+import Logo from "@components/Logo.astro";
+import CTA from "@components/CTA.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
@@ -14,103 +17,175 @@ const blog = (await getCollection("blog"))
 
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .sort((a, b) => {
+    if (a.data.priority !== undefined && b.data.priority !== undefined) {
+      return a.data.priority - b.data.priority;
+    }
+    if (a.data.priority !== undefined && b.data.priority === undefined) {
+      return -1;
+    }
+    if (a.data.priority === undefined && b.data.priority !== undefined) {
+      return 1;
+    }
+    return b.data.date.valueOf() - a.data.date.valueOf();
+  })
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Container>
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <p class="animate">
+<PageLayout 
+  title={HOME.TITLE} 
+  description={HOME.DESCRIPTION} 
+  pageType="default"
+  hideHeader={true}
+>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="mx-auto animate" style="width: 48px; height: 48px;">
+      <a href="/" class="block cursor-pointer hover:opacity-80 transition-opacity">
+        <img src="/images/logo-dark.svg" alt="Logo" class="block dark:hidden w-full h-full" />
+        <img src="/images/logo-light.svg" alt="Logo" class="hidden dark:block w-full h-full" />
+      </a>
+    </div>
+    
+    <div class="hero-content w-full max-w-[580px] mx-auto">
+      <div class="text-center space-y-6">
+        <h1 class="font-tiempos text-4xl font-normal text-black dark:text-white tracking-[-0.028em] leading-[1.167] animate">
+          Hello, I'm Sergey.<br/>
+          Founding Product Designer,
+        </h1>
+        <div class="font-grotesk text-base font-normal text-black dark:text-white animate">
+          <p class="leading-[1.5]">
             I am a minimal, seo friendly, accessible portfolio and blog for developers. 
             I am an even more lightweight version of my popular theme
-            <Link href="https://github.com/markhorn-dev/astro-sphere" aria-label="Astro Sphere on Github" external>
+            <a href="https://github.com/markhorn-dev/astro-sphere" class="underline hover:opacity-80 transition-opacity text-underline-offset-2" target="_blank" rel="noopener">
               Astro Sphere
-            </Link>.
+            </a>.
             I have a lighthouse scores of 100 across the board for performance, 
             accesibility, best practices and SEO.
           </p>
-          <p class="animate">
-            I come packed with full type safety, a sitemap, an rss feed, markdown 
-            and mdx support (use components in your markdown) through astro integrations.
-            I am styled with tailwind and come preconfigured with light, dark and 
-            system/os theme preferences out of the box.
-          </p>
-          <p class="animate">
-            Visit
-            <Link href="https://github.com/markhorn-dev/astro-nano" aria-label="Astro Nano on Github" external>
-              Astro Nano on Github
-            </Link>
-            to fork the repository, read the docs or one-click deploy on Vercel or Netlify. 
-          </p>
-        </article>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
         </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
-        </ul>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
+  <Container size="default">
+    <div class="space-y-16">
       <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
-        <article>
-          <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
-          </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
+        <div class="mb-2">
+          <h5 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+            Select Projects
+          </h5>
+        </div>
+        <ul class="flex flex-col gap-2">
+          {projects.map(project => (
+            <li class="p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl">
+              <a href={`/projects/${project.slug}/`} class="block group">
+                <div class="flex flex-col gap-2">
+                  <div class="flex flex-row justify-between items-center h-6 overflow-hidden">
+                    <div class="w-[33%] font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity truncate leading-[1.5]">
+                      {project.data.title}
+                    </div>
+                    <div class="w-[33%] font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity text-center truncate leading-[1.5]">
+                      {project.data.projectType}
+                    </div>
+                    <div class="w-[33%] font-grotesk font-normal text-base text-black/44 dark:text-white/44 text-right truncate leading-[1.5]">
+                      {project.data.role}
+                    </div>
+                  </div>
+                  <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+                    {project.data.contributions}
+                  </div>
+                </div>
+              </a>
             </li>
           ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li>
         </ul>
+        <div class="flex justify-end pt-2">
+          <a href="/projects" class="inline-flex items-center gap-1 font-grotesk font-medium text-base text-black dark:text-white hover:opacity-80 transition-opacity leading-[1.5]">
+            All projects
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
       </section>
+
+      <PostList 
+        title="Latest Writing" 
+        posts={blog} 
+        seeAllLink="/blog" 
+        seeAllText="All writing"
+      />
     </div>
   </Container>
+  
+  <CTA size="default" />
 </PageLayout>
+
+<style>
+  /* Убираем дополнительный верхний паддинг из main */
+  :global(body:has(.hero-section) main) {
+    padding-top: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    max-height: 800px; /* Максимальная высота 800px */
+    width: 100%;
+    max-width: 580px; /* Максимальная ширина, соответствующая Container с size="default" */
+    padding-top: 48px !important; /* Принудительно устанавливаем точный отступ */
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 64px;
+    margin: 0 auto; /* Центрирование по горизонтали */
+  }
+  
+  .logo-container {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .hero-content {
+    margin-top: auto;
+  }
+  
+  h1 {
+    font-family: 'Tiempos Text', serif;
+    font-weight: 400;
+    font-size: 36px;
+    letter-spacing: -0.028em;
+    line-height: 1.167;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .hero-content a {
+    text-underline-offset: 2px;
+  }
+  
+  @media (max-width: 640px) {
+    .hero-section {
+      padding-bottom: 48px;
+    }
+    
+    .logo-container {
+      width: 32px;
+      height: 32px;
+    }
+  }
+</style>

@@ -1,34 +1,58 @@
 ---
 import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
+import Logo from "@components/Logo.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
 import { SITE } from "@consts";
+
+interface Props {
+  pageType?: 'default' | 'blog' | 'project';
+  breadcrumbs?: {
+    label: string;
+    url?: string;
+  }[];
+}
+
+const { pageType = 'default', breadcrumbs = [] } = Astro.props;
+
+// Строим хлебные крошки
+const defaultBreadcrumbs = [
+  { label: SITE.NAME, url: '/' }
+];
+
+// Если хлебные крошки не заданы явно, формируем их на основе текущего пути
+const currentPath = Astro.url.pathname;
+let finalBreadcrumbs = breadcrumbs.length > 0 ? breadcrumbs : defaultBreadcrumbs;
+
+// Добавляем текущий путь, если хлебные крошки не заданы явно
+if (breadcrumbs.length === 0 && currentPath !== '/') {
+  const segments = currentPath.split('/').filter(segment => segment);
+  
+  if (segments.length > 0) {
+    const pathSegment = segments[0];
+    const label = pathSegment.charAt(0).toUpperCase() + pathSegment.slice(1);
+    finalBreadcrumbs.push({
+      label: label,
+      // Для страниц верхнего уровня (/projects, /blog, /about, /colophon) не делаем ссылку
+      // чтобы показать второй уровень (текущий путь) как текущую страницу
+      url: ['projects', 'blog', 'about', 'colophon'].includes(pathSegment) ? undefined : `/${pathSegment}`
+    });
+  }
+}
+
+// Определяем, нужно ли показывать последний элемент в хлебных крошках
+// Для страниц верхнего уровня показываем его
+const showLast = currentPath === '/projects' || currentPath === '/blog' || currentPath === '/about' || currentPath === '/colophon';
 ---
 
-<header>
-  <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME}
-        </div>
-      </Link>
-      <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/about">
-          about
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link>
-      </nav>
+<header class="pt-12">
+  <Container size={pageType}>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <a href="/" class="hover:opacity-80 transition-opacity cursor-pointer">
+          <Logo />
+        </a>
+        <Breadcrumb items={finalBreadcrumbs} showLastItem={showLast} />
+      </div>
     </div>
   </Container>
 </header>

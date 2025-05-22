@@ -2,16 +2,78 @@
 import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import { ABOUT } from "@consts";
+import { ABOUT, SITE } from "@consts";
 
 const about = await getCollection("about");
 const { Content } = await about[0].render();
+
+const breadcrumbs = [
+  { label: SITE.NAME, url: '/' },
+  { label: 'About' }
+];
 ---
 
-<PageLayout title={ABOUT.TITLE} description={ABOUT.DESCRIPTION}>
-  <Container>
-    <article class="prose prose-lg dark:prose-invert mx-auto">
+<PageLayout 
+  title={ABOUT.TITLE} 
+  description={ABOUT.DESCRIPTION} 
+  pageType="default"
+  breadcrumbs={breadcrumbs}
+>
+  <Container size="default">
+    <div class="space-y-1 my-10">
+      <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+        About Me
+      </h1>
+    </div>
+    <article class="animate space-y-6">
       <Content />
     </article>
   </Container>
-</PageLayout> 
+</PageLayout>
+
+<style>
+  /* Стили для элементов статьи в соответствии с макетом блога */
+  :global(article h2) {
+    font-family: 'Tiempos Text', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.393em;
+    letter-spacing: -0.036em;
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  
+  :global(article p) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  /* Дополнительные стили для списков, ссылок и других элементов */
+  :global(article ul), :global(article ol) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  :global(article li) {
+    margin-bottom: 8px;
+  }
+
+  :global(article a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :global(article a:hover) {
+    opacity: 0.8;
+  }
+</style> 

@@ -1,7 +1,17 @@
 ---
+interface Props {
+  size?: 'default' | 'blog' | 'project';
+}
 
+const { size = 'default' } = Astro.props;
+
+const widthClass = {
+  'default': 'max-w-[100%] w-[580px]',
+  'blog': 'max-w-[100%] w-[400px]',
+  'project': 'max-w-[100%] w-[580px]'
+}[size];
 ---
 
-<div class="mx-auto max-w-screen-sm px-5">
+<div class={`mx-auto ${widthClass} px-5`}>
   <slot />
 </div>

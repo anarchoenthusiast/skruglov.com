@@ -4,8 +4,6 @@ description: "About me and my work"
 date: "Mar 30 2024"
 ---
 
-# About Me
-
 I am a Founding Product Designer with a passion for creating user-centered experiences. My work focuses on understanding user needs and translating them into intuitive, beautiful, and functional designs.
 
 ## Experience

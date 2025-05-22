@@ -2,6 +2,9 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import type { CollectionEntry } from "astro:content";
+import CTA from "@components/CTA.astro";
+import { SITE } from "@consts";
+import { getCollection } from "astro:content";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -9,74 +12,131 @@ interface Props {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+// Получаем все проекты, исключая текущий
+const allProjects = await getCollection("projects");
+const otherProjects = allProjects
+  .filter(p => p.slug !== project.slug)
+  .sort((a, b) => {
+    // Если есть поле priority, сортируем по нему (меньшее значение = выше)
+    if (a.data.priority !== undefined && b.data.priority !== undefined) {
+      // При возрастающей сортировке первым будет проект с меньшим priority
+      return a.data.priority - b.data.priority;
+    }
+    // Если у одного проекта есть priority, а у другого нет, приоритетный проект должен быть выше
+    if (a.data.priority !== undefined && b.data.priority === undefined) {
+      return -1;
+    }
+    if (a.data.priority === undefined && b.data.priority !== undefined) {
+      return 1;
+    }
+    // По умолчанию сортируем по дате (более новые выше)
+    return b.data.date.valueOf() - a.data.date.valueOf();
+  })
+  .slice(0, 3);
+
+const breadcrumbs = [
+  { label: SITE.NAME, url: '/' },
+  { label: 'Projects', url: '/projects' },
+  { label: project.data.title }
+];
 ---
 
-<PageLayout title={project.data.title} description={project.data.description}>
-  <Container>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      {/* Левая колонка с информацией */}
-      <div class="md:col-span-4 space-y-6">
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Role</h6>
-          <p class="font-medium">{project.data.role}</p>
-        </div>
-
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Duration</h6>
-          <p class="font-medium">{project.data.duration}</p>
-        </div>
-
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Company</h6>
-          <p class="font-medium">{project.data.company}</p>
-        </div>
-
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Scope</h6>
-          <p class="font-medium">{project.data.scope}</p>
-        </div>
-
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Contributions</h6>
-          <p class="font-medium">{project.data.contributions}</p>
-        </div>
-
-        <div class="space-y-2">
-          <h6 class="text-sm text-gray-500">Collaborators</h6>
-          <p class="font-medium">{project.data.collaborators}</p>
-        </div>
-
-        {project.data.demoURL && (
-          <div class="pt-4">
-            <a 
-              href={project.data.demoURL}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
-            >
-              View Demo
-            </a>
+<PageLayout 
+  title={project.data.title} 
+  description={project.data.description} 
+  pageType="project"
+  breadcrumbs={breadcrumbs}
+>
+  <Container size="project">
+    <div class="grid grid-cols-1 gap-8">
+      <!-- Информация о проекте -->
+      <div class="animate">
+        <!-- Блок с информацией о проекте в две строки по три элемента -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Role</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.role}</p>
+            </div>
+            
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Project Type</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.projectType}</p>
+            </div>
+            
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Duration</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.duration}</p>
+            </div>
+          
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Scope</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.scope}</p>
+            </div>
+            
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Contributions</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.contributions}</p>
+            </div>
+            
+            <div>
+              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Collaborators</h6>
+              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.collaborators}</p>
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Правая колонка с контентом и изображениями */}
-      <div class="md:col-span-8">
-        <div class="prose prose-lg dark:prose-invert">
-          <Content />
-        </div>
-        
-        {/* Плитка с изображениями */}
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-          {project.data.images?.map((image) => (
-            <img
-              src={image.url}
-              alt={image.alt}
-              class="w-full h-auto rounded-lg object-cover aspect-video"
-            />
-          ))}
-        </div>
+      <!-- Контент проекта и изображения -->
+      <div class="animate mt-8">
+        <Content />
       </div>
     </div>
   </Container>
-</PageLayout> 
+  
+  <!-- Секция "Другие проекты" -->
+  {otherProjects.length > 0 && (
+    <Container size="project">
+      <div class="mt-16 mb-16 pt-16 animate">
+        <h2 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-6 leading-[1.5]">
+          More Projects
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {otherProjects.map(otherProject => (
+            <a href={`/projects/${otherProject.slug}/`} class="block group">
+              <div class="flex flex-col gap-4">
+                {otherProject.data.images && otherProject.data.images.length > 0 ? (
+                  <img 
+                    src={otherProject.data.images[0].url} 
+                    alt={otherProject.data.images[0].alt} 
+                    class="aspect-square w-full object-cover rounded-lg"
+                  />
+                ) : (
+                  <div class="aspect-square bg-[#D9D9D9] rounded-lg"></div>
+                )}
+                <div class="flex flex-col">
+                  <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity">
+                    {otherProject.data.title}
+                  </div>
+                  <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+                    {otherProject.data.projectType}
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </Container>
+  )}
+  
+  <CTA size="project" />
+</PageLayout>
+
+<style>
+  /* Стили для контента проекта */
+  :global(.astro-code) {
+    @apply rounded-md text-sm my-6;
+  }
+</style> 

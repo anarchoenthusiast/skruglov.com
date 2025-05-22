@@ -1,0 +1,49 @@
+---
+import Container from "./Container.astro";
+
+interface Props {
+  size?: 'default' | 'blog' | 'project';
+}
+
+const { size = 'default' } = Astro.props;
+---
+
+<section class="cta pt-12 pb-0">
+  <Container size={size}>
+    <div class="flex flex-col items-center border-t border-black/10 dark:border-white/10 pt-12">
+      <div class="flex flex-col gap-6 w-full mb-8 animate">
+        <div class="w-full">
+          <h1 class="text-center font-tiempos text-4xl font-normal text-black dark:text-white tracking-[-0.028em] leading-[1.167]">
+            Hello, i'm Sergey.<br/>Founding Product Designer,
+          </h1>
+        </div>
+        <div class="flex justify-center items-center w-full">
+          <p class="text-center font-grotesk text-base leading-[1.5] text-black dark:text-white max-w-[580px] mx-auto px-0 sm:px-6">
+            Dot is the personal AI designed to truly understand you, observing what is said and unsaid to form a picture of who you are. challenges, Dot is there to offer personalized guidance. Open for *some selected opportunities at hello@skruglov.com
+          </p>
+        </div>
+      </div>
+      <a href="mailto:hello@skruglov.com" class="px-5 py-3 bg-[#F5F5F5] dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full font-grotesk text-base text-black dark:text-white transition-colors animate">
+        Send
+      </a>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .cta {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .font-tiempos {
+    font-family: 'Tiempos Text', serif;
+    font-weight: 400;
+    letter-spacing: -0.028em;
+  }
+  
+  .font-grotesk {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+  }
+</style> 

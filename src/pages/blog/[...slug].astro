@@ -4,7 +4,9 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
-import BackToPrev from "@components/BackToPrev.astro";
+import CTA from "@components/CTA.astro";
+import PostList from "@components/PostList.astro";
+import { SITE } from "@consts";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -12,38 +14,117 @@ export async function getStaticPaths() {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: post,
+    props: { post, posts },
   }));
 }
-type Props = CollectionEntry<"blog">;
 
-const post = Astro.props;
+type Props = {
+  post: CollectionEntry<"blog">;
+  posts: CollectionEntry<"blog">[];
+};
+
+const { post, posts } = Astro.props;
 const { Content } = await post.render();
+
+// Получаем другие последние посты, исключая текущий
+const otherPosts = posts
+  .filter(p => p.id !== post.id)
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+// Если нет других постов, показываем текущий пост
+const postsToShow = otherPosts.length > 0 ? otherPosts : [post];
+
+const breadcrumbs = [
+  { label: SITE.NAME, url: '/' },
+  { label: 'Blog', url: '/blog' },
+  { label: post.data.title }
+];
+
 ---
 
-<PageLayout title={post.data.title} description={post.data.description}>
-  <Container>
-    <div class="animate">
-      <BackToPrev href="/blog">
-        Back to blog
-      </BackToPrev>
-    </div>
+<PageLayout 
+  title={post.data.title} 
+  description={post.data.description} 
+  pageType="blog"
+  breadcrumbs={breadcrumbs}
+>
+  <Container size="blog">
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
-        <div class="font-base text-sm">
+        <div class="font-grotesk text-base text-black/44 dark:text-white/44">
           <FormattedDate date={post.data.date} />
         </div>
         &bull;
-        <div class="font-base text-sm">
+        <div class="font-grotesk text-base text-black/44 dark:text-white/44">
           {readingTime(post.body)}
         </div>
       </div>
-      <div class="animate text-2xl font-semibold text-black dark:text-white">
+      <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
         {post.data.title}
-      </div>
+      </h1>
     </div>
-    <article class="animate">
+    <article class="animate space-y-6">
       <Content />
     </article>
   </Container>
+  
+  <Container size="blog">
+    <div class="mt-16 pt-16">
+      <PostList 
+        title="Latest Writing" 
+        posts={postsToShow} 
+        seeAllLink="/blog" 
+        seeAllText="All writing" 
+      />
+    </div>
+  </Container>
+  
+  <CTA size="blog" />
 </PageLayout>
+
+<style>
+  /* Стили для элементов поста блога в соответствии с макетом */
+  :global(article h2) {
+    font-family: 'Tiempos Text', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.393em;
+    letter-spacing: -0.036em;
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  
+  :global(article p) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  /* Дополнительные стили для списков, ссылок и других элементов */
+  :global(article ul), :global(article ol) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  :global(article li) {
+    margin-bottom: 8px;
+  }
+
+  :global(article a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :global(article a:hover) {
+    opacity: 0.8;
+  }
+</style>

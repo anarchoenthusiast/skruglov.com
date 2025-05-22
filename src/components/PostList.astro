@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  posts: any[];
+  seeAllLink?: string;
+  seeAllText?: string;
+}
+
+const { title, posts, seeAllLink, seeAllText = "All writing" } = Astro.props;
+---
+
+<section class="animate space-y-4">
+  <div class="mb-2">
+    <h5 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+      {title}
+    </h5>
+  </div>
+  <ul class="flex flex-col gap-2">
+    {posts.map(post => (
+      <li class="p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl">
+        <a href={`/blog/${post.slug}/`} class="block group">
+          <div class="flex flex-col gap-1">
+            <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity">
+              {post.data.title}
+            </div>
+            <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+              {post.data.description}
+            </div>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+  {seeAllLink && (
+    <div class="flex justify-end pt-2">
+      <a href={seeAllLink} class="inline-flex items-center gap-1 font-grotesk font-medium text-base text-black dark:text-white hover:opacity-80 transition-opacity">
+        {seeAllText}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  )}
+</section> 

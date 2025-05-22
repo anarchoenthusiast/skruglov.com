@@ -2,14 +2,25 @@
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Navbar from "@components/Navbar.astro";
 import { SITE } from "@consts";
 
 type Props = {
   title: string;
   description: string;
+  pageType?: 'default' | 'blog' | 'project';
+  breadcrumbs?: {
+    label: string;
+    url?: string;
+  }[];
+  hideHeader?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, pageType = 'default', breadcrumbs, hideHeader = false } = Astro.props;
+
+// Определяем, является ли текущая страница главной
+const isHomePage = Astro.url.pathname === "/";
+const shouldShowHeader = !isHomePage && !hideHeader;
 ---
 
 <!doctype html>
@@ -18,10 +29,11 @@ const { title, description } = Astro.props;
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
   <body>
-    <Header />
+    {shouldShowHeader && <Header pageType={pageType} breadcrumbs={breadcrumbs} />}
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer pageType={pageType} />
+    <Navbar />
   </body>
 </html>

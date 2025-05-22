@@ -1,0 +1,28 @@
+/* Шрифт для заголовков - Tiempos Text */
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/tiempos-text/TiemposText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/tiempos-text/TiemposText-Medium.woff2') format('woff2'),
+       url('/fonts/tiempos-text/TiemposText-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Шрифт для параграфов - Die Grotesk B */
+@font-face {
+  font-family: 'Die Grotesk B';
+  src: url('/fonts/die-grotesk-b/DieGroteskB-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Если у вас есть и другие начертания, добавьте их аналогично */ 

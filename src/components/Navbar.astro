@@ -1,0 +1,193 @@
+---
+const pathname = Astro.url.pathname;
+
+// Определяем текущую страницу для активного состояния кнопок
+const isHomePage = pathname === "/" || pathname === "";
+// Изменение логики для Projects - активно только на точной странице /projects или /projects/
+const isProjectsPage = pathname === "/projects" || pathname === "/projects/";
+const isAboutPage = pathname === "/about" || pathname === "/about/";
+
+// Определяем, находимся ли мы на внутренней странице
+const isInnerPage = !isHomePage && (pathname.split('/').filter(Boolean).length > 1 || pathname.includes('/blog/'));
+
+// Определяем, находимся ли мы на странице конкретного проекта
+const isProjectDetailsPage = pathname.includes("/projects/") && pathname !== "/projects/";
+
+// Определяем URL для кнопки "назад"
+function getBackUrl() {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length <= 1) return '/';
+  segments.pop();
+  return '/' + segments.join('/');
+}
+
+const backUrl = getBackUrl();
+---
+
+<nav id="navbar" class={`fixed bottom-6 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+  <div class="flex mx-auto px-4 max-w-full sm:px-0">
+    <div id="back-button" class="hidden">
+      <a href={backUrl} class="flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 transition-colors">
+        <img src="/images/back-arrow.svg" alt="Back" class="w-4 h-4 dark:invert" />
+      </a>
+    </div>
+    <a 
+      href="/" 
+      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
+      style={isHomePage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
+    >
+      Index
+    </a>
+    <a 
+      href="/projects" 
+      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
+      style={isProjectsPage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
+    >
+      Projects
+    </a>
+    <a 
+      href="/about" 
+      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
+      style={isAboutPage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
+    >
+      About
+    </a>
+  </div>
+</nav>
+
+<script is:inline>
+  function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    const footer = document.querySelector('footer');
+    const backButton = document.getElementById('back-button');
+    const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
+    const isInnerPage = !isHomePage && (window.location.pathname.split('/').filter(Boolean).length > 1 || window.location.pathname.includes('/blog/'));
+    
+    if (!navbar || !footer) return;
+    
+    // Проверяем, есть ли referrer и является ли он ссылкой с того же домена
+    const hasReferrer = document.referrer && document.referrer.includes(window.location.hostname);
+    
+    // Показываем кнопку "назад" только если мы находимся на внутренней странице
+    // и если есть реферер с того же домена (не прямой переход)
+    if (isInnerPage && hasReferrer && backButton) {
+      backButton.classList.remove('hidden');
+    }
+    
+    // Переменная для проверки, вернулся ли пользователь с другой страницы
+    let isReturningFromOtherPage = false;
+    
+    try {
+      // Получаем текущее время
+      const currentTime = new Date().getTime();
+      
+      // Получаем время последнего перехода между страницами
+      const lastNavigationTime = parseInt(sessionStorage.getItem('lastNavigationTime') || '0');
+      
+      // Если мы не на главной, записываем время перехода
+      if (!isHomePage) {
+        sessionStorage.setItem('lastNavigationTime', currentTime.toString());
+        sessionStorage.setItem('visitedNonHomePage', 'true');
+      }
+      
+      // Проверяем, было ли недавно посещение другой страницы
+      // Если разница во времени менее 1000 мс (1 секунда) и была посещена не главная страница,
+      // считаем, что пользователь вернулся с другой страницы, а не обновил страницу
+      const timeDiff = currentTime - lastNavigationTime;
+      isReturningFromOtherPage = timeDiff < 1000 && isHomePage && sessionStorage.getItem('visitedNonHomePage') === 'true';
+      
+      // Если пользователь обновил главную страницу (а не пришел с другой),
+      // сбрасываем флаг посещения не главной страницы
+      if (isHomePage && !isReturningFromOtherPage) {
+        sessionStorage.removeItem('visitedNonHomePage');
+      }
+    } catch (e) {
+      console.error('Error accessing sessionStorage:', e);
+    }
+    
+    const handleScroll = () => {
+      // Получаем размеры и позицию футера
+      const footerRect = footer.getBoundingClientRect();
+      const documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+      
+      // Получаем высоту видимой области страницы
+      const viewportHeight = window.innerHeight;
+      
+      // Проверяем, достаточно ли контента на странице, чтобы вызвать скроллинг
+      const hasScrollableContent = documentHeight > viewportHeight + 100; // 100px запас
+      
+      // Проверяем, вошел ли футер в видимую область
+      // Добавляем отступ, чтобы навбар исчезал чуть раньше, чем появляется футер
+      const footerVisible = footerRect.top < viewportHeight - 50;
+      
+      // На главной странице показываем навбар если пользователь прокрутил страницу
+      // ИЛИ если пользователь вернулся с другой страницы сайта
+      if (isHomePage) {
+        if ((window.scrollY > 10 || isReturningFromOtherPage) && (!footerVisible || !hasScrollableContent)) {
+          navbar.classList.remove('opacity-0', 'pointer-events-none');
+          navbar.classList.add('opacity-100');
+        } else {
+          navbar.classList.add('opacity-0', 'pointer-events-none');
+          navbar.classList.remove('opacity-100');
+        }
+      } else {
+        // На остальных страницах скрываем только при достижении футера,
+        // но только если страница имеет достаточно контента для скроллинга
+        if (footerVisible && hasScrollableContent) {
+          navbar.classList.add('opacity-0', 'pointer-events-none');
+          navbar.classList.remove('opacity-100');
+        } else {
+          navbar.classList.remove('opacity-0', 'pointer-events-none');
+          navbar.classList.add('opacity-100');
+        }
+      }
+    };
+    
+    // Первичная проверка при загрузке страницы
+    handleScroll();
+    
+    // Слушаем событие прокрутки
+    window.addEventListener('scroll', handleScroll);
+    
+    // Также проверяем при изменении размера окна
+    window.addEventListener('resize', handleScroll);
+  }
+  
+  // Инициализация при первой загрузке
+  document.addEventListener('DOMContentLoaded', initNavbar);
+  
+  // Повторно инициализируем после перехода по страницам через Astro
+  document.addEventListener('astro:after-swap', initNavbar);
+</script>
+
+<style>
+  .font-grotesk {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+  }
+
+  /* Адаптация для темной темы */
+  @media (prefers-color-scheme: dark) {
+    a[style*="color: #000000"] {
+      color: #FFFFFF !important;
+    }
+
+    a[style*="color: rgba(0, 0, 0, 0.44)"] {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+  }
+
+  :global(html.dark) a[style*="color: #000000"] {
+    color: #FFFFFF !important;
+  }
+
+  :global(html.dark) a[style*="color: rgba(0, 0, 0, 0.44)"] {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+</style> 

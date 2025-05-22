@@ -19,18 +19,17 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
+  @apply bg-white dark:bg-stone-900;
   @apply text-black/50 dark:text-white/75;
 }
 
 header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
-  @apply backdrop-blur-sm saturate-200;
+  @apply relative pt-5;
+  @apply bg-white dark:bg-stone-900;
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 py-16;
 }
 
 footer {
@@ -39,8 +38,12 @@ footer {
 
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif;
+  @apply prose-headings:font-tiempos prose-p:font-grotesk;
+  @apply prose-headings:font-normal prose-p:font-normal;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-p:text-black prose-p:dark:text-white;
+  @apply prose-h2:text-[28px] prose-h2:leading-[1.39] prose-h2:tracking-[-0.036em];
+  @apply prose-p:text-base prose-p:leading-[1.5];
 }
 
 @layer utilities {
@@ -62,12 +65,4 @@ article {
 
 .animate.show {
   @apply opacity-100 translate-y-0;
-}
-
-html #back-to-top {
-  @apply opacity-0 pointer-events-none;
-}
-
-html.scrolled #back-to-top {
-  @apply opacity-100 pointer-events-auto;
 }

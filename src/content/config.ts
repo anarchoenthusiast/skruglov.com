@@ -19,6 +19,15 @@ const about = defineCollection({
   }),
 });
 
+const colophon = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+  }),
+});
+
 const projects = defineCollection({
   type: "content",
   schema: z.object({
@@ -26,10 +35,12 @@ const projects = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    priority: z.number().optional(),
     role: z.string(),
     duration: z.string(),
     company: z.string(),
     scope: z.string(),
+    projectType: z.string(),
     contributions: z.string(),
     collaborators: z.string(),
     demoURL: z.string().optional(),
@@ -41,4 +52,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, about, projects };
+export const collections = { blog, about, colophon, projects };

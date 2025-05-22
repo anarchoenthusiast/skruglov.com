@@ -9,8 +9,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        sans: ["Die Grotesk B", ...defaultTheme.fontFamily.sans],
+        serif: ["Tiempos Text", ...defaultTheme.fontFamily.serif],
+        tiempos: ["Tiempos Text", ...defaultTheme.fontFamily.serif],
+        grotesk: ["Die Grotesk B", ...defaultTheme.fontFamily.sans],
       },
     },
   },

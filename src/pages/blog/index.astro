@@ -2,8 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import { BLOG } from "@consts";
+import { BLOG, SITE } from "@consts";
 
 const data = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -23,26 +22,43 @@ const posts = data.reduce((acc: Acc, post) => {
   }, {});
 
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a)); 
+
+const breadcrumbs = [
+  { label: SITE.NAME, url: '/' },
+  { label: 'Blog' }
+];
+
 ---
 
-<PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
-  <Container>
+<PageLayout 
+  title={BLOG.TITLE} 
+  description={BLOG.DESCRIPTION} 
+  pageType="default"
+  breadcrumbs={breadcrumbs}
+>
+  <Container size="default">
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Blog
-      </div>
-      <div class="space-y-4">
+      <div class="space-y-16">
         {years.map(year => (
           <section class="animate space-y-4">
-            <div class="font-semibold text-black dark:text-white">
+            <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
               {year}
             </div>
             <div>
-              <ul class="flex flex-col gap-4">
+              <ul class="flex flex-col gap-2">
                 {
                   posts[year].map((post) => (
-                    <li>
-                      <ArrowCard entry={post}/>
+                    <li class="p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl">
+                      <a href={`/blog/${post.slug}/`} class="block group">
+                        <div class="flex flex-col gap-1">
+                          <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity">
+                            {post.data.title}
+                          </div>
+                          <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+                            {post.data.description}
+                          </div>
+                        </div>
+                      </a>
                     </li>
                   ))
                 }
