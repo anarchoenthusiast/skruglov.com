@@ -34,6 +34,7 @@
     "typescript": "^5.4.2"
   },
   "devDependencies": {
-    "@fontsource/space-grotesk": "^5.2.6"
+    "@fontsource/space-grotesk": "^5.2.6",
+    "@rollup/rollup-linux-x64-gnu": "^4.9.0"
   }
 }
