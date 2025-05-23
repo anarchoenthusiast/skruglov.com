@@ -13,7 +13,7 @@ const { items, showLastItem = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 // Имя автора для использования в проверках
-const authorName = "Sergey Keuglov";
+const authorName = "Sergey Kruglov";
 
 // Логика для определения типа страницы
 const isProjectPage = currentPath.startsWith('/projects/') && currentPath !== '/projects/';
@@ -21,6 +21,9 @@ const isBlogPage = currentPath.startsWith('/blog/') && currentPath !== '/blog/';
 
 // Определяем, какие элементы показывать
 const displayedItems = (isProjectPage || isBlogPage || showLastItem) ? items : items.slice(0, -1);
+
+// Для мобильной версии: убираем 3-й уровень (названия проектов/постов)
+const mobileDisplayedItems = (isProjectPage || isBlogPage) ? displayedItems.slice(0, -1) : displayedItems;
 
 // Функция для сокращения заголовка блога до первых двух слов
 function shortenBlogTitle(title: string): string {
@@ -31,29 +34,45 @@ function shortenBlogTitle(title: string): string {
 ---
 
 <div class="flex items-center gap-2">
-  {displayedItems.map((item, index) => (
-    <>
-      {index > 0 && <span class="text-black/50 dark:text-white/50">/</span>}
-      {item.url ? (
-        <a 
-          href={item.url} 
-          class:list={[
-            "font-medium text-black dark:text-white hover:opacity-80 transition-opacity",
-            { "hidden md:inline": item.label === authorName || item.label === "Sergei Kruglov" }
-          ]}
-        >
-          {item.label === "Sergei Kruglov" ? authorName : item.label}
-        </a>
-      ) : (
-        <span 
-          class:list={[
-            "text-black/44 dark:text-white/44",
-            { "hidden md:inline": item.label === authorName || item.label === "Sergei Kruglov" }
-          ]}
-        >
-          {(isBlogPage && index === 2) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
-        </span>
-      )}
-    </>
-  ))}
+  <!-- Мобильная версия: без 3-го уровня -->
+  <div class="block md:hidden">
+    {mobileDisplayedItems.map((item, index) => (
+      <>
+        {index > 0 && <span class="text-black/50 dark:text-white/50">/</span>}
+        {item.url ? (
+          <a 
+            href={item.url} 
+            class="font-medium text-black dark:text-white hover:opacity-80 transition-opacity"
+          >
+            {item.label === "Sergei Kruglov" ? authorName : item.label}
+          </a>
+        ) : (
+          <span class="text-black/44 dark:text-white/44">
+            {item.label === "Sergei Kruglov" ? authorName : item.label}
+          </span>
+        )}
+      </>
+    ))}
+  </div>
+
+  <!-- Десктопная версия: полный breadcrumb -->
+  <div class="hidden md:flex items-center gap-2">
+    {displayedItems.map((item, index) => (
+      <>
+        {index > 0 && <span class="text-black/50 dark:text-white/50">/</span>}
+        {item.url ? (
+          <a 
+            href={item.url} 
+            class="font-medium text-black dark:text-white hover:opacity-80 transition-opacity"
+          >
+            {item.label === "Sergei Kruglov" ? authorName : item.label}
+          </a>
+        ) : (
+          <span class="text-black/44 dark:text-white/44">
+            {(isBlogPage && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
+          </span>
+        )}
+      </>
+    ))}
+  </div>
 </div> 
