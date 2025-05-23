@@ -59,22 +59,22 @@ function shortenBlogTitle(title: string): string {
 
   <!-- Десктопная версия: полный breadcrumb -->
   <div class="hidden md:flex items-center gap-2">
-    {displayedItems.map((item, index) => (
-      <>
-        {index > 0 && <span class="text-black/50 dark:text-white/50">/</span>}
-        {item.url ? (
-          <a 
-            href={item.url} 
+  {displayedItems.map((item, index) => (
+    <>
+      {index > 0 && <span class="text-black/50 dark:text-white/50">/</span>}
+      {item.url ? (
+        <a 
+          href={item.url} 
             class="font-medium text-black dark:text-white hover:opacity-80 transition-opacity"
-          >
-            {item.label === "Sergei Kruglov" ? authorName : item.label}
-          </a>
-        ) : (
+        >
+          {item.label === "Sergei Kruglov" ? authorName : item.label}
+        </a>
+      ) : (
           <span class="text-black/44 dark:text-white/44">
             {(isThirdLevelPage && normalizedPath.startsWith('/blog/') && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
-          </span>
-        )}
-      </>
-    ))}
+        </span>
+      )}
+    </>
+  ))}
   </div>
 </div> 

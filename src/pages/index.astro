@@ -74,12 +74,12 @@ const projects = (await getCollection("projects"))
         <ul class="flex flex-col gap-2">
           {projects.map(project => (
             <li>
-              <a href={`/projects/${project.slug}/`} class="block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors">
+              <a href={`/projects/${project.slug}/`} class="block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors duration-300 ease-out">
                 <!-- Десктопная версия -->
                 <div class="hidden sm:flex gap-4">
                   <!-- Левая колонка -->
                   <div class="flex flex-col gap-1 w-[142px]">
-                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5]">
+                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5]">
                       {project.data.title}
                     </div>
                     <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
@@ -88,7 +88,7 @@ const projects = (await getCollection("projects"))
                   </div>
                   <!-- Правая колонка -->
                   <div class="flex flex-col gap-1 flex-1">
-                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5]">
+                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5]">
                       {project.data.projectType}
                     </div>
                     <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5] h-6 overflow-hidden">
@@ -102,16 +102,16 @@ const projects = (await getCollection("projects"))
                   <div class="flex flex-col gap-2">
                     <!-- Head: название и тип проекта -->
                     <div class="flex justify-between items-start gap-6">
-                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5] flex-1">
+                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5] flex-1">
                         {project.data.title}
                       </div>
-                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5] flex-shrink-0">
+                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5] flex-shrink-0">
                         {project.data.projectType}
                       </div>
                     </div>
                     <!-- Subhead: contributions -->
-                    <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
-                      {project.data.contributions}
+                  <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+                    {project.data.contributions}
                     </div>
                   </div>
                 </div>

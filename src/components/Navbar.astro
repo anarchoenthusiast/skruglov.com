@@ -38,30 +38,30 @@ const backUrl = getBackUrl();
     
     <!-- Развернутое состояние (группа вкладок) -->
     <div class="expanded-nav">
-      <a 
-        href="/" 
+    <a 
+      href="/" 
         class={`nav-button ${isHomePage ? 'active' : ''}`}
-      >
-        Index
-      </a>
-      <a 
-        href="/projects" 
+    >
+      Index
+    </a>
+    <a 
+      href="/projects" 
         class={`nav-button ${isProjectsPage ? 'active' : ''}`}
-      >
-        Projects
-      </a>
+    >
+      Projects
+    </a>
       <a 
         href="/blog" 
         class={`nav-button ${isBlogPage ? 'active' : ''}`}
       >
         Blog
       </a>
-      <a 
-        href="/about" 
+    <a 
+      href="/about" 
         class={`nav-button ${isAboutPage ? 'active' : ''}`}
-      >
-        About
-      </a>
+    >
+      About
+    </a>
     </div>
   </div>
 </nav>
@@ -120,7 +120,7 @@ const backUrl = getBackUrl();
       // На главной странице показываем навбар если пользователь прокрутил страницу
       // ИЛИ если пользователь вернулся с другой страницы сайта
       if (isHomePage) {
-        if ((window.scrollY > 10 || isReturningFromOtherPage) && (!footerVisible || !hasScrollableContent)) {
+        if (window.scrollY > 10 || isReturningFromOtherPage) {
           navbar.classList.remove('opacity-0', 'pointer-events-none');
           navbar.classList.add('opacity-100');
         } else {
@@ -128,14 +128,9 @@ const backUrl = getBackUrl();
           navbar.classList.remove('opacity-100');
         }
       } else {
-        // На остальных страницах скрываем только при достижении футера
-        if (footerVisible && hasScrollableContent) {
-          navbar.classList.add('opacity-0', 'pointer-events-none');
-          navbar.classList.remove('opacity-100');
-        } else {
-          navbar.classList.remove('opacity-0', 'pointer-events-none');
-          navbar.classList.add('opacity-100');
-        }
+        // На остальных страницах всегда показываем навбар
+        navbar.classList.remove('opacity-0', 'pointer-events-none');
+        navbar.classList.add('opacity-100');
       }
     };
     
@@ -226,7 +221,7 @@ const backUrl = getBackUrl();
   .nav-button:hover {
     background: rgba(0, 0, 0, 0.15);
   }
-  
+
   /* Стили для иконки */
   .icon-line {
     stroke: rgba(0, 0, 0, 0.44);
@@ -253,7 +248,7 @@ const backUrl = getBackUrl();
     .menu-button:hover {
       background: rgba(255, 255, 255, 0.15);
     }
-    
+
     .nav-button {
       background: rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.44);
@@ -271,7 +266,7 @@ const backUrl = getBackUrl();
       stroke: rgba(255, 255, 255, 0.44);
     }
   }
-  
+
   :global(html.dark) .menu-button {
     background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.44);
@@ -280,7 +275,7 @@ const backUrl = getBackUrl();
   :global(html.dark) .menu-button:hover {
     background: rgba(255, 255, 255, 0.15);
   }
-  
+
   :global(html.dark) .nav-button {
     background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.44);
