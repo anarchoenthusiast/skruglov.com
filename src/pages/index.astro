@@ -160,8 +160,6 @@ const projects = (await getCollection("projects"))
     width: 100%;
     max-width: 580px; /* Максимальная ширина, соответствующая Container с size="default" */
     padding-top: 48px !important; /* Принудительно устанавливаем точный отступ */
-    padding-left: 24px;
-    padding-right: 24px;
     padding-bottom: 64px;
     margin: 0 auto; /* Центрирование по горизонтали */
   }
@@ -199,6 +197,8 @@ const projects = (await getCollection("projects"))
   @media (max-width: 640px) {
     .hero-section {
       padding-bottom: 48px;
+      padding-left: 24px;
+      padding-right: 24px;
     }
     
     .logo-container {

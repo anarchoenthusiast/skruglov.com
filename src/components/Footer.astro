@@ -15,50 +15,52 @@ const currentYear = new Date().getFullYear();
 
 <footer class="animate pt-0 pb-12">
   <Container size={pageType}>
-    <div class="flex flex-col gap-13 h-full border-t border-black/10 dark:border-white/10 pt-6">
-      <!-- Верхняя часть футера -->
-      <div class="flex flex-col md:flex-row justify-between gap-8">
-        <!-- Левая колонка с логотипом и текстом -->
-        <div class="flex flex-col gap-1">
-          <a href="/" class="hover:opacity-80 transition-opacity inline-block cursor-pointer">
+    <div class="flex flex-col gap-4 h-full border-t border-black/10 dark:border-white/10 pt-6">
+      <!-- Верхняя строка: логотип + навигация -->
+      <div class="flex justify-between items-end">
+        <!-- Левая часть: логотип и имя -->
+        <div class="flex-1 flex flex-col gap-1">
+          <a href="/" class="hover:opacity-80 transition-opacity inline-block cursor-pointer w-6 h-6">
             <Logo />
-            <div class="mt-1 text-black dark:text-white text-base">
-              <div>Sergey Kruglov</div>
-            </div>
           </a>
+          <div class="text-black dark:text-white text-base leading-6">
+            Sergey Kruglov
+          </div>
         </div>
         
-        <!-- Правая колонка с навигацией, прижатая к низу -->
-        <div class="flex gap-4 md:gap-16 md:self-end">
-          <!-- Первая группа ссылок -->
-          <div class="flex flex-col gap-1">
-            <a href="/projects" class="text-black dark:text-white text-base hover:opacity-80 transition-opacity cursor-pointer">Projects</a>
-            <a href="/blog" class="text-black dark:text-white text-base hover:opacity-80 transition-opacity cursor-pointer">Blog</a>
+        <!-- Правая часть: навигационные ссылки -->
+        <div class="flex-1 flex gap-4">
+          <!-- Первая колонка -->
+          <div class="flex flex-col justify-end">
+            <a href="/projects" class="text-black dark:text-white text-base leading-6 hover:opacity-80 transition-opacity cursor-pointer">Projects</a>
+            <a href="/blog" class="text-black dark:text-white text-base leading-6 hover:opacity-80 transition-opacity cursor-pointer">Blog</a>
           </div>
           
-          <!-- Вторая группа ссылок -->
-          <div class="flex flex-col gap-1">
-            <a href="/about" class="text-black dark:text-white text-base hover:opacity-80 transition-opacity cursor-pointer">About</a>
-            <a href="/colophon" class="text-black dark:text-white text-base hover:opacity-80 transition-opacity cursor-pointer">Colophon</a>
+          <!-- Вторая колонка -->
+          <div class="flex flex-col justify-center">
+            <a href="/about" class="text-black dark:text-white text-base leading-6 hover:opacity-80 transition-opacity cursor-pointer">About</a>
+            <a href="/colophon" class="text-black dark:text-white text-base leading-6 hover:opacity-80 transition-opacity cursor-pointer">Colophon</a>
           </div>
         </div>
       </div>
       
-      <!-- Нижняя часть футера -->
-      <div class="flex flex-col md:flex-row justify-between gap-4 text-black/50 dark:text-white/50 text-base">
-        <div>&copy; {currentYear}</div>
-        <div class="flex gap-4">
-          <a href="/rss.xml" class="hover:opacity-80 transition-opacity cursor-pointer">RSS</a>
-          <a href="https://linkedin.com/in/skruglov" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity cursor-pointer">LinkedIn</a>
-          <a href="https://twitter.com/kruglvse" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity cursor-pointer">Twitter</a>
+      <!-- Нижняя строка: копирайт и ссылки -->
+      <div class="flex justify-between items-start">
+        <!-- Левая часть: копирайт -->
+        <div class="flex-1 flex items-center">
+          <div class="text-black/44 dark:text-white/44 text-base leading-6">
+            &copy; {currentYear}
+          </div>
+        </div>
+        
+        <!-- Правая часть: соцсети -->
+        <div class="flex-1 flex items-center">
+          <div class="text-black/44 dark:text-white/44 text-base leading-6 break-words">
+            <a href="#" class="link-underlined">RSS</a>, <a href="https://www.linkedin.com/in/kruglovse/" class="link-underlined" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a href="https://www.are.na/sergey-kruglov/channels" class="link-underlined" target="_blank" rel="noopener noreferrer">Are.na</a> and <a href="/about#contact" class="link-underlined">other options</a>
+          </div>
         </div>
       </div>
     </div>
   </Container>
 </footer>
 
-<style>
-  .gap-13 {
-    gap: 3.25rem;
-  }
-</style>
