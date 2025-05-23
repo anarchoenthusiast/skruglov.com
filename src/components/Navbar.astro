@@ -3,8 +3,8 @@ const pathname = Astro.url.pathname;
 
 // Определяем текущую страницу для активного состояния кнопок
 const isHomePage = pathname === "/" || pathname === "";
-// Изменение логики для Projects - активно только на точной странице /projects или /projects/
 const isProjectsPage = pathname === "/projects" || pathname === "/projects/";
+const isBlogPage = pathname.includes("/blog");
 const isAboutPage = pathname === "/about" || pathname === "/about/";
 
 // Определяем, находимся ли мы на внутренней странице
@@ -24,34 +24,45 @@ function getBackUrl() {
 const backUrl = getBackUrl();
 ---
 
-<nav id="navbar" class={`fixed bottom-6 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-  <div class="flex mx-auto px-4 max-w-full sm:px-0">
-    <div id="back-button" class="hidden">
-      <a href={backUrl} class="flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 transition-colors">
-        <img src="/images/back-arrow.svg" alt="Back" class="w-4 h-4 dark:invert" />
+<nav id="navbar" class={`fixed bottom-8 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+  <div class="navbar-container">
+    <!-- Свернутое состояние (кнопка с иконкой меню) -->
+    <div class="collapsed-nav">
+      <button class="menu-button">
+        <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4.5" y1="9.5" x2="17.5" y2="9.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
+          <line x1="4.5" y1="14.5" x2="17.5" y2="14.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Развернутое состояние (группа вкладок) -->
+    <div class="expanded-nav">
+      <a 
+        href="/" 
+        class={`nav-button ${isHomePage ? 'active' : ''}`}
+      >
+        Index
+      </a>
+      <a 
+        href="/projects" 
+        class={`nav-button ${isProjectsPage ? 'active' : ''}`}
+      >
+        Projects
+      </a>
+      <a 
+        href="/blog" 
+        class={`nav-button ${isBlogPage ? 'active' : ''}`}
+      >
+        Blog
+      </a>
+      <a 
+        href="/about" 
+        class={`nav-button ${isAboutPage ? 'active' : ''}`}
+      >
+        About
       </a>
     </div>
-    <a 
-      href="/" 
-      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
-      style={isHomePage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
-    >
-      Index
-    </a>
-    <a 
-      href="/projects" 
-      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
-      style={isProjectsPage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
-    >
-      Projects
-    </a>
-    <a 
-      href="/about" 
-      class="flex items-center justify-center w-20 sm:w-24 h-12 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-lg border border-white/20 dark:border-white/10 font-grotesk text-sm sm:text-base transition-colors"
-      style={isAboutPage ? "color: #000000;" : "color: rgba(0, 0, 0, 0.44);"}
-    >
-      About
-    </a>
   </div>
 </nav>
 
@@ -59,20 +70,9 @@ const backUrl = getBackUrl();
   function initNavbar() {
     const navbar = document.getElementById('navbar');
     const footer = document.querySelector('footer');
-    const backButton = document.getElementById('back-button');
     const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
-    const isInnerPage = !isHomePage && (window.location.pathname.split('/').filter(Boolean).length > 1 || window.location.pathname.includes('/blog/'));
     
     if (!navbar || !footer) return;
-    
-    // Проверяем, есть ли referrer и является ли он ссылкой с того же домена
-    const hasReferrer = document.referrer && document.referrer.includes(window.location.hostname);
-    
-    // Показываем кнопку "назад" только если мы находимся на внутренней странице
-    // и если есть реферер с того же домена (не прямой переход)
-    if (isInnerPage && hasReferrer && backButton) {
-      backButton.classList.remove('hidden');
-    }
     
     // Переменная для проверки, вернулся ли пользователь с другой страницы
     let isReturningFromOtherPage = false;
@@ -91,8 +91,6 @@ const backUrl = getBackUrl();
       }
       
       // Проверяем, было ли недавно посещение другой страницы
-      // Если разница во времени менее 1000 мс (1 секунда) и была посещена не главная страница,
-      // считаем, что пользователь вернулся с другой страницы, а не обновил страницу
       const timeDiff = currentTime - lastNavigationTime;
       isReturningFromOtherPage = timeDiff < 1000 && isHomePage && sessionStorage.getItem('visitedNonHomePage') === 'true';
       
@@ -106,7 +104,6 @@ const backUrl = getBackUrl();
     }
     
     const handleScroll = () => {
-      // Получаем размеры и позицию футера
       const footerRect = footer.getBoundingClientRect();
       const documentHeight = Math.max(
         document.body.scrollHeight,
@@ -116,14 +113,8 @@ const backUrl = getBackUrl();
         document.documentElement.offsetHeight
       );
       
-      // Получаем высоту видимой области страницы
       const viewportHeight = window.innerHeight;
-      
-      // Проверяем, достаточно ли контента на странице, чтобы вызвать скроллинг
-      const hasScrollableContent = documentHeight > viewportHeight + 100; // 100px запас
-      
-      // Проверяем, вошел ли футер в видимую область
-      // Добавляем отступ, чтобы навбар исчезал чуть раньше, чем появляется футер
+      const hasScrollableContent = documentHeight > viewportHeight + 100;
       const footerVisible = footerRect.top < viewportHeight - 50;
       
       // На главной странице показываем навбар если пользователь прокрутил страницу
@@ -137,8 +128,7 @@ const backUrl = getBackUrl();
           navbar.classList.remove('opacity-100');
         }
       } else {
-        // На остальных страницах скрываем только при достижении футера,
-        // но только если страница имеет достаточно контента для скроллинга
+        // На остальных страницах скрываем только при достижении футера
         if (footerVisible && hasScrollableContent) {
           navbar.classList.add('opacity-0', 'pointer-events-none');
           navbar.classList.remove('opacity-100');
@@ -152,42 +142,172 @@ const backUrl = getBackUrl();
     // Первичная проверка при загрузке страницы
     handleScroll();
     
-    // Слушаем событие прокрутки
+    // Слушаем события
     window.addEventListener('scroll', handleScroll);
-    
-    // Также проверяем при изменении размера окна
     window.addEventListener('resize', handleScroll);
   }
   
-  // Инициализация при первой загрузке
+  // Инициализация
   document.addEventListener('DOMContentLoaded', initNavbar);
-  
-  // Повторно инициализируем после перехода по страницам через Astro
   document.addEventListener('astro:after-swap', initNavbar);
 </script>
 
 <style>
-  .font-grotesk {
+  .navbar-container {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Свернутое состояние */
+  .collapsed-nav {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 34px;
+    padding: 5px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 999px;
+    color: rgba(0, 0, 0, 0.44);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .menu-button:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Развернутое состояние */
+  .expanded-nav {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.2s ease-in-out;
+    z-index: 10;
+  }
+  
+  .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    padding: 5px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
     font-family: 'Die Grotesk B', sans-serif;
     font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.44);
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
   }
-
-  /* Адаптация для темной темы */
+  
+  .nav-button.active {
+    color: #000000;
+  }
+  
+  .nav-button:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Стили для иконки */
+  .icon-line {
+    stroke: rgba(0, 0, 0, 0.44);
+  }
+  
+  /* Эффект разворачивания при ховере - ВАЖНО: должно быть после базовых стилей */
+  .navbar-container:hover .collapsed-nav {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .navbar-container:hover .expanded-nav {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Темная тема */
   @media (prefers-color-scheme: dark) {
-    a[style*="color: #000000"] {
-      color: #FFFFFF !important;
+    .menu-button {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.44);
     }
-
-    a[style*="color: rgba(0, 0, 0, 0.44)"] {
-      color: rgba(255, 255, 255, 0.5) !important;
+    
+    .menu-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-button {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.44);
+    }
+    
+    .nav-button.active {
+      color: #ffffff;
+    }
+    
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .icon-line {
+      stroke: rgba(255, 255, 255, 0.44);
     }
   }
-
-  :global(html.dark) a[style*="color: #000000"] {
-    color: #FFFFFF !important;
+  
+  :global(html.dark) .menu-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.44);
   }
-
-  :global(html.dark) a[style*="color: rgba(0, 0, 0, 0.44)"] {
-    color: rgba(255, 255, 255, 0.5) !important;
+  
+  :global(html.dark) .menu-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  :global(html.dark) .nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.44);
+  }
+  
+  :global(html.dark) .nav-button.active {
+    color: #ffffff;
+  }
+  
+  :global(html.dark) .nav-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  :global(html.dark) .icon-line {
+    stroke: rgba(255, 255, 255, 0.44);
+  }
+  
+  /* Отключаем развернутое меню только на очень маленьких экранах (телефоны) */
+  @media (max-width: 480px) {
+    .navbar-container:hover .collapsed-nav {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    
+    .navbar-container:hover .expanded-nav {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
   }
 </style> 

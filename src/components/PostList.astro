@@ -1,4 +1,6 @@
 ---
+import PostCard from "./PostCard.astro";
+
 interface Props {
   title: string;
   posts: any[];
@@ -17,18 +19,7 @@ const { title, posts, seeAllLink, seeAllText = "All writing" } = Astro.props;
   </div>
   <ul class="flex flex-col gap-2">
     {posts.map(post => (
-      <li class="p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl">
-        <a href={`/blog/${post.slug}/`} class="block group">
-          <div class="flex flex-col gap-1">
-            <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity">
-              {post.data.title}
-            </div>
-            <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
-              {post.data.description}
-            </div>
-          </div>
-        </a>
-      </li>
+      <PostCard post={post} />
     ))}
   </ul>
   {seeAllLink && (

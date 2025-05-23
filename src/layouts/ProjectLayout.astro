@@ -56,33 +56,33 @@ const breadcrumbs = [
         <div class="space-y-6">
           <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Role</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.role}</p>
+              <h6 class="project-label">Role</h6>
+              <p class="project-value">{project.data.role}</p>
             </div>
             
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Project Type</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.projectType}</p>
+              <h6 class="project-label">Project Type</h6>
+              <p class="project-value">{project.data.projectType}</p>
             </div>
             
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Duration</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.duration}</p>
+              <h6 class="project-label">Duration</h6>
+              <p class="project-value">{project.data.duration}</p>
             </div>
           
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Scope</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.scope}</p>
+              <h6 class="project-label">Scope</h6>
+              <p class="project-value">{project.data.scope}</p>
             </div>
             
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Contributions</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.contributions}</p>
+              <h6 class="project-label">Contributions</h6>
+              <p class="project-value">{project.data.contributions}</p>
             </div>
             
             <div>
-              <h6 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-1">Collaborators</h6>
-              <p class="font-grotesk font-normal text-base text-black dark:text-white">{project.data.collaborators}</p>
+              <h6 class="project-label">Collaborators</h6>
+              <p class="project-value">{project.data.collaborators}</p>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ const breadcrumbs = [
   {otherProjects.length > 0 && (
     <Container size="project">
       <div class="mt-16 mb-16 pt-16 animate">
-        <h2 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 mb-6 leading-[1.5]">
+        <h2 class="project-label more-projects-title">
           More Projects
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -116,10 +116,10 @@ const breadcrumbs = [
                   <div class="aspect-square bg-[#D9D9D9] rounded-lg"></div>
                 )}
                 <div class="flex flex-col">
-                  <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity">
+                  <div class="project-value group-hover:opacity-80 transition-opacity">
                     {otherProject.data.title}
                   </div>
-                  <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+                  <div class="project-label">
                     {otherProject.data.projectType}
                   </div>
                 </div>
@@ -135,6 +135,54 @@ const breadcrumbs = [
 </PageLayout>
 
 <style>
+  /* Стили для блока информации о проекте */
+  .project-label {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 120%; /* 16px */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.44);
+    margin-bottom: 4px;
+  }
+  
+  .more-projects-title {
+    margin-bottom: 16px !important;
+  }
+  
+  .project-value {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 120%; /* 16px */
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+  
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .project-label {
+      color: rgba(255, 255, 255, 0.44);
+    }
+    
+    .project-value {
+      color: #ffffff;
+    }
+  }
+  
+  :global(html.dark) .project-label {
+    color: rgba(255, 255, 255, 0.44);
+  }
+  
+  :global(html.dark) .project-value {
+    color: #ffffff;
+  }
+
   /* Стили для контента проекта */
   :global(.astro-code) {
     @apply rounded-md text-sm my-6;

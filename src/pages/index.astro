@@ -51,18 +51,12 @@ const projects = (await getCollection("projects"))
     <div class="hero-content w-full max-w-[580px] mx-auto">
       <div class="text-center space-y-6">
         <h1 class="font-tiempos text-4xl font-normal text-black dark:text-white tracking-[-0.028em] leading-[1.167] animate">
-          Hello, I'm Sergey.<br/>
-          Founding Product Designer,
+          Sergey Kruglov<br/>
+          Product Designer and Engineer
         </h1>
         <div class="font-grotesk text-base font-normal text-black dark:text-white animate">
           <p class="leading-[1.5]">
-            I am a minimal, seo friendly, accessible portfolio and blog for developers. 
-            I am an even more lightweight version of my popular theme
-            <a href="https://github.com/markhorn-dev/astro-sphere" class="underline hover:opacity-80 transition-opacity text-underline-offset-2" target="_blank" rel="noopener">
-              Astro Sphere
-            </a>.
-            I have a lighthouse scores of 100 across the board for performance, 
-            accesibility, best practices and SEO.
+            I believe deeply in products that are profoundly simple, inherently practical, and thoughtfully human. For over 14 years, I've shaped global experiences, bringing ideas from zero to one with clarity and care.
           </p>
         </div>
       </div>
@@ -79,22 +73,46 @@ const projects = (await getCollection("projects"))
         </div>
         <ul class="flex flex-col gap-2">
           {projects.map(project => (
-            <li class="p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl">
-              <a href={`/projects/${project.slug}/`} class="block group">
-                <div class="flex flex-col gap-2">
-                  <div class="flex flex-row justify-between items-center h-6 overflow-hidden">
-                    <div class="w-[33%] font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity truncate leading-[1.5]">
+            <li>
+              <a href={`/projects/${project.slug}/`} class="block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors">
+                <!-- Десктопная версия -->
+                <div class="hidden sm:flex gap-4">
+                  <!-- Левая колонка -->
+                  <div class="flex flex-col gap-1 w-[142px]">
+                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5]">
                       {project.data.title}
                     </div>
-                    <div class="w-[33%] font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity text-center truncate leading-[1.5]">
-                      {project.data.projectType}
-                    </div>
-                    <div class="w-[33%] font-grotesk font-normal text-base text-black/44 dark:text-white/44 text-right truncate leading-[1.5]">
-                      {project.data.role}
+                    <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+                      {project.data.duration}
                     </div>
                   </div>
-                  <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
-                    {project.data.contributions}
+                  <!-- Правая колонка -->
+                  <div class="flex flex-col gap-1 flex-1">
+                    <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5]">
+                      {project.data.projectType}
+                    </div>
+                    <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5] h-6 overflow-hidden">
+                      {project.data.contributions}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Мобильная версия -->
+                <div class="block sm:hidden">
+                  <div class="flex flex-col gap-2">
+                    <!-- Head: название и тип проекта -->
+                    <div class="flex justify-between items-start gap-6">
+                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5] flex-1">
+                        {project.data.title}
+                      </div>
+                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity leading-[1.5] flex-shrink-0">
+                        {project.data.projectType}
+                      </div>
+                    </div>
+                    <!-- Subhead: contributions -->
+                    <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+                      {project.data.contributions}
+                    </div>
                   </div>
                 </div>
               </a>
