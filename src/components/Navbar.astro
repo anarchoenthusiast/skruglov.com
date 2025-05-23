@@ -68,39 +68,40 @@ const backUrl = getBackUrl();
 
 <!-- Мобильная навигация островок -->
 <div id="mobile-nav-island" class="mobile-nav-island">
+  <!-- Сам островок -->
   <div class="mobile-nav-content">
     <!-- Навигационные элементы -->
     <div class="mobile-nav-items">
       <a href="/" class="mobile-nav-item">
         <div class="mobile-nav-icon">
-          <img src="/icons/surf-dog.svg" alt="Index" />
+          <img src="/icons/surf-dog-updated.svg" alt="Index" />
         </div>
         <span class={`mobile-nav-text ${isHomePage ? 'active' : ''}`}>Index</span>
       </a>
       
       <a href="/projects" class="mobile-nav-item">
         <div class="mobile-nav-icon">
-          <img src="/icons/scribble.svg" alt="Projects" />
+          <img src="/icons/scribble-updated.svg" alt="Projects" />
         </div>
         <span class={`mobile-nav-text ${isProjectsPage ? 'active' : ''}`}>Projects</span>
       </a>
       
       <a href="/blog" class="mobile-nav-item">
         <div class="mobile-nav-icon">
-          <img src="/icons/book.svg" alt="Blog" />
+          <img src="/icons/book-updated.svg" alt="Blog" />
         </div>
         <span class={`mobile-nav-text ${isBlogPage ? 'active' : ''}`}>Blog</span>
       </a>
       
       <a href="/about" class="mobile-nav-item">
         <div class="mobile-nav-icon">
-          <img src="/icons/mail-delivery.svg" alt="About" />
+          <img src="/icons/mail-delivery-updated.svg" alt="About" />
         </div>
         <span class={`mobile-nav-text ${isAboutPage ? 'active' : ''}`}>About</span>
       </a>
     </div>
     
-    <!-- Кнопка закрытия -->
+    <!-- Кнопка закрытия внутри островка -->
     <div class="mobile-nav-close-section">
       <button class="mobile-nav-close" id="mobile-nav-close">
         <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -360,8 +361,16 @@ const backUrl = getBackUrl();
     stroke: rgba(255, 255, 255, 0.44);
   }
   
-  /* Отключаем развернутое меню только на очень маленьких экранах (телефоны) */
+  /* На мобильных скрываем desktop hover функциональность */
   @media (max-width: 480px) {
+    .expanded-nav {
+      display: none !important;
+    }
+    
+    .collapsed-nav {
+      display: block !important;
+    }
+    
     .navbar-container:hover .collapsed-nav {
       opacity: 1 !important;
       pointer-events: auto !important;
@@ -381,21 +390,23 @@ const backUrl = getBackUrl();
     right: 0;
     bottom: 0;
     z-index: 60;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0 16px 32px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease-out;
+    backdrop-filter: blur(0px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mobile-nav-island.show {
     opacity: 1;
     pointer-events: auto;
+    backdrop-filter: blur(12px);
   }
   
   .mobile-nav-content {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(32px);
     border-radius: 30px;
@@ -403,14 +414,18 @@ const backUrl = getBackUrl();
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    transform: scale(1.05);
-    transition: backdrop-filter 0.3s ease-out, transform 0.3s ease-out;
+    gap: 16px;
+    transform: scale(0.95);
+    filter: blur(6px);
+    transition: backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mobile-nav-island.show .mobile-nav-content {
     backdrop-filter: blur(16px);
     transform: scale(1);
+    filter: blur(0px);
   }
   
   .mobile-nav-items {
@@ -426,17 +441,52 @@ const backUrl = getBackUrl();
     gap: 4px;
     width: 60px;
     text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Staggered animation для элементов меню */
+  .mobile-nav-island.show .mobile-nav-item:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  
+  .mobile-nav-island.show .mobile-nav-item:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+  
+  .mobile-nav-island.show .mobile-nav-item:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  
+  .mobile-nav-island.show .mobile-nav-item:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
   }
   
   .mobile-nav-icon {
     width: 60px;
     height: 60px;
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mobile-nav-item:hover .mobile-nav-icon {
+    transform: scale(1.05);
   }
   
   .mobile-nav-icon img {
@@ -453,6 +503,7 @@ const backUrl = getBackUrl();
     text-align: center;
     color: rgba(0, 0, 0, 0.44);
     width: 100%;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mobile-nav-text.active {
@@ -462,9 +513,20 @@ const backUrl = getBackUrl();
   .mobile-nav-close-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
-    padding: 0px 0px 32px;
+    padding: 0px 0px 16px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mobile-nav-island.show .mobile-nav-close-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
   }
   
   .mobile-nav-close {
@@ -477,14 +539,14 @@ const backUrl = getBackUrl();
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     width: 62px;
     height: 34px;
-    flex: none;
   }
   
   .mobile-nav-close:hover {
     background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
   }
   
   /* Показываем мобильную навигацию только на маленьких экранах */
@@ -494,21 +556,14 @@ const backUrl = getBackUrl();
     }
   }
   
-  /* На мобильных скрываем desktop hover функциональность */
-  @media (max-width: 480px) {
-    .expanded-nav {
-      display: none !important;
-    }
-    
-    .collapsed-nav {
-      display: block !important;
-    }
-  }
-  
   /* Темная тема для мобильной навигации */
   @media (prefers-color-scheme: dark) {
     .mobile-nav-content {
       background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-nav-icon {
+      background: rgba(255, 255, 255, 0.15);
     }
     
     .mobile-nav-close {
@@ -517,6 +572,7 @@ const backUrl = getBackUrl();
     
     .mobile-nav-close:hover {
       background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
     }
     
     .mobile-nav-close svg path {
@@ -536,12 +592,17 @@ const backUrl = getBackUrl();
     background: rgba(255, 255, 255, 0.1);
   }
   
+  :global(html.dark) .mobile-nav-icon {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
   :global(html.dark) .mobile-nav-close {
     background: rgba(255, 255, 255, 0.1);
   }
   
   :global(html.dark) .mobile-nav-close:hover {
     background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
   }
   
   :global(html.dark) .mobile-nav-close svg path {
