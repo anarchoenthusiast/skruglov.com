@@ -11,19 +11,21 @@ const { items, showLastItem = false } = Astro.props;
 
 // Получаем текущий путь для стилизации
 const currentPath = Astro.url.pathname;
+const normalizedPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath;
 
 // Имя автора для использования в проверках
 const authorName = "Sergey Kruglov";
 
-// Определяем тип страницы на основе пути
-const isProjectDetailPage = currentPath.includes('/projects/') && currentPath !== '/projects' && currentPath !== '/projects/';
-const isBlogPostPage = currentPath.includes('/blog/') && currentPath !== '/blog' && currentPath !== '/blog/';
+// Определяем тип страницы
+const isSecondLevelPage = normalizedPath === '/projects' || normalizedPath === '/blog' || normalizedPath === '/about' || normalizedPath === '/colophon';
+const isThirdLevelPage = (normalizedPath.startsWith('/projects/') && normalizedPath !== '/projects') || 
+                        (normalizedPath.startsWith('/blog/') && normalizedPath !== '/blog');
 
-// Определяем, какие элементы показывать на десктопе
-const displayedItems = (isProjectDetailPage || isBlogPostPage || showLastItem) ? items : items.slice(0, -1);
+// Определяем, какие элементы показывать
+const displayedItems = (isThirdLevelPage || showLastItem) ? items : items.slice(0, -1);
 
-// Для мобильной версии: показываем все элементы кроме последнего для страниц 3-го уровня
-const mobileDisplayedItems = (isProjectDetailPage || isBlogPostPage) ? items.slice(0, -1) : displayedItems;
+// Для мобильной версии: убираем названия проектов/постов (только для 3-го уровня)
+const mobileDisplayedItems = isThirdLevelPage ? items.slice(0, -1) : displayedItems;
 
 // Функция для сокращения заголовка блога до первых двух слов
 function shortenBlogTitle(title: string): string {
@@ -69,7 +71,7 @@ function shortenBlogTitle(title: string): string {
           </a>
         ) : (
           <span class="text-black/44 dark:text-white/44">
-            {(isBlogPostPage && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
+            {(isThirdLevelPage && normalizedPath.startsWith('/blog/') && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
           </span>
         )}
       </>

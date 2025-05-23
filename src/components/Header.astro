@@ -41,7 +41,8 @@ if (breadcrumbs.length === 0 && currentPath !== '/') {
 
 // Определяем, нужно ли показывать последний элемент в хлебных крошках
 // Для страниц верхнего уровня показываем его
-const showLast = currentPath === '/projects' || currentPath === '/blog' || currentPath === '/about' || currentPath === '/colophon';
+const normalizedPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath;
+const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' || normalizedPath === '/about' || normalizedPath === '/colophon';
 ---
 
 <header class="pt-12">
