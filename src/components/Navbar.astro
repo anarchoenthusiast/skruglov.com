@@ -28,7 +28,7 @@ const backUrl = getBackUrl();
   <div class="navbar-container">
     <!-- Свернутое состояние (кнопка с иконкой меню) -->
     <div class="collapsed-nav">
-      <button class="menu-button">
+      <button class="menu-button" id="mobile-menu-button">
         <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="4.5" y1="9.5" x2="17.5" y2="9.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
           <line x1="4.5" y1="14.5" x2="17.5" y2="14.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
@@ -66,13 +66,80 @@ const backUrl = getBackUrl();
   </div>
 </nav>
 
+<!-- Мобильная навигация островок -->
+<div id="mobile-nav-island" class="mobile-nav-island">
+  <div class="mobile-nav-content">
+    <!-- Навигационные элементы -->
+    <div class="mobile-nav-items">
+      <a href="/" class="mobile-nav-item">
+        <div class="mobile-nav-icon">
+          <img src="/icons/surf-dog.svg" alt="Index" />
+        </div>
+        <span class={`mobile-nav-text ${isHomePage ? 'active' : ''}`}>Index</span>
+      </a>
+      
+      <a href="/projects" class="mobile-nav-item">
+        <div class="mobile-nav-icon">
+          <img src="/icons/scribble.svg" alt="Projects" />
+        </div>
+        <span class={`mobile-nav-text ${isProjectsPage ? 'active' : ''}`}>Projects</span>
+      </a>
+      
+      <a href="/blog" class="mobile-nav-item">
+        <div class="mobile-nav-icon">
+          <img src="/icons/book.svg" alt="Blog" />
+        </div>
+        <span class={`mobile-nav-text ${isBlogPage ? 'active' : ''}`}>Blog</span>
+      </a>
+      
+      <a href="/about" class="mobile-nav-item">
+        <div class="mobile-nav-icon">
+          <img src="/icons/mail-delivery.svg" alt="About" />
+        </div>
+        <span class={`mobile-nav-text ${isAboutPage ? 'active' : ''}`}>About</span>
+      </a>
+    </div>
+    
+    <!-- Кнопка закрытия -->
+    <div class="mobile-nav-close-section">
+      <button class="mobile-nav-close" id="mobile-nav-close">
+        <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.75 16.25L7.25 7.75" stroke="black" stroke-opacity="0.44" stroke-linecap="round"/>
+          <path d="M7.25 16.25L15.75 7.75" stroke="black" stroke-opacity="0.44" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <script is:inline>
   function initNavbar() {
     const navbar = document.getElementById('navbar');
     const footer = document.querySelector('footer');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileNavIsland = document.getElementById('mobile-nav-island');
+    const mobileNavClose = document.getElementById('mobile-nav-close');
     const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
     
     if (!navbar || !footer) return;
+    
+    // Мобильная навигация
+    if (mobileMenuButton && mobileNavIsland && mobileNavClose) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileNavIsland.classList.add('show');
+      });
+      
+      mobileNavClose.addEventListener('click', () => {
+        mobileNavIsland.classList.remove('show');
+      });
+      
+      // Закрытие по клику вне островка
+      mobileNavIsland.addEventListener('click', (e) => {
+        if (e.target === mobileNavIsland) {
+          mobileNavIsland.classList.remove('show');
+        }
+      });
+    }
     
     // Переменная для проверки, вернулся ли пользователь с другой страницы
     let isReturningFromOtherPage = false;
@@ -304,5 +371,188 @@ const backUrl = getBackUrl();
       opacity: 0 !important;
       pointer-events: none !important;
     }
+  }
+  
+  /* Мобильная навигация островок */
+  .mobile-nav-island {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 16px 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .mobile-nav-island.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .mobile-nav-content {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(32px);
+    border-radius: 30px;
+    padding: 16px 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transform: scale(1.05);
+    transition: backdrop-filter 0.3s ease-out, transform 0.3s ease-out;
+  }
+  
+  .mobile-nav-island.show .mobile-nav-content {
+    backdrop-filter: blur(16px);
+    transform: scale(1);
+  }
+  
+  .mobile-nav-items {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 60px;
+    text-decoration: none;
+  }
+  
+  .mobile-nav-icon {
+    width: 60px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .mobile-nav-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .mobile-nav-text {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.44);
+    width: 100%;
+  }
+  
+  .mobile-nav-text.active {
+    color: #000000;
+  }
+  
+  .mobile-nav-close-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 0px 32px;
+  }
+  
+  .mobile-nav-close {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(16px);
+    border: none;
+    border-radius: 999px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 62px;
+    height: 34px;
+    flex: none;
+  }
+  
+  .mobile-nav-close:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Показываем мобильную навигацию только на маленьких экранах */
+  @media (min-width: 481px) {
+    .mobile-nav-island {
+      display: none;
+    }
+  }
+  
+  /* На мобильных скрываем desktop hover функциональность */
+  @media (max-width: 480px) {
+    .expanded-nav {
+      display: none !important;
+    }
+    
+    .collapsed-nav {
+      display: block !important;
+    }
+  }
+  
+  /* Темная тема для мобильной навигации */
+  @media (prefers-color-scheme: dark) {
+    .mobile-nav-content {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-nav-close {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-nav-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .mobile-nav-close svg path {
+      stroke: rgba(255, 255, 255, 0.44);
+    }
+    
+    .mobile-nav-text {
+      color: rgba(255, 255, 255, 0.44);
+    }
+    
+    .mobile-nav-text.active {
+      color: #ffffff;
+    }
+  }
+  
+  :global(html.dark) .mobile-nav-content {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  :global(html.dark) .mobile-nav-close {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  :global(html.dark) .mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  :global(html.dark) .mobile-nav-close svg path {
+    stroke: rgba(255, 255, 255, 0.44);
+  }
+  
+  :global(html.dark) .mobile-nav-text {
+    color: rgba(255, 255, 255, 0.44);
+  }
+  
+  :global(html.dark) .mobile-nav-text.active {
+    color: #ffffff;
   }
 </style> 
