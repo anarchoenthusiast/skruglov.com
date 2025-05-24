@@ -1,6 +1,6 @@
 ---
 interface Props {
-  size?: 'default' | 'blog' | 'project';
+  size?: 'default' | 'blog' | 'blog-mobile' | 'project';
 }
 
 const { size = 'default' } = Astro.props;
@@ -8,10 +8,13 @@ const { size = 'default' } = Astro.props;
 const widthClass = {
   'default': 'max-w-[100%] w-[580px]',
   'blog': 'max-w-[100%] w-[400px]',
+  'blog-mobile': 'max-w-[100%]',
   'project': 'max-w-[100%] w-[580px]'
 }[size];
+
+const paddingClass = size === 'blog-mobile' ? 'px-6' : 'px-6 sm:px-0';
 ---
 
-<div class={`mx-auto ${widthClass} px-6 sm:px-0`}>
+<div class={`mx-auto ${widthClass} ${paddingClass}`}>
   <slot />
 </div>

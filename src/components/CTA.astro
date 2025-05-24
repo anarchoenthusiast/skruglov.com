@@ -6,10 +6,13 @@ interface Props {
 }
 
 const { size = 'default' } = Astro.props;
+
+// Мапим размер blog на blog-mobile для единообразных отступов
+const containerSize = size === 'blog' ? 'blog-mobile' : size;
 ---
 
 <section class="cta pt-12 pb-0">
-  <Container size={size}>
+  <Container size={containerSize}>
     <div class="flex flex-col items-center border-t border-black/10 dark:border-white/10 pt-12">
       <div class="flex flex-col gap-6 w-full mb-8 animate sm:px-6">
         <div class="w-full">

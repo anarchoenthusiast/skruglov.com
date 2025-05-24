@@ -48,8 +48,8 @@ const breadcrumbs = [
   pageType="blog"
   breadcrumbs={breadcrumbs}
 >
-  <Container size="blog">
-    <div class="space-y-1 my-10">
+  <Container size="blog-mobile">
+    <div class="space-y-1 pb-6">
       <div class="animate flex items-center gap-1.5">
         <div class="font-grotesk text-base text-black/44 dark:text-white/44">
           <FormattedDate date={post.data.date} />
@@ -68,8 +68,8 @@ const breadcrumbs = [
     </article>
   </Container>
   
-  <Container size="blog">
-    <div class="mt-16 pt-16">
+  <Container size="blog-mobile">
+    <div class="pt-16">
       <PostList 
         title="Latest Writing" 
         posts={postsToShow} 

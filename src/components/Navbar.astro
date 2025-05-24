@@ -236,17 +236,23 @@ const backUrl = getBackUrl();
     width: 62px;
     height: 34px;
     padding: 5px 20px;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
+    background: rgba(235, 235, 235, 0.4);
+    backdrop-filter: blur(24px);
     border: none;
-    border-radius: 999px;
-    color: rgba(0, 0, 0, 0.44);
+    border-radius: 9999px;
+    color: rgb(7, 7, 7);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    user-select: none;
+    overflow: hidden;
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
   }
   
   .menu-button:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(235, 235, 235, 0.6);
   }
   
   /* Развернутое состояние */
@@ -261,6 +267,12 @@ const backUrl = getBackUrl();
     transform: translateX(-50%);
     transition: opacity 0.2s ease-in-out;
     z-index: 10;
+    background: rgba(235, 235, 235, 0.4);
+    backdrop-filter: blur(24px);
+    border-radius: 9999px;
+    padding: 5px 6px;
+    user-select: none;
+    overflow: hidden;
   }
   
   .nav-button {
@@ -269,30 +281,31 @@ const backUrl = getBackUrl();
     justify-content: center;
     height: 34px;
     padding: 5px 20px;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 999px;
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
     font-family: 'Die Grotesk B', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.44);
+    color: rgb(7, 7, 7);
     transition: all 0.2s ease-in-out;
     white-space: nowrap;
   }
   
   .nav-button.active {
-    color: #000000;
+    background: rgba(7, 7, 7, 0.1);
+    color: rgb(7, 7, 7);
   }
   
   .nav-button:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(7, 7, 7, 0.05);
   }
 
   /* Стили для иконки */
   .icon-line {
-    stroke: rgba(0, 0, 0, 0.44);
+    stroke: rgb(7, 7, 7);
   }
   
   /* Эффект разворачивания при ховере - ВАЖНО: должно быть после базовых стилей */
@@ -309,56 +322,64 @@ const backUrl = getBackUrl();
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .menu-button {
-      background: rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.44);
+      background: rgba(20, 20, 20, 0.4);
+      color: rgb(248, 248, 248);
     }
     
     .menu-button:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(20, 20, 20, 0.6);
+    }
+    
+    .expanded-nav {
+      background: rgba(20, 20, 20, 0.4);
     }
 
     .nav-button {
-      background: rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.44);
+      color: rgb(248, 248, 248);
     }
     
     .nav-button.active {
-      color: #ffffff;
+      background: rgba(248, 248, 248, 0.1);
+      color: rgb(248, 248, 248);
     }
     
     .nav-button:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(248, 248, 248, 0.05);
     }
     
     .icon-line {
-      stroke: rgba(255, 255, 255, 0.44);
+      stroke: rgb(248, 248, 248);
     }
   }
 
   :global(html.dark) .menu-button {
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.44);
+    background: rgba(20, 20, 20, 0.4);
+    color: rgb(248, 248, 248);
   }
   
   :global(html.dark) .menu-button:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(20, 20, 20, 0.6);
+  }
+  
+  :global(html.dark) .expanded-nav {
+    background: rgba(20, 20, 20, 0.4);
   }
 
   :global(html.dark) .nav-button {
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.44);
+    color: rgb(248, 248, 248);
   }
   
   :global(html.dark) .nav-button.active {
-    color: #ffffff;
+    background: rgba(248, 248, 248, 0.1);
+    color: rgb(248, 248, 248);
   }
   
   :global(html.dark) .nav-button:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(248, 248, 248, 0.05);
   }
   
   :global(html.dark) .icon-line {
-    stroke: rgba(255, 255, 255, 0.44);
+    stroke: rgb(248, 248, 248);
   }
   
   /* На мобильных скрываем desktop hover функциональность */
@@ -392,14 +413,12 @@ const backUrl = getBackUrl();
     z-index: 60;
     opacity: 0;
     pointer-events: none;
-    backdrop-filter: blur(0px);
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mobile-nav-island.show {
     opacity: 1;
     pointer-events: auto;
-    backdrop-filter: blur(12px);
   }
   
   .mobile-nav-content {
@@ -407,8 +426,8 @@ const backUrl = getBackUrl();
     bottom: 24px;
     left: 24px;
     right: 24px;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(32px);
+    background: rgba(235, 235, 235, 0.4);
+    backdrop-filter: blur(0px);
     border-radius: 30px;
     padding: 16px 16px 0;
     display: flex;
@@ -416,14 +435,14 @@ const backUrl = getBackUrl();
     align-items: center;
     gap: 16px;
     transform: scale(0.95);
-    filter: blur(6px);
-    transition: backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(12px);
+    transition: backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mobile-nav-island.show .mobile-nav-content {
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(24px);
     transform: scale(1);
     filter: blur(0px);
   }
@@ -475,8 +494,6 @@ const backUrl = getBackUrl();
   .mobile-nav-icon {
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(16px);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -559,11 +576,7 @@ const backUrl = getBackUrl();
   /* Темная тема для мобильной навигации */
   @media (prefers-color-scheme: dark) {
     .mobile-nav-content {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .mobile-nav-icon {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(20, 20, 20, 0.4);
     }
     
     .mobile-nav-close {
@@ -589,11 +602,7 @@ const backUrl = getBackUrl();
   }
   
   :global(html.dark) .mobile-nav-content {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  :global(html.dark) .mobile-nav-icon {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(20, 20, 20, 0.4);
   }
   
   :global(html.dark) .mobile-nav-close {
