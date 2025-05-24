@@ -18,9 +18,53 @@ const { post } = Astro.props;
       <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out">
         {post.data.title}
       </div>
-      <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44">
+      <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 description-fade">
         {post.data.description}
       </div>
     </div>
   </a>
-</li> 
+</li>
+
+<style>
+  .description-fade {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1.5;
+  }
+  
+  .description-fade::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, #F5F5F5);
+    pointer-events: none;
+  }
+  
+  /* Для hover состояния */
+  .group:hover .description-fade::after {
+    background: linear-gradient(to right, transparent, #EBEBEB);
+  }
+  
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .description-fade::after {
+      background: linear-gradient(to right, transparent, rgb(41 37 36));
+    }
+    
+    .group:hover .description-fade::after {
+      background: linear-gradient(to right, transparent, rgb(68 64 60));
+    }
+  }
+  
+  :global(html.dark) .description-fade::after {
+    background: linear-gradient(to right, transparent, rgb(41 37 36));
+  }
+  
+  :global(html.dark) .group:hover .description-fade::after {
+    background: linear-gradient(to right, transparent, rgb(68 64 60));
+  }
+</style> 
