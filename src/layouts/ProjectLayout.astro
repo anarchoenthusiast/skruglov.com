@@ -13,6 +13,40 @@ interface Props {
 const { project } = Astro.props;
 const { Content } = await project.render();
 
+// Получаем параметр from из URL для передачи в ссылки на другие проекты
+// Используем 'projects' только если нет ни URL параметра, ни сохраненного значения
+const fromParam = Astro.url.searchParams.get('from') || 'projects';
+
+// SEO: определяем canonical URL без параметров и robots meta
+const canonicalURL = new URL(`/projects/${project.slug}/`, Astro.site).href;
+const hasFromParam = Astro.url.searchParams.has('from');
+const robotsMeta = hasFromParam ? 'noindex, follow' : undefined;
+
+// SEO: структурированные данные для проекта
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": project.data.title,
+  "description": project.data.description,
+  "url": canonicalURL,
+  "creator": {
+    "@type": "Person",
+    "name": "Sergey Kruglov",
+    "jobTitle": "Product Designer and Engineer"
+  },
+  "dateCreated": project.data.date.toISOString(),
+  "genre": project.data.projectType,
+  "keywords": [project.data.projectType, project.data.role, project.data.scope].filter(Boolean).join(", "),
+  ...(project.data.images && project.data.images.length > 0 && {
+    "image": new URL(project.data.images[0].url, Astro.site).href
+  })
+};
+
+// SEO: Open Graph данные
+const ogImage = project.data.images && project.data.images.length > 0 
+  ? project.data.images[0].url 
+  : undefined;
+
 // Получаем все проекты, исключая текущий
 const allProjects = await getCollection("projects");
 const otherProjects = allProjects
@@ -47,94 +81,184 @@ const breadcrumbs = [
   description={project.data.description} 
   pageType="project"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  robots={robotsMeta}
+  structuredData={structuredData}
+  ogType="article"
+  ogImage={ogImage}
 >
-  <Container size="project">
-    <div class="grid grid-cols-1 gap-8">
-      <!-- Информация о проекте -->
-      <div class="animate">
-        <!-- Блок с информацией о проекте в две строки по три элемента -->
-        <div class="space-y-6">
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <div>
-              <h6 class="project-label">Role</h6>
-              <p class="project-value">{project.data.role}</p>
-            </div>
+  <!-- Контент страницы с анимацией -->
+  <div class="project-page-content">
+    <Container size="project">
+      <div class="grid grid-cols-1 gap-8">
+        <!-- Информация о проекте -->
+        <div class="animate">
+          <!-- Блок с информацией о проекте в две строки по три элемента -->
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div>
+                <h6 class="project-label">Role</h6>
+                <p class="project-value">{project.data.role}</p>
+              </div>
+              
+              <div>
+                <h6 class="project-label">Project Type</h6>
+                <p class="project-value">{project.data.projectType}</p>
+              </div>
+              
+              <div>
+                <h6 class="project-label">Duration</h6>
+                <p class="project-value">{project.data.duration}</p>
+              </div>
             
-            <div>
-              <h6 class="project-label">Project Type</h6>
-              <p class="project-value">{project.data.projectType}</p>
-            </div>
-            
-            <div>
-              <h6 class="project-label">Duration</h6>
-              <p class="project-value">{project.data.duration}</p>
-            </div>
-          
-            <div>
-              <h6 class="project-label">Scope</h6>
-              <p class="project-value">{project.data.scope}</p>
-            </div>
-            
-            <div>
-              <h6 class="project-label">Contributions</h6>
-              <p class="project-value">{project.data.contributions}</p>
-            </div>
-            
-            <div>
-              <h6 class="project-label">Collaborators</h6>
-              <p class="project-value">{project.data.collaborators}</p>
+              <div>
+                <h6 class="project-label">Scope</h6>
+                <p class="project-value">{project.data.scope}</p>
+              </div>
+              
+              <div>
+                <h6 class="project-label">Contributions</h6>
+                <p class="project-value">{project.data.contributions}</p>
+              </div>
+              
+              <div>
+                <h6 class="project-label">Collaborators</h6>
+                <p class="project-value">{project.data.collaborators}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Контент проекта и изображения -->
-      <div class="animate mt-8">
-        <Content />
-      </div>
-    </div>
-  </Container>
-  
-  <!-- Секция "Другие проекты" -->
-  {otherProjects.length > 0 && (
-    <Container size="project">
-      <div class="mt-16 mb-16 pt-16 animate">
-        <h2 class="project-label more-projects-title">
-          More Projects
-        </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {otherProjects.map(otherProject => (
-            <a href={`/projects/${otherProject.slug}/`} class="block group">
-              <div class="flex flex-col gap-4">
-                {otherProject.data.images && otherProject.data.images.length > 0 ? (
-                  <img 
-                    src={otherProject.data.images[0].url} 
-                    alt={otherProject.data.images[0].alt} 
-                    class="aspect-square w-full object-cover rounded-lg"
-                  />
-                ) : (
-                  <div class="aspect-square bg-[#D9D9D9] rounded-lg"></div>
-                )}
-                <div class="flex flex-col">
-                  <div class="project-value group-hover:opacity-80 transition-opacity">
-                    {otherProject.data.title}
-                  </div>
-                  <div class="project-label">
-                    {otherProject.data.projectType}
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))}
+        <!-- Контент проекта и изображения -->
+        <div class="animate mt-8">
+          <Content />
         </div>
       </div>
     </Container>
-  )}
-  
-  <CTA size="project" />
+    
+    <!-- Секция "Другие проекты" -->
+    {otherProjects.length > 0 && (
+      <Container size="project">
+        <div class="mt-16 mb-16 pt-16 animate">
+          <h2 class="project-label more-projects-title">
+            More Projects
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {otherProjects.map(otherProject => (
+              <a href={`/projects/${otherProject.slug}/?from=${fromParam}`} class="block group">
+                <div class="flex flex-col gap-4">
+                  {otherProject.data.images && otherProject.data.images.length > 0 ? (
+                    <img 
+                      src={otherProject.data.images[0].url} 
+                      alt={otherProject.data.images[0].alt} 
+                      class="aspect-square w-full object-cover rounded-lg"
+                    />
+                  ) : (
+                    <div class="aspect-square bg-[#D9D9D9] rounded-lg"></div>
+                  )}
+                  <div class="flex flex-col">
+                    <div class="project-value group-hover:opacity-80 transition-opacity">
+                      {otherProject.data.title}
+                    </div>
+                    <div class="project-label">
+                      {otherProject.data.projectType}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </Container>
+    )}
+    
+    <CTA size="project" />
+  </div>
 </PageLayout>
 
+<script is:inline>
+  function initProjectPageAnimation() {
+    // Проверяем URL параметры
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromSource = urlParams.get('from');
+    const hasFromParam = fromSource === 'home' || fromSource === 'projects';
+    
+    const pageContent = document.querySelector('.project-page-content');
+    
+    if (hasFromParam && pageContent) {
+      // Добавляем анимацию появления страницы
+      pageContent.style.opacity = '0';
+      pageContent.style.transform = 'translateY(20px)';
+      
+      // Анимируем появление
+      setTimeout(() => {
+        pageContent.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+        pageContent.style.opacity = '1';
+        pageContent.style.transform = 'translateY(0)';
+      }, 100);
+    }
+  }
+  
+  function updateMoreProjectsLinks() {
+    // Получаем сохраненное значение или значение из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromSource = urlParams.get('from');
+    const savedSource = sessionStorage.getItem('projectNavigationSource');
+    
+    // Определяем финальное значение - приоритет сохраненному
+    const finalFromParam = savedSource || fromSource || 'projects';
+    
+    // Находим все ссылки на проекты в секции More Projects
+    const moreProjectsLinks = document.querySelectorAll('a[href^="/projects/"]');
+    
+    moreProjectsLinks.forEach(link => {
+      const url = new URL(link.href);
+      // Обновляем параметр from
+      url.searchParams.set('from', finalFromParam);
+      link.href = url.toString();
+      
+      // Добавляем обработчик для сохранения позиции скролла исходной страницы
+      link.addEventListener('click', function() {
+        if (finalFromParam === 'home') {
+          // Сохраняем позицию главной страницы только если её еще нет
+          if (!sessionStorage.getItem('homeScrollPosition')) {
+            // Здесь мы не можем получить позицию главной страницы, но мы можем проверить
+            // была ли она уже сохранена при первом переходе
+            console.log('More Projects link clicked from home context');
+          }
+        } else if (finalFromParam === 'projects') {
+          // Аналогично для страницы проектов
+          if (!sessionStorage.getItem('projectsScrollPosition')) {
+            console.log('More Projects link clicked from projects context');
+          }
+        }
+      });
+    });
+    
+    console.log('Updated More Projects links with from:', finalFromParam);
+  }
+  
+  // Запускаем инициализацию
+  document.addEventListener('DOMContentLoaded', function() {
+    initProjectPageAnimation();
+    updateMoreProjectsLinks();
+  });
+  
+  document.addEventListener('astro:page-load', function() {
+    initProjectPageAnimation();
+    updateMoreProjectsLinks();
+  });
+</script>
+
 <style>
+  /* Анимация страницы */
+  .project-page-content {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+    transition: opacity 0.15s ease-out, transform 0.4s ease-out, filter 0.15s ease-out;
+  }
+  
   /* Стили для блока информации о проекте */
   .project-label {
     font-family: 'Die Grotesk B', sans-serif;

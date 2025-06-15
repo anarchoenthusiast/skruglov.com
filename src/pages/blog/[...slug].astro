@@ -26,6 +26,9 @@ type Props = {
 const { post, posts } = Astro.props;
 const { Content } = await post.render();
 
+// Получаем параметр from из URL для передачи в ссылки на другие посты
+const fromParam = Astro.url.searchParams.get('from') || 'blog';
+
 // Получаем другие последние посты, исключая текущий
 const otherPosts = posts
   .filter(p => p.id !== post.id)
@@ -33,6 +36,11 @@ const otherPosts = posts
 
 // Если нет других постов, показываем текущий пост
 const postsToShow = otherPosts.length > 0 ? otherPosts : [post];
+
+// SEO: определяем canonical URL без параметров и robots meta
+const canonicalURL = new URL(`/blog/${post.slug}/`, Astro.site).href;
+const hasFromParam = Astro.url.searchParams.has('from');
+const robotsMeta = hasFromParam ? 'noindex, follow' : undefined;
 
 const breadcrumbs = [
   { label: SITE.NAME, url: '/' },
@@ -47,8 +55,12 @@ const breadcrumbs = [
   description={post.data.description} 
   pageType="blog"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  robots={robotsMeta}
 >
-  <Container size="blog-mobile">
+  <!-- Контент страницы с анимацией -->
+  <div class="blog-page-content">
+    <Container size="blog-mobile">
     <div class="space-y-1 pb-6">
       <div class="animate flex items-center gap-1.5">
         <div class="font-grotesk text-base text-black/44 dark:text-white/44">
@@ -68,22 +80,104 @@ const breadcrumbs = [
     </article>
   </Container>
   
-  <Container size="blog-mobile">
-    <div class="pt-16">
-      <PostList 
-        title="Latest Writing" 
-        posts={postsToShow} 
-        seeAllLink="/blog" 
-        seeAllText="All writing" 
-      />
-    </div>
-  </Container>
+      <Container size="blog-mobile">
+      <div class="pt-16">
+        <PostList 
+          title="Latest Writing" 
+          posts={postsToShow} 
+          seeAllLink="/blog" 
+          seeAllText="All writing"
+          fromSource={fromParam}
+        />
+      </div>
+    </Container>
+    
+    <CTA size="blog" />
+  </div>
+  </PageLayout>
   
-  <CTA size="blog" />
-</PageLayout>
-
-<style>
-  /* Стили для элементов поста блога в соответствии с макетом */
+  <script is:inline>
+    function initBlogPageAnimation() {
+      // Проверяем URL параметры
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromSource = urlParams.get('from');
+      const hasFromParam = fromSource === 'home' || fromSource === 'blog';
+      
+      const pageContent = document.querySelector('.blog-page-content');
+      
+      if (hasFromParam && pageContent) {
+        // Добавляем анимацию появления страницы
+        pageContent.style.opacity = '0';
+        pageContent.style.transform = 'translateY(20px)';
+        
+        // Анимируем появление
+        setTimeout(() => {
+          pageContent.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+          pageContent.style.opacity = '1';
+          pageContent.style.transform = 'translateY(0)';
+        }, 100);
+      }
+    }
+    
+    function updateMorePostsLinks() {
+      // Получаем сохраненное значение или значение из URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromSource = urlParams.get('from');
+      const savedSource = sessionStorage.getItem('blogNavigationSource');
+      
+      // Определяем финальное значение - приоритет сохраненному
+      const finalFromParam = savedSource || fromSource || 'blog';
+      
+      // Находим все ссылки на посты в секции Latest Writing
+      const morePostsLinks = document.querySelectorAll('a[href^="/blog/"]');
+      
+      morePostsLinks.forEach(link => {
+        const url = new URL(link.href);
+        // Обновляем параметр from
+        url.searchParams.set('from', finalFromParam);
+        link.href = url.toString();
+        
+        // Добавляем обработчик для сохранения позиции скролла исходной страницы
+        link.addEventListener('click', function() {
+          if (finalFromParam === 'home') {
+            // Сохраняем позицию главной страницы только если её еще нет
+            if (!sessionStorage.getItem('homeScrollPosition')) {
+              console.log('More Posts link clicked from home context');
+            }
+          } else if (finalFromParam === 'blog') {
+            // Аналогично для страницы блога
+            if (!sessionStorage.getItem('blogScrollPosition')) {
+              console.log('More Posts link clicked from blog context');
+            }
+          }
+        });
+      });
+      
+      console.log('Updated More Posts links with from:', finalFromParam);
+    }
+    
+    // Запускаем инициализацию
+    document.addEventListener('DOMContentLoaded', function() {
+      initBlogPageAnimation();
+      updateMorePostsLinks();
+    });
+    
+    document.addEventListener('astro:page-load', function() {
+      initBlogPageAnimation();
+      updateMorePostsLinks();
+    });
+  </script>
+  
+    <style>
+    /* Анимация страницы */
+    .blog-page-content {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+      transition: opacity 0.15s ease-out, transform 0.4s ease-out, filter 0.15s ease-out;
+    }
+    
+    /* Стили для элементов поста блога в соответствии с макетом */
   :global(article h2) {
     font-family: 'Tiempos Text', serif;
     font-weight: 400;

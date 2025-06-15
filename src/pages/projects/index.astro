@@ -40,7 +40,7 @@ const breadcrumbs = [
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12">
         {projects.map((project, index) => (
           <li class="flex flex-col gap-4 animate">
-            <a href={`/projects/${project.slug}/`} class="block group">
+            <a href={`/projects/${project.slug}/?from=projects`} class="block group">
               <div class="flex flex-col gap-4">
                 {project.data.images && project.data.images.length > 0 ? (
                   <img 
@@ -67,3 +67,54 @@ const breadcrumbs = [
     </div>
   </Container>
 </PageLayout>
+
+<script is:inline>
+  function initProjectsScrollLogic() {
+    // Очищаем сохраненный источник навигации проектов если пришли на страницу проектов
+    sessionStorage.removeItem('projectNavigationSource');
+    
+    // Проверяем флаг отключения анимаций
+    const shouldDisableAnimations = sessionStorage.getItem('disablePageAnimations') === 'true';
+    
+    if (shouldDisableAnimations) {
+      // Отключаем анимации на странице проектов
+      const animatedElements = document.querySelectorAll('.animate');
+      animatedElements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.classList.remove('animate');
+      });
+      
+      // Очищаем флаг
+      sessionStorage.removeItem('disablePageAnimations');
+      
+      console.log('Disabled animations on projects page due to project close');
+    }
+    
+    // Восстанавливаем позицию скролла при возврате с проекта
+    const savedScrollPosition = sessionStorage.getItem('projectsScrollPosition');
+    if (savedScrollPosition && shouldDisableAnimations) {
+      // Восстанавливаем позицию после небольшой задержки
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScrollPosition));
+        sessionStorage.removeItem('projectsScrollPosition');
+        console.log('Restored projects scroll position:', savedScrollPosition);
+      }, 50);
+    }
+    
+    // Добавляем обработчики для сохранения позиции скролла при переходе на проекты
+    const projectLinks = document.querySelectorAll('a[href*="/projects/"][href*="from=projects"]');
+    projectLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Сохраняем текущую позицию скролла только если её еще нет
+        if (!sessionStorage.getItem('projectsScrollPosition')) {
+          sessionStorage.setItem('projectsScrollPosition', window.scrollY.toString());
+          console.log('Saved projects scroll position:', window.scrollY);
+        }
+      });
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', initProjectsScrollLogic);
+  document.addEventListener('astro:page-load', initProjectsScrollLogic);
+</script>

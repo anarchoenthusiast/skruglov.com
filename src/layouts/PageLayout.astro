@@ -3,6 +3,7 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
+import { ViewTransitions } from 'astro:transitions';
 import { SITE } from "@consts";
 
 type Props = {
@@ -14,9 +15,25 @@ type Props = {
     url?: string;
   }[];
   hideHeader?: boolean;
+  canonicalURL?: string;
+  robots?: string;
+  structuredData?: object;
+  ogType?: string;
+  ogImage?: string;
 };
 
-const { title, description, pageType = 'default', breadcrumbs, hideHeader = false } = Astro.props;
+const { 
+  title, 
+  description, 
+  pageType = 'default', 
+  breadcrumbs, 
+  hideHeader = false,
+  canonicalURL,
+  robots,
+  structuredData,
+  ogType,
+  ogImage
+} = Astro.props;
 
 // Определяем, является ли текущая страница главной
 const isHomePage = Astro.url.pathname === "/";
@@ -26,7 +43,16 @@ const shouldShowHeader = !isHomePage && !hideHeader;
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} />
+    <Head 
+      title={`${title} | ${SITE.NAME}`} 
+      description={description}
+      canonicalURL={canonicalURL}
+      robots={robots}
+      structuredData={structuredData}
+      ogType={ogType}
+      ogImage={ogImage}
+    />
+    <!-- <ViewTransitions /> -->
   </head>
   <body>
     {shouldShowHeader && <Header pageType={pageType} breadcrumbs={breadcrumbs} />}

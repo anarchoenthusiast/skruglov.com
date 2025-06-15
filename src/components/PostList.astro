@@ -6,9 +6,10 @@ interface Props {
   posts: any[];
   seeAllLink?: string;
   seeAllText?: string;
+  fromSource?: string;
 }
 
-const { title, posts, seeAllLink, seeAllText = "All writing" } = Astro.props;
+const { title, posts, seeAllLink, seeAllText = "All writing", fromSource = "home" } = Astro.props;
 ---
 
 <section class="animate space-y-4">
@@ -19,7 +20,7 @@ const { title, posts, seeAllLink, seeAllText = "All writing" } = Astro.props;
   </div>
   <ul class="flex flex-col gap-2">
     {posts.map(post => (
-      <PostCard post={post} />
+      <PostCard post={post} fromSource={fromSource} />
     ))}
   </ul>
   {seeAllLink && (
