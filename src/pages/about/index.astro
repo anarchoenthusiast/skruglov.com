@@ -11,6 +11,12 @@ const breadcrumbs = [
   { label: SITE.NAME, url: '/' },
   { label: 'About' }
 ];
+
+// Заголовок для about
+const title = 'About Me';
+
+// Подзаголовок для about
+const subtitle = 'Senior Product Designer with 14+ years of experience, driving product growth to over 65 million MAU across 190 countries. Golden Kitty Award finalist in AI. As a founding designer, launched three products from zero to profitability and built scalable cross-platform design systems.';
 ---
 
 <PageLayout 
@@ -20,10 +26,17 @@ const breadcrumbs = [
   breadcrumbs={breadcrumbs}
 >
   <Container size="default">
-    <div class="space-y-1 my-10">
-      <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
-        About Me
-      </h1>
+    <div class="about-header-section space-y-6">
+      <div class="space-y-1">
+        <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+          {title}
+        </h1>
+      </div>
+      <div class="animate">
+        <p class="font-grotesk text-base leading-[1.5] text-black dark:text-white">
+          {subtitle}
+        </p>
+      </div>
     </div>
     <article class="animate space-y-6">
       <Content />
@@ -32,6 +45,25 @@ const breadcrumbs = [
 </PageLayout>
 
 <style>
+  /* Высота секции с заголовком about */
+  .about-header-section {
+    min-height: calc(100vh - 120px); /* Вычитаем высоту header + отступы */
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 64px;
+    margin-bottom: 48px; /* Добавляем отступ снизу для разделения с контентом */
+  }
+
+  /* Мобильная версия */
+  @media (max-width: 768px) {
+    .about-header-section {
+      padding-bottom: 48px;
+      margin-bottom: 32px;
+    }
+  }
+
   /* Стили для элементов статьи в соответствии с макетом блога */
   :global(article h2) {
     font-family: 'Tiempos Text', serif;
@@ -41,6 +73,11 @@ const breadcrumbs = [
     letter-spacing: -0.036em;
     margin-top: 48px;
     margin-bottom: 16px;
+  }
+
+  /* Убираем верхний отступ для первого заголовка */
+  :global(article h2:first-of-type) {
+    margin-top: 0;
   }
   
   :global(article p) {
@@ -64,7 +101,34 @@ const breadcrumbs = [
   }
 
   :global(article li) {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    color: #000000;
+  }
+
+  /* Стили для маркеров и цифр в списках */
+  :global(article li::marker) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  /* Темная тема для списков */
+  @media (prefers-color-scheme: dark) {
+    :global(article li) {
+      color: #ffffff;
+    }
+    
+    :global(article li::marker) {
+      color: #ffffff;
+    }
+  }
+
+  :global(html.dark article li) {
+    color: #ffffff;
+  }
+
+  :global(html.dark article li::marker) {
+    color: #ffffff;
   }
 
   :global(article a) {

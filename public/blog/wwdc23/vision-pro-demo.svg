@@ -1,0 +1,60 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  
+  <!-- Vision Pro headset outline -->
+  <ellipse cx="400" cy="225" rx="150" ry="80" fill="none" stroke="#d1d5db" stroke-width="3" opacity="0.8"/>
+  <ellipse cx="400" cy="225" rx="120" ry="60" fill="none" stroke="#9ca3af" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Digital Crown -->
+  <rect x="550" y="215" width="15" height="20" rx="7" fill="#6b7280"/>
+  
+  <!-- Eye tracking sensors -->
+  <circle cx="350" cy="210" r="8" fill="#4f46e5" opacity="0.7"/>
+  <circle cx="450" cy="210" r="8" fill="#4f46e5" opacity="0.7"/>
+  
+  <!-- Spatial computing visualization -->
+  <circle cx="400" cy="225" r="200" fill="url(#glow)" opacity="0.3"/>
+  
+  <!-- Floating interface elements -->
+  <rect x="250" y="150" width="80" height="50" rx="10" fill="#8b5cf6" opacity="0.4"/>
+  <rect x="470" y="170" width="60" height="40" rx="8" fill="#06b6d4" opacity="0.4"/>
+  <rect x="320" y="320" width="70" height="45" rx="8" fill="#10b981" opacity="0.4"/>
+  <rect x="510" y="300" width="85" height="55" rx="10" fill="#f59e0b" opacity="0.4"/>
+  
+  <!-- Connection lines -->
+  <line x1="330" y1="175" x2="370" y2="200" stroke="#6366f1" stroke-width="2" opacity="0.5"/>
+  <line x1="500" y1="190" x2="430" y2="210" stroke="#06b6d4" stroke-width="2" opacity="0.5"/>
+  <line x1="355" y1="320" x2="380" y2="250" stroke="#10b981" stroke-width="2" opacity="0.5"/>
+  <line x1="520" y1="300" x2="450" y2="240" stroke="#f59e0b" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Hand tracking representation -->
+  <path d="M 200 350 Q 220 340 240 350 Q 260 360 240 370 Q 220 380 200 370 Q 180 360 200 350" fill="#e5e7eb" opacity="0.6"/>
+  <path d="M 560 350 Q 580 340 600 350 Q 620 360 600 370 Q 580 380 560 370 Q 540 360 560 350" fill="#e5e7eb" opacity="0.6"/>
+  
+  <!-- Title -->
+  <text x="400" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#f8fafc">Vision Pro Demo</text>
+  
+  <!-- Description -->
+  <text x="400" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#d1d5db">
+    First hands-on experience with Apple Vision Pro at WWDC,
+  </text>
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#d1d5db">
+    demonstrating spatial computing and immersive interface interactions
+  </text>
+  
+  <!-- Placeholder indicator -->
+  <rect x="10" y="10" width="120" height="30" rx="15" fill="#ef4444" opacity="0.9"/>
+  <text x="70" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PLACEHOLDER</text>
+</svg> 

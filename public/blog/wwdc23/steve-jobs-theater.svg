@@ -1,0 +1,47 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  
+  <!-- Theater structure -->
+  <ellipse cx="400" cy="350" rx="200" ry="50" fill="#334155" opacity="0.8"/>
+  <rect x="250" y="200" width="300" height="150" rx="20" fill="#475569" opacity="0.9"/>
+  
+  <!-- Stage area -->
+  <rect x="300" y="280" width="200" height="40" rx="5" fill="#64748b"/>
+  
+  <!-- Seating rows -->
+  <path d="M 200 320 Q 400 300 600 320 L 600 340 Q 400 320 200 340 Z" fill="#374151" opacity="0.7"/>
+  <path d="M 220 340 Q 400 325 580 340 L 580 355 Q 400 340 220 355 Z" fill="#374151" opacity="0.6"/>
+  <path d="M 240 355 Q 400 345 560 355 L 560 370 Q 400 360 240 370 Z" fill="#374151" opacity="0.5"/>
+  
+  <!-- Glass dome structure -->
+  <path d="M 200 200 Q 400 100 600 200 L 600 220 Q 400 120 200 220 Z" fill="none" stroke="#cbd5e1" stroke-width="2" opacity="0.4"/>
+  <path d="M 250 180 Q 400 120 550 180" fill="none" stroke="#cbd5e1" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Apple logo area -->
+  <circle cx="400" cy="240" r="15" fill="#f8fafc" opacity="0.8"/>
+  
+  <!-- Lighting effects -->
+  <ellipse cx="400" cy="290" rx="150" ry="20" fill="#fbbf24" opacity="0.2"/>
+  
+  <!-- Title -->
+  <text x="400" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#f8fafc">Steve Jobs Theater</text>
+  
+  <!-- Description -->
+  <text x="400" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    Underground theater at Apple Park with glass structure above ground,
+  </text>
+  <text x="400" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    where Apple presents new products and holds keynote presentations
+  </text>
+  
+  <!-- Placeholder indicator -->
+  <rect x="10" y="10" width="120" height="30" rx="15" fill="#ef4444" opacity="0.9"/>
+  <text x="70" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PLACEHOLDER</text>
+</svg> 

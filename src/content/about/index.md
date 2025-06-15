@@ -4,21 +4,23 @@ description: "About me and my work"
 date: "Mar 30 2024"
 ---
 
-I am a Founding Product Designer with a passion for creating user-centered experiences. My work focuses on understanding user needs and translating them into intuitive, beautiful, and functional designs.
-
 ## Experience
 
-I have worked on various projects across different industries, always striving to create meaningful connections between users and products. My approach combines analytical thinking with creative problem-solving to deliver solutions that make a difference.
+I currently work at [**4K Download**](https://www.4kdownload.com/) as a Senior Product Designer. Previously, I spent time building things at [**Ai Video Cut**](https://aivideocut.com/), [**Waveroom**](https://waveroom.com/), [**LALAL.AI**](https://www.lalal.ai/), and various digital agencies. You can view my full resume [**here**](https://resume.co/@uo2vEbIC3eeNhROjMIw1).
 
-## Philosophy
+## Principles
 
-I believe in:
-- User-centered design
-- Data-driven decisions
-- Iterative development
-- Collaborative approach
-- Continuous learning
+I believe deeply in products that are profoundly simple, essentially practical, and essentially human. For over 14 years, I've shaped global experiences, bringing ideas from zero to one with clarity and care.
 
 ## Contact
 
-Feel free to reach out at hello@skruglov.com for collaboration opportunities or just to say hello. 
+Always open to chats and coffee in Berlin. Say hello! [**hello@skruglov.com**](mailto:hello@skruglov.com)
+
+## Elsewhere
+
+RSS feed: [**skruglov.com/rss.xml**](/rss.xml)  
+Twitter: [**@kryglovsergey**](https://x.com/kryglovsergey)  
+GitHub: [**@anarchoenthusiast**](https://github.com/anarchoenthusiast)  
+LinkedIn: [**@kruglovse**](https://www.linkedin.com/in/kruglovse/)  
+Instagram: [**@kruglovse**](https://www.instagram.com/kruglovse/)  
+Are.na: [**@sergey-kruglov**](https://www.are.na/sergey-kruglov/channels) 

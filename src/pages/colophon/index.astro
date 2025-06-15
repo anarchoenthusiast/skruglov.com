@@ -11,6 +11,15 @@ const breadcrumbs = [
   { label: SITE.NAME, url: '/' },
   { label: 'Colophon' }
 ];
+
+// Генерируем текущую дату для "Last updated"
+const currentDate = new Date().toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'long' 
+});
+
+// Заголовок для colophon
+const title = 'Colophon is a designer-y word for "how it\'s made"—here\'s what powers this site.';
 ---
 
 <PageLayout 
@@ -20,18 +29,42 @@ const breadcrumbs = [
   breadcrumbs={breadcrumbs}
 >
   <Container size="default">
-    <div class="space-y-1 my-10">
-      <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
-        Colophon
-      </h1>
+    <div class="colophon-header-section">
+      <div class="animate">
+        <h1 class="font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+          {title}
+        </h1>
+      </div>
     </div>
     <article class="animate space-y-6">
       <Content />
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <p class="text-sm text-gray-600 dark:text-gray-400 italic">
+          Last updated: {currentDate}
+        </p>
+      </div>
     </article>
   </Container>
 </PageLayout>
 
 <style>
+  /* Высота секции с заголовком colophon */
+  .colophon-header-section {
+    min-height: calc(100vh - 120px); /* Вычитаем высоту header + отступы */
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 64px;
+  }
+
+  /* Мобильная версия */
+  @media (max-width: 768px) {
+    .colophon-header-section {
+      padding-bottom: 48px;
+    }
+  }
+
   /* Стили для элементов статьи в соответствии с макетом блога */
   :global(article h2) {
     font-family: 'Tiempos Text', serif;
@@ -64,7 +97,34 @@ const breadcrumbs = [
   }
 
   :global(article li) {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    color: #000000;
+  }
+
+  /* Стили для маркеров и цифр в списках */
+  :global(article li::marker) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  /* Темная тема для списков */
+  @media (prefers-color-scheme: dark) {
+    :global(article li) {
+      color: #ffffff;
+    }
+    
+    :global(article li::marker) {
+      color: #ffffff;
+    }
+  }
+
+  :global(html.dark article li) {
+    color: #ffffff;
+  }
+
+  :global(html.dark article li::marker) {
+    color: #ffffff;
   }
 
   :global(article a) {

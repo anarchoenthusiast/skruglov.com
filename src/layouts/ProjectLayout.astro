@@ -311,4 +311,76 @@ const breadcrumbs = [
   :global(.astro-code) {
     @apply rounded-md text-sm my-6;
   }
+
+  /* Стили для элементов контента проекта в соответствии с макетом блога */
+  :global(.animate h2) {
+    font-family: 'Tiempos Text', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.393em;
+    letter-spacing: -0.036em;
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  
+  :global(.animate p) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  /* Дополнительные стили для списков, ссылок и других элементов */
+  :global(.animate ul), :global(.animate ol) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  :global(.animate li) {
+    margin-bottom: 16px;
+    color: #000000;
+  }
+
+  /* Стили для маркеров и цифр в списках */
+  :global(.animate li::marker) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  /* Темная тема для списков */
+  @media (prefers-color-scheme: dark) {
+    :global(.animate li) {
+      color: #ffffff;
+    }
+    
+    :global(.animate li::marker) {
+      color: #ffffff;
+    }
+  }
+
+  :global(html.dark .animate li) {
+    color: #ffffff;
+  }
+
+  :global(html.dark .animate li::marker) {
+    color: #ffffff;
+  }
+
+  :global(.animate a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :global(.animate a:hover) {
+    opacity: 0.8;
+  }
 </style> 

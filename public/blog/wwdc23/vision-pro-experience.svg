@@ -1,0 +1,57 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111827;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  
+  <!-- Video player frame -->
+  <rect x="50" y="50" width="700" height="350" rx="15" fill="#000" opacity="0.8"/>
+  <rect x="60" y="60" width="680" height="330" rx="10" fill="#1a1a1a"/>
+  
+  <!-- Play button -->
+  <circle cx="400" cy="225" r="50" fill="#6366f1" opacity="0.8"/>
+  <polygon points="380,200 380,250 430,225" fill="white"/>
+  
+  <!-- Video progress bar -->
+  <rect x="100" y="360" width="600" height="8" rx="4" fill="#374151"/>
+  <rect x="100" y="360" width="200" height="8" rx="4" fill="#6366f1"/>
+  <circle cx="300" cy="364" r="6" fill="#8b5cf6"/>
+  
+  <!-- Video timeline -->
+  <text x="110" y="385" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">2:34</text>
+  <text x="680" y="385" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">8:17</text>
+  
+  <!-- Video controls -->
+  <circle cx="150" cy="375" r="8" fill="#4b5563" opacity="0.6"/>
+  <circle cx="180" cy="375" r="8" fill="#4b5563" opacity="0.6"/>
+  <circle cx="620" cy="375" r="8" fill="#4b5563" opacity="0.6"/>
+  <circle cx="650" cy="375" r="8" fill="#4b5563" opacity="0.6"/>
+  
+  <!-- Visual elements representing the video content -->
+  <ellipse cx="300" cy="180" rx="80" ry="40" fill="none" stroke="#6366f1" stroke-width="2" opacity="0.5"/>
+  <ellipse cx="500" cy="180" rx="80" ry="40" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.5"/>
+  <path d="M 350 150 Q 400 130 450 150" stroke="#8b5cf6" stroke-width="2" fill="none" opacity="0.6"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#f8fafc">Vision Pro Experience Video</text>
+  
+  <!-- Description -->
+  <text x="400" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    Interactive demonstration of Apple Vision Pro spatial computing capabilities
+  </text>
+  <text x="400" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    and immersive user interface during WWDC hands-on session
+  </text>
+  
+  <!-- Video placeholder indicator -->
+  <rect x="10" y="10" width="120" height="30" rx="15" fill="#dc2626" opacity="0.9"/>
+  <text x="70" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">VIDEO</text>
+  
+  <!-- Format indicator -->
+  <rect x="660" y="10" width="130" height="30" rx="15" fill="#059669" opacity="0.8"/>
+  <text x="725" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PLACEHOLDER</text>
+</svg> 
