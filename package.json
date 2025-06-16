@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "dev:network": "astro dev --host",
     "build": "astro check && astro build",
-    "build:netlify": "npm install sharp@latest && astro check && astro build",
+    "build:netlify": "npm install --include=optional && npm install sharp@latest && astro check && astro build",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
     "astro": "astro",
@@ -36,5 +36,8 @@
   },
   "devDependencies": {
     "@fontsource/space-grotesk": "^5.2.6"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.43.0"
   }
 }

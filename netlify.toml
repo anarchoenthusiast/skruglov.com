@@ -4,9 +4,10 @@
  
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--production=false"
+  NPM_FLAGS = "--production=false --include=optional"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   SHARP_FORCE_REBUILD = "true"
+  NPM_CONFIG_OPTIONAL = "true"
 
 # Настройки для функций (если понадобятся в будущем)
 [functions]
