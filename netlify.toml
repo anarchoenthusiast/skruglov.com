@@ -1,6 +1,13 @@
 [build]
-  command = "npm run build"
+  command = "npm run build:netlify"
   publish = "dist"
  
 [build.environment]
-  NODE_VERSION = "18" 
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--production=false"
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  SHARP_FORCE_REBUILD = "true"
+
+# Настройки для функций (если понадобятся в будущем)
+[functions]
+  node_bundler = "esbuild" 
