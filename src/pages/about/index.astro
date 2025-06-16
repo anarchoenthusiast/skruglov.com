@@ -67,8 +67,7 @@ const lastModified = new Date(stats.mtime).toLocaleDateString('en-US', {
 <style>
   /* Высота секции с заголовком about */
   .about-header-section {
-    min-height: calc(100vh - 120px); /* Вычитаем высоту header + отступы */
-    max-height: 800px;
+    height: clamp(400px, calc(100vh - 120px), 900px); /* Минимум 400px, предпочтительно 100vh-120px, максимум 900px */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
