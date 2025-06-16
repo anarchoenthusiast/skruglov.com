@@ -26,12 +26,18 @@ const backUrl = getBackUrl();
 
 <nav id="navbar" class={`fixed bottom-8 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
   <div class="navbar-container">
-    <!-- Свернутое состояние (кнопка с иконкой меню) -->
+    <!-- Свернутое состояние (кнопка с иконкой меню или крестика) -->
     <div class="collapsed-nav">
       <button class="menu-button" id="mobile-menu-button">
-        <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Иконка гамбургер меню (по умолчанию) -->
+        <svg id="hamburger-icon" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="4.5" y1="9.5" x2="17.5" y2="9.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
           <line x1="4.5" y1="14.5" x2="17.5" y2="14.5" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" class="icon-line"/>
+        </svg>
+        <!-- Иконка крестика (скрыта по умолчанию) -->
+        <svg id="close-icon" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <path d="M15.75 16.25L7.25 7.75" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" stroke-linecap="round" class="icon-line"/>
+          <path d="M7.25 16.25L15.75 7.75" stroke="rgba(0, 0, 0, 0.44)" stroke-width="1" stroke-linecap="round" class="icon-line"/>
         </svg>
       </button>
     </div>
@@ -120,14 +126,120 @@ const backUrl = getBackUrl();
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileNavIsland = document.getElementById('mobile-nav-island');
     const mobileNavClose = document.getElementById('mobile-nav-close');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
     const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
     
     if (!navbar || !footer) return;
     
-    // Мобильная навигация
+    // Проверяем, открыта ли страница через псевдопопап
+    function checkPseudoModal() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromSource = urlParams.get('from');
+      const savedProjectSource = sessionStorage.getItem('projectNavigationSource');
+      const savedBlogSource = sessionStorage.getItem('blogNavigationSource');
+      const savedSource = savedProjectSource || savedBlogSource;
+      
+      // Показываем крестик если есть параметр from или сохраненный источник
+      const hasFromParam = fromSource === 'home' || fromSource === 'projects' || fromSource === 'blog';
+      const shouldShowClose = hasFromParam || savedSource;
+      
+      return {
+        shouldShowClose,
+        finalSource: savedSource || fromSource || 'home'
+      };
+    }
+    
+    // Функция переключения иконок
+    function toggleIcon(showClose) {
+      if (hamburgerIcon && closeIcon) {
+        const navbarContainer = document.querySelector('.navbar-container');
+        if (showClose) {
+          hamburgerIcon.style.display = 'none';
+          closeIcon.style.display = 'block';
+          // Убираем класс для отключения hover эффекта разворачивания
+          if (navbarContainer) {
+            navbarContainer.classList.remove('show-hamburger');
+          }
+        } else {
+          hamburgerIcon.style.display = 'block';
+          closeIcon.style.display = 'none';
+          // Добавляем класс для включения hover эффекта разворачивания
+          if (navbarContainer) {
+            navbarContainer.classList.add('show-hamburger');
+          }
+        }
+      }
+    }
+    
+    // Функция анимации закрытия
+    function animatePageClose(callback) {
+      const pageContent = document.querySelector('.project-page-content') || 
+                         document.querySelector('.blog-page-content') || 
+                         document.body;
+      
+      pageContent.style.transition = 'opacity 0.15s ease-out, filter 0.15s ease-out';
+      pageContent.style.opacity = '0.4';
+      pageContent.style.filter = 'blur(24px)';
+      
+      setTimeout(callback, 150);
+      
+      // Защита от зависания
+      setTimeout(() => {
+        if (pageContent.style.opacity === '0.4') {
+          pageContent.style.opacity = '';
+          pageContent.style.filter = '';
+          pageContent.style.transition = '';
+        }
+      }, 1000);
+    }
+    
+    // Функция закрытия попапа
+    function closePseudoModal(finalSource) {
+      let returnUrl;
+      if (finalSource === 'home') {
+        returnUrl = '/';
+      } else if (finalSource === 'blog') {
+        returnUrl = '/blog';
+      } else {
+        returnUrl = '/projects';
+      }
+      
+      animatePageClose(() => {
+        sessionStorage.setItem('disablePageAnimations', 'true');
+        sessionStorage.removeItem('projectNavigationSource');
+        sessionStorage.removeItem('blogNavigationSource');
+        
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = returnUrl;
+        }
+      });
+    }
+    
+    // Проверяем состояние при инициализации
+    const modalState = checkPseudoModal();
+    toggleIcon(modalState.shouldShowClose);
+    
+    // Инициализируем класс для браузеров без поддержки :has()
+    const navbarContainer = document.querySelector('.navbar-container');
+    if (navbarContainer && !modalState.shouldShowClose) {
+      navbarContainer.classList.add('show-hamburger');
+    }
+    
+    // Мобильная навигация / закрытие попапа
     if (mobileMenuButton && mobileNavIsland && mobileNavClose) {
       mobileMenuButton.addEventListener('click', () => {
-        mobileNavIsland.classList.add('show');
+        const currentModalState = checkPseudoModal();
+        
+        if (currentModalState.shouldShowClose) {
+          // Закрываем псевдопопап
+          closePseudoModal(currentModalState.finalSource);
+        } else {
+          // Открываем мобильную навигацию
+          mobileNavIsland.classList.add('show');
+        }
       });
       
       mobileNavClose.addEventListener('click', () => {
@@ -141,6 +253,16 @@ const backUrl = getBackUrl();
         }
       });
     }
+    
+    // ESC для закрытия попапа
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modalState = checkPseudoModal();
+        if (modalState.shouldShowClose) {
+          closePseudoModal(modalState.finalSource);
+        }
+      }
+    });
     
     // Переменная для проверки, вернулся ли пользователь с другой страницы
     let isReturningFromOtherPage = false;
@@ -209,6 +331,19 @@ const backUrl = getBackUrl();
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
   }
+  
+  // Обработчик события popstate для корректной работы кнопки "назад"
+  window.addEventListener('popstate', function(event) {
+    // Сбрасываем возможные висящие анимации
+    const pageContent = document.querySelector('.project-page-content') || 
+                       document.querySelector('.blog-page-content') || 
+                       document.body;
+    if (pageContent && pageContent.style.opacity === '0.4') {
+      pageContent.style.opacity = '';
+      pageContent.style.filter = '';
+      pageContent.style.transition = '';
+    }
+  });
   
   // Инициализация
   document.addEventListener('DOMContentLoaded', initNavbar);
@@ -308,13 +443,24 @@ const backUrl = getBackUrl();
     stroke: rgb(7, 7, 7);
   }
   
-  /* Эффект разворачивания при ховере - ВАЖНО: должно быть после базовых стилей */
-  .navbar-container:hover .collapsed-nav {
+  /* Эффект разворачивания при ховере - только когда показано гамбургер-меню */
+  .navbar-container:hover .collapsed-nav:has(#hamburger-icon:not([style*="display: none"])) {
     opacity: 0;
     pointer-events: none;
   }
   
-  .navbar-container:hover .expanded-nav {
+  .navbar-container:hover .expanded-nav:has(~ .collapsed-nav #hamburger-icon:not([style*="display: none"])) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Fallback для браузеров, которые не поддерживают :has() */
+  .navbar-container.show-hamburger:hover .collapsed-nav {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .navbar-container.show-hamburger:hover .expanded-nav {
     opacity: 1;
     pointer-events: auto;
   }
