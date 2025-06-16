@@ -61,8 +61,11 @@ const breadcrumbs = [
   <!-- Контент страницы с анимацией -->
   <div class="blog-page-content">
     <Container size="blog-mobile">
-    <div class="blog-header-section space-y-6">
-      <div class="space-y-1">
+    <div class="blog-header-section space-y-8 border-b border-black/10 dark:border-white/10">
+      <div class="space-y-2">
+        <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+          {post.data.title}
+        </h1>
         <div class="animate flex items-center gap-1.5">
           <div class="font-grotesk text-base text-black/44 dark:text-white/44">
             <FormattedDate date={post.data.date} />
@@ -72,9 +75,24 @@ const breadcrumbs = [
             {readingTime(post.body)}
           </div>
         </div>
-        <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
-          {post.data.title}
-        </h1>
+      </div>
+      {post.data.description && (
+        <div class="animate">
+          <p class="font-grotesk text-base leading-[1.5] text-black dark:text-white">
+            {post.data.description}
+          </p>
+        </div>
+      )}
+      <div class="animate">
+        <button 
+          onclick="document.querySelector('article').scrollIntoView({ behavior: 'smooth', block: 'start' })"
+          class="inline-flex items-center gap-1 font-grotesk font-medium text-base text-black dark:text-white hover:opacity-80 transition-opacity leading-[1.5] cursor-pointer"
+        >
+          Read Notes
+          <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.1035 16.5215C11.0231 16.5215 10.9469 16.5046 10.875 16.4707C10.8073 16.4411 10.7438 16.3967 10.6846 16.3374L5.76511 11.3101C5.65091 11.1958 5.59371 11.0562 5.59371 10.8911C5.59371 10.7853 5.61911 10.688 5.66991 10.5991C5.72071 10.5103 5.79051 10.4404 5.87941 10.3897C5.96401 10.3389 6.06141 10.3135 6.17141 10.3135C6.32801 10.3135 6.46551 10.3685 6.58401 10.4785L11.1035 15.0996L15.6231 10.4785C15.7415 10.3685 15.8791 10.3135 16.0357 10.3135C16.1457 10.3135 16.243 10.3389 16.3276 10.3897C16.4165 10.4404 16.4863 10.5103 16.5371 10.5991C16.5879 10.688 16.6133 10.7853 16.6133 10.8911C16.6133 11.0562 16.5583 11.1958 16.4482 11.3101L11.5225 16.3374C11.4632 16.3967 11.3976 16.4411 11.3257 16.4707C11.258 16.5046 11.1839 16.5215 11.1035 16.5215Z" fill="currentColor"/>
+          </svg>
+        </button>
       </div>
     </div>
     <article class="animate space-y-6">
@@ -186,13 +204,15 @@ const breadcrumbs = [
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-bottom: 64px;
+      padding-bottom: 48px;
+      margin-bottom: 48px; /* Добавляем отступ снизу для разделения с контентом */
     }
 
     /* Мобильная версия */
     @media (max-width: 768px) {
       .blog-header-section {
         padding-bottom: 48px;
+        margin-bottom: 32px;
       }
     }
     

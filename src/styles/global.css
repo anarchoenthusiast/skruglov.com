@@ -37,13 +37,17 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto prose-img:rounded-lg prose-img:shadow-md;
   @apply prose-headings:font-tiempos prose-p:font-grotesk;
   @apply prose-headings:font-normal prose-p:font-normal;
   @apply prose-headings:text-black prose-headings:dark:text-white;
   @apply prose-p:text-black prose-p:dark:text-white;
   @apply prose-h2:text-[28px] prose-h2:leading-[1.39] prose-h2:tracking-[-0.036em] prose-h2:!mt-12;
+  @apply prose-h3:!font-grotesk prose-h3:!font-semibold prose-h3:!text-base prose-h3:!leading-[1.5] prose-h3:!text-black prose-h3:dark:!text-white;
   @apply prose-p:text-base prose-p:leading-[1.5];
+  @apply prose-li:text-black prose-li:dark:text-white;
+  @apply prose-ol:text-black prose-ol:dark:text-white;
+  @apply prose-ul:text-black prose-ul:dark:text-white;
 }
 
 @layer utilities {
@@ -63,6 +67,32 @@ article {
 article h2 {
   margin-top: 48px !important;
 }
+
+/* Отступ между изображением и аннотацией - перебиваем Tailwind space-y-6 */
+.space-y-6 > :not([hidden]) ~ :not([hidden]):has(em) {
+  margin-top: 16px !important;
+}
+
+/* Дополнительные селекторы для других случаев */
+article.prose img + p,
+.prose img + p,
+.prose p:has(img) + p,
+article img + p,
+div.prose img + p {
+  margin-top: 16px !important;
+}
+
+/* Стили для подписей к изображениям */
+figcaption {
+  @apply font-grotesk font-normal text-base text-center mt-3;
+  color: rgba(0, 0, 0, 0.44);
+}
+
+.dark figcaption {
+  color: rgba(255, 255, 255, 0.44);
+}
+
+
 
 .animate {
   @apply opacity-0 translate-y-3;
