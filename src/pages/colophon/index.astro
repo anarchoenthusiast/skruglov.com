@@ -19,7 +19,10 @@ const currentDate = new Date().toLocaleDateString('en-US', {
 });
 
 // Заголовок для colophon
-const title = 'Colophon is a designer-y word for "how it\'s made"—here\'s what powers this site.';
+const title = 'Colophon';
+
+// Подзаголовок для colophon
+const subtitle = 'Colophon is a designer-y word for "how it\'s made"—here\'s what powers this site.';
 ---
 
 <PageLayout 
@@ -29,20 +32,23 @@ const title = 'Colophon is a designer-y word for "how it\'s made"—here\'s what
   breadcrumbs={breadcrumbs}
 >
   <Container size="default">
-    <div class="colophon-header-section">
-      <div class="animate">
-        <h1 class="font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+    <div class="colophon-header-section space-y-6 border-b border-black/10 dark:border-white/10">
+      <div class="space-y-2">
+        <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
           {title}
         </h1>
+        <p class="animate font-grotesk text-base text-black/44 dark:text-white/44 leading-[1.5]">
+          Last updated: {currentDate}
+        </p>
+      </div>
+      <div class="animate">
+        <p class="font-grotesk text-base leading-[1.5] text-black dark:text-white">
+          {subtitle}
+        </p>
       </div>
     </div>
     <article class="animate space-y-6">
       <Content />
-      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <p class="text-sm text-gray-600 dark:text-gray-400 italic">
-          Last updated: {currentDate}
-        </p>
-      </div>
     </article>
   </Container>
 </PageLayout>
@@ -55,13 +61,15 @@ const title = 'Colophon is a designer-y word for "how it\'s made"—here\'s what
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 64px;
+    padding-bottom: 48px;
+    margin-bottom: 48px; /* Добавляем отступ снизу для разделения с контентом */
   }
 
   /* Мобильная версия */
   @media (max-width: 768px) {
     .colophon-header-section {
       padding-bottom: 48px;
+      margin-bottom: 32px;
     }
   }
 
@@ -98,14 +106,14 @@ const title = 'Colophon is a designer-y word for "how it\'s made"—here\'s what
 
   :global(article li) {
     margin-bottom: 16px;
-    color: #000000;
+    color: inherit;
   }
 
   /* Стили для маркеров и цифр в списках */
   :global(article li::marker) {
     font-family: 'Die Grotesk B', sans-serif;
     font-weight: 400;
-    color: #000000;
+    color: inherit;
   }
 
   /* Темная тема для списков */

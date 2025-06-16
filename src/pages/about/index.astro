@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import { ABOUT, SITE } from "@consts";
+import fs from 'fs';
 
 const about = await getCollection("about");
 const { Content } = await about[0].render();
@@ -13,10 +14,18 @@ const breadcrumbs = [
 ];
 
 // Заголовок для about
-const title = 'About Me';
+const title = 'About';
 
 // Подзаголовок для about
-const subtitle = 'Senior Product Designer with 14+ years of experience, driving product growth to over 65 million MAU across 190 countries. Golden Kitty Award finalist in AI. As a founding designer, launched three products from zero to profitability and built scalable cross-platform design systems.';
+const subtitle = 'I believe deeply in products that are profoundly simple, essentially practical, and essentially human. For over 14 years, I\'ve shaped global experiences, bringing ideas from zero to one with clarity and care.';
+
+// Получаем дату последнего изменения файла about
+const aboutFilePath = 'src/content/about/index.md';
+const stats = fs.statSync(aboutFilePath);
+const lastModified = new Date(stats.mtime).toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'long' 
+});
 ---
 
 <PageLayout 
@@ -26,16 +35,27 @@ const subtitle = 'Senior Product Designer with 14+ years of experience, driving 
   breadcrumbs={breadcrumbs}
 >
   <Container size="default">
-    <div class="about-header-section space-y-6">
-      <div class="space-y-1">
+    <div class="about-header-section space-y-6 border-b border-black/10 dark:border-white/10">
+      <div class="space-y-2">
         <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
           {title}
         </h1>
+        <p class="animate font-grotesk text-base text-black/44 dark:text-white/44 leading-[1.5]">
+          Last updated: {lastModified}
+        </p>
       </div>
       <div class="animate">
         <p class="font-grotesk text-base leading-[1.5] text-black dark:text-white">
           {subtitle}
         </p>
+      </div>
+      <div class="animate" style="margin-top: 24px;">
+        <a href="https://resume.co/@uo2vEbIC3eeNhROjMIw1" target="_blank" class="inline-flex items-center gap-1 font-grotesk font-medium text-base text-black dark:text-white hover:opacity-80 transition-opacity leading-[1.5]">
+          Download CV
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.36719 16.3281C4.01562 16.3281 0.398438 12.7109 0.398438 8.35938C0.398438 4 4.00781 0.390625 8.35938 0.390625C12.7188 0.390625 16.3359 4 16.3359 8.35938C16.3359 12.7109 12.7266 16.3281 8.36719 16.3281ZM8.36719 15C12.0547 15 15.0078 12.0469 15.0078 8.35938C15.0078 4.67188 12.0469 1.71875 8.35938 1.71875C4.67188 1.71875 1.73438 4.67188 1.73438 8.35938C1.73438 12.0469 4.67969 15 8.36719 15ZM8.36719 4.38281C8.71094 4.38281 8.95312 4.625 8.95312 4.96875V8.875L8.89062 10.5312L9.6875 9.58594L10.6094 8.64844C10.7109 8.53125 10.8516 8.47656 11.0234 8.47656C11.3438 8.47656 11.5938 8.71875 11.5938 9.03906C11.5938 9.20312 11.5312 9.34375 11.4297 9.44531L8.82812 12.0391C8.67969 12.1875 8.53906 12.2656 8.36719 12.2656C8.20312 12.2656 8.07031 12.1953 7.91406 12.0391L5.30469 9.44531C5.20312 9.34375 5.15625 9.20312 5.15625 9.03906C5.15625 8.71875 5.39844 8.47656 5.71875 8.47656C5.88281 8.47656 6.02344 8.53906 6.13281 8.64844L7.0625 9.58594L7.84375 10.5234L7.78125 8.875V4.96875C7.78125 4.625 8.03125 4.38281 8.36719 4.38281Z" fill="currentColor"/>
+          </svg>
+        </a>
       </div>
     </div>
     <article class="animate space-y-6">
@@ -52,7 +72,7 @@ const subtitle = 'Senior Product Designer with 14+ years of experience, driving 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 64px;
+    padding-bottom: 48px;
     margin-bottom: 48px; /* Добавляем отступ снизу для разделения с контентом */
   }
 
@@ -102,14 +122,14 @@ const subtitle = 'Senior Product Designer with 14+ years of experience, driving 
 
   :global(article li) {
     margin-bottom: 16px;
-    color: #000000;
+    color: inherit;
   }
 
   /* Стили для маркеров и цифр в списках */
   :global(article li::marker) {
     font-family: 'Die Grotesk B', sans-serif;
     font-weight: 400;
-    color: #000000;
+    color: inherit;
   }
 
   /* Темная тема для списков */

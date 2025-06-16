@@ -61,19 +61,21 @@ const breadcrumbs = [
   <!-- Контент страницы с анимацией -->
   <div class="blog-page-content">
     <Container size="blog-mobile">
-    <div class="space-y-1 pb-6">
-      <div class="animate flex items-center gap-1.5">
-        <div class="font-grotesk text-base text-black/44 dark:text-white/44">
-          <FormattedDate date={post.data.date} />
+    <div class="blog-header-section space-y-6">
+      <div class="space-y-1">
+        <div class="animate flex items-center gap-1.5">
+          <div class="font-grotesk text-base text-black/44 dark:text-white/44">
+            <FormattedDate date={post.data.date} />
+          </div>
+          &bull;
+          <div class="font-grotesk text-base text-black/44 dark:text-white/44">
+            {readingTime(post.body)}
+          </div>
         </div>
-        &bull;
-        <div class="font-grotesk text-base text-black/44 dark:text-white/44">
-          {readingTime(post.body)}
-        </div>
+        <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
+          {post.data.title}
+        </h1>
       </div>
-      <h1 class="animate font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal">
-        {post.data.title}
-      </h1>
     </div>
     <article class="animate space-y-6">
       <Content />
@@ -177,6 +179,23 @@ const breadcrumbs = [
       transition: opacity 0.15s ease-out, transform 0.4s ease-out, filter 0.15s ease-out;
     }
     
+    /* Высота секции с заголовком блога */
+    .blog-header-section {
+      min-height: calc(100vh - 120px); /* Вычитаем высоту header + отступы */
+      max-height: 800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 64px;
+    }
+
+    /* Мобильная версия */
+    @media (max-width: 768px) {
+      .blog-header-section {
+        padding-bottom: 48px;
+      }
+    }
+    
     /* Стили для элементов поста блога в соответствии с макетом */
   :global(article h2) {
     font-family: 'Tiempos Text', serif;
@@ -209,7 +228,15 @@ const breadcrumbs = [
   }
 
   :global(article li) {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    color: inherit;
+  }
+
+  /* Стили для маркеров и цифр в списках */
+  :global(article li::marker) {
+    font-family: 'Die Grotesk B', sans-serif;
+    font-weight: 400;
+    color: inherit;
   }
 
   :global(article a) {

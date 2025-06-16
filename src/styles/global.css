@@ -42,7 +42,7 @@ article {
   @apply prose-headings:font-normal prose-p:font-normal;
   @apply prose-headings:text-black prose-headings:dark:text-white;
   @apply prose-p:text-black prose-p:dark:text-white;
-  @apply prose-h2:text-[28px] prose-h2:leading-[1.39] prose-h2:tracking-[-0.036em];
+  @apply prose-h2:text-[28px] prose-h2:leading-[1.39] prose-h2:tracking-[-0.036em] prose-h2:!mt-12;
   @apply prose-p:text-base prose-p:leading-[1.5];
 }
 
@@ -57,6 +57,11 @@ article {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
   }
+}
+
+/* Принудительно устанавливаем margin-top для h2 */
+article h2 {
+  margin-top: 48px !important;
 }
 
 .animate {

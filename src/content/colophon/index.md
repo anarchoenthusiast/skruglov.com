@@ -37,5 +37,3 @@ I collect basic, fully-anonymized page view analytics using [**Fathom Analytics*
 ## Source Code
 
 The complete source code is available on [**GitHub**](https://github.com/anarchoenthusiast/skruglov.com) under an open source license. If you spot an issue or have a suggestion, feel free to [**file an issue**](https://github.com/anarchoenthusiast/skruglov.com/issues).
-
---- 

@@ -6,21 +6,20 @@ date: "Mar 30 2024"
 
 ## Experience
 
-I currently work at [**4K Download**](https://www.4kdownload.com/) as a Senior Product Designer. Previously, I spent time building things at [**Ai Video Cut**](https://aivideocut.com/), [**Waveroom**](https://waveroom.com/), [**LALAL.AI**](https://www.lalal.ai/), and various digital agencies. You can view my full resume [**here**](https://resume.co/@uo2vEbIC3eeNhROjMIw1).
+Senior Product Designer with 14+ years of experience, driving product growth to over 65 million MAU across 190 countries. Golden Kitty Award finalist in AI. As a founding designer, launched three products from zero to profitability and built scalable cross-platform design systems.
 
-## Principles
-
-I believe deeply in products that are profoundly simple, essentially practical, and essentially human. For over 14 years, I've shaped global experiences, bringing ideas from zero to one with clarity and care.
-
-## Contact
-
-Always open to chats and coffee in Berlin. Say hello! [**hello@skruglov.com**](mailto:hello@skruglov.com)
+I currently work at [**4K Download**](https://www.4kdownload.com/) as a Senior Product Designer. Previously, I spent time building things at [**Ai Video Cut**](https://aivideocut.com/), [**Waveroom**](https://waveroom.com/), [**LALAL.AI**](https://www.lalal.ai/), and various digital agencies.
 
 ## Elsewhere
 
-RSS feed: [**skruglov.com/rss.xml**](/rss.xml)  
-Twitter: [**@kryglovsergey**](https://x.com/kryglovsergey)  
-GitHub: [**@anarchoenthusiast**](https://github.com/anarchoenthusiast)  
-LinkedIn: [**@kruglovse**](https://www.linkedin.com/in/kruglovse/)  
-Instagram: [**@kruglovse**](https://www.instagram.com/kruglovse/)  
-Are.na: [**@sergey-kruglov**](https://www.are.na/sergey-kruglov/channels) 
+- Email: [**hello@skruglov.com**](mailto:hello@skruglov.com)
+- RSS feed: [**skruglov.com/rss.xml**](/rss.xml)
+- Twitter: [**@kryglovsergey**](https://x.com/kryglovsergey)
+- GitHub: [**@anarchoenthusiast**](https://github.com/anarchoenthusiast)
+- LinkedIn: [**@kruglovse**](https://www.linkedin.com/in/kruglovse/)
+- Instagram: [**@kruglovse**](https://www.instagram.com/kruglovse/)
+- Are.na: [**@sergey-kruglov**](https://www.are.na/sergey-kruglov/channels)
+
+## Contact
+
+Always open to chats and coffee in Berlin. [**Say hello!**](mailto:hello@skruglov.com) 
