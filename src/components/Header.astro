@@ -75,25 +75,20 @@ const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' ||
     const referrer = document.referrer;
     const currentDomain = window.location.origin;
     
-    // Проверяем тип навигации
-    const navigation = performance.getEntriesByType('navigation')[0];
-    const navigationType = navigation ? navigation.type : 'unknown';
-    
-    // Логика показа кнопки:
-    const hasFromParam = fromSource === 'home' || fromSource === 'projects' || fromSource === 'blog';
-    const isDirectNavigation = navigationType === 'navigate' || navigationType === 'reload';
-    const isFromOurSite = referrer.startsWith(currentDomain);
-    
     // Проверяем сохраненные источники в sessionStorage
     const savedProjectSource = sessionStorage.getItem('projectNavigationSource');
     const savedBlogSource = sessionStorage.getItem('blogNavigationSource');
     const savedSource = savedProjectSource || savedBlogSource;
     
-    // Упрощенная логика: показываем кнопку если есть параметр from ИЛИ сохраненный источник
-    const shouldShowButton = hasFromParam || savedSource;
+    // Упрощенная логика: показываем кнопку если есть параметр from ИЛИ сохраненный источник ИЛИ есть история браузера
+    const hasFromParam = fromSource === 'home' || fromSource === 'projects' || fromSource === 'blog';
+    const hasHistory = window.history.length > 1;
+    const isFromOurSite = referrer && referrer.startsWith(currentDomain);
+    
+    const shouldShowButton = hasFromParam || savedSource || (hasHistory && isFromOurSite);
     
     // Определяем финальный источник для кнопки - приоритет сохраненному значению
-    const finalSource = savedSource || fromSource;
+    const finalSource = savedSource || fromSource || 'home';
     
     // Сохраняем источник ТОЛЬКО если его еще нет в sessionStorage
     if (hasFromParam && !savedSource) {
@@ -111,9 +106,9 @@ const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' ||
       finalSource: finalSource,
       referrer: referrer,
       currentDomain: currentDomain,
-      navigationType: navigationType,
       hasFromParam: hasFromParam,
-      isDirectNavigation: isDirectNavigation,
+      hasHistory: hasHistory,
+      historyLength: window.history.length,
       isFromOurSite: isFromOurSite,
       shouldShow: shouldShowButton
     });
@@ -238,7 +233,17 @@ const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' ||
       pageContent.style.filter = 'blur(24px)';
       
       // Выполняем callback после анимации
-      setTimeout(callback, 150);
+      const timeoutId = setTimeout(callback, 150);
+      
+      // Защита от зависания - сброс анимации через 1 секунду
+      setTimeout(() => {
+        if (pageContent.style.opacity === '0.4') {
+          console.warn('Animation stuck, resetting...');
+          pageContent.style.opacity = '';
+          pageContent.style.filter = '';
+          pageContent.style.transition = '';
+        }
+      }, 1000);
     }
     
     // Обработчик клика
@@ -264,8 +269,13 @@ const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' ||
         sessionStorage.removeItem('projectNavigationSource');
         sessionStorage.removeItem('blogNavigationSource');
         
-        // Переходим на исходную страницу
-        window.location.href = returnUrl;
+        // Используем history.back() для возврата к предыдущей странице
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          // Fallback если нет истории
+          window.location.href = returnUrl;
+        }
       });
     });
     
@@ -294,13 +304,29 @@ const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' ||
           sessionStorage.removeItem('projectNavigationSource');
           sessionStorage.removeItem('blogNavigationSource');
           
-          // Переходим на исходную страницу
-          window.location.href = returnUrl;
+          // Используем history.back() для возврата к предыдущей странице
+          if (window.history.length > 1) {
+            window.history.back();
+          } else {
+            // Fallback если нет истории
+            window.location.href = returnUrl;
+          }
         });
       }
     });
   }
   
+  // Обработчик события popstate для корректной работы кнопки "назад"
+  window.addEventListener('popstate', function(event) {
+    // Сбрасываем возможные висящие анимации
+    const pageContent = document.querySelector('.project-page-content') || document.querySelector('.blog-page-content') || document.body;
+    if (pageContent && pageContent.style.opacity === '0.4') {
+      pageContent.style.opacity = '';
+      pageContent.style.filter = '';
+      pageContent.style.transition = '';
+    }
+  });
+
   // Инициализация
   document.addEventListener('DOMContentLoaded', initCloseButton);
   document.addEventListener('astro:page-load', initCloseButton);

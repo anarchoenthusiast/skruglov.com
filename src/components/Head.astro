@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import "../styles/fonts.css";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -72,7 +71,7 @@ const finalOgImage = ogImage || image;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(finalOgImage, Astro.url)} />
 
-<ViewTransitions  />
+
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
@@ -102,6 +101,18 @@ const finalOgImage = ogImage || image;
     );
 
     document.addEventListener("scroll", onScroll);
+    
+    // Добавляем обработчик ошибок для предотвращения белого экрана
+    window.addEventListener('error', function(e) {
+      console.error('Page error:', e);
+      // Сбрасываем возможные висящие анимации
+      const pageContent = document.querySelector('.project-page-content') || document.querySelector('.blog-page-content') || document.body;
+      if (pageContent && pageContent.style.opacity === '0.4') {
+        pageContent.style.opacity = '';
+        pageContent.style.filter = '';
+        pageContent.style.transition = '';
+      }
+    });
   }
 
   function animate() {
