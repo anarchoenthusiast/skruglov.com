@@ -37,7 +37,7 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto prose-img:rounded-lg prose-img:shadow-md;
+  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-0 prose-img:rounded-[12px];
   @apply prose-headings:font-tiempos prose-p:font-grotesk;
   @apply prose-headings:font-normal prose-p:font-normal;
   @apply prose-headings:text-black prose-headings:dark:text-white;
@@ -68,8 +68,39 @@ article h2 {
   margin-top: 48px !important;
 }
 
-/* Отступ между изображением и аннотацией - перебиваем Tailwind space-y-6 */
-.space-y-6 > :not([hidden]) ~ :not([hidden]):has(em) {
+/* Отступы между изображениями в проектах */
+.space-y-2 > p img,
+.space-y-2 > img {
+  margin: 0 !important;
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.space-y-2 > p:first-child img,
+.space-y-2 > img:first-child {
+  margin-top: 0 !important;
+}
+
+/* Переопределяем все возможные стили prose для изображений */
+article img,
+.prose img {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Убираем отступы у параграфов содержащих только изображения */
+.space-y-2 > p:has(img) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.space-y-2 > p:has(img):not(:first-child) {
+  margin-top: 8px !important;
+}
+
+/* Отступ между изображением и аннотацией - перебиваем Tailwind space-y */
+.space-y-2 > :not([hidden]) ~ :not([hidden]):has(em) {
   margin-top: 16px !important;
 }
 

@@ -4,6 +4,10 @@ description: "My journey to WWDC 2023, from getting an invitation to experiencin
 date: "Aug 8 2023"
 ---
 
+import { Image } from 'astro:assets';
+// Импортируем только растровые изображения для оптимизации
+// import heroPhoto from '../../../assets/blog/wwdc23/hero-photo.jpg';
+
 Starting from 1983, Apple annually holds a conference for developers on their platforms — Apple Worldwide Developers Conference. This year, Open Media's lead designer Sergey managed to attend WWDC, which he decided to tell about in this article.
 
 Sergey will share what's needed to participate in the conference, how to get an invitation, how everything is organized there, and what treats are served to conference participants in the café.
@@ -44,11 +48,15 @@ On the conference day, we woke up at almost four in the morning, but we calmly g
 
 We arrived quite early, around 7 AM, and there was already a small queue. But everything was very organized: they checked documents, gave out badges, and distributed some promotional materials.
 
+{/* SVG иллюстрации остаются в public/ - оптимально для векторной графики */}
 ![Apple Park Campus](/blog/wwdc23/apple-park-campus.svg)
 
 ### Inside Apple Park
 
 The campus itself is stunning. Everything is thought out to the smallest detail — from the landscaping to the architecture. The main ring-shaped building really does look impressive, and the café where they fed us throughout the day deserves special mention.
+
+{/* Растровые фотографии должны использовать assets/ для оптимизации */}
+{/* <Image src={heroPhoto} alt="Real photo from Apple Park" quality={80} /> */}
 
 <figure>
   ![Apple Park interior design](/blog/wwdc23/apple-park-interior.svg)

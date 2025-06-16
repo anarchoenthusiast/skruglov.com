@@ -130,9 +130,9 @@ const breadcrumbs = [
         </div>
 
         <!-- Контент проекта и изображения -->
-        <div class="animate mt-8">
+        <article class="animate space-y-2 mt-8">
           <Content />
-        </div>
+        </article>
       </div>
     </Container>
     
@@ -261,50 +261,17 @@ const breadcrumbs = [
   
   /* Стили для блока информации о проекте */
   .project-label {
-    font-family: 'Die Grotesk B', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 120%; /* 16px */
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.44);
-    margin-bottom: 4px;
+    @apply font-grotesk font-normal text-base leading-[1.5];
+    @apply text-black/50 dark:text-white/50 mb-2;
   }
   
   .more-projects-title {
-    margin-bottom: 16px !important;
+    @apply mb-4;
   }
   
   .project-value {
-    font-family: 'Die Grotesk B', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 120%; /* 16px */
-    display: flex;
-    align-items: center;
-    color: #000000;
-  }
-  
-  /* Темная тема */
-  @media (prefers-color-scheme: dark) {
-    .project-label {
-      color: rgba(255, 255, 255, 0.44);
-    }
-    
-    .project-value {
-      color: #ffffff;
-    }
-  }
-  
-  :global(html.dark) .project-label {
-    color: rgba(255, 255, 255, 0.44);
-  }
-  
-  :global(html.dark) .project-value {
-    color: #ffffff;
+    @apply font-grotesk font-normal text-base leading-[1.5];
+    @apply text-black dark:text-white;
   }
 
   /* Стили для контента проекта */
@@ -312,75 +279,9 @@ const breadcrumbs = [
     @apply rounded-md text-sm my-6;
   }
 
-  /* Стили для элементов контента проекта в соответствии с макетом блога */
-  :global(.animate h2) {
-    font-family: 'Tiempos Text', serif;
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 1.393em;
-    letter-spacing: -0.036em;
-    margin-top: 48px;
-    margin-bottom: 16px;
-  }
-  
-  :global(.animate p) {
-    font-family: 'Die Grotesk B', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5em;
-    margin-top: 24px;
-    margin-bottom: 16px;
-  }
-
-  /* Дополнительные стили для списков, ссылок и других элементов */
-  :global(.animate ul), :global(.animate ol) {
-    font-family: 'Die Grotesk B', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5em;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    padding-left: 24px;
-  }
-
-  :global(.animate li) {
-    margin-bottom: 16px;
-    color: inherit;
-  }
-
-  /* Стили для маркеров и цифр в списках */
-  :global(.animate li::marker) {
-    font-family: 'Die Grotesk B', sans-serif;
-    font-weight: 400;
-    color: inherit;
-  }
-
-  /* Темная тема для списков */
-  @media (prefers-color-scheme: dark) {
-    :global(.animate li) {
-      color: #ffffff;
-    }
-    
-    :global(.animate li::marker) {
-      color: #ffffff;
-    }
-  }
-
-  :global(html.dark .animate li) {
-    color: #ffffff;
-  }
-
-  :global(html.dark .animate li::marker) {
-    color: #ffffff;
-  }
-
-  :global(.animate a) {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  :global(.animate a:hover) {
-    opacity: 0.8;
+  /* Стили для контента проекта наследуют стили статьи из global.css */
+  /* Дополнительные стили для заголовков h1 в проектах */
+  :global(.project-page-content h1) {
+    @apply font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal;
   }
 </style> 
