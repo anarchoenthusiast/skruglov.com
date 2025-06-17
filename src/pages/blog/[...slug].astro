@@ -157,15 +157,19 @@ const breadcrumbs = [
         url.searchParams.set('from', finalFromParam);
         link.href = url.toString();
         
-        // Добавляем обработчик для сохранения позиции скролла исходной страницы
+        // Добавляем обработчик для сохранения источника навигации и позиции скролла
         link.addEventListener('click', function() {
+          // Сохраняем источник навигации для корректной работы кнопки закрытия
+          sessionStorage.setItem('blogNavigationSource', finalFromParam);
+          console.log('Set blogNavigationSource to', finalFromParam, 'from More Posts');
+          
           if (finalFromParam === 'home') {
             // Сохраняем позицию главной страницы только если её еще нет
             if (!sessionStorage.getItem('homeScrollPosition')) {
               console.log('More Posts link clicked from home context');
             }
           } else if (finalFromParam === 'blog') {
-            // Аналогично для страницы блога
+            // Сохраняем позицию страницы блога только если её еще нет
             if (!sessionStorage.getItem('blogScrollPosition')) {
               console.log('More Posts link clicked from blog context');
             }

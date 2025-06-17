@@ -140,9 +140,15 @@ const backUrl = getBackUrl();
       const savedBlogSource = sessionStorage.getItem('blogNavigationSource');
       const savedSource = savedProjectSource || savedBlogSource;
       
-      // Показываем крестик если есть параметр from или сохраненный источник
+      // Проверяем, является ли переход прямым (через адресную строку)
+      const isDirectNavigation = !document.referrer || 
+                                !document.referrer.includes(window.location.hostname);
+      
+      // Показываем крестик если:
+      // 1. Есть сохраненный источник в sessionStorage ИЛИ
+      // 2. Есть параметр from И это НЕ прямой переход (пришли с внутренней навигации)
       const hasFromParam = fromSource === 'home' || fromSource === 'projects' || fromSource === 'blog';
-      const shouldShowClose = hasFromParam || savedSource;
+      const shouldShowClose = !!savedSource || (hasFromParam && !isDirectNavigation);
       
       return {
         shouldShowClose,

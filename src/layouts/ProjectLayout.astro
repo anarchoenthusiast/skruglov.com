@@ -217,17 +217,19 @@ const breadcrumbs = [
       url.searchParams.set('from', finalFromParam);
       link.href = url.toString();
       
-      // Добавляем обработчик для сохранения позиции скролла исходной страницы
+      // Добавляем обработчик для сохранения источника навигации и позиции скролла
       link.addEventListener('click', function() {
+        // Сохраняем источник навигации для корректной работы кнопки закрытия
+        sessionStorage.setItem('projectNavigationSource', finalFromParam);
+        console.log('Set projectNavigationSource to', finalFromParam, 'from More Projects');
+        
         if (finalFromParam === 'home') {
           // Сохраняем позицию главной страницы только если её еще нет
           if (!sessionStorage.getItem('homeScrollPosition')) {
-            // Здесь мы не можем получить позицию главной страницы, но мы можем проверить
-            // была ли она уже сохранена при первом переходе
             console.log('More Projects link clicked from home context');
           }
         } else if (finalFromParam === 'projects') {
-          // Аналогично для страницы проектов
+          // Сохраняем позицию страницы проектов только если её еще нет
           if (!sessionStorage.getItem('projectsScrollPosition')) {
             console.log('More Projects link clicked from projects context');
           }

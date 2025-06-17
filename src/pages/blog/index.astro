@@ -95,10 +95,14 @@ const breadcrumbs = [
       }, 50);
     }
     
-    // Добавляем обработчики для сохранения позиции скролла при переходе на посты
+    // Добавляем обработчики для сохранения позиции скролла и источника навигации при переходе на посты
     const postLinks = document.querySelectorAll('a[href*="/blog/"][href*="from=blog"]');
     postLinks.forEach(link => {
       link.addEventListener('click', function() {
+        // Сохраняем источник навигации для корректной работы кнопки закрытия
+        sessionStorage.setItem('blogNavigationSource', 'blog');
+        console.log('Set blogNavigationSource to blog');
+        
         // Сохраняем текущую позицию скролла только если её еще нет
         if (!sessionStorage.getItem('blogScrollPosition')) {
           sessionStorage.setItem('blogScrollPosition', window.scrollY.toString());

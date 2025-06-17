@@ -178,10 +178,14 @@ const projects = (await getCollection("projects"))
       }, 50);
     }
     
-    // Добавляем обработчики для сохранения позиции скролла при переходе на проекты и посты блога
+    // Добавляем обработчики для сохранения позиции скролла и источника навигации при переходе на проекты и посты блога
     const projectLinks = document.querySelectorAll('a[href*="/projects/"][href*="from=home"]');
     projectLinks.forEach(link => {
       link.addEventListener('click', function() {
+        // Сохраняем источник навигации для корректной работы кнопки закрытия
+        sessionStorage.setItem('projectNavigationSource', 'home');
+        console.log('Set projectNavigationSource to home');
+        
         // Сохраняем текущую позицию скролла только если её еще нет
         if (!sessionStorage.getItem('homeScrollPosition')) {
           sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
@@ -193,6 +197,10 @@ const projects = (await getCollection("projects"))
     const blogLinks = document.querySelectorAll('a[href*="/blog/"][href*="from=home"]');
     blogLinks.forEach(link => {
       link.addEventListener('click', function() {
+        // Сохраняем источник навигации для корректной работы кнопки закрытия
+        sessionStorage.setItem('blogNavigationSource', 'home');
+        console.log('Set blogNavigationSource to home');
+        
         // Сохраняем текущую позицию скролла только если её еще нет
         if (!sessionStorage.getItem('homeScrollPosition')) {
           sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());

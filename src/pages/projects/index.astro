@@ -102,10 +102,14 @@ const breadcrumbs = [
       }, 50);
     }
     
-    // Добавляем обработчики для сохранения позиции скролла при переходе на проекты
+    // Добавляем обработчики для сохранения позиции скролла и источника навигации при переходе на проекты
     const projectLinks = document.querySelectorAll('a[href*="/projects/"][href*="from=projects"]');
     projectLinks.forEach(link => {
       link.addEventListener('click', function() {
+        // Сохраняем источник навигации для корректной работы кнопки закрытия
+        sessionStorage.setItem('projectNavigationSource', 'projects');
+        console.log('Set projectNavigationSource to projects');
+        
         // Сохраняем текущую позицию скролла только если её еще нет
         if (!sessionStorage.getItem('projectsScrollPosition')) {
           sessionStorage.setItem('projectsScrollPosition', window.scrollY.toString());

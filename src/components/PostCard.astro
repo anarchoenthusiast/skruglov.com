@@ -14,7 +14,7 @@ const { post, fromSource = 'blog' } = Astro.props;
 ---
 
 <li>
-  <a href={`/blog/${post.slug}/?from=${fromSource}`} class="block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors duration-300 ease-out">
+  <a href={`/blog/${post.slug}/?from=${fromSource}`} class="post-card-link block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors duration-300 ease-out" data-from-source={fromSource}>
     <div class="flex flex-col gap-1">
       <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out">
         {post.data.title}
@@ -25,6 +25,51 @@ const { post, fromSource = 'blog' } = Astro.props;
     </div>
   </a>
 </li>
+
+<script is:inline>
+  // Инициализируем обработчики для PostCard после загрузки DOM
+  function initPostCardHandlers() {
+    const postCardLinks = document.querySelectorAll('.post-card-link');
+    
+    postCardLinks.forEach(link => {
+      // Проверяем, не добавлен ли уже обработчик
+      if (!link.hasAttribute('data-handler-added')) {
+        link.addEventListener('click', function() {
+          const fromSource = this.getAttribute('data-from-source');
+          
+          if (fromSource === 'home') {
+            // Сохраняем источник навигации для корректной работы кнопки закрытия
+            sessionStorage.setItem('blogNavigationSource', 'home');
+            console.log('Set blogNavigationSource to home from PostCard');
+            
+            // Сохраняем позицию скролла главной страницы
+            if (!sessionStorage.getItem('homeScrollPosition')) {
+              sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+              console.log('Saved home scroll position from PostCard:', window.scrollY);
+            }
+          } else if (fromSource === 'blog') {
+            // Сохраняем источник навигации для корректной работы кнопки закрытия
+            sessionStorage.setItem('blogNavigationSource', 'blog');
+            console.log('Set blogNavigationSource to blog from PostCard');
+            
+            // Сохраняем позицию скролла страницы блога
+            if (!sessionStorage.getItem('blogScrollPosition')) {
+              sessionStorage.setItem('blogScrollPosition', window.scrollY.toString());
+              console.log('Saved blog scroll position from PostCard:', window.scrollY);
+            }
+          }
+        });
+        
+        // Отмечаем, что обработчик добавлен
+        link.setAttribute('data-handler-added', 'true');
+      }
+    });
+  }
+  
+  // Инициализируем при загрузке DOM и при переходах Astro
+  document.addEventListener('DOMContentLoaded', initPostCardHandlers);
+  document.addEventListener('astro:page-load', initPostCardHandlers);
+</script>
 
 <style>
   .description-fade {
