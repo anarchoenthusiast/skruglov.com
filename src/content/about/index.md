@@ -6,8 +6,6 @@ date: "Mar 26 2026"
 
 ## Experience
 
-Product Designer with 14+ years of experience building and scaling digital products across AI, creator tools, desktop software, and cross-platform ecosystems.
-
 I've worked as both a senior individual contributor and a founding designer: taking products from 0 to 1, shaping brand and product direction, building scalable design systems, and helping teams grow without losing speed or clarity.
 
 My work has contributed to products used by millions of people worldwide, including [**LALAL.AI**](https://www.lalal.ai/), [**4K Download**](https://www.4kdownload.com/), [**Waveroom**](https://waveroom.com/), and [**Ai Video Cut**](https://aivideocut.com/). I focus on turning complexity into clear, practical experiences and creating systems that help teams ship better work faster.
