@@ -68,20 +68,6 @@ article h2 {
   margin-top: 48px !important;
 }
 
-/* Отступы между изображениями в проектах */
-.space-y-2 > p img,
-.space-y-2 > img {
-  margin: 0 !important;
-  margin-top: 8px !important;
-  margin-bottom: 0 !important;
-  padding: 0 !important;
-}
-
-.space-y-2 > p:first-child img,
-.space-y-2 > img:first-child {
-  margin-top: 0 !important;
-}
-
 /* Переопределяем все возможные стили prose для изображений */
 article img,
 .prose img {
@@ -89,28 +75,37 @@ article img,
   padding: 0 !important;
 }
 
-/* Убираем отступы у параграфов содержащих только изображения */
-.space-y-2 > p:has(img) {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.space-y-2 > p:has(img):not(:first-child) {
+/* Проектные страницы: отдельный ритм между текстом и медиа */
+.project-article > p + p {
   margin-top: 8px !important;
 }
 
-/* Отступ между изображением и аннотацией - перебиваем Tailwind space-y */
-.space-y-2 > :not([hidden]) ~ :not([hidden]):has(em) {
-  margin-top: 16px !important;
+.project-article > img,
+.project-article > picture,
+.project-article > figure {
+  display: block;
+  width: 100%;
+  margin-top: 24px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
 }
 
-/* Дополнительные селекторы для других случаев */
-article.prose img + p,
-.prose img + p,
-.prose p:has(img) + p,
-article img + p,
-div.prose img + p {
-  margin-top: 16px !important;
+.project-article > p + img,
+.project-article > p + picture,
+.project-article > p + figure {
+  margin-top: 32px !important;
+}
+
+.project-article > img + img,
+.project-article > img + picture,
+.project-article > img + figure,
+.project-article > picture + img,
+.project-article > picture + picture,
+.project-article > picture + figure,
+.project-article > figure + img,
+.project-article > figure + picture,
+.project-article > figure + figure {
+  margin-top: 24px !important;
 }
 
 /* Стили для подписей к изображениям */

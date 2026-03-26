@@ -7,24 +7,9 @@ const isProjectsPage = pathname === "/projects" || pathname === "/projects/";
 const isBlogPage = pathname.includes("/blog");
 const isAboutPage = pathname === "/about" || pathname === "/about/";
 
-// Определяем, находимся ли мы на внутренней странице
-const isInnerPage = !isHomePage && (pathname.split('/').filter(Boolean).length > 1 || pathname.includes('/blog/'));
-
-// Определяем, находимся ли мы на странице конкретного проекта
-const isProjectDetailsPage = pathname.includes("/projects/") && pathname !== "/projects/";
-
-// Определяем URL для кнопки "назад"
-function getBackUrl() {
-  const segments = pathname.split('/').filter(Boolean);
-  if (segments.length <= 1) return '/';
-  segments.pop();
-  return '/' + segments.join('/');
-}
-
-const backUrl = getBackUrl();
 ---
 
-<nav id="navbar" class={`fixed bottom-8 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+<nav id="navbar" class={`fixed bottom-8 left-0 right-0 z-50 flex justify-center transition-opacity duration-300 ${isHomePage ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
   <div class="navbar-container">
     <!-- Свернутое состояние (кнопка с иконкой меню или крестика) -->
     <div class="collapsed-nav">
@@ -46,25 +31,25 @@ const backUrl = getBackUrl();
     <div class="expanded-nav">
     <a 
       href="/" 
-        class={`nav-button ${isHomePage ? 'active' : ''}`}
+        class={`nav-button ${isHomePage ? "active" : ""}`}
     >
       Index
     </a>
     <a 
       href="/projects" 
-        class={`nav-button ${isProjectsPage ? 'active' : ''}`}
+        class={`nav-button ${isProjectsPage ? "active" : ""}`}
     >
       Projects
     </a>
       <a 
         href="/blog" 
-        class={`nav-button ${isBlogPage ? 'active' : ''}`}
+        class={`nav-button ${isBlogPage ? "active" : ""}`}
       >
         Blog
       </a>
     <a 
       href="/about" 
-        class={`nav-button ${isAboutPage ? 'active' : ''}`}
+        class={`nav-button ${isAboutPage ? "active" : ""}`}
     >
       About
     </a>
@@ -82,28 +67,28 @@ const backUrl = getBackUrl();
         <div class="mobile-nav-icon">
           <img src="/icons/surf-dog-updated.svg" alt="Index" />
         </div>
-        <span class={`mobile-nav-text ${isHomePage ? 'active' : ''}`}>Index</span>
+        <span class={`mobile-nav-text ${isHomePage ? "active" : ""}`}>Index</span>
       </a>
       
       <a href="/projects" class="mobile-nav-item">
         <div class="mobile-nav-icon">
           <img src="/icons/scribble-updated.svg" alt="Projects" />
         </div>
-        <span class={`mobile-nav-text ${isProjectsPage ? 'active' : ''}`}>Projects</span>
+        <span class={`mobile-nav-text ${isProjectsPage ? "active" : ""}`}>Projects</span>
       </a>
       
       <a href="/blog" class="mobile-nav-item">
         <div class="mobile-nav-icon">
           <img src="/icons/book-updated.svg" alt="Blog" />
         </div>
-        <span class={`mobile-nav-text ${isBlogPage ? 'active' : ''}`}>Blog</span>
+        <span class={`mobile-nav-text ${isBlogPage ? "active" : ""}`}>Blog</span>
       </a>
       
       <a href="/about" class="mobile-nav-item">
         <div class="mobile-nav-icon">
           <img src="/icons/mail-delivery-updated.svg" alt="About" />
         </div>
-        <span class={`mobile-nav-text ${isAboutPage ? 'active' : ''}`}>About</span>
+        <span class={`mobile-nav-text ${isAboutPage ? "active" : ""}`}>About</span>
       </a>
     </div>
     
@@ -121,58 +106,69 @@ const backUrl = getBackUrl();
 
 <script is:inline>
   function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const footer = document.querySelector('footer');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileNavIsland = document.getElementById('mobile-nav-island');
-    const mobileNavClose = document.getElementById('mobile-nav-close');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
+    const navbar = document.getElementById("navbar");
+    const footer = document.querySelector("footer");
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileNavIsland = document.getElementById("mobile-nav-island");
+    const mobileNavClose = document.getElementById("mobile-nav-close");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
     const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
     
     if (!navbar || !footer) return;
+    if (window.__navbarCleanup) {
+      window.__navbarCleanup();
+    }
     
     // Проверяем, открыта ли страница через псевдопопап
     function checkPseudoModal() {
       const urlParams = new URLSearchParams(window.location.search);
-      const fromSource = urlParams.get('from');
-      const savedProjectSource = sessionStorage.getItem('projectNavigationSource');
-      const savedBlogSource = sessionStorage.getItem('blogNavigationSource');
-      const savedSource = savedProjectSource || savedBlogSource;
-      
-      // Проверяем, является ли переход прямым (через адресную строку)
-      const isDirectNavigation = !document.referrer || 
-                                !document.referrer.includes(window.location.hostname);
-      
-      // Показываем крестик если:
-      // 1. Есть сохраненный источник в sessionStorage ИЛИ
-      // 2. Есть параметр from И это НЕ прямой переход (пришли с внутренней навигации)
-      const hasFromParam = fromSource === 'home' || fromSource === 'projects' || fromSource === 'blog';
-      const shouldShowClose = !!savedSource || (hasFromParam && !isDirectNavigation);
+      const fromSource = urlParams.get("from");
+      const currentPath = window.location.pathname;
+      const savedProjectSource = sessionStorage.getItem("projectNavigationSource");
+      const savedBlogSource = sessionStorage.getItem("blogNavigationSource");
+      const isProjectDetailPage = currentPath.startsWith("/projects/") && currentPath !== "/projects/";
+      const isBlogDetailPage = currentPath.startsWith("/blog/") && currentPath !== "/blog/";
+
+      const hasProjectSource = fromSource === "home" || fromSource === "projects";
+      const hasBlogSource = fromSource === "home" || fromSource === "blog";
+
+      // Кнопка "закрыть" должна показываться всегда, когда мы на detail-странице
+      // и можем надежно определить, куда вернуть пользователя.
+      const shouldShowProjectClose = isProjectDetailPage && (!!savedProjectSource || hasProjectSource);
+      const shouldShowBlogClose = isBlogDetailPage && (!!savedBlogSource || hasBlogSource);
+      const shouldShowClose = shouldShowProjectClose || shouldShowBlogClose;
+
+      let finalSource = fromSource || "home";
+      if (shouldShowProjectClose) {
+        finalSource = savedProjectSource || fromSource || "projects";
+      } else if (shouldShowBlogClose) {
+        finalSource = savedBlogSource || fromSource || "blog";
+      }
       
       return {
         shouldShowClose,
-        finalSource: savedSource || fromSource || 'home'
+        finalSource
       };
     }
     
     // Функция переключения иконок
     function toggleIcon(showClose) {
       if (hamburgerIcon && closeIcon) {
-        const navbarContainer = document.querySelector('.navbar-container');
+        const navbarContainer = document.querySelector(".navbar-container");
         if (showClose) {
-          hamburgerIcon.style.display = 'none';
-          closeIcon.style.display = 'block';
+          hamburgerIcon.style.display = "none";
+          closeIcon.style.display = "block";
           // Убираем класс для отключения hover эффекта разворачивания
           if (navbarContainer) {
-            navbarContainer.classList.remove('show-hamburger');
+            navbarContainer.classList.remove("show-hamburger");
           }
         } else {
-          hamburgerIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
+          hamburgerIcon.style.display = "block";
+          closeIcon.style.display = "none";
           // Добавляем класс для включения hover эффекта разворачивания
           if (navbarContainer) {
-            navbarContainer.classList.add('show-hamburger');
+            navbarContainer.classList.add("show-hamburger");
           }
         }
       }
@@ -180,22 +176,22 @@ const backUrl = getBackUrl();
     
     // Функция анимации закрытия
     function animatePageClose(callback) {
-      const pageContent = document.querySelector('.project-page-content') || 
-                         document.querySelector('.blog-page-content') || 
+      const pageContent = document.querySelector(".project-page-content") || 
+                         document.querySelector(".blog-page-content") || 
                          document.body;
       
-      pageContent.style.transition = 'opacity 0.15s ease-out, filter 0.15s ease-out';
-      pageContent.style.opacity = '0.4';
-      pageContent.style.filter = 'blur(24px)';
+      pageContent.style.transition = "opacity 0.15s ease-out, filter 0.15s ease-out";
+      pageContent.style.opacity = "0.4";
+      pageContent.style.filter = "blur(24px)";
       
       setTimeout(callback, 150);
       
       // Защита от зависания
       setTimeout(() => {
-        if (pageContent.style.opacity === '0.4') {
-          pageContent.style.opacity = '';
-          pageContent.style.filter = '';
-          pageContent.style.transition = '';
+        if (pageContent.style.opacity === "0.4") {
+          pageContent.style.opacity = "";
+          pageContent.style.filter = "";
+          pageContent.style.transition = "";
         }
       }, 1000);
     }
@@ -203,24 +199,23 @@ const backUrl = getBackUrl();
     // Функция закрытия попапа
     function closePseudoModal(finalSource) {
       let returnUrl;
-      if (finalSource === 'home') {
-        returnUrl = '/';
-      } else if (finalSource === 'blog') {
-        returnUrl = '/blog';
+      if (finalSource === "home") {
+        returnUrl = "/";
+      } else if (finalSource === "blog") {
+        returnUrl = "/blog";
       } else {
-        returnUrl = '/projects';
+        returnUrl = "/projects";
       }
       
       animatePageClose(() => {
-        sessionStorage.setItem('disablePageAnimations', 'true');
-        sessionStorage.removeItem('projectNavigationSource');
-        sessionStorage.removeItem('blogNavigationSource');
-        
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          window.location.href = returnUrl;
-        }
+        sessionStorage.setItem("disablePageAnimations", "true");
+        sessionStorage.removeItem("projectNavigationSource");
+        sessionStorage.removeItem("blogNavigationSource");
+
+        // Для "закрытия" псевдомодалки нужен предсказуемый возврат к источнику,
+        // а не blind history.back(), который может вернуть на внешний сайт или
+        // в предыдущий detail-экран вместо списка.
+        window.location.assign(returnUrl);
       });
     }
     
@@ -229,14 +224,18 @@ const backUrl = getBackUrl();
     toggleIcon(modalState.shouldShowClose);
     
     // Инициализируем класс для браузеров без поддержки :has()
-    const navbarContainer = document.querySelector('.navbar-container');
+    const navbarContainer = document.querySelector(".navbar-container");
     if (navbarContainer && !modalState.shouldShowClose) {
-      navbarContainer.classList.add('show-hamburger');
+      navbarContainer.classList.add("show-hamburger");
     }
     
     // Мобильная навигация / закрытие попапа
+    let handleMobileMenuClick;
+    let handleMobileNavCloseClick;
+    let handleMobileNavIslandClick;
+
     if (mobileMenuButton && mobileNavIsland && mobileNavClose) {
-      mobileMenuButton.addEventListener('click', () => {
+      handleMobileMenuClick = () => {
         const currentModalState = checkPseudoModal();
         
         if (currentModalState.shouldShowClose) {
@@ -244,31 +243,36 @@ const backUrl = getBackUrl();
           closePseudoModal(currentModalState.finalSource);
         } else {
           // Открываем мобильную навигацию
-          mobileNavIsland.classList.add('show');
+          mobileNavIsland.classList.add("show");
         }
-      });
+      };
       
-      mobileNavClose.addEventListener('click', () => {
-        mobileNavIsland.classList.remove('show');
-      });
+      handleMobileNavCloseClick = () => {
+        mobileNavIsland.classList.remove("show");
+      };
       
       // Закрытие по клику вне островка
-      mobileNavIsland.addEventListener('click', (e) => {
+      handleMobileNavIslandClick = (e) => {
         if (e.target === mobileNavIsland) {
-          mobileNavIsland.classList.remove('show');
+          mobileNavIsland.classList.remove("show");
         }
-      });
+      };
+
+      mobileMenuButton.addEventListener("click", handleMobileMenuClick);
+      mobileNavClose.addEventListener("click", handleMobileNavCloseClick);
+      mobileNavIsland.addEventListener("click", handleMobileNavIslandClick);
     }
     
     // ESC для закрытия попапа
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
+    const handleKeydown = function(e) {
+      if (e.key === "Escape") {
         const modalState = checkPseudoModal();
         if (modalState.shouldShowClose) {
           closePseudoModal(modalState.finalSource);
         }
       }
-    });
+    };
+    document.addEventListener("keydown", handleKeydown);
     
     // Переменная для проверки, вернулся ли пользователь с другой страницы
     let isReturningFromOtherPage = false;
@@ -278,55 +282,42 @@ const backUrl = getBackUrl();
       const currentTime = new Date().getTime();
       
       // Получаем время последнего перехода между страницами
-      const lastNavigationTime = parseInt(sessionStorage.getItem('lastNavigationTime') || '0');
+      const lastNavigationTime = parseInt(sessionStorage.getItem("lastNavigationTime") || "0");
       
       // Если мы не на главной, записываем время перехода
       if (!isHomePage) {
-        sessionStorage.setItem('lastNavigationTime', currentTime.toString());
-        sessionStorage.setItem('visitedNonHomePage', 'true');
+        sessionStorage.setItem("lastNavigationTime", currentTime.toString());
+        sessionStorage.setItem("visitedNonHomePage", "true");
       }
       
       // Проверяем, было ли недавно посещение другой страницы
       const timeDiff = currentTime - lastNavigationTime;
-      isReturningFromOtherPage = timeDiff < 1000 && isHomePage && sessionStorage.getItem('visitedNonHomePage') === 'true';
+      isReturningFromOtherPage = timeDiff < 1000 && isHomePage && sessionStorage.getItem("visitedNonHomePage") === "true";
       
       // Если пользователь обновил главную страницу (а не пришел с другой),
       // сбрасываем флаг посещения не главной страницы
       if (isHomePage && !isReturningFromOtherPage) {
-        sessionStorage.removeItem('visitedNonHomePage');
+        sessionStorage.removeItem("visitedNonHomePage");
       }
     } catch (e) {
-      console.error('Error accessing sessionStorage:', e);
+      console.error("Error accessing sessionStorage:", e);
     }
     
     const handleScroll = () => {
-      const footerRect = footer.getBoundingClientRect();
-      const documentHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      );
-      
-      const viewportHeight = window.innerHeight;
-      const hasScrollableContent = documentHeight > viewportHeight + 100;
-      const footerVisible = footerRect.top < viewportHeight - 50;
-      
       // На главной странице показываем навбар если пользователь прокрутил страницу
       // ИЛИ если пользователь вернулся с другой страницы сайта
       if (isHomePage) {
         if (window.scrollY > 10 || isReturningFromOtherPage) {
-          navbar.classList.remove('opacity-0', 'pointer-events-none');
-          navbar.classList.add('opacity-100');
+          navbar.classList.remove("opacity-0", "pointer-events-none");
+          navbar.classList.add("opacity-100");
         } else {
-          navbar.classList.add('opacity-0', 'pointer-events-none');
-          navbar.classList.remove('opacity-100');
+          navbar.classList.add("opacity-0", "pointer-events-none");
+          navbar.classList.remove("opacity-100");
         }
       } else {
         // На остальных страницах всегда показываем навбар
-        navbar.classList.remove('opacity-0', 'pointer-events-none');
-        navbar.classList.add('opacity-100');
+        navbar.classList.remove("opacity-0", "pointer-events-none");
+        navbar.classList.add("opacity-100");
       }
     };
     
@@ -334,31 +325,53 @@ const backUrl = getBackUrl();
     handleScroll();
     
     // Слушаем события
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    
+    const handlePopState = function() {
+      // Сбрасываем возможные висящие анимации
+      const pageContent = document.querySelector(".project-page-content") || 
+                         document.querySelector(".blog-page-content") || 
+                         document.body;
+      if (pageContent && pageContent.style.opacity === "0.4") {
+        pageContent.style.opacity = "";
+        pageContent.style.filter = "";
+        pageContent.style.transition = "";
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    window.__navbarCleanup = () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      document.removeEventListener("keydown", handleKeydown);
+      window.removeEventListener("popstate", handlePopState);
+
+      if (mobileMenuButton && handleMobileMenuClick) {
+        mobileMenuButton.removeEventListener("click", handleMobileMenuClick);
+      }
+      if (mobileNavClose && handleMobileNavCloseClick) {
+        mobileNavClose.removeEventListener("click", handleMobileNavCloseClick);
+      }
+      if (mobileNavIsland && handleMobileNavIslandClick) {
+        mobileNavIsland.removeEventListener("click", handleMobileNavIslandClick);
+      }
+    };
   }
   
-  // Обработчик события popstate для корректной работы кнопки "назад"
-  window.addEventListener('popstate', function(event) {
-    // Сбрасываем возможные висящие анимации
-    const pageContent = document.querySelector('.project-page-content') || 
-                       document.querySelector('.blog-page-content') || 
-                       document.body;
-    if (pageContent && pageContent.style.opacity === '0.4') {
-      pageContent.style.opacity = '';
-      pageContent.style.filter = '';
-      pageContent.style.transition = '';
-    }
-  });
-  
   // Инициализация
-  document.addEventListener('DOMContentLoaded', initNavbar);
-  document.addEventListener('astro:after-swap', initNavbar);
+  document.addEventListener("DOMContentLoaded", initNavbar);
+  document.addEventListener("astro:after-swap", initNavbar);
 </script>
 
 <style>
+  #navbar {
+    pointer-events: none;
+  }
+
   .navbar-container {
     position: relative;
+    pointer-events: auto;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   

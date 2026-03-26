@@ -1,14 +1,12 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
 import Logo from "@components/Logo.astro";
-import Link from "@components/Link.astro";
 
 interface Props {
-  pageType?: 'default' | 'blog' | 'project';
+  pageType?: "default" | "blog" | "project";
 }
 
-const { pageType = 'default' } = Astro.props;
+const { pageType = "default" } = Astro.props;
 
 const currentYear = new Date().getFullYear();
 ---

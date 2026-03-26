@@ -27,7 +27,7 @@ const { post, posts } = Astro.props;
 const { Content } = await post.render();
 
 // Получаем параметр from из URL для передачи в ссылки на другие посты
-const fromParam = Astro.url.searchParams.get('from') || 'blog';
+const fromParam = Astro.url.searchParams.get("from") || "blog";
 
 // Получаем другие последние посты, исключая текущий
 const otherPosts = posts
@@ -39,12 +39,30 @@ const postsToShow = otherPosts.length > 0 ? otherPosts : [post];
 
 // SEO: определяем canonical URL без параметров и robots meta
 const canonicalURL = new URL(`/blog/${post.slug}/`, Astro.site).href;
-const hasFromParam = Astro.url.searchParams.has('from');
-const robotsMeta = hasFromParam ? 'noindex, follow' : undefined;
+const hasFromParam = Astro.url.searchParams.has("from");
+const robotsMeta = hasFromParam ? "noindex, follow" : undefined;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  url: canonicalURL,
+  datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  author: {
+    "@type": "Person",
+    name: "Sergey Kruglov",
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Sergey Kruglov",
+  },
+  mainEntityOfPage: canonicalURL,
+};
 
 const breadcrumbs = [
-  { label: SITE.NAME, url: '/' },
-  { label: 'Blog', url: '/blog' },
+  { label: SITE.NAME, url: "/" },
+  { label: "Blog", url: "/blog" },
   { label: post.data.title }
 ];
 
@@ -57,6 +75,8 @@ const breadcrumbs = [
   breadcrumbs={breadcrumbs}
   canonicalURL={canonicalURL}
   robots={robotsMeta}
+  structuredData={structuredData}
+  ogType="article"
 >
   <!-- Контент страницы с анимацией -->
   <div class="blog-page-content">
@@ -120,21 +140,21 @@ const breadcrumbs = [
     function initBlogPageAnimation() {
       // Проверяем URL параметры
       const urlParams = new URLSearchParams(window.location.search);
-      const fromSource = urlParams.get('from');
-      const hasFromParam = fromSource === 'home' || fromSource === 'blog';
+      const fromSource = urlParams.get("from");
+      const hasFromParam = fromSource === "home" || fromSource === "blog";
       
-      const pageContent = document.querySelector('.blog-page-content');
+      const pageContent = document.querySelector(".blog-page-content");
       
       if (hasFromParam && pageContent) {
         // Добавляем анимацию появления страницы
-        pageContent.style.opacity = '0';
-        pageContent.style.transform = 'translateY(20px)';
+        pageContent.style.opacity = "0";
+        pageContent.style.transform = "translateY(20px)";
         
         // Анимируем появление
         setTimeout(() => {
-          pageContent.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
-          pageContent.style.opacity = '1';
-          pageContent.style.transform = 'translateY(0)';
+          pageContent.style.transition = "opacity 0.4s ease-out, transform 0.4s ease-out";
+          pageContent.style.opacity = "1";
+          pageContent.style.transform = "translateY(0)";
         }, 100);
       }
     }
@@ -142,51 +162,51 @@ const breadcrumbs = [
     function updateMorePostsLinks() {
       // Получаем сохраненное значение или значение из URL
       const urlParams = new URLSearchParams(window.location.search);
-      const fromSource = urlParams.get('from');
-      const savedSource = sessionStorage.getItem('blogNavigationSource');
+      const fromSource = urlParams.get("from");
+      const savedSource = sessionStorage.getItem("blogNavigationSource");
       
       // Определяем финальное значение - приоритет сохраненному
-      const finalFromParam = savedSource || fromSource || 'blog';
+      const finalFromParam = savedSource || fromSource || "blog";
       
       // Находим все ссылки на посты в секции Latest Writing
-      const morePostsLinks = document.querySelectorAll('a[href^="/blog/"]');
+      const morePostsLinks = document.querySelectorAll("a[href^=\"/blog/\"]");
       
       morePostsLinks.forEach(link => {
         const url = new URL(link.href);
         // Обновляем параметр from
-        url.searchParams.set('from', finalFromParam);
+        url.searchParams.set("from", finalFromParam);
         link.href = url.toString();
         
         // Добавляем обработчик для сохранения источника навигации и позиции скролла
-        link.addEventListener('click', function() {
+        link.addEventListener("click", function() {
           // Сохраняем источник навигации для корректной работы кнопки закрытия
-          sessionStorage.setItem('blogNavigationSource', finalFromParam);
-          console.log('Set blogNavigationSource to', finalFromParam, 'from More Posts');
+          sessionStorage.setItem("blogNavigationSource", finalFromParam);
+          console.log("Set blogNavigationSource to", finalFromParam, "from More Posts");
           
-          if (finalFromParam === 'home') {
+          if (finalFromParam === "home") {
             // Сохраняем позицию главной страницы только если её еще нет
-            if (!sessionStorage.getItem('homeScrollPosition')) {
-              console.log('More Posts link clicked from home context');
+            if (!sessionStorage.getItem("homeScrollPosition")) {
+              console.log("More Posts link clicked from home context");
             }
-          } else if (finalFromParam === 'blog') {
+          } else if (finalFromParam === "blog") {
             // Сохраняем позицию страницы блога только если её еще нет
-            if (!sessionStorage.getItem('blogScrollPosition')) {
-              console.log('More Posts link clicked from blog context');
+            if (!sessionStorage.getItem("blogScrollPosition")) {
+              console.log("More Posts link clicked from blog context");
             }
           }
         });
       });
       
-      console.log('Updated More Posts links with from:', finalFromParam);
+      console.log("Updated More Posts links with from:", finalFromParam);
     }
     
     // Запускаем инициализацию
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function() {
       initBlogPageAnimation();
       updateMorePostsLinks();
     });
     
-    document.addEventListener('astro:page-load', function() {
+    document.addEventListener("astro:page-load", function() {
       initBlogPageAnimation();
       updateMorePostsLinks();
     });

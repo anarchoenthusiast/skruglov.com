@@ -1,0 +1,20 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#0E1022"/>
+<rect x="48" y="48" width="1104" height="1104" rx="36" fill="#131733" stroke="#FFFFFF" stroke-opacity="0.08"/>
+<rect x="92" y="92" width="194" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.08"/>
+<text x="122" y="121" fill="#F5F5F2" font-family="Arial, Helvetica, sans-serif" font-size="24">Cultural / Festival Design</text>
+<text x="92" y="546" fill="#F5F5F2" font-family="'Times New Roman', serif" font-size="134" letter-spacing="-4">
+  INTERVALS
+</text>
+<text x="92" y="660" fill="#F5F5F2" font-family="'Times New Roman', serif" font-size="134" letter-spacing="-4">
+  FESTIVAL
+</text>
+<text x="92" y="756" fill="#F5F5F2" fill-opacity="0.68" font-family="Arial, Helvetica, sans-serif" font-size="32">
+  Multimedia art, sound, and spatial experience.
+</text>
+<circle cx="965" cy="240" r="126" fill="#4A68FF"/>
+<circle cx="890" cy="392" r="70" fill="#9EB0FF"/>
+<circle cx="1064" cy="388" r="46" fill="#F5F5F2"/>
+<path d="M722 888C722 868.118 738.118 852 758 852H1084C1103.88 852 1120 868.118 1120 888V930C1120 949.882 1103.88 966 1084 966H758C738.118 966 722 949.882 722 930V888Z" fill="#F5F5F2"/>
+<text x="758" y="920" fill="#131733" font-family="Arial, Helvetica, sans-serif" font-size="28">skruglov.com/projects/intervals-festival</text>
+</svg>

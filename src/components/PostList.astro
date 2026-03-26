@@ -1,9 +1,10 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import PostCard from "./PostCard.astro";
 
 interface Props {
   title: string;
-  posts: any[];
+  posts: CollectionEntry<"blog">[];
   seeAllLink?: string;
   seeAllText?: string;
   fromSource?: string;

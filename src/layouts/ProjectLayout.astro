@@ -15,12 +15,12 @@ const { Content } = await project.render();
 
 // Получаем параметр from из URL для передачи в ссылки на другие проекты
 // Используем 'projects' только если нет ни URL параметра, ни сохраненного значения
-const fromParam = Astro.url.searchParams.get('from') || 'projects';
+const fromParam = Astro.url.searchParams.get("from") || "projects";
 
 // SEO: определяем canonical URL без параметров и robots meta
 const canonicalURL = new URL(`/projects/${project.slug}/`, Astro.site).href;
-const hasFromParam = Astro.url.searchParams.has('from');
-const robotsMeta = hasFromParam ? 'noindex, follow' : undefined;
+const hasFromParam = Astro.url.searchParams.has("from");
+const robotsMeta = hasFromParam ? "noindex, follow" : undefined;
 
 // SEO: структурированные данные для проекта
 const structuredData = {
@@ -47,10 +47,22 @@ const ogImage = project.data.images && project.data.images.length > 0
   ? project.data.images[0].url 
   : undefined;
 
+const primaryProjectMeta = [
+  { label: "Role", value: project.data.role },
+  { label: "Company", value: project.data.company },
+  { label: "Project Type", value: project.data.projectType },
+  { label: "Duration", value: project.data.duration },
+].filter((item): item is { label: string; value: string } => Boolean(item.value));
+
+const secondaryProjectMeta = [
+  { label: "Scope", value: project.data.scope },
+  { label: "Contributions", value: project.data.contributions },
+].filter((item): item is { label: string; value: string } => Boolean(item.value));
+
 // Получаем все проекты, исключая текущий
 const allProjects = await getCollection("projects");
 const otherProjects = allProjects
-  .filter(p => p.slug !== project.slug)
+  .filter((p) => !p.data.draft && p.slug !== project.slug)
   .sort((a, b) => {
     // Если есть поле priority, сортируем по нему (меньшее значение = выше)
     if (a.data.priority !== undefined && b.data.priority !== undefined) {
@@ -70,8 +82,8 @@ const otherProjects = allProjects
   .slice(0, 3);
 
 const breadcrumbs = [
-  { label: SITE.NAME, url: '/' },
-  { label: 'Projects', url: '/projects' },
+  { label: SITE.NAME, url: "/" },
+  { label: "Projects", url: "/projects" },
   { label: project.data.title }
 ];
 ---
@@ -95,42 +107,59 @@ const breadcrumbs = [
         <div class="animate">
           <!-- Блок с информацией о проекте в две строки по три элемента -->
           <div class="space-y-6">
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-              <div>
-                <h6 class="project-label">Role</h6>
-                <p class="project-value">{project.data.role}</p>
-              </div>
-              
-              <div>
-                <h6 class="project-label">Project Type</h6>
-                <p class="project-value">{project.data.projectType}</p>
-              </div>
-              
-              <div>
-                <h6 class="project-label">Duration</h6>
-                <p class="project-value">{project.data.duration}</p>
-              </div>
-            
-              <div>
-                <h6 class="project-label">Scope</h6>
-                <p class="project-value">{project.data.scope}</p>
-              </div>
-              
-              <div>
-                <h6 class="project-label">Contributions</h6>
-                <p class="project-value">{project.data.contributions}</p>
-              </div>
-              
-              <div>
-                <h6 class="project-label">Collaborators</h6>
-                <p class="project-value">{project.data.collaborators}</p>
-              </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {primaryProjectMeta.map((item) => (
+                <div>
+                  <h6 class="project-label">{item.label}</h6>
+                  <p class="project-value">{item.value}</p>
+                </div>
+              ))}
             </div>
+
+            {secondaryProjectMeta.length > 0 && (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {secondaryProjectMeta.map((item) => (
+                  <div>
+                    <h6 class="project-label">{item.label}</h6>
+                    <p class="project-value">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {(project.data.demoURL || project.data.repoURL) && (
+              <div class="flex flex-wrap gap-3 pt-2">
+                {project.data.demoURL && (
+                  <a
+                    href={project.data.demoURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                  >
+                    Visit project
+                  </a>
+                )}
+                {project.data.repoURL && (
+                  <a
+                    href={project.data.repoURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                  >
+                    View repository
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
-        <!-- Контент проекта и изображения -->
-        <article class="animate space-y-2 mt-8">
+        <!-- Заголовок и контент проекта -->
+        <div class="animate mt-8">
+          <h1>{project.data.title}</h1>
+        </div>
+
+        <article class="project-article animate mt-2">
           <Content />
         </article>
       </div>
@@ -180,21 +209,21 @@ const breadcrumbs = [
   function initProjectPageAnimation() {
     // Проверяем URL параметры
     const urlParams = new URLSearchParams(window.location.search);
-    const fromSource = urlParams.get('from');
-    const hasFromParam = fromSource === 'home' || fromSource === 'projects';
+    const fromSource = urlParams.get("from");
+    const hasFromParam = fromSource === "home" || fromSource === "projects";
     
-    const pageContent = document.querySelector('.project-page-content');
+    const pageContent = document.querySelector(".project-page-content");
     
     if (hasFromParam && pageContent) {
       // Добавляем анимацию появления страницы
-      pageContent.style.opacity = '0';
-      pageContent.style.transform = 'translateY(20px)';
+      pageContent.style.opacity = "0";
+      pageContent.style.transform = "translateY(20px)";
       
       // Анимируем появление
       setTimeout(() => {
-        pageContent.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
-        pageContent.style.opacity = '1';
-        pageContent.style.transform = 'translateY(0)';
+        pageContent.style.transition = "opacity 0.4s ease-out, transform 0.4s ease-out";
+        pageContent.style.opacity = "1";
+        pageContent.style.transform = "translateY(0)";
       }, 100);
     }
   }
@@ -202,51 +231,51 @@ const breadcrumbs = [
   function updateMoreProjectsLinks() {
     // Получаем сохраненное значение или значение из URL
     const urlParams = new URLSearchParams(window.location.search);
-    const fromSource = urlParams.get('from');
-    const savedSource = sessionStorage.getItem('projectNavigationSource');
+    const fromSource = urlParams.get("from");
+    const savedSource = sessionStorage.getItem("projectNavigationSource");
     
     // Определяем финальное значение - приоритет сохраненному
-    const finalFromParam = savedSource || fromSource || 'projects';
+    const finalFromParam = savedSource || fromSource || "projects";
     
     // Находим все ссылки на проекты в секции More Projects
-    const moreProjectsLinks = document.querySelectorAll('a[href^="/projects/"]');
+    const moreProjectsLinks = document.querySelectorAll("a[href^=\"/projects/\"]");
     
     moreProjectsLinks.forEach(link => {
       const url = new URL(link.href);
       // Обновляем параметр from
-      url.searchParams.set('from', finalFromParam);
+      url.searchParams.set("from", finalFromParam);
       link.href = url.toString();
       
       // Добавляем обработчик для сохранения источника навигации и позиции скролла
-      link.addEventListener('click', function() {
+      link.addEventListener("click", function() {
         // Сохраняем источник навигации для корректной работы кнопки закрытия
-        sessionStorage.setItem('projectNavigationSource', finalFromParam);
-        console.log('Set projectNavigationSource to', finalFromParam, 'from More Projects');
+        sessionStorage.setItem("projectNavigationSource", finalFromParam);
+        console.log("Set projectNavigationSource to", finalFromParam, "from More Projects");
         
-        if (finalFromParam === 'home') {
+        if (finalFromParam === "home") {
           // Сохраняем позицию главной страницы только если её еще нет
-          if (!sessionStorage.getItem('homeScrollPosition')) {
-            console.log('More Projects link clicked from home context');
+          if (!sessionStorage.getItem("homeScrollPosition")) {
+            console.log("More Projects link clicked from home context");
           }
-        } else if (finalFromParam === 'projects') {
+        } else if (finalFromParam === "projects") {
           // Сохраняем позицию страницы проектов только если её еще нет
-          if (!sessionStorage.getItem('projectsScrollPosition')) {
-            console.log('More Projects link clicked from projects context');
+          if (!sessionStorage.getItem("projectsScrollPosition")) {
+            console.log("More Projects link clicked from projects context");
           }
         }
       });
     });
     
-    console.log('Updated More Projects links with from:', finalFromParam);
+    console.log("Updated More Projects links with from:", finalFromParam);
   }
   
   // Запускаем инициализацию
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function() {
     initProjectPageAnimation();
     updateMoreProjectsLinks();
   });
   
-  document.addEventListener('astro:page-load', function() {
+  document.addEventListener("astro:page-load", function() {
     initProjectPageAnimation();
     updateMoreProjectsLinks();
   });
@@ -276,14 +305,37 @@ const breadcrumbs = [
     @apply text-black dark:text-white;
   }
 
+  .project-link {
+    @apply inline-flex items-center rounded-full border border-black/10 px-4 py-2;
+    @apply font-grotesk text-sm text-black transition-colors;
+    @apply hover:border-black/20 hover:bg-black/[0.03];
+    @apply dark:border-white/10 dark:text-white dark:hover:border-white/20 dark:hover:bg-white/[0.04];
+  }
+
   /* Стили для контента проекта */
   :global(.astro-code) {
     @apply rounded-md text-sm my-6;
+  }
+
+  :global(.project-article > p + p) {
+    @apply mt-2;
+  }
+
+  :global(.project-article > img),
+  :global(.project-article > picture),
+  :global(.project-article > figure) {
+    @apply block w-full mt-6;
   }
 
   /* Стили для контента проекта наследуют стили статьи из global.css */
   /* Дополнительные стили для заголовков h1 в проектах */
   :global(.project-page-content h1) {
     @apply font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal;
+  }
+
+  :global(.project-article > p + img),
+  :global(.project-article > p + picture),
+  :global(.project-article > p + figure) {
+    @apply mt-8;
   }
 </style> 

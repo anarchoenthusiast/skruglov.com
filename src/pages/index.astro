@@ -3,12 +3,8 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import PostList from "@components/PostList.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
-import Logo from "@components/Logo.astro";
 import CTA from "@components/CTA.astro";
-import { dateRange } from "@lib/utils";
-import { SITE, HOME, SOCIALS } from "@consts";
+import { SITE, HOME } from "@consts";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -146,72 +142,72 @@ const projects = (await getCollection("projects"))
 <script is:inline>
   function initHomeScrollLogic() {
     // Очищаем сохраненные источники навигации если пришли на главную
-    sessionStorage.removeItem('projectNavigationSource');
-    sessionStorage.removeItem('blogNavigationSource');
+    sessionStorage.removeItem("projectNavigationSource");
+    sessionStorage.removeItem("blogNavigationSource");
     
     // Проверяем флаг отключения анимаций
-    const shouldDisableAnimations = sessionStorage.getItem('disablePageAnimations') === 'true';
+    const shouldDisableAnimations = sessionStorage.getItem("disablePageAnimations") === "true";
     
     if (shouldDisableAnimations) {
       // Отключаем анимации на главной странице
-      const animatedElements = document.querySelectorAll('.animate');
+      const animatedElements = document.querySelectorAll(".animate");
       animatedElements.forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.classList.remove('animate');
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        el.classList.remove("animate");
       });
       
       // Очищаем флаг
-      sessionStorage.removeItem('disablePageAnimations');
+      sessionStorage.removeItem("disablePageAnimations");
       
-      console.log('Disabled animations on home page due to project close');
+      console.log("Disabled animations on home page due to project close");
     }
     
     // Восстанавливаем позицию скролла при возврате с проекта
-    const savedScrollPosition = sessionStorage.getItem('homeScrollPosition');
+    const savedScrollPosition = sessionStorage.getItem("homeScrollPosition");
     if (savedScrollPosition && shouldDisableAnimations) {
       // Восстанавливаем позицию после небольшой задержки
       setTimeout(() => {
         window.scrollTo(0, parseInt(savedScrollPosition));
-        sessionStorage.removeItem('homeScrollPosition');
-        console.log('Restored scroll position:', savedScrollPosition);
+        sessionStorage.removeItem("homeScrollPosition");
+        console.log("Restored scroll position:", savedScrollPosition);
       }, 50);
     }
     
     // Добавляем обработчики для сохранения позиции скролла и источника навигации при переходе на проекты и посты блога
-    const projectLinks = document.querySelectorAll('a[href*="/projects/"][href*="from=home"]');
+    const projectLinks = document.querySelectorAll("a[href*=\"/projects/\"][href*=\"from=home\"]");
     projectLinks.forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener("click", function() {
         // Сохраняем источник навигации для корректной работы кнопки закрытия
-        sessionStorage.setItem('projectNavigationSource', 'home');
-        console.log('Set projectNavigationSource to home');
+        sessionStorage.setItem("projectNavigationSource", "home");
+        console.log("Set projectNavigationSource to home");
         
         // Сохраняем текущую позицию скролла только если её еще нет
-        if (!sessionStorage.getItem('homeScrollPosition')) {
-          sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
-          console.log('Saved home scroll position:', window.scrollY);
+        if (!sessionStorage.getItem("homeScrollPosition")) {
+          sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
+          console.log("Saved home scroll position:", window.scrollY);
         }
       });
     });
     
-    const blogLinks = document.querySelectorAll('a[href*="/blog/"][href*="from=home"]');
+    const blogLinks = document.querySelectorAll("a[href*=\"/blog/\"][href*=\"from=home\"]");
     blogLinks.forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener("click", function() {
         // Сохраняем источник навигации для корректной работы кнопки закрытия
-        sessionStorage.setItem('blogNavigationSource', 'home');
-        console.log('Set blogNavigationSource to home');
+        sessionStorage.setItem("blogNavigationSource", "home");
+        console.log("Set blogNavigationSource to home");
         
         // Сохраняем текущую позицию скролла только если её еще нет
-        if (!sessionStorage.getItem('homeScrollPosition')) {
-          sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
-          console.log('Saved home scroll position for blog:', window.scrollY);
+        if (!sessionStorage.getItem("homeScrollPosition")) {
+          sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
+          console.log("Saved home scroll position for blog:", window.scrollY);
         }
       });
     });
   }
   
-  document.addEventListener('DOMContentLoaded', initHomeScrollLogic);
-  document.addEventListener('astro:page-load', initHomeScrollLogic);
+  document.addEventListener("DOMContentLoaded", initHomeScrollLogic);
+  document.addEventListener("astro:page-load", initHomeScrollLogic);
 </script>
 
 <style>

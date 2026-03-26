@@ -2,13 +2,13 @@
 import Container from "./Container.astro";
 
 interface Props {
-  size?: 'default' | 'blog' | 'project';
+  size?: "default" | "blog" | "project";
 }
 
-const { size = 'default' } = Astro.props;
+const { size = "default" } = Astro.props;
 
 // Мапим размер blog на blog-mobile для единообразных отступов
-const containerSize = size === 'blog' ? 'blog-mobile' : size;
+const containerSize = size === "blog" ? "blog-mobile" : size;
 ---
 
 <section class="cta pt-12 pb-0">
@@ -17,13 +17,13 @@ const containerSize = size === 'blog' ? 'blog-mobile' : size;
       <div class="flex flex-col gap-6 w-full mb-8 animate sm:px-6">
         <div class="w-full">
           <h1 class="text-center font-tiempos text-4xl font-normal text-black dark:text-white tracking-[-0.028em] leading-[1.167]">
-            Let's turn your idea<br/>into product
+            Let's turn your idea<br/>into a product
           </h1>
         </div>
         <div class="flex justify-center items-center w-full">
           <p class="text-center font-grotesk text-base leading-[1.5] text-black dark:text-white max-w-[580px] mx-auto px-0">
-            I work with a clarity and speed few can match—on either side of the Atlantic. Guided by deep experience building successful products, I trust my decisions, embrace open briefs, and communicate minimally. Because great design values your time.<br/><br/>
-            My work has been featured in Forbes, billboard, PCmag, TNW, Tech Advisor, Musicradar, Golden Kitty Award
+            I work with founders as a founding designer, helping shape digital products from the earliest stages with clarity, speed, and care - from Product Discovery and UX/UI design to frontend, full-stack development, and AI integration into business processes.<br/><br/>
+            My work has been featured in Forbes, Billboard, PCMag, TNW, Tech Advisor, MusicRadar, and Golden Kitty Award.
           </p>
         </div>
       </div>

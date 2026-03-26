@@ -11,15 +11,14 @@ const { items, showLastItem = false } = Astro.props;
 
 // Получаем текущий путь для стилизации
 const currentPath = Astro.url.pathname;
-const normalizedPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath;
+const normalizedPath = currentPath.endsWith("/") && currentPath !== "/" ? currentPath.slice(0, -1) : currentPath;
 
 // Имя автора для использования в проверках
 const authorName = "Sergey Kruglov";
 
 // Определяем тип страницы
-const isSecondLevelPage = normalizedPath === '/projects' || normalizedPath === '/blog' || normalizedPath === '/about' || normalizedPath === '/colophon';
-const isThirdLevelPage = (normalizedPath.startsWith('/projects/') && normalizedPath !== '/projects') || 
-                        (normalizedPath.startsWith('/blog/') && normalizedPath !== '/blog');
+const isThirdLevelPage = (normalizedPath.startsWith("/projects/") && normalizedPath !== "/projects") || 
+                        (normalizedPath.startsWith("/blog/") && normalizedPath !== "/blog");
 
 // Определяем, какие элементы показывать
 const displayedItems = (isThirdLevelPage || showLastItem) ? items : items.slice(0, -1);
@@ -29,9 +28,9 @@ const mobileDisplayedItems = isThirdLevelPage ? items.slice(0, -1) : displayedIt
 
 // Функция для сокращения заголовка блога до первых двух слов
 function shortenBlogTitle(title: string): string {
-  const words = title.split(' ');
+  const words = title.split(" ");
   if (words.length <= 2) return title;
-  return words.slice(0, 2).join(' ') + '...';
+  return words.slice(0, 2).join(" ") + "...";
 }
 ---
 
@@ -71,7 +70,7 @@ function shortenBlogTitle(title: string): string {
         </a>
       ) : (
           <span class="text-black/44 dark:text-white/44">
-            {(isThirdLevelPage && normalizedPath.startsWith('/blog/') && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
+            {(isThirdLevelPage && normalizedPath.startsWith("/blog/") && index === displayedItems.length - 1) ? shortenBlogTitle(item.label) : (item.label === "Sergei Kruglov" ? authorName : item.label)}
         </span>
       )}
     </>

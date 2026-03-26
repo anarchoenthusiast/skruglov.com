@@ -5,21 +5,21 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import { SITE } from "@consts";
 
 interface Props {
-  pageType?: 'default' | 'blog' | 'project';
+  pageType?: "default" | "blog" | "project";
   breadcrumbs?: {
     label: string;
     url?: string;
   }[];
 }
 
-const { pageType = 'default', breadcrumbs = [] } = Astro.props;
+const { pageType = "default", breadcrumbs = [] } = Astro.props;
 
 // Мапим pageType на размер контейнера
-const containerSize = pageType === 'blog' ? 'blog-mobile' : pageType;
+const containerSize = pageType === "blog" ? "blog-mobile" : pageType;
 
 // Строим хлебные крошки
 const defaultBreadcrumbs = [
-  { label: SITE.NAME, url: '/' }
+  { label: SITE.NAME, url: "/" }
 ];
 
 // Если хлебные крошки не заданы явно, формируем их на основе текущего пути
@@ -27,8 +27,8 @@ const currentPath = Astro.url.pathname;
 let finalBreadcrumbs = breadcrumbs.length > 0 ? breadcrumbs : defaultBreadcrumbs;
 
 // Добавляем текущий путь, если хлебные крошки не заданы явно
-if (breadcrumbs.length === 0 && currentPath !== '/') {
-  const segments = currentPath.split('/').filter(segment => segment);
+if (breadcrumbs.length === 0 && currentPath !== "/") {
+  const segments = currentPath.split("/").filter(segment => segment);
   
   if (segments.length > 0) {
     const pathSegment = segments[0];
@@ -37,15 +37,15 @@ if (breadcrumbs.length === 0 && currentPath !== '/') {
       label: label,
       // Для страниц верхнего уровня (/projects, /blog, /about, /colophon) не делаем ссылку
       // чтобы показать второй уровень (текущий путь) как текущую страницу
-      url: ['projects', 'blog', 'about', 'colophon'].includes(pathSegment) ? undefined : `/${pathSegment}`
+      url: ["projects", "blog", "about", "colophon"].includes(pathSegment) ? undefined : `/${pathSegment}`
     });
   }
 }
 
 // Определяем, нужно ли показывать последний элемент в хлебных крошках
 // Для страниц верхнего уровня показываем его
-const normalizedPath = currentPath.endsWith('/') && currentPath !== '/' ? currentPath.slice(0, -1) : currentPath;
-const showLast = normalizedPath === '/projects' || normalizedPath === '/blog' || normalizedPath === '/about' || normalizedPath === '/colophon';
+const normalizedPath = currentPath.endsWith("/") && currentPath !== "/" ? currentPath.slice(0, -1) : currentPath;
+const showLast = normalizedPath === "/projects" || normalizedPath === "/blog" || normalizedPath === "/about" || normalizedPath === "/colophon";
 ---
 
 <header class="pt-12">

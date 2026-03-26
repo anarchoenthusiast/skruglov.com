@@ -4,14 +4,14 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://astro-nano-demo.vercel.app",
+  site: "https://skruglov.com",
   integrations: [mdx(), sitemap(), tailwind()],
   devToolbar: {
     enabled: false,
   },
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp',
+      entrypoint: "astro/assets/services/sharp",
       config: {
         limitInputPixels: false,
         // Настройки для максимального качества

@@ -25,8 +25,8 @@ const posts = data.reduce((acc: Acc, post) => {
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a)); 
 
 const breadcrumbs = [
-  { label: SITE.NAME, url: '/' },
-  { label: 'Blog' }
+  { label: SITE.NAME, url: "/" },
+  { label: "Blog" }
 ];
 
 ---
@@ -64,54 +64,54 @@ const breadcrumbs = [
 <script is:inline>
   function initBlogScrollLogic() {
     // Очищаем сохраненный источник навигации блога если пришли на страницу блога
-    sessionStorage.removeItem('blogNavigationSource');
+    sessionStorage.removeItem("blogNavigationSource");
     
     // Проверяем флаг отключения анимаций
-    const shouldDisableAnimations = sessionStorage.getItem('disablePageAnimations') === 'true';
+    const shouldDisableAnimations = sessionStorage.getItem("disablePageAnimations") === "true";
     
     if (shouldDisableAnimations) {
       // Отключаем анимации на странице блога
-      const animatedElements = document.querySelectorAll('.animate');
+      const animatedElements = document.querySelectorAll(".animate");
       animatedElements.forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.classList.remove('animate');
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        el.classList.remove("animate");
       });
       
       // Очищаем флаг
-      sessionStorage.removeItem('disablePageAnimations');
+      sessionStorage.removeItem("disablePageAnimations");
       
-      console.log('Disabled animations on blog page due to post close');
+      console.log("Disabled animations on blog page due to post close");
     }
     
     // Восстанавливаем позицию скролла при возврате с поста
-    const savedScrollPosition = sessionStorage.getItem('blogScrollPosition');
+    const savedScrollPosition = sessionStorage.getItem("blogScrollPosition");
     if (savedScrollPosition && shouldDisableAnimations) {
       // Восстанавливаем позицию после небольшой задержки
       setTimeout(() => {
         window.scrollTo(0, parseInt(savedScrollPosition));
-        sessionStorage.removeItem('blogScrollPosition');
-        console.log('Restored blog scroll position:', savedScrollPosition);
+        sessionStorage.removeItem("blogScrollPosition");
+        console.log("Restored blog scroll position:", savedScrollPosition);
       }, 50);
     }
     
     // Добавляем обработчики для сохранения позиции скролла и источника навигации при переходе на посты
-    const postLinks = document.querySelectorAll('a[href*="/blog/"][href*="from=blog"]');
+    const postLinks = document.querySelectorAll("a[href*=\"/blog/\"][href*=\"from=blog\"]");
     postLinks.forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener("click", function() {
         // Сохраняем источник навигации для корректной работы кнопки закрытия
-        sessionStorage.setItem('blogNavigationSource', 'blog');
-        console.log('Set blogNavigationSource to blog');
+        sessionStorage.setItem("blogNavigationSource", "blog");
+        console.log("Set blogNavigationSource to blog");
         
         // Сохраняем текущую позицию скролла только если её еще нет
-        if (!sessionStorage.getItem('blogScrollPosition')) {
-          sessionStorage.setItem('blogScrollPosition', window.scrollY.toString());
-          console.log('Saved blog scroll position:', window.scrollY);
+        if (!sessionStorage.getItem("blogScrollPosition")) {
+          sessionStorage.setItem("blogScrollPosition", window.scrollY.toString());
+          console.log("Saved blog scroll position:", window.scrollY);
         }
       });
     });
   }
   
-  document.addEventListener('DOMContentLoaded', initBlogScrollLogic);
-  document.addEventListener('astro:page-load', initBlogScrollLogic);
+  document.addEventListener("DOMContentLoaded", initBlogScrollLogic);
+  document.addEventListener("astro:page-load", initBlogScrollLogic);
 </script>

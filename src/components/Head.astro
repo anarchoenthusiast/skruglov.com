@@ -1,4 +1,5 @@
 ---
+import { SITE } from "@consts";
 import "../styles/global.css";
 import "../styles/fonts.css";
 
@@ -18,7 +19,7 @@ const defaultCanonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { 
   title, 
   description, 
-  image = "/nano.png",
+  image = "/og-default.svg",
   canonicalURL = defaultCanonicalURL.href,
   robots,
   structuredData,
@@ -27,15 +28,20 @@ const {
 } = Astro.props;
 
 const finalOgImage = ogImage || image;
+const resolvedOgImage = finalOgImage
+  ? new URL(finalOgImage, Astro.site ?? Astro.url).href
+  : undefined;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="author" content={SITE.NAME} />
 <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/x-icon" href="/favicon-light.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon-light.svg">
 <meta name="generator" content={Astro.generator} />
+<link rel="alternate" type="application/rss+xml" title={`${SITE.NAME} RSS Feed`} href="/rss.xml" />
 
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/tiempos-text/TiemposText-Regular.woff2" as="font" type="font/woff2" crossorigin/>
@@ -49,7 +55,7 @@ const finalOgImage = ogImage || image;
 
 <!-- Structured Data (JSON-LD) -->
 {structuredData && (
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 )}
 
 <!-- Primary Meta Tags -->
@@ -59,17 +65,18 @@ const finalOgImage = ogImage || image;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.NAME} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(finalOgImage, Astro.url)} />
+{resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(finalOgImage, Astro.url)} />
+<meta name="twitter:card" content={resolvedOgImage ? "summary_large_image" : "summary"} />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
 
 
 
@@ -103,14 +110,14 @@ const finalOgImage = ogImage || image;
     document.addEventListener("scroll", onScroll);
     
     // Добавляем обработчик ошибок для предотвращения белого экрана
-    window.addEventListener('error', function(e) {
-      console.error('Page error:', e);
+    window.addEventListener("error", function(e) {
+      console.error("Page error:", e);
       // Сбрасываем возможные висящие анимации
-      const pageContent = document.querySelector('.project-page-content') || document.querySelector('.blog-page-content') || document.body;
-      if (pageContent && pageContent.style.opacity === '0.4') {
-        pageContent.style.opacity = '';
-        pageContent.style.filter = '';
-        pageContent.style.transition = '';
+      const pageContent = document.querySelector(".project-page-content") || document.querySelector(".blog-page-content") || document.body;
+      if (pageContent && pageContent.style.opacity === "0.4") {
+        pageContent.style.opacity = "";
+        pageContent.style.filter = "";
+        pageContent.style.transition = "";
       }
     });
   }

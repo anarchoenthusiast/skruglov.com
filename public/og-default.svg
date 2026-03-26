@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="#F5F5F2"/>
+<rect x="42" y="42" width="1116" height="546" rx="28" fill="#FAFAF7" stroke="#0B0B0A" stroke-opacity="0.08"/>
+<circle cx="118" cy="120" r="18" fill="#0B0B0A"/>
+<circle cx="176" cy="120" r="18" fill="#0B0B0A" fill-opacity="0.18"/>
+<circle cx="234" cy="120" r="18" fill="#0B0B0A" fill-opacity="0.08"/>
+<text x="78" y="244" fill="#0B0B0A" font-family="'Times New Roman', serif" font-size="88" letter-spacing="-2.6">
+  Sergey Kruglov
+</text>
+<text x="78" y="320" fill="#0B0B0A" fill-opacity="0.62" font-family="Arial, Helvetica, sans-serif" font-size="30">
+  Product Designer and Engineer
+</text>
+<text x="78" y="418" fill="#0B0B0A" fill-opacity="0.78" font-family="Arial, Helvetica, sans-serif" font-size="28">
+  Designing AI products, creator tools, desktop software,
+</text>
+<text x="78" y="458" fill="#0B0B0A" fill-opacity="0.78" font-family="Arial, Helvetica, sans-serif" font-size="28">
+  and cross-platform systems with clarity and restraint.
+</text>
+<rect x="78" y="504" width="210" height="46" rx="23" fill="#0B0B0A"/>
+<text x="110" y="534" fill="#FAFAF7" font-family="Arial, Helvetica, sans-serif" font-size="22">
+  skruglov.com
+</text>
+<path d="M984 157C984 132.147 1004.15 112 1029 112H1083C1107.85 112 1128 132.147 1128 157V211C1128 235.853 1107.85 256 1083 256H1029C1004.15 256 984 235.853 984 211V157Z" fill="#FFB800"/>
+<path d="M894 267C894 242.147 914.147 222 939 222H993C1017.85 222 1038 242.147 1038 267V321C1038 345.853 1017.85 366 993 366H939C914.147 366 894 345.853 894 321V267Z" fill="#7C5CFF"/>
+<path d="M1074 267C1074 242.147 1094.15 222 1119 222H1173C1197.85 222 1218 242.147 1218 267V321C1218 345.853 1197.85 366 1173 366H1119C1094.15 366 1074 345.853 1074 321V267Z" fill="#0B0B0A"/>
+<path d="M984 377C984 352.147 1004.15 332 1029 332H1083C1107.85 332 1128 352.147 1128 377V431C1128 455.853 1107.85 476 1083 476H1029C1004.15 476 984 455.853 984 431V377Z" fill="#FF5C39"/>
+</svg>

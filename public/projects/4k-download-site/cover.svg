@@ -1,0 +1,22 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#F7F7F7"/>
+<rect x="48" y="48" width="1104" height="1104" rx="36" fill="#FCFCFC" stroke="#0B0B0A" stroke-opacity="0.08"/>
+<rect x="92" y="92" width="182" height="44" rx="22" fill="#0B0B0A" fill-opacity="0.06"/>
+<text x="122" y="121" fill="#0B0B0A" font-family="Arial, Helvetica, sans-serif" font-size="24">Web / Growth Design</text>
+<text x="92" y="552" fill="#0B0B0A" font-family="'Times New Roman', serif" font-size="138" letter-spacing="-4">
+  4K Download
+</text>
+<text x="92" y="666" fill="#0B0B0A" font-family="'Times New Roman', serif" font-size="138" letter-spacing="-4">
+  Site
+</text>
+<text x="92" y="762" fill="#0B0B0A" fill-opacity="0.68" font-family="Arial, Helvetica, sans-serif" font-size="32">
+  Website redesign, subscription UX, and
+</text>
+<text x="92" y="810" fill="#0B0B0A" fill-opacity="0.68" font-family="Arial, Helvetica, sans-serif" font-size="32">
+  refreshed brand and growth surfaces.
+</text>
+<circle cx="960" cy="244" r="122" fill="#2D6BFF"/>
+<circle cx="1052" cy="356" r="62" fill="#9EC0FF"/>
+<path d="M702 888C702 868.118 718.118 852 738 852H1084C1103.88 852 1120 868.118 1120 888V930C1120 949.882 1103.88 966 1084 966H738C718.118 966 702 949.882 702 930V888Z" fill="#0B0B0A"/>
+<text x="752" y="920" fill="#FCFCFC" font-family="Arial, Helvetica, sans-serif" font-size="28">skruglov.com/projects/4k-download-site</text>
+</svg>

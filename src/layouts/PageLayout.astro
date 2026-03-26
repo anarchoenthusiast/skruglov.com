@@ -3,13 +3,13 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 import { SITE } from "@consts";
 
 type Props = {
   title: string;
   description: string;
-  pageType?: 'default' | 'blog' | 'project';
+  pageType?: "default" | "blog" | "project";
   breadcrumbs?: {
     label: string;
     url?: string;
@@ -25,7 +25,7 @@ type Props = {
 const { 
   title, 
   description, 
-  pageType = 'default', 
+  pageType = "default", 
   breadcrumbs, 
   hideHeader = false,
   canonicalURL,
