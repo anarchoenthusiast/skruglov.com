@@ -8,18 +8,18 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Personal website of Sergey Kruglov - Product Designer and Developer.",
+  TITLE: "Product Designer and Engineer",
+  DESCRIPTION: "Sergey Kruglov is a product designer and engineer helping founders turn complex technology into clear, practical digital products.",
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  TITLE: "Writing",
+  DESCRIPTION: "Notes and essays by Sergey Kruglov on product design, technology, software, and the craft of building digital products.",
 };
 
 export const ABOUT: Metadata = {
   TITLE: "About",
-  DESCRIPTION: "Learn more about me and my work.",
+  DESCRIPTION: "About Sergey Kruglov, a product designer and engineer with 14+ years of experience building and scaling digital products.",
 };
 
 export const COLOPHON: Metadata = {
@@ -29,20 +29,20 @@ export const COLOPHON: Metadata = {
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories and demos.",
+  DESCRIPTION: "Selected product design, AI, creator tools, and software projects by Sergey Kruglov.",
 };
 
 export const SOCIALS: Socials = [
   { 
     NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
+    HREF: "https://x.com/kryglovsergey",
   },
   { 
     NAME: "github",
-    HREF: "https://github.com/markhorn-dev"
+    HREF: "https://github.com/anarchoenthusiast"
   },
   { 
     NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    HREF: "https://www.linkedin.com/in/kruglovse/",
   }
 ];

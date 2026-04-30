@@ -23,6 +23,14 @@ const title = "Colophon";
 
 // Подзаголовок для colophon
 const subtitle = "Colophon is a designer-y word for \"how it's made\"—here's what powers this site.";
+const canonicalURL = new URL("/colophon/", Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: COLOPHON.TITLE,
+  description: COLOPHON.DESCRIPTION,
+  url: canonicalURL,
+};
 ---
 
 <PageLayout 
@@ -30,6 +38,8 @@ const subtitle = "Colophon is a designer-y word for \"how it's made\"—here's w
   description={COLOPHON.DESCRIPTION}
   pageType="default"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  structuredData={structuredData}
 >
   <Container size="default">
     <div class="colophon-header-section space-y-8 border-b border-black/10 dark:border-white/10">

@@ -27,6 +27,24 @@ const breadcrumbs = [
   { label: SITE.NAME, url: "/" },
   { label: "Projects" }
 ];
+
+const canonicalURL = new URL("/projects/", Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: PROJECTS.TITLE,
+  description: PROJECTS.DESCRIPTION,
+  url: canonicalURL,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: project.data.title,
+      url: new URL(`/projects/${project.slug}/`, Astro.site).href,
+    })),
+  },
+};
 ---
 
 <PageLayout 
@@ -34,10 +52,13 @@ const breadcrumbs = [
   description={PROJECTS.DESCRIPTION} 
   pageType="default"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  structuredData={structuredData}
 >
   <Container size="default">
+    <h1 class="sr-only">Projects by Sergey Kruglov</h1>
     <div class="space-y-10 animate">
-      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12">
+      <ul class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12">
         {projects.map(project => (
           <li class="flex flex-col gap-4 animate">
             <a href={`/projects/${project.slug}/?from=projects`} class="block group">
@@ -46,6 +67,8 @@ const breadcrumbs = [
                   <img 
                     src={project.data.images[0].url} 
                     alt={project.data.images[0].alt} 
+                    loading="lazy"
+                    decoding="async"
                     class="aspect-square w-full object-cover rounded-lg"
                   />
                 ) : (
@@ -63,7 +86,7 @@ const breadcrumbs = [
             </a>
           </li>
         ))}
-      </div>
+      </ul>
     </div>
   </Container>
 </PageLayout>

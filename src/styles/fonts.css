@@ -7,15 +7,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Tiempos Text';
-  src: url('/fonts/tiempos-text/TiemposText-Medium.woff2') format('woff2'),
-       url('/fonts/tiempos-text/TiemposText-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Шрифт для параграфов - Die Grotesk B */
 @font-face {
   font-family: 'Die Grotesk B';

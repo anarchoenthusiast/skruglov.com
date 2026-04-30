@@ -17,7 +17,31 @@ const breadcrumbs = [
 const title = "About";
 
 // Подзаголовок для about
-const subtitle = "Product Designer with 14+ years of experience building and scaling digital products across AI, creator tools, desktop software, and cross-platform ecosystems.";
+const subtitle = "Product designer and engineer helping founders turn complex technology into clear, practical products.";
+
+const canonicalURL = new URL("/about/", Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Sergey Kruglov",
+  description: ABOUT.DESCRIPTION,
+  url: canonicalURL,
+  mainEntity: {
+    "@type": "Person",
+    "@id": new URL("/#sergey-kruglov", Astro.site).href,
+    name: SITE.NAME,
+    url: new URL("/", Astro.site).href,
+    jobTitle: "Product Designer and Engineer",
+    email: `mailto:${SITE.EMAIL}`,
+    sameAs: [
+      "https://x.com/kryglovsergey",
+      "https://github.com/anarchoenthusiast",
+      "https://www.linkedin.com/in/kruglovse/",
+      "https://www.instagram.com/kruglovse/",
+      "https://www.are.na/sergey-kruglov/channels",
+    ],
+  },
+};
 
 // Получаем дату последнего изменения файла about
 const aboutFilePath = "src/content/about/index.md";
@@ -33,6 +57,8 @@ const lastModified = new Date(stats.mtime).toLocaleDateString("en-US", {
   description={ABOUT.DESCRIPTION} 
   pageType="default"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  structuredData={structuredData}
 >
   <Container size="default">
     <div class="about-header-section space-y-8 border-b border-black/10 dark:border-white/10">

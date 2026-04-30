@@ -29,6 +29,22 @@ const breadcrumbs = [
   { label: "Blog" }
 ];
 
+const canonicalURL = new URL("/blog/", Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: BLOG.TITLE,
+  description: BLOG.DESCRIPTION,
+  url: canonicalURL,
+  blogPost: data.map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.data.title,
+    description: post.data.description,
+    url: new URL(`/blog/${post.slug}/`, Astro.site).href,
+    datePublished: post.data.date.toISOString(),
+  })),
+};
+
 ---
 
 <PageLayout 
@@ -36,8 +52,11 @@ const breadcrumbs = [
   description={BLOG.DESCRIPTION} 
   pageType="default"
   breadcrumbs={breadcrumbs}
+  canonicalURL={canonicalURL}
+  structuredData={structuredData}
 >
   <Container size="default">
+    <h1 class="sr-only">Writing by Sergey Kruglov</h1>
     <div class="space-y-10">
       <div class="space-y-16">
         {years.map(year => (

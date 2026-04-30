@@ -41,6 +41,10 @@ const postsToShow = otherPosts.length > 0 ? otherPosts : [post];
 const canonicalURL = new URL(`/blog/${post.slug}/`, Astro.site).href;
 const hasFromParam = Astro.url.searchParams.has("from");
 const robotsMeta = hasFromParam ? "noindex, follow" : undefined;
+const firstMarkdownImage = post.body.match(/!\[[^\]]*]\(([^)]+)\)/)?.[1];
+const postImage = firstMarkdownImage
+  ? new URL(firstMarkdownImage, Astro.site).href
+  : undefined;
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -49,6 +53,7 @@ const structuredData = {
   url: canonicalURL,
   datePublished: post.data.date.toISOString(),
   dateModified: post.data.date.toISOString(),
+  ...(postImage && { image: postImage }),
   author: {
     "@type": "Person",
     name: "Sergey Kruglov",
@@ -62,7 +67,7 @@ const structuredData = {
 
 const breadcrumbs = [
   { label: SITE.NAME, url: "/" },
-  { label: "Blog", url: "/blog" },
+  { label: "Blog", url: "/blog/" },
   { label: post.data.title }
 ];
 
@@ -77,6 +82,10 @@ const breadcrumbs = [
   robots={robotsMeta}
   structuredData={structuredData}
   ogType="article"
+  ogImage={firstMarkdownImage}
+  publishedTime={post.data.date.toISOString()}
+  modifiedTime={post.data.date.toISOString()}
+  authorName={SITE.NAME}
 >
   <!-- Контент страницы с анимацией -->
   <div class="blog-page-content">

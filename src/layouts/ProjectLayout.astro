@@ -29,6 +29,7 @@ const structuredData = {
   "name": project.data.title,
   "description": project.data.description,
   "url": canonicalURL,
+  "mainEntityOfPage": canonicalURL,
   "creator": {
     "@type": "Person",
     "name": "Sergey Kruglov",
@@ -180,6 +181,8 @@ const breadcrumbs = [
                     <img 
                       src={otherProject.data.images[0].url} 
                       alt={otherProject.data.images[0].alt} 
+                      loading="lazy"
+                      decoding="async"
                       class="aspect-square w-full object-cover rounded-lg"
                     />
                   ) : (

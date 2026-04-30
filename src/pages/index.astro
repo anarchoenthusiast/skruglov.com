@@ -27,6 +27,44 @@ const projects = (await getCollection("projects"))
   })
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
+const homeStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${SITE.NAME} - Product Designer and Engineer`,
+    description: HOME.DESCRIPTION,
+    url: new URL("/", Astro.site).href,
+    mainEntity: {
+      "@id": new URL("/#sergey-kruglov", Astro.site).href,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": new URL("/#sergey-kruglov", Astro.site).href,
+    name: SITE.NAME,
+    url: new URL("/", Astro.site).href,
+    jobTitle: "Product Designer and Engineer",
+    email: `mailto:${SITE.EMAIL}`,
+    sameAs: [
+      "https://x.com/kryglovsergey",
+      "https://github.com/anarchoenthusiast",
+      "https://www.linkedin.com/in/kruglovse/",
+      "https://www.instagram.com/kruglovse/",
+      "https://www.are.na/sergey-kruglov/channels",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.NAME,
+    url: new URL("/", Astro.site).href,
+    author: {
+      "@id": new URL("/#sergey-kruglov", Astro.site).href,
+    },
+  },
+];
+
 ---
 
 <PageLayout 
@@ -34,13 +72,14 @@ const projects = (await getCollection("projects"))
   description={HOME.DESCRIPTION} 
   pageType="default"
   hideHeader={true}
+  structuredData={homeStructuredData}
 >
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="mx-auto animate" style="width: 48px; height: 48px;">
       <a href="/" class="block cursor-pointer hover:opacity-80 transition-opacity">
-        <img src="/images/logo-dark.svg" alt="Logo" class="block dark:hidden w-full h-full" />
-        <img src="/images/logo-light.svg" alt="Logo" class="hidden dark:block w-full h-full" />
+        <img src="/images/logo-dark.svg" alt="Sergey Kruglov logo" class="block dark:hidden w-full h-full" />
+        <img src="/images/logo-light.svg" alt="Sergey Kruglov logo" class="hidden dark:block w-full h-full" />
       </a>
     </div>
     
@@ -63,9 +102,9 @@ const projects = (await getCollection("projects"))
     <div class="space-y-16">
       <section class="animate space-y-4">
         <div class="mb-2">
-          <h5 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
+          <h2 class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5]">
             Select Projects
-          </h5>
+          </h2>
         </div>
         <ul class="flex flex-col gap-2">
           {projects.map(project => (

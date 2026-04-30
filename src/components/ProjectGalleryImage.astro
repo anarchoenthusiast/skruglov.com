@@ -1,0 +1,37 @@
+---
+interface Props {
+  src: string;
+  fallbackSrc: string;
+  alt: string;
+  loading?: "eager" | "lazy";
+}
+
+const {
+  src,
+  fallbackSrc,
+  alt,
+  loading = "lazy",
+} = Astro.props;
+---
+
+<img
+  src={src}
+  data-fallback-src={fallbackSrc}
+  alt={alt}
+  loading={loading}
+  decoding="async"
+/>
+
+<script is:inline>
+  document.querySelectorAll("img[data-fallback-src]:not([data-fallback-bound])").forEach((image) => {
+    const imageElement = /** @type {HTMLImageElement} */ (image);
+
+    imageElement.dataset.fallbackBound = "true";
+    imageElement.addEventListener("error", () => {
+      const fallbackSrc = imageElement.dataset.fallbackSrc;
+      if (!fallbackSrc || imageElement.src.endsWith(fallbackSrc)) return;
+
+      imageElement.src = fallbackSrc;
+    });
+  });
+</script>

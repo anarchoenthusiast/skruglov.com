@@ -3,7 +3,7 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { SITE } from "@consts";
 
 type Props = {
@@ -17,9 +17,12 @@ type Props = {
   hideHeader?: boolean;
   canonicalURL?: string;
   robots?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
   ogType?: string;
   ogImage?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
 };
 
 const { 
@@ -32,27 +35,60 @@ const {
   robots,
   structuredData,
   ogType,
-  ogImage
+  ogImage,
+  publishedTime,
+  modifiedTime,
+  authorName
 } = Astro.props;
 
 // Определяем, является ли текущая страница главной
 const isHomePage = Astro.url.pathname === "/";
 const shouldShowHeader = !isHomePage && !hideHeader;
+
+const pageTitle = isHomePage
+  ? `${SITE.NAME} - Product Designer and Engineer`
+  : `${title} | ${SITE.NAME}`;
+
+const breadcrumbStructuredData = breadcrumbs && breadcrumbs.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbs.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.label,
+        item: new URL(item.url ?? Astro.url.pathname, Astro.site).href,
+      })),
+    }
+  : undefined;
+
+const structuredDataItems = [
+  ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : []),
+  ...(breadcrumbStructuredData ? [breadcrumbStructuredData] : []),
+];
+const finalStructuredData = structuredDataItems.length === 0
+  ? undefined
+  : structuredDataItems.length === 1
+    ? structuredDataItems[0]
+    : structuredDataItems;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <Head 
-      title={`${title} | ${SITE.NAME}`} 
+      title={pageTitle} 
       description={description}
       canonicalURL={canonicalURL}
       robots={robots}
-      structuredData={structuredData}
+      structuredData={finalStructuredData}
       ogType={ogType}
       ogImage={ogImage}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      authorName={authorName}
     />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     {shouldShowHeader && <Header pageType={pageType} breadcrumbs={breadcrumbs} />}
