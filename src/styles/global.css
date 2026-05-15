@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./tokens.css";
+
 html {
   overflow-y: scroll;
   color-scheme: light;

@@ -11,7 +11,8 @@
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "tokens:sync": "node scripts/sync-tokens.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

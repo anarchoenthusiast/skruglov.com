@@ -1,0 +1,70 @@
+/**
+ * Design tokens — generated from Figma Variables (skruglov.com collection)
+ * Figma file: https://www.figma.com/design/zjD9Ey6snTlceLpQb3YiHU
+ *
+ * DO NOT edit manually. To update: run `node scripts/sync-tokens.js`
+ * after exporting variables from Figma (Tokens Studio or REST API).
+ */
+
+:root {
+  /* ── Colors: Text ─────────────────────────────────────── */
+  --color-text-primary:   #000000;       /* text-black */
+  --color-text-secondary: rgba(0,0,0,0.5);  /* text-black/50 */
+  --color-text-muted:     rgba(0,0,0,0.44); /* text-black/44 */
+
+  /* ── Colors: Border ───────────────────────────────────── */
+  --color-border-subtle:  rgba(0,0,0,0.1);  /* border-black/10 */
+
+  /* ── Colors: Background ───────────────────────────────── */
+  --color-bg-page:        #ffffff;       /* bg-white */
+  --color-bg-surface:     #f5f5f5;       /* bg-[#F5F5F5] */
+  --color-placeholder:    #d9d9d9;       /* bg-[#D9D9D9] */
+
+  /* ── Typography: Font Families ────────────────────────── */
+  --font-body:    "Die Grotesk B", system-ui, sans-serif;
+  --font-heading: "Tiempos Text", Georgia, serif;
+
+  /* ── Typography: Sizes ────────────────────────────────── */
+  --type-size-sm:   14px;  /* text-sm */
+  --type-size-base: 16px;  /* text-base */
+  --type-size-xl:   28px;  /* prose h2 */
+  --type-size-4xl:  36px;  /* h1, CTA heading */
+
+  /* ── Typography: Line Heights ─────────────────────────── */
+  --type-lh-sm:      20px; /* leading-5 */
+  --type-lh-base:    24px; /* leading-[1.5] at 16px */
+  --type-lh-heading: 42px; /* leading-[1.167] at 36px */
+
+  /* ── Typography: Letter Spacing ───────────────────────── */
+  --type-ls-heading: -0.028em; /* tracking-[-0.028em] */
+
+  /* ── Spacing ──────────────────────────────────────────── */
+  --spacing-2:  8px;   /* gap-2, mb-2, pt-2 */
+  --spacing-4:  16px;  /* gap-4, mb-4, px-4 */
+  --spacing-5:  20px;  /* px-5 */
+  --spacing-6:  24px;  /* gap-6, space-y-6 */
+  --spacing-8:  32px;  /* gap-8, mt-8 */
+  --spacing-12: 48px;  /* pt-12 */
+  --spacing-16: 64px;  /* py-16 */
+  --spacing-24: 96px;  /* pb-24 */
+
+  /* ── Layout ───────────────────────────────────────────── */
+  --layout-container-width:  580px; /* w-[580px] */
+  --layout-container-offset: 350px; /* (1280 - 580) / 2 */
+
+  /* ── Border Radius ────────────────────────────────────── */
+  --radius-sm:   8px;    /* rounded-lg — thumbnails */
+  --radius-md:   12px;   /* rounded-[12px] — gallery images */
+  --radius-full: 9999px; /* rounded-full — pill buttons */
+}
+
+/* ── Dark Mode ──────────────────────────────────────────── */
+.dark {
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: rgba(255,255,255,0.5);
+  --color-text-muted:     rgba(255,255,255,0.44);
+  --color-border-subtle:  rgba(255,255,255,0.1);
+  --color-bg-page:        #1c1917; /* stone-900 */
+  --color-bg-surface:     #292524; /* stone-800 */
+  --color-placeholder:    #44403c; /* stone-700 */
+}
