@@ -23,7 +23,7 @@ const containerSize = size === "blog" ? "blog-mobile" : size;
         <div class="flex justify-center items-center w-full">
           <p class="text-center font-grotesk text-base leading-[1.5] text-black dark:text-white max-w-[580px] mx-auto px-0">
             I help founders turn early signals into clear, usable products - from product direction and UX to interface design, frontend, and AI-powered workflows.<br/><br/>
-            My work has helped products reach millions of users and has been featured in Forbes, Billboard, PCMag, TNW, Tech Advisor, MusicRadar, and Golden Kitty Award.
+            My work has helped products reach millions of users and has been featured in <a href="https://www.forbes.com/sites/bernardmarr/2023/02/28/beyond-chatgpt-14-mind-blowing-ai-tools-everyone-should-be-trying-out-now/" target="_blank" rel="noopener noreferrer" class="press-mention">Forbes</a>, <a href="https://www.billboard.com/p/ai-tools-music-directory/" target="_blank" rel="noopener noreferrer" class="press-mention">Billboard</a>, <a href="https://ca.pcmag.com/video-streaming-services/7711/how-to-download-youtube-videos" target="_blank" rel="noopener noreferrer" class="press-mention">PCMag</a>, <a href="https://thenextweb.com/news/theres-an-actual-science-to-good-instagram-photos" target="_blank" rel="noopener noreferrer" class="press-mention">TNW</a>, <a href="https://www.techadvisor.com/article/1391140/how-to-split-an-audio-track-online-with-lalal-ai.html" target="_blank" rel="noopener noreferrer" class="press-mention">Tech Advisor</a>, <a href="https://www.musicradar.com/music-tech/lalal-ai-brings-its-ai-powered-stem-separation-into-your-daw-with-its-first-plugin" target="_blank" rel="noopener noreferrer" class="press-mention">MusicRadar</a>, and <a href="https://www.instagram.com/p/CKUCJiQihDX/" target="_blank" rel="noopener noreferrer" class="press-mention">Golden Kitty Award</a>.
           </p>
         </div>
       </div>
@@ -49,5 +49,10 @@ const containerSize = size === "blog" ? "blog-mobile" : size;
   .font-grotesk {
     font-family: 'Die Grotesk B', sans-serif;
     font-weight: 400;
+  }
+
+  .press-mention {
+    @apply text-black dark:text-white underline decoration-black/25 dark:decoration-white/25 underline-offset-2;
+    @apply hover:decoration-black dark:hover:decoration-white transition-colors;
   }
 </style> 
