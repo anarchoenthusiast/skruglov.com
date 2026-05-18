@@ -152,6 +152,24 @@ const breadcrumbs = [
                 )}
               </div>
             )}
+
+            {project.data.pressLinks && project.data.pressLinks.length > 0 && (
+              <div>
+                <h6 class="project-label">Press</h6>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  {project.data.pressLinks.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="press-link"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -312,6 +330,13 @@ const breadcrumbs = [
     @apply font-grotesk text-sm text-black transition-colors;
     @apply hover:border-black/20 hover:bg-black/[0.03];
     @apply dark:border-white/10 dark:text-white dark:hover:border-white/20 dark:hover:bg-white/[0.04];
+  }
+
+  .press-link {
+    @apply inline-flex items-center rounded-full border border-black/10 px-3 py-1;
+    @apply font-grotesk text-sm text-black/60 transition-colors;
+    @apply hover:border-black/20 hover:text-black hover:bg-black/[0.03];
+    @apply dark:border-white/10 dark:text-white/60 dark:hover:border-white/20 dark:hover:text-white dark:hover:bg-white/[0.04];
   }
 
   /* Стили для контента проекта */

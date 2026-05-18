@@ -46,6 +46,10 @@ const projects = defineCollection({
     collaborators: z.string().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional(),
+    pressLinks: z.array(z.object({
+      label: z.string(),
+      url: z.string()
+    })).optional(),
     images: z.array(z.object({
       url: z.string(),
       alt: z.string()
