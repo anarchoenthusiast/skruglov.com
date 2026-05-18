@@ -48,7 +48,8 @@ const projects = defineCollection({
     repoURL: z.string().optional(),
     pressLinks: z.array(z.object({
       label: z.string(),
-      url: z.string()
+      url: z.string(),
+      faviconDomain: z.string().optional()
     })).optional(),
     images: z.array(z.object({
       url: z.string(),

@@ -176,7 +176,7 @@ const breadcrumbs = [
                   class="press-link"
                 >
                   <img
-                    src={`https://www.google.com/s2/favicons?domain=${new URL(link.url).hostname}&sz=32`}
+                    src={`https://www.google.com/s2/favicons?domain=${link.faviconDomain ?? new URL(link.url).hostname}&sz=32`}
                     alt=""
                     width="16"
                     height="16"
