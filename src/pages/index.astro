@@ -147,16 +147,11 @@ const homeStructuredData = [
                 <!-- Мобильная версия -->
                 <div class="block sm:hidden">
                   <div class="flex items-center gap-3">
-                    <div class="flex flex-col gap-1 flex-1">
-                      <div class="flex justify-between items-start gap-4">
-                        <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5] flex-1">
-                          {project.data.title}
-                        </div>
-                        <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5] flex-shrink-0">
-                          {project.data.role}
-                        </div>
+                    <div class="flex flex-col gap-1 flex-1 min-w-0">
+                      <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out leading-[1.5] card-title-fade">
+                        {project.data.title}
                       </div>
-                      <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5] h-6 overflow-hidden">
+                      <div class="font-grotesk font-normal text-base text-black/44 dark:text-white/44 leading-[1.5] card-title-fade muted">
                         {project.data.contributions}
                       </div>
                     </div>
@@ -273,6 +268,36 @@ const homeStructuredData = [
 </script>
 
 <style>
+  .card-title-fade {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1.5;
+  }
+
+  .card-title-fade::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, #F5F5F5);
+    pointer-events: none;
+  }
+
+  :global(html.dark) .card-title-fade::after {
+    background: linear-gradient(to right, transparent, rgb(41 37 36));
+  }
+
+  .group:hover .card-title-fade::after {
+    background: linear-gradient(to right, transparent, #EBEBEB);
+  }
+
+  :global(html.dark) .group:hover .card-title-fade::after {
+    background: linear-gradient(to right, transparent, rgb(68 64 60));
+  }
+
   /* Убираем дополнительный верхний паддинг из main */
   :global(body:has(.hero-section) main) {
     padding-top: 0 !important;
