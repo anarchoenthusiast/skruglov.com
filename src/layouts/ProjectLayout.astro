@@ -152,24 +152,6 @@ const breadcrumbs = [
                 )}
               </div>
             )}
-
-            {project.data.pressLinks && project.data.pressLinks.length > 0 && (
-              <div>
-                <h6 class="project-label">Press</h6>
-                <div class="flex flex-wrap gap-2 mt-2">
-                  {project.data.pressLinks.map((link) => (
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="press-link"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
@@ -180,6 +162,25 @@ const breadcrumbs = [
             <Content />
           </article>
         </div>
+
+        <!-- Секция Press -->
+        {project.data.pressLinks && project.data.pressLinks.length > 0 && (
+          <div class="animate border-t border-black/10 dark:border-white/10 pt-8">
+            <h6 class="project-label mb-3">Press</h6>
+            <div class="flex flex-wrap gap-2">
+              {project.data.pressLinks.map((link) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="press-link"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </Container>
     
