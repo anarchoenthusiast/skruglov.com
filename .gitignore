@@ -16,10 +16,15 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.production
+.env.*
+!.env.example
+
+# secrets-manager backups
+*.bak
 
 # macOS-specific files
 .DS_Store
+**/.DS_Store
 
 # Local Netlify folder
 .netlify
