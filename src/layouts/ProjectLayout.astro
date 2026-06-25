@@ -359,25 +359,8 @@ const breadcrumbs = [
     @apply rounded-md text-sm my-6;
   }
 
-  :global(.project-article > p + p) {
-    @apply mt-2;
-  }
-
-  :global(.project-article > img),
-  :global(.project-article > picture),
-  :global(.project-article > figure) {
-    @apply block w-full mt-6;
-  }
-
   /* Стили для контента проекта наследуют стили статьи из global.css */
-  /* Дополнительные стили для заголовков h1 в проектах */
   :global(.project-page-content h1) {
     @apply font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal;
-  }
-
-  :global(.project-article > p + img),
-  :global(.project-article > p + picture),
-  :global(.project-article > p + figure) {
-    @apply mt-8;
   }
 </style> 

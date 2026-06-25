@@ -78,36 +78,94 @@ article img,
 }
 
 /* Проектные страницы: отдельный ритм между текстом и медиа */
+.project-article > p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.project-article > .project-note {
+  @apply font-grotesk text-xs leading-[1.35] font-normal text-black/50 dark:text-white/50;
+  width: 66.666667% !important;
+  max-width: 100%;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.project-article > .project-note :where(p) {
+  @apply font-grotesk text-xs leading-[1.35] font-normal text-black/50 dark:text-white/50;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .project-article > p + p {
   margin-top: 8px !important;
 }
 
 .project-article > img,
 .project-article > picture,
-.project-article > figure {
+.project-article > figure,
+.project-article > .project-slide-wrap,
+.project-article > .project-note {
   display: block;
+}
+
+.project-article > img,
+.project-article > picture,
+.project-article > figure,
+.project-article > .project-slide-wrap {
   width: 100%;
   margin-top: 24px !important;
   margin-bottom: 0 !important;
   padding: 0 !important;
 }
 
+.project-article > .project-slide-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.project-article .project-slide-wrap video {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+  width: 100%;
+  aspect-ratio: 960 / 640;
+}
+
 .project-article > p + img,
 .project-article > p + picture,
-.project-article > p + figure {
+.project-article > p + figure,
+.project-article > p + .project-slide-wrap,
+.project-article > p + .project-note {
   margin-top: 32px !important;
 }
 
 .project-article > img + img,
 .project-article > img + picture,
 .project-article > img + figure,
+.project-article > img + .project-slide-wrap,
 .project-article > picture + img,
 .project-article > picture + picture,
 .project-article > picture + figure,
+.project-article > picture + .project-slide-wrap,
 .project-article > figure + img,
 .project-article > figure + picture,
-.project-article > figure + figure {
+.project-article > figure + figure,
+.project-article > figure + .project-slide-wrap,
+.project-article > .project-slide-wrap + img,
+.project-article > .project-slide-wrap + picture,
+.project-article > .project-slide-wrap + figure,
+.project-article > .project-slide-wrap + .project-slide-wrap,
+.project-article > .project-note + img,
+.project-article > .project-note + picture,
+.project-article > .project-note + figure,
+.project-article > .project-note + .project-slide-wrap,
+.project-article > .project-note + .project-note {
   margin-top: 24px !important;
+}
+
+.project-article > :is(img, picture, figure, .project-slide-wrap) + .project-note {
+  margin-top: 12px !important;
 }
 
 /* Стили для подписей к изображениям */

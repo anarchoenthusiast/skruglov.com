@@ -1,0 +1,67 @@
+---
+title: "Vana"
+description: "R&D for Vana Labs — insight cards, 3D reconstruction on Metal, generative audio, and messenger agent templates in a native iOS demo."
+role: "Design Research & Product"
+duration: "2 months"
+company: "Vana Labs"
+scope: "R&D, native iOS demo, 3D body reconstruction, insight card system"
+projectType: "R&D"
+contributions: "Product research, UX strategy, native demo (photo reconstruction, Metal rendering, client-side card export), 3D Lab interaction design"
+date: "2026-03-01"
+priority: 2
+demoURL: "https://www.vanalabs.ai"
+images:
+  - url: "/projects/vana/cover.png"
+    alt: "Vana — biometric body scan on iPhone"
+---
+
+import { Image } from "astro:assets";
+import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
+import ProjectNote from "@components/ProjectNote.astro";
+import slide10 from "../../../assets/projects/vana/slide-10.png";
+import slide11 from "../../../assets/projects/vana/slide-11.png";
+import slide15 from "../../../assets/projects/vana/slide-15.png";
+import video12 from "../../../assets/projects/vana/slide-12-composite.mp4?url";
+import poster12 from "../../../assets/projects/vana/slide-12-composite-poster.jpg";
+import video13 from "../../../assets/projects/vana/slide-13-composite.mp4?url";
+import poster13 from "../../../assets/projects/vana/slide-13-composite-poster.jpg";
+import video14 from "../../../assets/projects/vana/slide-14-composite.mp4?url";
+import poster14 from "../../../assets/projects/vana/slide-14-composite-poster.jpg";
+
+Wearables already collect more about your health than most people ever look at. The R&D brief for Vana was about the next step: how to raise the value of insights for the user, how to shape UX so the experience feels maximally seamless, and how to increase social interaction within the audience.
+
+<Image src={slide10} alt="Vana — estimated biometrics with 3D body visualization" loading="eager" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<Image src={slide11} alt="Vana — glass UI cards for recovery, goals, and activity" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<ProjectNote>
+I explored a few directions. Insights could live in cards with interactive graphics per data type: a weekly recovery view, a longevity estimate, an update people want to share.
+</ProjectNote>
+
+<ProjectSlideVideo
+  src={video12}
+  poster={poster12}
+  alt="Vana longevity weekly update and share cards"
+/>
+
+<ProjectNote>
+A 3D reconstruction from one photo makes the card feel like something worth forwarding, not a row in a table; estimated biometrics from that same photo add context Apple Health does not carry on its own. I also looked at sound as a separate track: audio for a finished insight video built from the user's variables, not a fixed library clip.
+</ProjectNote>
+
+<ProjectSlideVideo
+  src={video13}
+  poster={poster13}
+  alt="Vana 3D avatar visualization and display settings"
+/>
+
+<ProjectSlideVideo
+  src={video14}
+  poster={poster14}
+  alt="Vana product demo"
+/>
+
+<Image src={slide15} alt="Vana — messenger agent insight templates" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<ProjectNote>
+The native iOS demo I built covered cards, Metal 3D reconstruction, and that generative audio pipeline. In parallel I explored a messenger agent for quick back-and-forth in channels people already use, without opening another app for a single answer. The templates above show insight types and how each one could be assembled.
+</ProjectNote>

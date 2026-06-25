@@ -1,0 +1,23 @@
+---
+interface Props {
+  src: string;
+  poster: { src: string };
+  alt: string;
+}
+
+const { src, poster, alt } = Astro.props;
+---
+
+<div class="project-slide-wrap">
+  <video
+    class="project-slide"
+    src={src}
+    poster={poster.src}
+    muted
+    playsinline
+    loop
+    autoplay
+    preload="auto"
+    aria-label={alt}
+  />
+</div>
