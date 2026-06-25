@@ -1,11 +1,11 @@
 ---
 title: "Surrly"
-description: "A solo-built iOS dream journal powered by AI — designed, coded, and launched to TestFlight in three months."
+description: "A solo-built iOS dream journal on the App Store — designed, coded, and shipped in three months."
 role: "Builder"
 duration: "Summer 2025"
 scope: "Product strategy, UX/UI, AI-assisted engineering, iOS development, release workflow, launch"
 projectType: "Side Project"
-contributions: "Designed, coded, shipped, and released the product solo — from product idea to working iOS app and TestFlight launch"
+contributions: "Built and shipped the app solo — from product idea to App Store release and a growing user base"
 date: "2025-09-01"
 priority: 1
 demoURL: "https://www.surrly.com/"
@@ -15,24 +15,47 @@ images:
 ---
 
 import { Image } from "astro:assets";
+import ProjectNote from "@components/ProjectNote.astro";
+import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
 import img1 from "../../../assets/projects/surrly/1.jpg";
 import img2 from "../../../assets/projects/surrly/2.jpg";
 import img3 from "../../../assets/projects/surrly/3.jpg";
-import img4 from "../../../assets/projects/surrly/4.jpg";
 import img5 from "../../../assets/projects/surrly/5.jpg";
+import screencastDream1 from "../../../assets/projects/surrly/screencast-dream1-3x2.mp4?url";
+import screencastDream1Poster from "../../../assets/projects/surrly/screencast-dream1-3x2-poster.jpg";
+import onboardingComposite from "../../../assets/projects/surrly/onboarding-lottie-composite.mp4?url";
+import onboardingCompositePoster from "../../../assets/projects/surrly/onboarding-lottie-composite-poster.jpg";
 
-Surrly is a solo-built iOS dream journal powered by AI. I designed, coded, and launched the product myself over three months in the summer of 2025, taking it from a product idea to a working app in TestFlight.
-
-The project was a way to show the full builder loop from the engineering side: turning a product thesis into app architecture, implementing the iOS experience, wiring AI-powered interpretation flows, handling release details, and shipping a real build instead of stopping at a prototype.
-
-I also used an AI-assisted development workflow to move faster across implementation, copy iteration, debugging, and product decisions. For me, Surrly is a compact proof that I can bridge product, design, code, release process, and DevOps-minded execution as one builder.
+Most people lose a dream within minutes of waking up. Surrly was a summer side project: a gentle iOS journal for capturing dreams and reading them back with AI. I built it alone over three months in 2025. The app is on the App Store now, and the audience is still small, but it keeps growing.
 
 <Image src={img1} alt="Surrly — dream journal home screen" loading="eager" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
 
+<ProjectSlideVideo
+  src={screencastDream1}
+  poster={screencastDream1Poster}
+  alt="Surrly — dream recording and AI interpretation screencast"
+/>
+
 <Image src={img2} alt="Surrly — AI dream interpretation" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<ProjectNote>
+The core loop had to feel quiet, not like a productivity app. Voice or text, a few taps, done. The home screen shows recent dreams without pushing you to write more than you want.
+</ProjectNote>
 
 <Image src={img3} alt="Surrly — journal entry flow" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
 
-<Image src={img4} alt="Surrly — dream history and insights" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+<ProjectSlideVideo
+  src={onboardingComposite}
+  poster={onboardingCompositePoster}
+  alt="Surrly — onboarding tour Lottie animations"
+/>
+
+<ProjectNote>
+AI interpretation was the part I was unsure about. I wanted readings that felt thoughtful, not like generic horoscope copy. Each entry pulls themes and symbols from what you actually wrote, not a fixed template.
+</ProjectNote>
 
 <Image src={img5} alt="Surrly — app experience overview" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<ProjectNote>
+I used Cursor and other AI tools heavily while building, but the release work was still mine: App Store listing, onboarding, subscriptions, crash fixes. The project was a test of whether I could take something from idea to a live app people would download.
+</ProjectNote>
