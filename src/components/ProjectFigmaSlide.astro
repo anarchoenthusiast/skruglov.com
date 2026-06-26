@@ -1,0 +1,120 @@
+---
+interface SlideMedia {
+  kind: "video" | "image";
+  src: string;
+  poster?: string;
+  alt: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  radius?: number;
+  fit?: "contain" | "cover" | "fill";
+}
+
+interface Props {
+  slideWidth?: number;
+  slideHeight?: number;
+  background?: string;
+  radius?: number;
+  media: SlideMedia[];
+  class?: string;
+}
+
+const {
+  slideWidth = 960,
+  slideHeight = 640,
+  background = "#eaeaea",
+  radius = 12,
+  media,
+  class: className = "",
+} = Astro.props;
+
+const pctW = (value: number) => `${(value / slideWidth) * 100}%`;
+const pctH = (value: number) => `${(value / slideHeight) * 100}%`;
+const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
+---
+
+<div
+  class:list={["project-figma-slide", className]}
+  style={`--slide-w: ${slideWidth}; --slide-h: ${slideHeight}; aspect-ratio: ${slideWidth} / ${slideHeight}; background-color: ${background}; border-radius: ${toRadius(radius)};`}
+>
+  {
+    media.map((item) => (
+      <div
+        class="project-figma-slide__item"
+        style={`--item-r: ${item.radius ?? 16}; left: ${pctW(item.x)}; top: ${pctH(item.y)}; width: ${pctW(item.w)}; height: ${pctH(item.h)};`}
+      >
+        <div
+          class="project-figma-slide__clip"
+          data-fit={item.fit ?? "fill"}
+          style={`background-color: ${background};`}
+        >
+          {item.kind === "video" ? (
+            <video
+              src={item.src}
+              poster={item.poster}
+              muted
+              playsinline
+              loop
+              autoplay
+              preload="auto"
+              aria-label={item.alt}
+            />
+          ) : (
+            <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .project-figma-slide {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    container-type: size;
+  }
+
+  .project-figma-slide__item {
+    position: absolute;
+    box-sizing: border-box;
+  }
+
+  .project-figma-slide__clip {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: calc(var(--item-r) * 100cqw / var(--slide-w));
+    isolation: isolate;
+  }
+
+  .project-figma-slide__clip :global(video),
+  .project-figma-slide__clip :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-position: center;
+    border-radius: inherit;
+    vertical-align: top;
+  }
+
+  .project-figma-slide__clip[data-fit="contain"] :global(video),
+  .project-figma-slide__clip[data-fit="contain"] :global(img) {
+    object-fit: contain;
+  }
+
+  .project-figma-slide__clip[data-fit="cover"] :global(video),
+  .project-figma-slide__clip[data-fit="cover"] :global(img) {
+    object-fit: cover;
+  }
+
+  .project-figma-slide__clip[data-fit="fill"] :global(video),
+  .project-figma-slide__clip[data-fit="fill"] :global(img) {
+    object-fit: fill;
+  }
+</style>

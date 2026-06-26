@@ -105,6 +105,7 @@ article img,
 .project-article > picture,
 .project-article > figure,
 .project-article > .project-slide-wrap,
+.project-article > .project-figma-slide,
 .project-article > .project-note {
   display: block;
 }
@@ -112,16 +113,23 @@ article img,
 .project-article > img,
 .project-article > picture,
 .project-article > figure,
-.project-article > .project-slide-wrap {
+.project-article > .project-slide-wrap,
+.project-article > .project-figma-slide {
   width: 100%;
   margin-top: 24px !important;
   margin-bottom: 0 !important;
   padding: 0 !important;
 }
 
+.project-article .project-figma-slide :is(video, img) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .project-article > .project-slide-wrap {
   border-radius: 12px;
   overflow: hidden;
+  aspect-ratio: 960 / 640;
 }
 
 .project-article .project-slide-wrap video {
@@ -129,7 +137,8 @@ article img,
   padding: 0 !important;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: fill;
   vertical-align: top;
   border-radius: 12px;
 }
@@ -138,6 +147,7 @@ article img,
 .project-article > p + picture,
 .project-article > p + figure,
 .project-article > p + .project-slide-wrap,
+.project-article > p + .project-figma-slide,
 .project-article > p + .project-note {
   margin-top: 32px !important;
 }
@@ -146,27 +156,37 @@ article img,
 .project-article > img + picture,
 .project-article > img + figure,
 .project-article > img + .project-slide-wrap,
+.project-article > img + .project-figma-slide,
 .project-article > picture + img,
 .project-article > picture + picture,
 .project-article > picture + figure,
 .project-article > picture + .project-slide-wrap,
+.project-article > picture + .project-figma-slide,
 .project-article > figure + img,
 .project-article > figure + picture,
 .project-article > figure + figure,
 .project-article > figure + .project-slide-wrap,
+.project-article > figure + .project-figma-slide,
 .project-article > .project-slide-wrap + img,
 .project-article > .project-slide-wrap + picture,
 .project-article > .project-slide-wrap + figure,
 .project-article > .project-slide-wrap + .project-slide-wrap,
+.project-article > .project-slide-wrap + .project-figma-slide,
+.project-article > .project-figma-slide + img,
+.project-article > .project-figma-slide + picture,
+.project-article > .project-figma-slide + figure,
+.project-article > .project-figma-slide + .project-slide-wrap,
+.project-article > .project-figma-slide + .project-figma-slide,
 .project-article > .project-note + img,
 .project-article > .project-note + picture,
 .project-article > .project-note + figure,
 .project-article > .project-note + .project-slide-wrap,
+.project-article > .project-note + .project-figma-slide,
 .project-article > .project-note + .project-note {
   margin-top: 24px !important;
 }
 
-.project-article > :is(img, picture, figure, .project-slide-wrap) + .project-note {
+.project-article > :is(img, picture, figure, .project-slide-wrap, .project-figma-slide) + .project-note {
   margin-top: 12px !important;
 }
 

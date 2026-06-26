@@ -1,7 +1,7 @@
 ---
 interface Props {
   src: string;
-  poster: { src: string };
+  poster?: { src: string };
   alt: string;
 }
 
@@ -12,7 +12,7 @@ const { src, poster, alt } = Astro.props;
   <video
     class="project-slide"
     src={src}
-    poster={poster.src}
+    poster={poster?.src}
     muted
     playsinline
     loop
