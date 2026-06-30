@@ -1,18 +1,25 @@
 ---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
   src: string;
-  poster?: { src: string };
+  poster?: ImageMetadata;
   alt: string;
+  posterWidth?: number;
 }
 
-const { src, poster, alt } = Astro.props;
+const { src, poster, alt, posterWidth = 1400 } = Astro.props;
+const optimizedPoster = poster
+  ? await getImage({ src: poster, width: posterWidth, quality: 95, format: "jpg" })
+  : undefined;
 ---
 
 <div class="project-slide-wrap">
   <video
     class="project-slide"
     src={src}
-    poster={poster?.src}
+    poster={optimizedPoster?.src}
     muted
     playsinline
     loop

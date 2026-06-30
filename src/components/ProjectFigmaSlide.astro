@@ -10,6 +10,7 @@ interface SlideMedia {
   h: number;
   radius?: number;
   fit?: "contain" | "cover" | "fill";
+  clipBackground?: string;
 }
 
 interface Props {
@@ -48,7 +49,7 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
         <div
           class="project-figma-slide__clip"
           data-fit={item.fit ?? "fill"}
-          style={`background-color: ${background};`}
+          style={`background-color: ${item.clipBackground ?? background};`}
         >
           {item.kind === "video" ? (
             <video

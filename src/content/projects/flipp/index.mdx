@@ -1,0 +1,83 @@
+---
+title: "Flipp"
+pageTitle: "Flipp (Acq. by Rarible)"
+description: "Web3 product design for a Gen Z crypto app — iOS MVP from onboarding to flip flow. Acquired by Rarible."
+role: "Founding Designer"
+duration: "2024–2025"
+scope: "UI/UX for iOS MVP — onboarding, wallet connection, currency overview, exchange"
+projectType: "Web3 Product Design"
+contributions: "Designed the iOS MVP for a Gen Z crypto app, acquired by Rarible"
+date: "2025-03-01"
+priority: 2
+images:
+  - url: "/projects/flipp/cover.png"
+    alt: "Flipp — mobile crypto app"
+---
+
+import { Image } from "astro:assets";
+import ProjectNote from "@components/ProjectNote.astro";
+import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
+import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
+import img2 from "../../../assets/projects/flipp/2.jpg";
+import img4 from "../../../assets/projects/flipp/4.jpg";
+import img5 from "../../../assets/projects/flipp/5.jpg";
+import slide2BgVideo from "../../../assets/projects/flipp/slide-2-bg.mp4?url";
+import slide2Poster from "../../../assets/projects/flipp/slide-2-poster.jpg?url";
+import slide2Overlay from "../../../assets/projects/flipp/slide-2-overlay.png?url";
+import slide3Video from "../../../assets/projects/flipp/3.mp4?url";
+import slide3Poster from "../../../assets/projects/flipp/3-poster.jpg";
+
+I designed the iOS MVP for Flipp, a Gen Z crypto app where you buy and flip coins in seconds without figuring out wallets first. The team validated the idea, found traction, and Rarible acquired the product.
+
+<ProjectFigmaSlide
+  background="#000000"
+  media={[
+    {
+      kind: "video",
+      src: slide2BgVideo,
+      poster: slide2Poster,
+      alt: "Flipp — animated rainbow background",
+      x: 0,
+      y: 0,
+      w: 960,
+      h: 640,
+      radius: 12,
+      fit: "cover",
+    },
+    {
+      kind: "image",
+      src: slide2Overlay,
+      alt: "Flipp — fractional token detail with price chart",
+      x: 229,
+      y: 125,
+      w: 503,
+      h: 515,
+      fit: "fill",
+      clipBackground: "transparent",
+    },
+  ]}
+/>
+
+<Image src={img2} alt="Flipp — portfolio overview and hold-to-flip exchange modal" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectNote>
+Featured tokens like $DOG needed meme energy, not a Bloomberg terminal. A chart, one line about the asset, one button to flip. Fractional ownership without the spreadsheet feel.
+</ProjectNote>
+
+<ProjectSlideVideo
+  src={slide3Video}
+  poster={slide3Poster}
+  alt="Flipp — expanding swap widget from a social feed"
+/>
+
+<ProjectNote>
+The MVP was closer to a one-button app than a wallet. A grid of holdings with live gains and losses, then one tap into a flip sheet: swap pair, a short countdown, hold to confirm. More r/WallStreetBets than Uniswap.
+</ProjectNote>
+
+<Image src={img4} alt="Flipp — swap widget expanding from a community post" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectNote>
+You do not start a flip from a portfolio screen. You see a token in a thread, a card slides up from the feed, opens into a chart, and you flip from there. The context stays social.
+</ProjectNote>
+
+<Image src={img5} alt="Flipp — onboarding welcome and wallet connection" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />

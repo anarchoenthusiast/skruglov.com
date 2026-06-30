@@ -12,6 +12,7 @@ interface Props {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+const displayTitle = project.data.pageTitle ?? project.data.title;
 
 // Получаем параметр from из URL для передачи в ссылки на другие проекты
 // Используем 'projects' только если нет ни URL параметра, ни сохраненного значения
@@ -26,7 +27,7 @@ const robotsMeta = hasFromParam ? "noindex, follow" : undefined;
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": project.data.title,
+  "name": displayTitle,
   "description": project.data.description,
   "url": canonicalURL,
   "mainEntityOfPage": canonicalURL,
@@ -85,12 +86,12 @@ const otherProjects = allProjects
 const breadcrumbs = [
   { label: SITE.NAME, url: "/" },
   { label: "Projects", url: "/projects" },
-  { label: project.data.title }
+  { label: displayTitle }
 ];
 ---
 
 <PageLayout 
-  title={project.data.title} 
+  title={displayTitle} 
   description={project.data.description} 
   pageType="project"
   breadcrumbs={breadcrumbs}
@@ -157,7 +158,7 @@ const breadcrumbs = [
 
         <!-- Заголовок и контент проекта -->
         <div class="animate mt-8 flex flex-col gap-4">
-          <h1>{project.data.title}</h1>
+          <h1>{displayTitle}</h1>
           <article class="project-article">
             <Content />
           </article>
