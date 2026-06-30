@@ -1,0 +1,18 @@
+{
+  "$schema": "https://www.cursor.com/schemas/environment.schema.json",
+  "name": "skruglov.com",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev -- --host 0.0.0.0",
+      "description": "Astro dev server on port 4321 with hot reload"
+    }
+  ],
+  "ports": [
+    {
+      "name": "astro-dev",
+      "port": 4321
+    }
+  ]
+}
