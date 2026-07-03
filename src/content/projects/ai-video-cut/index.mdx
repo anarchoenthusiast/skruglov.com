@@ -16,7 +16,9 @@ images:
 ---
 
 import { Image } from "astro:assets";
-import img1 from "../../../assets/projects/ai-video-cut/1.jpg";
+import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
+import slide01Video from "../../../assets/projects/ai-video-cut/slide-01.mp4?url";
+import slide01Poster from "../../../assets/projects/ai-video-cut/slide-01-poster.jpg?url";
 import img2 from "../../../assets/projects/ai-video-cut/2.jpg";
 import img3 from "../../../assets/projects/ai-video-cut/3.jpg";
 import img4 from "../../../assets/projects/ai-video-cut/4.jpg";
@@ -27,7 +29,24 @@ The first version shipped in six weeks. From there, I built the brand platform, 
 
 The result was a focused workflow for creators and marketers: prompt-based clipping, transcript editing, smart crop, captions, multilingual support, and flexible export formats designed around fast publishing.
 
-<Image src={img1} alt="Ai Video Cut — brand and landing page" loading="eager" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+<ProjectFigmaSlide
+  background="#e2e5ec"
+  media={[
+    {
+      kind: "video",
+      src: slide01Video,
+      poster: slide01Poster,
+      alt: "Ai Video Cut — product overview",
+      x: 39,
+      y: 38,
+      w: 882,
+      h: 564,
+      radius: 12,
+      fit: "contain",
+      clipBackground: "#eeeae4",
+    },
+  ]}
+/>
 
 <Image src={img2} alt="Ai Video Cut — video categories UI" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
 

@@ -7,9 +7,20 @@ interface Props {
   poster?: ImageMetadata;
   alt: string;
   posterWidth?: number;
+  controls?: boolean;
+  muted?: boolean;
+  loop?: boolean;
 }
 
-const { src, poster, alt, posterWidth = 1400 } = Astro.props;
+const {
+  src,
+  poster,
+  alt,
+  posterWidth = 1400,
+  controls = false,
+  muted = true,
+  loop = true,
+} = Astro.props;
 const optimizedPoster = poster
   ? await getImage({ src: poster, width: posterWidth, quality: 95, format: "jpg" })
   : undefined;
@@ -20,11 +31,12 @@ const optimizedPoster = poster
     class="project-slide"
     src={src}
     poster={optimizedPoster?.src}
-    muted
+    data-project-video
     playsinline
-    loop
-    autoplay
-    preload="auto"
+    preload="metadata"
+    controls={controls}
+    muted={muted}
+    loop={loop}
     aria-label={alt}
   />
 </div>

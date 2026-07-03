@@ -11,6 +11,9 @@ interface SlideMedia {
   radius?: number;
   fit?: "contain" | "cover" | "fill";
   clipBackground?: string;
+  controls?: boolean;
+  muted?: boolean;
+  loop?: boolean;
 }
 
 interface Props {
@@ -47,7 +50,10 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
         style={`--item-r: ${item.radius ?? 16}; left: ${pctW(item.x)}; top: ${pctH(item.y)}; width: ${pctW(item.w)}; height: ${pctH(item.h)};`}
       >
         <div
-          class="project-figma-slide__clip"
+          class:list={[
+            "project-figma-slide__clip",
+            item.kind === "video" && item.controls && "project-figma-slide__clip--controls",
+          ]}
           data-fit={item.fit ?? "fill"}
           style={`background-color: ${item.clipBackground ?? background};`}
         >
@@ -55,11 +61,12 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
             <video
               src={item.src}
               poster={item.poster}
-              muted
+              data-project-video
               playsinline
-              loop
-              autoplay
-              preload="auto"
+              preload="metadata"
+              controls={item.controls}
+              muted={item.controls ? (item.muted ?? true) : true}
+              loop={item.loop ?? true}
               aria-label={item.alt}
             />
           ) : (
@@ -117,5 +124,9 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
   .project-figma-slide__clip[data-fit="fill"] :global(video),
   .project-figma-slide__clip[data-fit="fill"] :global(img) {
     object-fit: fill;
+  }
+
+  .project-figma-slide__clip--controls {
+    overflow: visible;
   }
 </style>

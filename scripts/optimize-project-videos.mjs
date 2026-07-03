@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const ASSETS_DIR = resolve(ROOT, "src/assets/projects");
 
-/** @typedef {{ crf: string; maxrate: string; bufsize: string; fps?: number; minSizeBytes?: number; force?: boolean }} Profile */
+/** @typedef {{ crf: string; maxrate: string; bufsize: string; fps?: number; minSizeBytes?: number; force?: boolean; remuxOnly?: boolean; keepAudio?: boolean }} Profile */
 
 /** @type {Record<string, Profile>} */
 const PROFILES = {
@@ -49,6 +49,14 @@ const PROFILES = {
     force: true,
     remuxOnly: true,
   },
+  withAudio: {
+    crf: "28",
+    maxrate: "1200k",
+    bufsize: "2400k",
+    fps: 30,
+    force: true,
+    keepAudio: true,
+  },
 };
 
 /** @type {Record<string, keyof typeof PROFILES>} */
@@ -59,6 +67,12 @@ const FILE_PROFILES = {
   "4k-download-site/product.mp4": "default",
   "4k-download-site/cards.mp4": "default",
   "4k-download-site/pay.mp4": "default",
+  "combin/slide-01.mp4": "default",
+  "combin/slide-02.mp4": "default",
+  "combin/slide-03.mp4": "default",
+  "combin/slide-06.mp4": "default",
+  "combin/slide-10.mp4": "withAudio",
+  "ai-video-cut/slide-01.mp4": "default",
 };
 
 function formatSize(bytes) {
@@ -106,7 +120,15 @@ function optimizeVideo(inputPath, profile) {
   const args = [
     "ffmpeg -y",
     `-i ${JSON.stringify(inputPath)}`,
-    "-an",
+  ];
+
+  if (!profile.keepAudio) {
+    args.push("-an");
+  } else {
+    args.push("-c:a aac", "-b:a 128k");
+  }
+
+  args.push(
     "-c:v libx264",
     `-crf ${profile.crf}`,
     `-maxrate ${profile.maxrate}`,
@@ -114,7 +136,7 @@ function optimizeVideo(inputPath, profile) {
     "-preset slow",
     "-movflags +faststart",
     "-pix_fmt yuv420p",
-  ];
+  );
 
   if (profile.fps) {
     args.push(`-vf fps=${profile.fps}`);

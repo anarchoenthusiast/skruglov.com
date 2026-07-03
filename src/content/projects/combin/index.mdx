@@ -1,15 +1,127 @@
 ---
 title: "Combin"
-description: "An Instagram marketing and content planning product from the broader 4K Download ecosystem."
-draft: true
-duration: "2016 — 2020"
-company: "4K Download"
-projectType: "Product Design"
+description: "Founding designer on Combin, an Instagram growth product — two cross-platform desktop apps, product pages, and marketing assets from zero to launch."
+role: "Founding Designer"
+duration: "2018–2020"
+company: "Combin"
+scope: "Product concept, Combin and Combin Scheduler desktop apps, product pages, marketing campaigns"
+projectType: "Web / App / Growth Design"
+contributions: "Invented the product direction, designed two desktop apps for Mac, Windows, and Ubuntu, and built the marketing surfaces around them"
 date: "2020-05-31"
+priority: 6
+images:
+  - url: "/projects/combin/cover.png"
+    alt: "Combin — Instagram growth tools"
 ---
 
-Combin sits within the broader 4K Download product ecosystem: a set of Instagram marketing and content planning tools shaped during my work across the company's product portfolio.
+import { Image } from "astro:assets";
+import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
+import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
+import slide04 from "../../../assets/projects/combin/slide-04.png";
+import slide05 from "../../../assets/projects/combin/slide-05.png";
+import slide07 from "../../../assets/projects/combin/slide-07.png";
+import slide08 from "../../../assets/projects/combin/slide-08.png";
+import slide09 from "../../../assets/projects/combin/slide-09.png";
+import slide01Video from "../../../assets/projects/combin/slide-01.mp4?url";
+import slide01Poster from "../../../assets/projects/combin/slide-01-poster.jpg?url";
+import slide02Video from "../../../assets/projects/combin/slide-02.mp4?url";
+import slide02Poster from "../../../assets/projects/combin/slide-02-poster.jpg?url";
+import slide03Video from "../../../assets/projects/combin/slide-03.mp4?url";
+import slide03Poster from "../../../assets/projects/combin/slide-03-poster.jpg?url";
+import slide06Video from "../../../assets/projects/combin/slide-06.mp4?url";
+import slide06Poster from "../../../assets/projects/combin/slide-06-poster.jpg";
+import slide10Video from "../../../assets/projects/combin/slide-10.mp4?url";
+import slide10Poster from "../../../assets/projects/combin/slide-10-poster.jpg?url";
 
-This entry stays intentionally lean and factual. The original public product presence is no longer clearly available, so the page avoids unsupported links, imagery, or claims.
+I joined Combin as founding designer when the product was still an idea. The job was to figure out what Instagram marketers actually needed, then design two desktop apps for Mac, Windows, and Ubuntu, the product pages that sold them, and the campaign assets the team ran in parallel.
 
-With additional references, this can become a fuller case study around product structure, workflow clarity, and how Combin fit into the wider ecosystem.
+<ProjectFigmaSlide
+  background="#d0d4d3"
+  media={[
+    {
+      kind: "video",
+      src: slide01Video,
+      poster: slide01Poster,
+      alt: "Combin — desktop app overview",
+      x: 66,
+      y: 101,
+      w: 828,
+      h: 437,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<ProjectFigmaSlide
+  background="#d0d4d3"
+  media={[
+    {
+      kind: "video",
+      src: slide02Video,
+      poster: slide02Poster,
+      alt: "Combin — account management workflow",
+      x: 66,
+      y: 101,
+      w: 828,
+      h: 437,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<ProjectFigmaSlide
+  background="#d0d4d3"
+  media={[
+    {
+      kind: "video",
+      src: slide03Video,
+      poster: slide03Poster,
+      alt: "Combin — audience targeting and actions",
+      x: 66,
+      y: 101,
+      w: 828,
+      h: 437,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<Image src={slide04} alt="Combin — product page and pricing cards" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<Image src={slide05} alt="Combin — marketing landing page layout" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectSlideVideo
+  src={slide06Video}
+  poster={slide06Poster}
+  posterWidth={2100}
+  alt="Combin — product page scroll and feature sections"
+/>
+
+<Image src={slide07} alt="Combin Scheduler — calendar and post queue" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<Image src={slide08} alt="Combin Scheduler — weekly planning view" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<Image src={slide09} alt="Combin — campaign landing pages and promo layouts" loading="lazy" quality={95} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectFigmaSlide
+  background="#d0d4d3"
+  media={[
+    {
+      kind: "video",
+      src: slide10Video,
+      poster: slide10Poster,
+      alt: "Combin Scheduler — product demo video",
+      x: 77,
+      y: 93,
+      w: 806,
+      h: 453,
+      radius: 16,
+      fit: "contain",
+      controls: true,
+      loop: false,
+    },
+  ]}
+/>
