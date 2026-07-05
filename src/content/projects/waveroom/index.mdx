@@ -1,12 +1,12 @@
 ---
 title: "Waveroom"
-description: "Principal designer for a remote recording studio, responsible for the end-to-end UX, brand system, and cross-platform design foundation."
+description: "Principal designer on Waveroom — a browser-based remote studio with a cross-platform design system and UX built around the constraints of recording in the browser."
 role: "Principal Designer"
 duration: "2022 — 2023"
 company: "Waveroom"
 scope: "End-to-end UX, brand platform, token-based design system"
 projectType: "Product Design"
-contributions: "Designed the product end-to-end and built the system that powered web, iOS, and desktop"
+contributions: "Product design, brand platform, design system, and design leadership"
 collaborators: "Two designers plus product and engineering teams"
 date: "2023-01-31"
 priority: 5
@@ -17,17 +17,24 @@ images:
 ---
 
 import { Image } from "astro:assets";
+import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
 import img1 from "../../../assets/projects/waveroom/1.jpg";
 import img2 from "../../../assets/projects/waveroom/2.jpg";
 import img3 from "../../../assets/projects/waveroom/3.jpg";
 import img4 from "../../../assets/projects/waveroom/4.jpg";
 import img5 from "../../../assets/projects/waveroom/5.jpg";
+import slide05Video from "../../../assets/projects/waveroom/slide-05.mp4?url";
+import slide05Poster from "../../../assets/projects/waveroom/slide-05-poster.jpg?url";
+import slide06Video from "../../../assets/projects/waveroom/slide-06.mp4?url";
+import slide06Poster from "../../../assets/projects/waveroom/slide-06-poster.jpg?url";
+import slide07Video from "../../../assets/projects/waveroom/slide-07.mp4?url";
+import slide07Poster from "../../../assets/projects/waveroom/slide-07-poster.jpg?url";
 
-Waveroom had to make a technically demanding recording workflow feel simple, reliable, and accessible in the browser. As Principal Designer, I shaped the product end to end for podcasters, interviewers, and teams recording remote conversations.
+Remote recording in the browser comes with a specific set of constraints: local capture, codec differences across devices, latency, dropped connections, post-processing. Every UX decision on Waveroom had to account for one of those. I was Principal Designer.
 
-I built the product experience around local recording, collaboration, and AI-assisted cleanup, then created the system that kept those surfaces consistent across web, iOS, and desktop. The work also included the brand platform from scratch: positioning, tone of voice, and visual guidelines.
+Two things made this project interesting. The first was the UX itself — building flows that felt simple for a podcaster while hiding a lot of technical complexity underneath. The second was the design system: Waveroom needed to work across web, iOS, and desktop, and multimedia interfaces have edge cases that generic component libraries do not cover. I built the system from the ground up for that.
 
-Alongside the interface work, I led and mentored designers and introduced DesignOps practices that made the team more consistent as the product evolved. The result was a clearer product foundation with a stronger point of view and less friction around a complex recording flow.
+The result was a product with a consistent cross-platform UI, a brand platform built from scratch, and a design foundation the team could actually work with as the product grew.
 
 <Image src={img1} alt="Waveroom — recording studio interface" loading="eager" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
 
@@ -36,5 +43,62 @@ Alongside the interface work, I led and mentored designers and introduced Design
 <Image src={img3} alt="Waveroom — brand system" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
 
 <Image src={img4} alt="Waveroom — design system components" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />
+
+<ProjectFigmaSlide
+  background="#e5ece2"
+  media={[
+    {
+      kind: "video",
+      src: slide05Video,
+      poster: slide05Poster,
+      alt: "Waveroom — recording studio workflow",
+      x: 39,
+      y: 38,
+      w: 882,
+      h: 564,
+      radius: 8,
+      fit: "contain",
+      clipBackground: "#d1d1d1",
+    },
+  ]}
+/>
+
+<ProjectFigmaSlide
+  background="#e5ece2"
+  media={[
+    {
+      kind: "video",
+      src: slide06Video,
+      poster: slide06Poster,
+      alt: "Waveroom — session recording flow",
+      x: 39,
+      y: 46,
+      w: 882,
+      h: 548,
+      radius: 8,
+      fit: "contain",
+      clipBackground: "#d1d1d1",
+    },
+  ]}
+/>
+
+<ProjectFigmaSlide
+  background="#e5ece2"
+  media={[
+    {
+      kind: "video",
+      src: slide07Video,
+      poster: slide07Poster,
+      alt: "Waveroom — collaborative editing experience",
+      x: 39,
+      y: 46,
+      w: 882,
+      h: 548,
+      radius: 8,
+      fit: "contain",
+      clipBackground: "#d1d1d1",
+    },
+  ]}
+/>
 
 <Image src={img5} alt="Waveroom — mobile experience" loading="lazy" densities={[1, 2]} sizes="(max-width: 768px) 100vw, 1200px" />

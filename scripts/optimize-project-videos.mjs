@@ -73,6 +73,9 @@ const FILE_PROFILES = {
   "combin/slide-06.mp4": "default",
   "combin/slide-10.mp4": "withAudio",
   "ai-video-cut/slide-01.mp4": "default",
+  "waveroom/slide-05.mp4": "default",
+  "waveroom/slide-06.mp4": "default",
+  "waveroom/slide-07.mp4": "default",
 };
 
 function formatSize(bytes) {
