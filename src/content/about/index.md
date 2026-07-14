@@ -10,7 +10,7 @@ I work across product direction, design, and engineering, helping teams turn com
 
 My work has contributed to products used by millions of people worldwide, including [**LALAL.AI**](https://www.lalal.ai/), [**4K Download**](https://www.4kdownload.com/), [**Waveroom**](https://waveroom.com/), and [**Ai Video Cut**](https://aivideocut.com/). I focus on turning complexity into clear, practical experiences and creating systems that help teams ship better work faster.
 
-I am currently building **Bright Future Studio**, an independent practice for early-stage and AI-enabled product work. I help founders clarify the product, prototype the experience, design and build the interface, and connect AI into real business workflows.
+I am currently building [**Bright Future Studio**](https://brightfutures.studio), an independent practice for early-stage and AI-enabled product work. I help founders clarify the product, prototype the experience, design and build the interface, and connect AI into real business workflows.
 
 ## Elsewhere
 
