@@ -14,7 +14,10 @@ export function mdxBodyToMarkdown(body: string): string {
       const description = /description="([^"]*)"/.exec(match)?.[1] ?? alt;
       return description ? `\n**Video.** ${description}\n` : "";
     })
-    .replace(/kind:\s*"video"[\s\S]*?alt:\s*"([^"]*)"/gi, "\n**Video.** $1\n")
+    .replace(/kind:\s*"video"[\s\S]*?alt:\s*"([^"]*)"[\s\S]*?(?:description:\s*"([^"]*)")?/gi, (_match, alt: string, description?: string) => {
+      const text = description ?? alt;
+      return text ? `\n**Video.** ${text}\n` : "";
+    })
     .replace(/<ProjectFigmaSlide\b[\s\S]*?\/>/gi, "")
     .replace(/<[^>]+>/g, "")
     .replace(/\n{3,}/g, "\n\n")

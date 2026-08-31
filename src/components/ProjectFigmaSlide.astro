@@ -4,6 +4,8 @@ interface SlideMedia {
   src: string;
   poster?: string;
   alt: string;
+  description?: string;
+  uploadDate?: Date | string;
   x: number;
   y: number;
   w: number;
@@ -33,6 +35,28 @@ const {
   media,
   class: className = "",
 } = Astro.props;
+
+const site = Astro.site ?? Astro.url;
+
+const videoObjects = media
+  .filter((item): item is SlideMedia & { kind: "video" } => item.kind === "video")
+  .map((item) => {
+    const contentUrl = new URL(item.src, site).href;
+    const thumbnailUrl = item.poster ? new URL(item.poster, site).href : undefined;
+    const isoDate = item.uploadDate ? new Date(item.uploadDate).toISOString() : undefined;
+    return {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: item.alt,
+      description: item.description ?? item.alt,
+      contentUrl,
+      ...(thumbnailUrl && { thumbnailUrl }),
+      ...(isoDate && { uploadDate: isoDate }),
+      encodingFormat: "video/mp4",
+      width: slideWidth,
+      height: slideHeight,
+    };
+  });
 
 const pctW = (value: number) => `${(value / slideWidth) * 100}%`;
 const pctH = (value: number) => `${(value / slideHeight) * 100}%`;
@@ -77,6 +101,11 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
     ))
   }
 </div>
+{
+  videoObjects.map((videoObject) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(videoObject)} />
+  ))
+}
 
 <style>
   .project-figma-slide {
