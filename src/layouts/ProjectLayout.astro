@@ -1,10 +1,13 @@
 ---
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
+import ProjectCoverImage from "@components/ProjectCoverImage.astro";
 import type { CollectionEntry } from "astro:content";
 import CTA from "@components/CTA.astro";
 import { SITE } from "@consts";
 import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+import { getProjectCover } from "@lib/project-covers";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -23,6 +26,18 @@ const canonicalURL = new URL(`/projects/${project.slug}/`, Astro.site).href;
 const hasFromParam = Astro.url.searchParams.has("from");
 const robotsMeta = hasFromParam ? "noindex, follow" : undefined;
 
+const coverAsset = getProjectCover(project.slug);
+const optimizedOgImage = coverAsset
+  ? await getImage({ src: coverAsset, width: 1200, quality: 78, format: "jpg" })
+  : undefined;
+
+const ogImage = optimizedOgImage?.src
+  ?? (project.data.images && project.data.images.length > 0
+    ? project.data.images[0].url
+    : undefined);
+const markdownURL = new URL(`/projects/${project.slug}.md`, Astro.site).href;
+const coverImageURL = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+
 // SEO: структурированные данные для проекта
 const structuredData = {
   "@context": "https://schema.org",
@@ -39,15 +54,10 @@ const structuredData = {
   "dateCreated": project.data.date.toISOString(),
   "genre": project.data.projectType,
   "keywords": [project.data.projectType, project.data.role, project.data.scope].filter(Boolean).join(", "),
-  ...(project.data.images && project.data.images.length > 0 && {
-    "image": new URL(project.data.images[0].url, Astro.site).href
+  ...(coverImageURL && {
+    "image": coverImageURL
   })
 };
-
-// SEO: Open Graph данные
-const ogImage = project.data.images && project.data.images.length > 0 
-  ? project.data.images[0].url 
-  : undefined;
 
 const primaryProjectMeta = [
   { label: "Role", value: project.data.role },
@@ -100,6 +110,7 @@ const breadcrumbs = [
   structuredData={structuredData}
   ogType="article"
   ogImage={ogImage}
+  markdownURL={markdownURL}
 >
   <!-- Контент страницы с анимацией -->
   <div class="project-page-content">
@@ -204,11 +215,12 @@ const breadcrumbs = [
               <a href={`/projects/${otherProject.slug}/?from=${fromParam}`} class="block group">
                 <div class="flex flex-col gap-4">
                   {otherProject.data.images && otherProject.data.images.length > 0 ? (
-                    <img 
-                      src={otherProject.data.images[0].url} 
-                      alt={otherProject.data.images[0].alt} 
-                      loading="lazy"
-                      decoding="async"
+                    <ProjectCoverImage
+                      slug={otherProject.slug}
+                      src={otherProject.data.images[0].url}
+                      alt={otherProject.data.images[0].alt}
+                      widths={[280, 560, 840]}
+                      sizes="(max-width: 640px) 50vw, 220px"
                       class="aspect-square w-full object-cover rounded-lg"
                     />
                   ) : (

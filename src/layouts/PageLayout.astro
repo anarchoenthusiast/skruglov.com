@@ -23,6 +23,7 @@ type Props = {
   publishedTime?: string;
   modifiedTime?: string;
   authorName?: string;
+  markdownURL?: string;
 };
 
 const { 
@@ -38,7 +39,8 @@ const {
   ogImage,
   publishedTime,
   modifiedTime,
-  authorName
+  authorName,
+  markdownURL,
 } = Astro.props;
 
 // Определяем, является ли текущая страница главной
@@ -87,6 +89,7 @@ const finalStructuredData = structuredDataItems.length === 0
       publishedTime={publishedTime}
       modifiedTime={modifiedTime}
       authorName={authorName}
+      markdownURL={markdownURL}
     />
     <ClientRouter />
   </head>

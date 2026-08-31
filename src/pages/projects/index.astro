@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+import ProjectCoverImage from "@components/ProjectCoverImage.astro";
 import { PROJECTS, SITE } from "@consts";
 
 const projects = (await getCollection("projects"))
@@ -54,6 +55,7 @@ const structuredData = {
   breadcrumbs={breadcrumbs}
   canonicalURL={canonicalURL}
   structuredData={structuredData}
+  markdownURL={new URL("/projects.md", Astro.site).href}
 >
   <Container size="default">
     <h1 class="sr-only">Projects by Sergey Kruglov</h1>
@@ -64,11 +66,12 @@ const structuredData = {
             <a href={`/projects/${project.slug}/?from=projects`} class="block group">
               <div class="flex flex-col gap-4">
                 {project.data.images && project.data.images.length > 0 ? (
-                  <img 
-                    src={project.data.images[0].url} 
-                    alt={project.data.images[0].alt} 
-                    loading="lazy"
-                    decoding="async"
+                  <ProjectCoverImage
+                    slug={project.slug}
+                    src={project.data.images[0].url}
+                    alt={project.data.images[0].alt}
+                    widths={[280, 560, 840]}
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
                     class="aspect-square w-full object-cover rounded-lg"
                   />
                 ) : (

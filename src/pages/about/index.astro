@@ -59,6 +59,7 @@ const lastModified = new Date(stats.mtime).toLocaleDateString("en-US", {
   breadcrumbs={breadcrumbs}
   canonicalURL={canonicalURL}
   structuredData={structuredData}
+  markdownURL={new URL("/about.md", Astro.site).href}
 >
   <Container size="default">
     <div class="about-header-section space-y-8 border-b border-black/10 dark:border-white/10">

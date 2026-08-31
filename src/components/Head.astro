@@ -15,6 +15,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   authorName?: string;
+  markdownURL?: string;
 }
 
 const defaultCanonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -30,7 +31,8 @@ const {
   ogImage,
   publishedTime,
   modifiedTime,
-  authorName = SITE.NAME
+  authorName = SITE.NAME,
+  markdownURL,
 } = Astro.props;
 
 const finalOgImage = ogImage || image;
@@ -59,6 +61,7 @@ const socialHandle = "@kryglovsergey";
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+{markdownURL && <link rel="alternate" type="text/markdown" href={markdownURL} />}
 
 <!-- Robots meta -->
 <meta name="robots" content={robots ?? "index, follow"} />

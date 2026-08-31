@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import { getProjectCover } from "@lib/project-covers";
+
+interface Props {
+  slug: string;
+  src: string;
+  alt: string;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+  sizes: string;
+  widths: number[];
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  slug,
+  src,
+  alt,
+  loading = "lazy",
+  fetchpriority = "auto",
+  sizes,
+  widths,
+  width,
+  height,
+} = Astro.props;
+const className = Astro.props.class;
+const cover = getProjectCover(slug);
+---
+
+{
+  cover ? (
+    <Image
+      src={cover}
+      alt={alt}
+      widths={widths}
+      sizes={sizes}
+      width={width ?? cover.width}
+      height={height ?? cover.height}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding="async"
+      quality={75}
+      format="webp"
+      class={className}
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+      class={className}
+    />
+  )
+}

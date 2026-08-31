@@ -86,6 +86,7 @@ const breadcrumbs = [
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.date.toISOString()}
   authorName={SITE.NAME}
+  markdownURL={new URL(`/blog/${post.slug}.md`, Astro.site).href}
 >
   <!-- Контент страницы с анимацией -->
   <div class="blog-page-content">

@@ -59,11 +59,11 @@ const toRadius = (value: number) => `calc(${value} * 100cqw / ${slideWidth})`;
         >
           {item.kind === "video" ? (
             <video
-              src={item.src}
+              data-src={item.src}
               poster={item.poster}
               data-project-video
               playsinline
-              preload="metadata"
+              preload="none"
               controls={item.controls}
               muted={item.controls ? (item.muted ?? true) : true}
               loop={item.loop ?? true}
