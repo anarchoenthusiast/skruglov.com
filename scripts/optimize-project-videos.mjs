@@ -8,7 +8,7 @@
  */
 
 import { execSync } from "node:child_process";
-import { existsSync, readdirSync, renameSync, statSync, unlinkSync } from "node:fs";
+import { readdirSync, renameSync, statSync, unlinkSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const ASSETS_DIR = resolve(ROOT, "src/assets/projects");
 
-/** @typedef {{ crf: string; maxrate: string; bufsize: string; fps?: number; minSizeBytes?: number; force?: boolean; remuxOnly?: boolean; keepAudio?: boolean }} Profile */
+/** @typedef {{ crf: string; maxrate: string; bufsize: string; fps?: number; maxWidth?: number; minSizeBytes?: number; force?: boolean; remuxOnly?: boolean; keepAudio?: boolean }} Profile */
 
 /** @type {Record<string, Profile>} */
 const PROFILES = {
@@ -27,11 +27,12 @@ const PROFILES = {
     fps: 30,
     minSizeBytes: 2 * 1024 * 1024,
   },
-  heavy: {
-    crf: "28",
-    maxrate: "1200k",
-    bufsize: "2400k",
+  screencast: {
+    crf: "30",
+    maxrate: "700k",
+    bufsize: "1400k",
     fps: 30,
+    maxWidth: 1400,
     force: true,
   },
   light: {
@@ -61,7 +62,11 @@ const PROFILES = {
 
 /** @type {Record<string, keyof typeof PROFILES>} */
 const FILE_PROFILES = {
-  "surrly/screencast-dream1-3x2.mp4": "heavy",
+  "surrly/screencast-dream1-3x2.mp4": "screencast",
+  "surrly/onboarding-lottie-composite.mp4": "heavy",
+  "vana/slide-12-composite.mp4": "heavy",
+  "vana/slide-13-composite.mp4": "heavy",
+  "vana/slide-14-composite.mp4": "heavy",
   "flipp/3.mp4": "remux",
   "4k-download-site/home.mp4": "default",
   "4k-download-site/product.mp4": "default",
@@ -98,7 +103,7 @@ function getProfile(relativePath) {
   return PROFILES[key];
 }
 
-function shouldOptimize(relativePath, inputPath, profile) {
+function shouldOptimize(_relativePath, inputPath, profile) {
   if (profile.force) return true;
   const size = statSync(inputPath).size;
   const minSize = profile.minSizeBytes ?? PROFILES.default.minSizeBytes;
@@ -141,8 +146,15 @@ function optimizeVideo(inputPath, profile) {
     "-pix_fmt yuv420p",
   );
 
+  const filters = [];
+  if (profile.maxWidth) {
+    filters.push(`scale='min(${profile.maxWidth}\\,iw)':-2`);
+  }
   if (profile.fps) {
-    args.push(`-vf fps=${profile.fps}`);
+    filters.push(`fps=${profile.fps}`);
+  }
+  if (filters.length) {
+    args.push(`-vf ${JSON.stringify(filters.join(","))}`);
   }
 
   args.push(JSON.stringify(tempPath));
