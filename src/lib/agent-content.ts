@@ -9,8 +9,13 @@ export function mdxBodyToMarkdown(body: string): string {
       return text ? `\n> ${text.replace(/\n+/g, " ").trim()}\n` : "";
     })
     .replace(/<Image\b[^>]*\balt="([^"]*)"[^>]*\/>/gi, "\n![$1]()\n")
-    .replace(/<ProjectSlideVideo\b[^>]*\balt="([^"]*)"[^>]*\/>/gi, "\n[Video: $1]\n")
-    .replace(/<ProjectFigmaSlide\b[\s\S]*?\/>/gi, "\n[Embedded product slide]\n")
+    .replace(/<ProjectSlideVideo\b[\s\S]*?\/>/gi, (match) => {
+      const alt = /alt="([^"]*)"/.exec(match)?.[1];
+      const description = /description="([^"]*)"/.exec(match)?.[1] ?? alt;
+      return description ? `\n**Video.** ${description}\n` : "";
+    })
+    .replace(/kind:\s*"video"[\s\S]*?alt:\s*"([^"]*)"/gi, "\n**Video.** $1\n")
+    .replace(/<ProjectFigmaSlide\b[\s\S]*?\/>/gi, "")
     .replace(/<[^>]+>/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();

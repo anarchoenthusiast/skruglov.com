@@ -6,24 +6,48 @@ interface Props {
   src: string;
   poster?: ImageMetadata;
   alt: string;
+  description?: string;
   posterWidth?: number;
   controls?: boolean;
   muted?: boolean;
   loop?: boolean;
+  uploadDate?: Date | string;
 }
 
 const {
   src,
   poster,
   alt,
+  description = alt,
   posterWidth = 1000,
   controls = false,
   muted = true,
   loop = true,
+  uploadDate,
 } = Astro.props;
 const optimizedPoster = poster
   ? await getImage({ src: poster, width: posterWidth, quality: 70, format: "webp" })
   : undefined;
+const site = Astro.site ?? Astro.url;
+const contentUrl = new URL(src, site).href;
+const thumbnailUrl = optimizedPoster
+  ? new URL(optimizedPoster.src, site).href
+  : undefined;
+const isoDate = uploadDate
+  ? new Date(uploadDate).toISOString()
+  : undefined;
+const videoObject = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: alt,
+  description,
+  contentUrl,
+  ...(thumbnailUrl && { thumbnailUrl }),
+  ...(isoDate && { uploadDate: isoDate }),
+  encodingFormat: "video/mp4",
+  width: 960,
+  height: 640,
+};
 ---
 
 <div class="project-slide-wrap">
@@ -42,3 +66,4 @@ const optimizedPoster = poster
     aria-label={alt}
   />
 </div>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(videoObject)} />
