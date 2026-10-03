@@ -484,39 +484,6 @@ const isAboutPage = pathname === "/about" || pathname === "/about/";
     pointer-events: auto;
   }
   
-  /* Темная тема */
-  @media (prefers-color-scheme: dark) {
-    .menu-button {
-      background: rgba(20, 20, 20, 0.4);
-      color: rgb(248, 248, 248);
-    }
-    
-    .menu-button:hover {
-      background: rgba(20, 20, 20, 0.6);
-    }
-    
-    .expanded-nav {
-      background: rgba(20, 20, 20, 0.4);
-    }
-
-    .nav-button {
-      color: rgb(248, 248, 248);
-    }
-    
-    .nav-button.active {
-      background: rgba(248, 248, 248, 0.1);
-      color: rgb(248, 248, 248);
-    }
-    
-    .nav-button:hover {
-      background: rgba(248, 248, 248, 0.05);
-    }
-    
-    .icon-line {
-      stroke: rgb(248, 248, 248);
-    }
-  }
-
   :global(html.dark) .menu-button {
     background: rgba(20, 20, 20, 0.4);
     color: rgb(248, 248, 248);
@@ -738,34 +705,6 @@ const isAboutPage = pathname === "/about" || pathname === "/about/";
     }
   }
   
-  /* Темная тема для мобильной навигации */
-  @media (prefers-color-scheme: dark) {
-    .mobile-nav-content {
-      background: rgba(20, 20, 20, 0.4);
-    }
-    
-    .mobile-nav-close {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .mobile-nav-close:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: scale(1.05);
-    }
-    
-    .mobile-nav-close svg path {
-      stroke: rgba(255, 255, 255, 0.44);
-    }
-    
-    .mobile-nav-text {
-      color: rgba(255, 255, 255, 0.44);
-    }
-    
-    .mobile-nav-text.active {
-      color: #ffffff;
-    }
-  }
-  
   :global(html.dark) .mobile-nav-content {
     background: rgba(20, 20, 20, 0.4);
   }
@@ -790,4 +729,4 @@ const isAboutPage = pathname === "/about" || pathname === "/about/";
   :global(html.dark) .mobile-nav-text.active {
     color: #ffffff;
   }
-</style> 
+</style>

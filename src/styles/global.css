@@ -7,10 +7,12 @@
 html {
   overflow-y: scroll;
   color-scheme: light;
+  background-color: #ededed;
 }
 
 html.dark {
   color-scheme: dark;
+  background-color: #1c1917;
 }
 
 html,
@@ -21,13 +23,13 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-white dark:bg-stone-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply bg-[#ededed] dark:bg-stone-900;
+  @apply text-black dark:text-white/75;
 }
 
 header {
   @apply relative pt-5;
-  @apply bg-white dark:bg-stone-900;
+  @apply bg-[#ededed] dark:bg-stone-900;
 }
 
 main {
@@ -39,7 +41,7 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-0 prose-img:rounded-[12px];
+  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-0;
   @apply prose-headings:font-tiempos prose-p:font-grotesk;
   @apply prose-headings:font-normal prose-p:font-normal;
   @apply prose-headings:text-black prose-headings:dark:text-white;
@@ -53,15 +55,68 @@ article {
 }
 
 @layer utilities {
-  /* Общие стили для всех ссылок с подчеркиванием */
+  /* Текстовые ссылки отмечаются белой подложкой, как в референсе. */
   .link-underlined, article a {
-    @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
+    @apply font-sans bg-white text-black no-underline -mx-0.5 px-0.5;
+    @apply dark:bg-stone-800 dark:text-white;
+    @apply transition-colors duration-200 ease-in-out;
   }
   .link-underlined:hover, article a:hover {
     @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
+  }
+
+  .footer-link {
+    @apply bg-transparent text-black/70 dark:bg-transparent dark:text-white/70;
+  }
+
+  .footer-link:hover {
+    @apply bg-white text-black dark:bg-stone-800 dark:text-white;
+  }
+
+  .action-link {
+    @apply inline-flex items-center -mx-1 px-1 font-grotesk font-normal text-base text-black dark:text-white;
+    @apply transition-colors duration-200 ease-in-out;
+  }
+
+  .action-link-arrow {
+    width: 5px;
+    height: 12px;
+    margin-left: 6px;
+    flex: none;
+    transform: translateY(1px);
+    transition: transform 0.2s;
+  }
+
+  .action-link-label {
+    transition: background-color 0.2s;
+  }
+
+  @media (hover: hover) {
+    .action-link:hover .action-link-label {
+      background-color: #ffffff;
+    }
+  }
+
+  @media (hover: hover) {
+    .action-link:hover .action-link-arrow {
+      transform: translate(4px, 1px);
+    }
+  }
+
+  .action-link-external-arrow {
+    margin-left: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    transform: translateY(1px);
+    transition: transform 0.2s;
+  }
+
+  @media (hover: hover) {
+    .action-link:hover .action-link-external-arrow {
+      transform: translate(4px, 1px);
+    }
   }
 }
 
@@ -121,13 +176,25 @@ article img,
   padding: 0 !important;
 }
 
+.project-article > figure.surrly-screen,
+.project-article > figure.vana-screen,
+.project-article > figure.flipp-screen,
+.project-article > figure.combin-screen,
+.project-article > figure.ai-video-cut-screen,
+.project-article > .project-slide-wrap.vana-video {
+  background-color: #fff;
+}
+
+.project-article > .project-slide-wrap.vana-video video {
+  filter: contrast(1.25);
+}
+
 .project-article .project-figma-slide :is(video, img) {
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .project-article > .project-slide-wrap {
-  border-radius: 12px;
   overflow: hidden;
   aspect-ratio: 960 / 640;
 }
@@ -140,7 +207,6 @@ article img,
   height: 100%;
   object-fit: fill;
   vertical-align: top;
-  border-radius: 12px;
 }
 
 .project-article > p + img,
@@ -187,6 +253,10 @@ article img,
 }
 
 .project-article > :is(img, picture, figure, .project-slide-wrap, .project-figma-slide) + .project-note {
+  margin-top: 12px !important;
+}
+
+.project-article > :is(img, picture, figure, .project-slide-wrap, .project-figma-slide) + script[type="application/ld+json"] + .project-note {
   margin-top: 12px !important;
 }
 

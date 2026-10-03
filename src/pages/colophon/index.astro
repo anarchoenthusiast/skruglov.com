@@ -126,17 +126,6 @@ const structuredData = {
     color: inherit;
   }
 
-  /* Темная тема для списков */
-  @media (prefers-color-scheme: dark) {
-    :global(article li) {
-      color: #ffffff;
-    }
-    
-    :global(article li::marker) {
-      color: #ffffff;
-    }
-  }
-
   :global(html.dark article li) {
     color: #ffffff;
   }
@@ -145,13 +134,4 @@ const structuredData = {
     color: #ffffff;
   }
 
-  :global(article a) {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  :global(article a:hover) {
-    opacity: 0.8;
-  }
-</style> 
+</style>

@@ -12,6 +12,7 @@ interface Props {
   muted?: boolean;
   loop?: boolean;
   uploadDate?: Date | string;
+  class?: string;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   muted = true,
   loop = true,
   uploadDate,
+  class: className = "",
 } = Astro.props;
 const optimizedPoster = poster
   ? await getImage({ src: poster, width: posterWidth, quality: 70, format: "webp" })
@@ -50,7 +52,7 @@ const videoObject = {
 };
 ---
 
-<div class="project-slide-wrap">
+<div class:list={["project-slide-wrap", className]}>
   <video
     class="project-slide"
     data-src={src}

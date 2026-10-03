@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        black: "#404040",
+        white: "#ffffff",
+      },
       fontFamily: {
         sans: ["Die Grotesk B", ...defaultTheme.fontFamily.sans],
         serif: ["Tiempos Text", ...defaultTheme.fontFamily.serif],

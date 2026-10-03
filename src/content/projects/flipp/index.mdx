@@ -10,7 +10,7 @@ contributions: "Designed the iOS MVP for a Gen Z crypto app, acquired by Rarible
 date: "2025-03-01"
 priority: 7
 images:
-  - url: "/projects/flipp/cover.png"
+  - url: "/projects/flipp/cover-preview.png"
     alt: "Flipp — mobile crypto app"
 ---
 
@@ -18,9 +18,9 @@ import { Image } from "astro:assets";
 import ProjectNote from "@components/ProjectNote.astro";
 import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
 import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
-import img2 from "../../../assets/projects/flipp/2.jpg";
-import img4 from "../../../assets/projects/flipp/4.jpg";
-import img5 from "../../../assets/projects/flipp/5.jpg";
+import img2 from "../../../assets/projects/flipp/2.png";
+import img4 from "../../../assets/projects/flipp/4.png";
+import img5 from "../../../assets/projects/flipp/5.png";
 import slide2BgVideo from "../../../assets/projects/flipp/slide-2-bg.mp4?url";
 import slide2Poster from "../../../assets/projects/flipp/slide-2-poster.jpg?url";
 import slide2Overlay from "../../../assets/projects/flipp/slide-2-overlay.png?url";
@@ -60,7 +60,7 @@ I designed the iOS MVP for Flipp, a Gen Z crypto app where you buy and flip coin
   ]}
 />
 
-<Image src={img2} alt="Flipp — portfolio overview and hold-to-flip exchange modal" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+<figure class="flipp-screen"><Image src={img2} alt="Flipp — portfolio overview and hold-to-flip exchange modal" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" /></figure>
 
 <ProjectNote>
 Featured tokens like $DOG needed meme energy, not a Bloomberg terminal. A chart, one line about the asset, one button to flip. Fractional ownership without the spreadsheet feel.
@@ -69,8 +69,8 @@ Featured tokens like $DOG needed meme energy, not a Bloomberg terminal. A chart,
 <ProjectSlideVideo
   src={slide3Video}
   poster={slide3Poster}
-  alt="Flipp — expanding swap widget from a social feed"
-  description="Screencast of the Flipp swap widget expanding from a community feed post."
+  alt="Flipp — The Doge token detail screen"
+  description="Screencast of the Flipp token detail screen with a price chart, token information, and the Flipp action."
   uploadDate="2025-03-01"
 />
 
@@ -78,10 +78,10 @@ Featured tokens like $DOG needed meme energy, not a Bloomberg terminal. A chart,
 The MVP was closer to a one-button app than a wallet. A grid of holdings with live gains and losses, then one tap into a flip sheet: swap pair, a short countdown, hold to confirm. More r/WallStreetBets than Uniswap.
 </ProjectNote>
 
-<Image src={img4} alt="Flipp — swap widget expanding from a community post" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+<figure class="flipp-screen"><Image src={img4} alt="Flipp — swap widget expanding from a community post" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" /></figure>
 
 <ProjectNote>
 You do not start a flip from a portfolio screen. You see a token in a thread, a card slides up from the feed, opens into a chart, and you flip from there. The context stays social.
 </ProjectNote>
 
-<Image src={img5} alt="Flipp — onboarding welcome and wallet connection" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+<figure class="flipp-screen"><Image src={img5} alt="Flipp — onboarding welcome and wallet connection" loading="lazy" quality={90} widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" /></figure>

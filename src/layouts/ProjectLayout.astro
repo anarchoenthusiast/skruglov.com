@@ -147,9 +147,10 @@ const breadcrumbs = [
                     href={project.data.demoURL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="project-link"
+                    class="action-link"
                   >
-                    Visit project
+                    <span class="action-link-label">Visit project</span>
+                    <span class="action-link-external-arrow" aria-hidden="true">↗</span>
                   </a>
                 )}
                 {project.data.repoURL && (
@@ -157,9 +158,10 @@ const breadcrumbs = [
                     href={project.data.repoURL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="project-link"
+                    class="action-link"
                   >
-                    View repository
+                    <span class="action-link-label">View repository</span>
+                    <span class="action-link-external-arrow" aria-hidden="true">↗</span>
                   </a>
                 )}
               </div>
@@ -221,10 +223,10 @@ const breadcrumbs = [
                       alt={otherProject.data.images[0].alt}
                       widths={[280, 560, 840]}
                       sizes="(max-width: 640px) 50vw, 220px"
-                      class="aspect-square w-full object-cover rounded-lg"
+                      class="aspect-square w-full object-cover"
                     />
                   ) : (
-                    <div class="aspect-square bg-[#D9D9D9] rounded-lg"></div>
+                    <div class="aspect-square bg-[#D9D9D9]"></div>
                   )}
                   <div class="flex flex-col">
                     <div class="project-value group-hover:opacity-80 transition-opacity">
@@ -239,11 +241,10 @@ const breadcrumbs = [
             ))}
           </div>
           <div class="flex justify-end pt-2">
-            <a href="/projects" class="inline-flex items-center gap-1 font-grotesk font-medium text-base text-black dark:text-white hover:opacity-80 transition-opacity leading-[1.5]">
-              All projects
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+            <a href="/projects" class="action-link leading-[1.5]">
+              <span class="action-link-label">All projects</span>
+              <svg class="action-link-arrow" viewBox="0 0 5 12" fill="none" aria-hidden="true">
+                <path d="M1 1.5L4 6L1 10.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
@@ -335,21 +336,13 @@ const breadcrumbs = [
     @apply text-black dark:text-white;
   }
 
-  .project-link {
-    @apply inline-flex items-center rounded-full border border-black/10 px-4 py-2;
-    @apply font-grotesk text-sm text-black transition-colors;
-    @apply hover:border-black/20 hover:bg-black/[0.03];
-    @apply dark:border-white/10 dark:text-white dark:hover:border-white/20 dark:hover:bg-white/[0.04];
-  }
-
   .press-link {
-    @apply inline-flex items-center gap-1.5;
-    @apply font-grotesk text-sm text-black/60 transition-colors;
-    @apply hover:text-black dark:text-white/50 dark:hover:text-white;
+    @apply inline-flex items-center gap-1.5 bg-white dark:bg-stone-800 -mx-0.5 px-0.5;
+    @apply font-grotesk text-sm text-black dark:text-white transition-colors;
   }
 
   .press-favicon {
-    @apply w-4 h-4 rounded-sm flex-shrink-0 opacity-70;
+    @apply w-4 h-4 flex-shrink-0 opacity-70;
   }
 
   .press-link:hover .press-favicon {
@@ -365,4 +358,4 @@ const breadcrumbs = [
   :global(.project-page-content h1) {
     @apply font-tiempos text-4xl text-black dark:text-white tracking-[-0.028em] leading-[1.167] font-normal;
   }
-</style> 
+</style>

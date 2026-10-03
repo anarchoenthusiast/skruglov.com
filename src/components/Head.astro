@@ -47,11 +47,11 @@ const socialHandle = "@kryglovsergey";
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="author" content={SITE.NAME} />
 <meta name="application-name" content={SITE.NAME} />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
-<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="/favicon-light.svg">
+<meta name="theme-color" content="#ededed" />
+<link rel="icon" type="image/png" sizes="32x32" href="/portrait-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/portrait-icon-16.png">
+<link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/favicon.ico?v=portrait">
+<link rel="apple-touch-icon" sizes="180x180" href="/portrait-icon-180.png">
 <meta name="generator" content={Astro.generator} />
 <link rel="alternate" type="application/rss+xml" title={`${SITE.NAME} RSS Feed`} href="/rss.xml" />
 
@@ -113,6 +113,9 @@ const socialHandle = "@kryglovsergey";
 </script>
 
 <script is:inline>
+  // Временная настройка: сайт работает только в светлой теме.
+  const useSystemTheme = false;
+
   function init() {
     preloadTheme();
     onScroll();
@@ -121,12 +124,13 @@ const socialHandle = "@kryglovsergey";
     const backToPrev = document.getElementById("back-to-prev");
     backToPrev?.addEventListener("click", () => window.history.back());
 
-    // Отслеживаем изменения системной темы
-    window.matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", event => {
-        toggleTheme(event.matches);
-      }
-    );
+    if (useSystemTheme) {
+      window.matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", event => {
+          toggleTheme(event.matches);
+        }
+      );
+    }
 
     document.addEventListener("scroll", onScroll);
     
@@ -190,8 +194,7 @@ const socialHandle = "@kryglovsergey";
   }
 
   function preloadTheme() {
-    // Всегда используем системную тему
-    toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    toggleTheme(useSystemTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
   }
 
   document.addEventListener("DOMContentLoaded", () => init());

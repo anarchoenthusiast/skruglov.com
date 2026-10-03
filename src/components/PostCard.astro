@@ -15,7 +15,7 @@ const { post, fromSource = "blog" } = Astro.props;
 ---
 
 <li>
-  <a href={`/blog/${post.slug}/?from=${fromSource}`} class="post-card-link block group p-4 bg-[#F5F5F5] dark:bg-stone-800 rounded-xl hover:bg-[#EBEBEB] dark:hover:bg-stone-700 transition-colors duration-300 ease-out" data-from-source={fromSource}>
+  <a href={`/blog/${post.slug}/?from=${fromSource}`} class="post-card-link block group p-4 bg-white dark:bg-stone-800 hover:bg-white dark:hover:bg-stone-700 transition-colors duration-300 ease-out" data-from-source={fromSource}>
     <div class="flex items-center gap-4">
       <div class="flex flex-col gap-1 flex-1 min-w-0">
         <div class="font-grotesk font-normal text-base text-black dark:text-white group-hover:opacity-80 transition-opacity duration-300 ease-out description-fade">
@@ -32,7 +32,7 @@ const { post, fromSource = "blog" } = Astro.props;
             alt={post.data.title}
             loading="lazy"
             decoding="async"
-            class="h-[68px] w-[68px] rounded-md object-cover"
+            class="h-[68px] w-[68px] object-cover"
           />
         </div>
       )}
@@ -100,24 +100,13 @@ const { post, fromSource = "blog" } = Astro.props;
     top: 0;
     bottom: 0;
     width: 40px;
-    background: linear-gradient(to right, transparent, #F5F5F5);
+    background: linear-gradient(to right, transparent, #ffffff);
     pointer-events: none;
   }
   
   /* Для hover состояния */
   .group:hover .description-fade::after {
-    background: linear-gradient(to right, transparent, #EBEBEB);
-  }
-  
-  /* Темная тема */
-  @media (prefers-color-scheme: dark) {
-    .description-fade::after {
-      background: linear-gradient(to right, transparent, rgb(41 37 36));
-    }
-    
-    .group:hover .description-fade::after {
-      background: linear-gradient(to right, transparent, rgb(68 64 60));
-    }
+    background: linear-gradient(to right, transparent, #ffffff);
   }
   
   :global(html.dark) .description-fade::after {
@@ -127,4 +116,4 @@ const { post, fromSource = "blog" } = Astro.props;
   :global(html.dark) .group:hover .description-fade::after {
     background: linear-gradient(to right, transparent, rgb(68 64 60));
   }
-</style> 
+</style>

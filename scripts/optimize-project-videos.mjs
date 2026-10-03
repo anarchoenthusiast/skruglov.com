@@ -85,7 +85,7 @@ const FILE_PROFILES = {
   "combin/slide-01.mp4": "screencast",
   "combin/slide-02.mp4": "screencast",
   "combin/slide-03.mp4": "screencast",
-  "combin/slide-06.mp4": "screencast",
+  "combin/slide-06.mp4": "default",
   "combin/slide-10.mp4": "screencastWithAudio",
   "ai-video-cut/slide-01.mp4": "screencast",
   "waveroom/slide-05.mp4": "screencast",

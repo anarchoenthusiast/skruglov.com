@@ -1,4 +1,22 @@
-<div class="w-5 h-5">
-  <img src="/images/logo-dark.svg" alt="Logo" class="block dark:hidden w-full h-full" />
-  <img src="/images/logo-light.svg" alt="Logo" class="hidden dark:block w-full h-full" />
-</div> 
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.webp";
+
+interface Props {
+  size?: number;
+}
+
+const { size = 20 } = Astro.props;
+const imageSize = Math.min(size * 4, portrait.width);
+---
+
+<div style={{ width: `${size}px`, height: `${size}px` }}>
+  <Image
+    src={portrait}
+    alt="Sergey Kruglov"
+    width={imageSize}
+    height={imageSize}
+    quality={85}
+    class="block w-full h-full object-cover"
+  />
+</div>
