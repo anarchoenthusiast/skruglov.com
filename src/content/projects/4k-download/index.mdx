@@ -1,14 +1,15 @@
 ---
-title: "4K Download apps"
-description: "Redesigned five desktop apps at 4K Download and defined concepts for 4K Tokkit and 4K Image Compressor. The product family has over 60 million cumulative users."
-role: "Senior UI/UX Product Designer"
-duration: "2016 — 2020"
+title: "4K Download"
+description: "Product design across the 4K Download family: five desktop apps, new product concepts, website, subscriptions, and cross-platform design systems."
+role: "Product Designer"
+duration: "2012 — 2020"
 company: "4K Download"
-scope: "Desktop product redesign, new product design, onboarding, paywalls, and design system"
+scope: "Desktop apps, product concepts, website and subscription UX, design leadership, cross-platform design systems"
 projectType: "Product Design"
-contributions: "Redesigned five core apps, defined new product concepts, built the design system, and improved paywall conversion"
+contributions: "Five desktop app redesigns, paywall experiments, website and subscriptions, design systems and brand refresh"
 collaborators: "Slava, Sasha, Vitaly, Max, Anton, Radim"
-date: "2020-12-31"
+date: "2025-10-01"
+priority: 3
 demoURL: "https://4kdownload.com/"
 pressLinks:
   - label: "TechRadar"
@@ -25,7 +26,7 @@ pressLinks:
     url: "https://au.lifehacker.com/news/58920/the-best-apps-to-download-and-archive-youtube-videos"
 images:
   - url: "/projects/4k-download/cover-preview.png"
-    alt: "4K Download apps project preview"
+    alt: "4K Download — desktop apps, website and subscriptions"
 ---
 
 import { Image } from "astro:assets";
@@ -38,8 +39,21 @@ import img5 from "../../../assets/projects/typo-project/5.jpg";
 import img6 from "../../../assets/projects/typo-project/6.jpg";
 import img7 from "../../../assets/projects/typo-project/7.jpg";
 import slide8 from "../../../assets/projects/4k-download-site/slide-8-20260924.png";
+import ProjectFigmaSlide from "@components/ProjectFigmaSlide.astro";
+import ProjectSlideVideo from "@components/ProjectSlideVideo.astro";
+import homeVideo from "../../../assets/projects/4k-download-site/home.mp4?url";
+import productVideo from "../../../assets/projects/4k-download-site/product.mp4?url";
+import cardsVideo from "../../../assets/projects/4k-download-site/cards.mp4?url";
+import payVideo from "../../../assets/projects/4k-download-site/pay.mp4?url";
+import slide2 from "../../../assets/projects/4k-download-site/slide-2-20260924.png";
+import slide5 from "../../../assets/projects/4k-download-site/slide-5-20260924.png";
+import slide7 from "../../../assets/projects/4k-download-site/slide-7-20260924.png";
 
-My main period at 4K Download was 2012–2020. This case focuses on the desktop redesign work in 2016–2020 and includes subsequent project contributions. I redesigned five complex applications for Windows, macOS, and Ubuntu, bringing more structure to interfaces that carried years of legacy decisions.
+At 4K Download, I worked across desktop applications, the marketing website, and subscriptions, connecting product UX, brand, and design systems across the product family.
+
+## Desktop applications
+
+As Senior UI/UX Product Designer, I redesigned five complex applications for Windows, macOS, and Ubuntu, bringing more structure to interfaces that carried years of legacy decisions.
 
 By 2020, I had formulated hypotheses about market demand and defined core features for 4K Tokkit and 4K Image Compressor. This was concept work ahead of their later public launches.
 
@@ -109,8 +123,90 @@ The product family has a cumulative user base of over 60 million across 190 coun
   sizes="(max-width: 768px) 100vw, 700px"
 />
 
+## Website and subscriptions
+
+My work at 4K Download also included the website and subscriptions. As Head of Design, I owned the marketing site, subscription surfaces, and the design system that kept marketing and product aligned.
+
+<ProjectFigmaSlide
+  background="#cfd3d6"
+  media={[
+    {
+      kind: "video",
+      src: homeVideo,
+      alt: "4K Download homepage screencast",
+      description: "Screencast of the redesigned 4K Download marketing homepage.",
+      uploadDate: "2025-10-01",
+      x: 66,
+      y: 93.5,
+      w: 828,
+      h: 453,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<Image src={slide2} alt="4K Download product suite overview" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectFigmaSlide
+  background="#cfd3d6"
+  media={[
+    {
+      kind: "video",
+      src: productVideo,
+      alt: "4K Download product page screencast",
+      description: "Screencast of a 4K Download product page with download and pricing flows.",
+      uploadDate: "2025-10-01",
+      x: 66,
+      y: 93.5,
+      w: 828,
+      h: 453,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<ProjectNote>
+Clearer navigation, a tighter suite overview, and simpler download paths helped make the product family easier to understand. Working with developers, I created a token-based design system with 60+ components, reducing design handoff time by approximately 35%.
+</ProjectNote>
+
+<ProjectSlideVideo
+  src={cardsVideo}
+  alt="4K Download pricing cards screencast"
+  description="Screencast of subscription pricing cards on the 4K Download site."
+  uploadDate="2025-10-01"
+/>
+
+<Image src={slide5} alt="4K Download subscription pricing page" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
+<ProjectNote>
+Subscriptions were new territory: product pages, pricing cards, promo screens, and checkout had to read as one continuous flow across 190 countries and several product lines.
+</ProjectNote>
+
+<ProjectFigmaSlide
+  background="#cfd3d6"
+  media={[
+    {
+      kind: "video",
+      src: payVideo,
+      alt: "4K Download checkout and paywall screencast",
+      description: "Screencast of the 4K Download checkout and paywall experience.",
+      uploadDate: "2025-10-01",
+      x: 66,
+      y: 93.5,
+      w: 828,
+      h: 453,
+      radius: 16,
+      fit: "contain",
+    },
+  ]}
+/>
+
+<Image src={slide7} alt="4K Download subscription loyalty screen" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
+
 <Image src={slide8} alt="4K Download Wikipedia article" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
 
 <ProjectNote>
-4K Download is consumer software used by tens of millions. It even has its own Wikipedia article.
+4K Download is consumer software used by tens of millions — notable enough to have its own Wikipedia article.
 </ProjectNote>

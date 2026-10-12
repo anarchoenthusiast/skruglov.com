@@ -1,5 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import { SITE, HOME } from "@consts";
+import { selectHomeProjects } from "@lib/home-projects";
 
 export function mdxBodyToMarkdown(body: string): string {
   return body
@@ -59,6 +60,12 @@ export function projectToMarkdown(project: CollectionEntry<"projects">): string 
     `- Canonical page: https://skruglov.com/projects/${project.slug}/`,
     "",
     mdxBodyToMarkdown(project.body),
+    ...(project.data.awardLinks?.length ? [
+      "",
+      "## Awards",
+      "",
+      ...project.data.awardLinks.map((link) => `- [${link.label}](${link.url})`),
+    ] : []),
   ].filter((line): line is string => line !== null);
 
   return `${lines.join("\n")}\n`;
@@ -137,7 +144,7 @@ export function buildHomeMarkdown(input: {
   projects: CollectionEntry<"projects">[];
   posts: CollectionEntry<"blog">[];
 }): string {
-  const projectLines = input.projects
+  const projectLines = selectHomeProjects(input.projects)
     .map((project) => `- [${project.data.title}](https://skruglov.com/projects/${project.slug}/): ${project.data.description}`)
     .join("\n");
   const postLines = input.posts

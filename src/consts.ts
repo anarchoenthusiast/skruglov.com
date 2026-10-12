@@ -1,10 +1,12 @@
 import type { Site, Metadata, Socials } from "@types";
 
+export const HOME_PROJECT_SLUGS = ["lalal-ai", "4k-download", "surrly"] as const;
+
 export const SITE: Site = {
   NAME: "Sergey Kruglov",
   EMAIL: "hello@skruglov.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_PROJECTS_ON_HOMEPAGE: 4,
+  NUM_PROJECTS_ON_HOMEPAGE: HOME_PROJECT_SLUGS.length,
 };
 
 export const HOME: Metadata = {

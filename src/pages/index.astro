@@ -7,27 +7,14 @@ import ProjectCoverImage from "@components/ProjectCoverImage.astro";
 import CTA from "@components/CTA.astro";
 import Logo from "@components/Logo.astro";
 import { SITE, HOME } from "@consts";
+import { selectHomeProjects } from "@lib/home-projects";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => {
-    if (a.data.priority !== undefined && b.data.priority !== undefined) {
-      return a.data.priority - b.data.priority;
-    }
-    if (a.data.priority !== undefined && b.data.priority === undefined) {
-      return -1;
-    }
-    if (a.data.priority === undefined && b.data.priority !== undefined) {
-      return 1;
-    }
-    return b.data.date.valueOf() - a.data.date.valueOf();
-  })
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+const projects = selectHomeProjects(await getCollection("projects"));
 
 const homeStructuredData = [
   {

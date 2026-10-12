@@ -177,12 +177,14 @@ const breadcrumbs = [
           </article>
         </div>
 
-        <!-- Секция Press -->
-        {project.data.pressLinks && project.data.pressLinks.length > 0 && (
+        {[
+          { label: "Awards", links: project.data.awardLinks },
+          { label: "Press", links: project.data.pressLinks },
+        ].filter((section) => section.links && section.links.length > 0).map((section) => (
           <div class="animate border-t border-black/10 dark:border-white/10 pt-8">
-            <h6 class="project-label mb-3">Press</h6>
+            <h6 class="project-label mb-3">{section.label}</h6>
             <div class="flex flex-wrap gap-x-5 gap-y-3">
-              {project.data.pressLinks.map((link) => (
+              {section.links?.map((link) => (
                 <a
                   href={link.url}
                   target="_blank"
@@ -201,7 +203,7 @@ const breadcrumbs = [
               ))}
             </div>
           </div>
-        )}
+        ))}
       </div>
     </Container>
     

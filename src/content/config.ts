@@ -1,5 +1,11 @@
 import { defineCollection, z } from "astro:content";
 
+const projectLink = z.object({
+  label: z.string(),
+  url: z.string(),
+  faviconDomain: z.string().optional(),
+});
+
 const blog = defineCollection({
   type: "content",
   schema: z.object({
@@ -47,11 +53,8 @@ const projects = defineCollection({
     collaborators: z.string().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional(),
-    pressLinks: z.array(z.object({
-      label: z.string(),
-      url: z.string(),
-      faviconDomain: z.string().optional()
-    })).optional(),
+    awardLinks: z.array(projectLink).optional(),
+    pressLinks: z.array(projectLink).optional(),
     images: z.array(z.object({
       url: z.string(),
       alt: z.string()
