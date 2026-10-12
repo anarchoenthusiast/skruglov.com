@@ -1,14 +1,13 @@
 ---
 title: "LALAL.AI"
-pageTitle: "LALAL.AI: from first upload to audio toolkit"
-description: "Founding designer and design lead at LALAL.AI, 2020–2026. Designed core UX and validated Voice Cleaner; the product reached 6.8 million registered users by 2025."
-role: "Founding Designer & Design Lead"
+description: "Founding designer at LALAL.AI, 2020–2026. Designed core UX, brand, and design system foundations; the product reached 6.8 million registered users by 2025."
+role: "Founding Designer"
 duration: "2020 — 2026"
 company: "LALAL.AI"
-scope: "Product design, research, strategy, art direction"
+scope: "Brand platform, cross-platform product design, design systems, DesignOps"
 projectType: "AI Product Design"
-contributions: "Core journeys, Voice Cleaner discovery, cross-platform design leadership"
-collaborators: "Four designers under my leadership, alongside engineering, product, and growth teams"
+contributions: "Core UX, brand and design system foundations, Voice Cleaner discovery, and leadership of four designers"
+collaborators: "Design, product, engineering, and growth teams"
 date: "2025-03-01"
 priority: 4
 demoURL: "https://www.lalal.ai/"
@@ -29,175 +28,21 @@ images:
 ---
 
 import { Image } from "astro:assets";
-import ProjectNote from "@components/ProjectNote.astro";
-import ProjectData from "@components/ProjectData.astro";
 import img1 from "../../../assets/projects/lalal-ai/1.jpg";
 import img2 from "../../../assets/projects/lalal-ai/2.jpg";
 import img3 from "../../../assets/projects/lalal-ai/3.jpg";
 import img4 from "../../../assets/projects/lalal-ai/4.jpg";
 
-I joined LALAL.AI at its inception in 2020 and stayed through 2026 as founding designer and design lead. I designed the core user journeys, proposed and validated Voice Cleaner, and built a team of four designers across web, mobile, desktop, and a DAW plugin. Related product work included Ai Video Cut and Waveroom; I built and scaled these three bootstrapped products from concept to profitability.
+LALAL.AI needed to turn complex AI audio processing into a product millions of people could understand and use with confidence. As founding designer from 2020 to 2026, I helped shape the product from its earliest stage and turn that direction into a scalable experience across web, mobile, and desktop.
 
-### Impact at a glance
+My role covered product direction, brand foundations, interface design, and the system behind the experience. I created the visual standard that unified the platform and a design system with 70+ components spanning web, mobile, desktop, and marketing. That product language supported growth without losing clarity or consistency.
 
-<ProjectData>
-  <dl>
-    <div>
-      <dt>Product scale</dt>
-      <dd>
+As the company expanded, I built a team of four designers, introduced DesignOps practices, and made product work more repeatable. By 2025, LALAL.AI had reached 6.8 million registered users; in 2025, the service performed 63.8 million audio separation operations. One of my key contributions was proposing and validating Voice Cleaner, which accounted for approximately 14% of LALAL.AI's revenue over one quarter.
 
-[6.8M registered users by 2025](https://www.lalal.ai/blog/lalalai-wrapped-2025/)
-
-      </dd>
-    </div>
-    <div>
-      <dt>Sign-in redesign</dt>
-      <dd>
-
-[+20% registrations reported after launch](https://abarabonova.notion.site/LALAL-AI-3-MVP-1-55190bf14deb4586812a94bbdb63e1ec)
-
-      </dd>
-    </div>
-    <div>
-      <dt>Product discovery</dt>
-      <dd>Voice Cleaner — approximately 14% of revenue over one quarter</dd>
-    </div>
-    <div>
-      <dt>Design leadership</dt>
-      <dd>4 designers / web, apps, DAW plugin</dd>
-    </div>
-  </dl>
-</ProjectData>
-
-<ProjectNote>Product scale reflects the whole team’s work. Registration growth was reported by the project designer after the redesign.</ProjectNote>
-
-### In this case
-
-[First experience](#starting-point) · [Voice Cleaner](#voice-cleaner) · [Core UX](#core-decisions) · [Design leadership](#ecosystem) · [Results](#product-growth)
-
-<h2 id="starting-point" className="scroll-mt-6">Make AI separation easy to try</h2>
-
-The first challenge was to make unfamiliar technology useful without explaining how it worked. I built the experience around a clear promise: upload a recording, separate vocals from music, and hear the result.
-
-That flow became the foundation for new stem types and products as LALAL.AI grew.
+<Image src={img1} alt="LALAL.AI — stem selection interface" loading="eager" fetchpriority="high" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
 
 <Image src={img2} alt="LALAL.AI — audio upload screen" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
 
-<ProjectNote>The early experience: a clear promise and one starting action.</ProjectNote>
+<Image src={img3} alt="LALAL.AI — mobile app marketing" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
 
-<h2 id="voice-cleaner" className="scroll-mt-6">Turn unexpected usage into a new product</h2>
-
-Product data and interviews revealed a pattern: people were uploading speech recordings with no music. I saw an opportunity to serve voice cleanup as a dedicated use case and proposed Voice Cleaner.
-
-We tested demand with a separate product page and promotion through our marketing channels. Usage and revenue showed that people used the feature and paid for it. Voice Cleaner accounted for approximately 14% of LALAL.AI's revenue over one quarter.
-
-Voice Cleaner launched in 2022. My contribution covered the initial insight, product proposal, user journey, and demand validation. [Launch report](https://www.lalal.ai/blog/lalalai-2022-wrapped/).
-
-<h2 id="core-decisions" className="scroll-mt-6">Remove friction from listening and sign-in</h2>
-
-Under my design leadership, the team used interviews, a survey of 1,000+ users, and journey mapping to prioritize improvements. Two changes made the core journey easier.
-
-### Hear the mix before processing
-
-We brought simultaneous playback, independent levels, stereo controls, and seeking into the preview. People could evaluate the mix before processing the full file.
-
-<ProjectData>
-  <table>
-    <thead>
-      <tr><th scope="col">Before</th><th scope="col">After</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Listen to stems separately. Open another tool to test the mix.</td>
-        <td>Hear stems together. Adjust the mix in the preview.</td>
-      </tr>
-    </tbody>
-  </table>
-</ProjectData>
-
-<Image src={img1} alt="LALAL.AI preview with simultaneous stem playback, separate level and stereo controls, and full-file processing" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
-
-<ProjectNote>Listening, mix controls, and full-file processing in one flow.</ProjectNote>
-
-### Keep sign-in in the same session
-
-The team replaced email links with a six-digit code and gave social sign-in equal prominence. This let people continue in the same browser or app. The project designer reported 20% more registrations after the redesign.
-
-<ProjectData>
-  <table>
-    <thead>
-      <tr><th scope="col">Before</th><th scope="col">After</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Email link opens a new tab or browser.</td>
-        <td>Email code keeps people in the same session.</td>
-      </tr>
-    </tbody>
-  </table>
-</ProjectData>
-
-<ProjectNote>Player and sign-in improvements were developed with a designer on my team. <a href="https://abarabonova.notion.site/LALAL-AI-3-MVP-1-55190bf14deb4586812a94bbdb63e1ec">Research and reported results</a>.</ProjectNote>
-
-<h2 id="ecosystem" className="scroll-mt-6">Scale the design across products and platforms</h2>
-
-As the product grew, my role expanded from hands-on founding design to leading four designers. I introduced DesignOps and created a design system with 70+ components spanning web, mobile, desktop, and marketing. I established the brand and interface foundations, designed the core journeys, and guided feature work and art direction across web, desktop, mobile, and the DAW plugin.
-
-The challenge was to carry the same product language into different workflows: a file queue on desktop, listening on mobile, and separation inside music-production software.
-
-<Image src={img4} alt="LALAL.AI desktop app with file queue, processing states, and listening controls" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
-
-<ProjectNote>Desktop / A queue for uploading, processing, and downloading files.</ProjectNote>
-
-<Image src={img3} alt="LALAL.AI mobile app product presentation" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
-
-<ProjectNote>Mobile / Product design and presentation under my leadership and art direction.</ProjectNote>
-
-<h2 id="product-growth" className="scroll-mt-6">From a stem splitter to an audio toolkit</h2>
-
-During my time on the product, LALAL.AI expanded its use cases and platforms while reaching millions of users.
-
-<ProjectData>
-  <table>
-    <colgroup><col className="w-16" /><col /><col className="w-2/5" /></colgroup>
-    <thead>
-      <tr><th scope="col">Year</th><th scope="col">Product development</th><th scope="col">Reported metric</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"><a href="https://www.lalal.ai/blog/lalal-ai-2021-year-in-review/">2021</a></th>
-        <td>8-stem separation</td>
-        <td>476,213 new registrations</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://www.lalal.ai/blog/lalalai-2022-wrapped/">2022</a></th>
-        <td>Voice Cleaner and desktop apps</td>
-        <td>1.2M active users reported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://www.lalal.ai/blog/2023-wrapped/">2023</a></th>
-        <td>iOS and Android apps</td>
-        <td>10.36M files uploaded</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://www.lalal.ai/blog/lalalai-2024-wrapped/">2024</a></th>
-        <td>Voice Changer, Echo &amp; Reverb Remover, Lead &amp; Back Vocal Splitter</td>
-        <td>3.8M registered users</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://www.lalal.ai/blog/lalalai-wrapped-2025/">2025</a></th>
-        <td>Voice Cloner and mobile multi-stem separation</td>
-        <td>6.8M registered users; 63.8M audio separation operations in 2025</td>
-      </tr>
-    </tbody>
-  </table>
-</ProjectData>
-
-<ProjectNote>Company-reported figures. Audience and usage definitions differ by year; these are not a comparable MAU series.</ProjectNote>
-
-### Product awards & recognition
-
-- Golden Kitty Awards 2021 — finalist, AI & Machine Learning (Product Hunt).
-- [Webby People's Voice Award 2026](https://winners.webbyawards.com/2026/apps-software-immersive/app-excellence/best-use-of-ai-machine-learning/379810/lalalai-an-ai-powered-stem-splitter) — winner, Best Use of AI & Machine Learning (Apps, Software & Immersive).
-- [Lovie Awards 2026](https://www.lalal.ai/blog/lalal-ai-is-the-lovie-awards-finalist/) — finalist, Creator, Creative & Media Tools.
-- [International Sound Awards 2026](https://www.lalal.ai/blog/lalal-ai-named-a-product-category-winner-at-the-international-sound-awards-2026/) — winner, Product.
+<Image src={img4} alt="LALAL.AI — desktop control panel" loading="lazy" widths={[700, 1400, 2100]} sizes="(max-width: 768px) 100vw, 700px" />
