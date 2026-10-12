@@ -19,6 +19,19 @@ export function mdxBodyToMarkdown(body: string): string {
       return text ? `\n**Video.** ${text}\n` : "";
     })
     .replace(/<ProjectFigmaSlide\b[\s\S]*?\/>/gi, "")
+    .replace(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, "[$2]($1)")
+    .replace(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi, (_match, level: string, text: string) => `\n${"#".repeat(Number(level))} ${stripJsx(text)}\n`)
+    .replace(/<table\b[^>]*>([\s\S]*?)<\/table>/gi, (_match, table: string) => {
+      const rows = [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)]
+        .map((row) => [...row[1].matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)]
+          .map((cell) => stripJsx(cell[1]).replace(/\|/g, "\\|")));
+      if (!rows.length) return "";
+      const header = `| ${rows[0].join(" | ")} |`;
+      const divider = `| ${rows[0].map(() => "---").join(" | ")} |`;
+      const bodyRows = rows.slice(1).map((cells) => `| ${cells.join(" | ")} |`);
+      return `\n${[header, divider, ...bodyRows].join("\n")}\n`;
+    })
+    .replace(/<dt\b[^>]*>([\s\S]*?)<\/dt>\s*<dd\b[^>]*>([\s\S]*?)<\/dd>/gi, (_match, label: string, value: string) => `\n- ${stripJsx(label)}: ${stripJsx(value)}\n`)
     .replace(/<[^>]+>/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
@@ -93,7 +106,7 @@ export function buildLlmsIndex(input: {
 
 > ${HOME.DESCRIPTION}
 
-This is the machine-readable index for https://skruglov.com — the portfolio of product designer and engineer Sergey Kruglov. HTML pages are canonical for humans. Markdown files linked below are intended for LLM and agent consumption.
+This is the machine-readable index for https://skruglov.com — the portfolio of senior product designer Sergey Kruglov. HTML pages are canonical for humans. Markdown files linked below are intended for LLM and agent consumption.
 
 Contact: ${SITE.EMAIL}
 

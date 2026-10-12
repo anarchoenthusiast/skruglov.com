@@ -33,7 +33,7 @@ const homeStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `${SITE.NAME} - Product Designer and Engineer`,
+    name: `${SITE.NAME} - ${HOME.TITLE}`,
     description: HOME.DESCRIPTION,
     url: new URL("/", Astro.site).href,
     mainEntity: {
@@ -46,7 +46,7 @@ const homeStructuredData = [
     "@id": new URL("/#sergey-kruglov", Astro.site).href,
     name: SITE.NAME,
     url: new URL("/", Astro.site).href,
-    jobTitle: "Product Designer and Engineer",
+    jobTitle: "Senior Product Designer",
     email: `mailto:${SITE.EMAIL}`,
     sameAs: [
       "https://x.com/kryglovsergey",
@@ -89,7 +89,7 @@ const homeStructuredData = [
       <div class="text-center space-y-6 sm:px-6">
         <h1 class="font-tiempos text-4xl font-normal text-black dark:text-white tracking-[-0.028em] leading-[1.167] animate">
           Sergey Kruglov<br/>
-          Product Designer and Engineer
+          Senior Product Designer
         </h1>
         <div class="font-grotesk text-base font-normal text-black dark:text-white animate">
           <p class="leading-[1.5]">

@@ -8,8 +8,8 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Product Designer and Engineer",
-  DESCRIPTION: "Sergey Kruglov is a product designer and engineer helping founders turn complex technology into clear, practical digital products.",
+  TITLE: "Senior Product Designer",
+  DESCRIPTION: "Sergey Kruglov is a senior product designer helping founders turn complex technology into clear, practical digital products, from research and prototyping to launch and monetisation.",
 };
 
 export const BLOG: Metadata = {
@@ -19,7 +19,7 @@ export const BLOG: Metadata = {
 
 export const ABOUT: Metadata = {
   TITLE: "About",
-  DESCRIPTION: "About Sergey Kruglov, a product designer and engineer with 14+ years of experience building and scaling digital products.",
+  DESCRIPTION: "About Sergey Kruglov, a senior product designer building and scaling digital products, AI workflows, and cross-platform design systems.",
 };
 
 export const COLOPHON: Metadata = {

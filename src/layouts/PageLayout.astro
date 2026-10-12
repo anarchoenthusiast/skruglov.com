@@ -48,7 +48,7 @@ const isHomePage = Astro.url.pathname === "/";
 const shouldShowHeader = !isHomePage && !hideHeader;
 
 const pageTitle = isHomePage
-  ? `${SITE.NAME} - Product Designer and Engineer`
+  ? `${SITE.NAME} - ${title}`
   : `${title} | ${SITE.NAME}`;
 
 const breadcrumbStructuredData = breadcrumbs && breadcrumbs.length > 0
