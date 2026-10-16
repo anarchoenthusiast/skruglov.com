@@ -21,7 +21,7 @@ export const BLOG: Metadata = {
 
 export const ABOUT: Metadata = {
   TITLE: "About",
-  DESCRIPTION: "About Sergey Kruglov, a senior product designer building and scaling digital products, AI workflows, and cross-platform design systems.",
+  DESCRIPTION: "Sergey Kruglov is a senior product designer with 14+ years of experience designing software, building design systems and leading teams.",
 };
 
 export const COLOPHON: Metadata = {

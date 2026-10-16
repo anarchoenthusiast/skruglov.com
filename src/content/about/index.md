@@ -1,22 +1,20 @@
 ---
 title: "About"
-description: "About me and my work"
+description: "Sergey Kruglov is a senior product designer with 14+ years of experience designing software, building design systems and leading teams."
 date: "Mar 26 2026"
 ---
 
 ## Experience
 
-I am a Senior Product Designer working across product direction, design, and engineering, helping teams turn complex technology into clear, practical products. Over the past 14+ years, I've worked as both a senior individual contributor and a founding designer: taking products from 0 to 1, shaping brand and product direction, building scalable design systems, and helping teams grow without losing speed or clarity.
+I've worked in product design for 14+ years, as both a senior individual contributor and a founding designer. My work includes product decisions, interfaces and code. I also build design systems and lead design teams.
 
-My work has contributed to products used by millions of people worldwide, including [LALAL.AI](https://www.lalal.ai/), [4K Download](https://www.4kdownload.com/), [Waveroom](https://waveroom.com/), and [Ai Video Cut](https://aivideocut.com/). I focus on turning complexity into clear, practical experiences and creating systems that help teams ship better work faster.
+I was the founding designer at [LALAL.AI](https://www.lalal.ai/) from 2020 to 2026. I designed the upload, preview and download steps, proposed Voice Cleaner and tested demand for it. I also built a team of four designers. My work included [Ai Video Cut](https://aivideocut.com/) and [Waveroom](https://waveroom.com/) too. I helped build and grow these three bootstrapped products into profitable businesses.
 
-As founding designer at LALAL.AI from 2020 to 2026, I designed core user journeys, validated Voice Cleaner, and built a team of four designers. Related product work included Ai Video Cut and Waveroom. I built and scaled these three bootstrapped products from concept to profitability.
+At [4K Download](https://www.4kdownload.com/), my work covered desktop apps, the website and subscriptions. I redesigned five apps for Windows, macOS and Ubuntu between 2012 and 2020. More than 60 million people in 190 countries have used the products.
 
-My main period at 4K Download was 2012–2020, followed by later project involvement, including website and subscription design in 2024–2025. I redesigned five desktop applications across Windows, macOS, and Ubuntu. The product family has a cumulative user base of over 60 million across 190 countries.
+In summer 2025, I designed, built and released Surrly, an iOS dream journal, on my own in three months. In 2026, I spent two months on R&D for Vana Labs, including building a native iOS demo.
 
-My personal projects include Surrly, an iOS dream journal I independently designed, developed, and released on the App Store in three months in 2025, and Vana, a two-month R&D engagement for Vana Labs in 2026, including a native iOS demo.
-
-I am currently building [Bright Future Studio](https://brightfutures.studio), an independent practice for early-stage and AI-enabled product work. I help founders clarify the product, prototype the experience, design and build the interface, and connect AI into real business workflows.
+I'm building [Bright Future Studio](https://brightfutures.studio), an independent practice for early-stage products and AI tools. I help founders work out what to build, make prototypes, design and code interfaces, and use AI in their day-to-day work.
 
 ## Elsewhere
 
@@ -30,4 +28,4 @@ I am currently building [Bright Future Studio](https://brightfutures.studio), an
 
 ## Contact
 
-Open to new products, redesigns, AI workflows, and coffee in Berlin. [Say hello!](mailto:hello@skruglov.com)
+If you're working on a new product, a redesign or an AI project, [email me](mailto:hello@skruglov.com). I'm also happy to meet for coffee in Berlin.
