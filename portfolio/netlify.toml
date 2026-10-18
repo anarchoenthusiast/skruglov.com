@@ -9,7 +9,10 @@
   NODE_VERSION = "24"
   BLOCK_SEARCH_INDEXING = "true"
 
-# Netlify automatically installs its current Next.js adapter.
+# Explicitly install the current adapter for this API-provisioned monorepo site.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [[headers]]
   for = "/*"
   [headers.values]
