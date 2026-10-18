@@ -1,0 +1,16 @@
+# Used only by the independent portfolio site, with its base directory set to
+# portfolio in Netlify. The repository-root config continues to build Astro.
+[build]
+  base = "portfolio"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24"
+  BLOCK_SEARCH_INDEXING = "true"
+
+# Netlify automatically installs its current Next.js adapter.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"

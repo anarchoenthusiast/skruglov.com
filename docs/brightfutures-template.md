@@ -34,6 +34,16 @@ The new candidate preserves authored content, theme overrides, media, extra proj
 
 The new site is ready for content work on this branch. Switching the public skruglov.com build to Next.js is a separate publication step after content and hosting are reviewed.
 
+## Beta hosting
+
+Use a separate Netlify site for `beta.skruglov.com`, connected to this same repository and the `feat/brightfutures-template` branch. Set **Base directory** and **Package directory** to `portfolio`, **Build command** to `npm run build`, and **Publish directory** to `.next` (relative to the base directory). `portfolio/netlify.toml` provides the independent build configuration; the root `netlify.toml` continues to serve the existing Astro site. Node 24 is selected by the package's `.nvmrc` and the build configuration. Netlify installs its current Next.js adapter automatically.
+
+The beta build sends `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet`, and `siteDefinition.features.searchIndexing` remains false. This prevents search indexing; it is not access control. No SMTP credentials or form delivery are required while `contactForm` is false. Keep the beta's content edits on this branch and review them before the production switch.
+
+After the separate site has a successful Next.js deployment, attach `beta.skruglov.com` to that site and use Netlify's generated DNS values. Export/re-read the existing DNS zone before adding any record, preserve existing website and email records, and verify HTTPS, the rendered Next.js content and the robots header on the custom hostname. A successful Astro deploy preview for this PR does not verify the new portfolio.
+
+Before publishing the new portfolio at `skruglov.com`, review the remaining placeholders, old URL coverage/redirects and contact behavior. Remove the beta indexing restrictions from the production configuration only when ready, and set `features.searchIndexing` to true. Retain a rollback deployment of the current Astro site. Switching the primary domain or production build is a separate release decision.
+
 ## Verification of the initial installation
 
 The published archive was downloaded back from GitHub and its outer checksum and payload digest verified. The personalized package passes the full native check (14 template tests, 20 release/update tests, strict token audit, content validation, lint, types and production build) plus 42 route/viewport cases over all 14 routes at 390/884/1440px. Desktop home and phone case screenshots were visually reviewed. An independent roundtrip preserves identity, the selected Bright Futures theme, content, media and project notes; a deliberately edited component is rejected as runtime drift. Evidence is in `docs/verification/brightfutures-installation.json` and the package's verification receipts.
