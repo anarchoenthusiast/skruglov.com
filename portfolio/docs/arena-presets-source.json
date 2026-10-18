@@ -1,0 +1,136 @@
+{
+  "source": "dress-reel-native/reference/sites/dress-reel/studio/config.json",
+  "origin": "Granola-derived reusable studio",
+  "colorRoleMap": {
+    "--color-body-bg": "canvas",
+    "--color-body-text": "ink",
+    "--color-footer-bg": "dark",
+    "--color-footer-text": "on-dark",
+    "--color-splash-bg": "dark",
+    "--color-splash-text": "on-dark",
+    "--color-muted": "muted",
+    "--color-field-border": "divider",
+    "--color-media-bg": "cream",
+    "--color-substrate": "cream",
+    "--color-button-bg": "primary",
+    "--color-button-text": "control-ink",
+    "--color-button-hover-bg": "primary-hover",
+    "--color-button-hover-text": "control-ink",
+    "--color-placeholder": "muted",
+    "--color-focus": "primary"
+  },
+  "colorPresets": [
+    {
+      "name": "Are.na Light",
+      "values": {
+        "canvas": "#FFF",
+        "ink": "#000",
+        "muted": "#696969",
+        "cream": "#F7F7F7",
+        "link-hover": "#EDEDED",
+        "primary": "#00075F",
+        "control-ink": "#FFF",
+        "primary-hover": "#141b6c",
+        "on-dark": "#FFF",
+        "brand-ink": "#000",
+        "divider": "#EDEDED",
+        "dark": "#000",
+        "dark-hover": "#696969",
+        "feature-green": "#F7F7F7",
+        "highlight": "#EDEDED",
+        "progress-idle": "#696969",
+        "progress-track": "#EDEDED",
+        "secondary-ink": "#000",
+        "soft-ink": "#696969"
+      }
+    },
+    {
+      "name": "Are.na Dark",
+      "values": {
+        "canvas": "#000",
+        "ink": "#FFF",
+        "muted": "#B2B2B2",
+        "cream": "#1A1A1A",
+        "link-hover": "#333333",
+        "primary": "#E2DFE9",
+        "control-ink": "#000",
+        "primary-hover": "#d0cdd6",
+        "on-dark": "#000",
+        "brand-ink": "#FFF",
+        "divider": "#333333",
+        "dark": "#FFF",
+        "dark-hover": "#B2B2B2",
+        "feature-green": "#1A1A1A",
+        "highlight": "#333333",
+        "progress-idle": "#B2B2B2",
+        "progress-track": "#333333",
+        "secondary-ink": "#FFF",
+        "soft-ink": "#B2B2B2"
+      }
+    },
+    {
+      "name": "Are.na Dawn",
+      "values": {
+        "canvas": "#F5F1F0",
+        "ink": "#342C2A",
+        "muted": "#7F7977",
+        "cream": "#EAE6E5",
+        "link-hover": "#E0DBDA",
+        "primary": "#00075F",
+        "control-ink": "#F5F1F0",
+        "primary-hover": "#141a6b",
+        "on-dark": "#F5F1F0",
+        "brand-ink": "#342C2A",
+        "divider": "#E0DBDA",
+        "dark": "#342C2A",
+        "dark-hover": "#7F7977",
+        "feature-green": "#EAE6E5",
+        "highlight": "#E0DBDA",
+        "progress-idle": "#7F7977",
+        "progress-track": "#E0DBDA",
+        "secondary-ink": "#342C2A",
+        "soft-ink": "#7F7977"
+      }
+    },
+    {
+      "name": "Are.na Dusk",
+      "values": {
+        "canvas": "#16171E",
+        "ink": "#E7DBF0",
+        "muted": "#A798B3",
+        "cream": "#24222C",
+        "link-hover": "#342E38",
+        "primary": "#C1C4EA",
+        "control-ink": "#16171E",
+        "primary-hover": "#b3b6da",
+        "on-dark": "#16171E",
+        "brand-ink": "#E7DBF0",
+        "divider": "#342E38",
+        "dark": "#E7DBF0",
+        "dark-hover": "#A798B3",
+        "feature-green": "#24222C",
+        "highlight": "#342E38",
+        "progress-idle": "#A798B3",
+        "progress-track": "#342E38",
+        "secondary-ink": "#E7DBF0",
+        "soft-ink": "#A798B3"
+      }
+    }
+  ],
+  "typography": {
+    "name": "Are.na",
+    "values": {
+      "font": "Areal, Arial, Helvetica, sans-serif",
+      "heading-font": "Areal, Arial, Helvetica, sans-serif",
+      "heading-leading": 1.2,
+      "body-leading": 1.2,
+      "control-leading": 1
+    }
+  },
+  "mappingNotes": [
+    "Target template font-size hierarchy is preserved; source heading/body leading multipliers apply to the template baseline.",
+    "Areal is registered locally. The four palettes are selectable independently from typography.",
+    "Source roles with no target surface (progress, announcements, feature cards) are retained as provenance, not exposed as unused tokens.",
+    "Footer uses source dark/on-dark roles, including inverted light footer in Dark/Dusk. Monochrome logo filters follow their containing surface."
+  ]
+}

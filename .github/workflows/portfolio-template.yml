@@ -1,0 +1,23 @@
+name: Portfolio template
+on:
+  pull_request:
+    paths: ['portfolio/**', '.github/workflows/portfolio-template.yml']
+  push:
+    branches: [feat/brightfutures-template]
+    paths: ['portfolio/**', '.github/workflows/portfolio-template.yml']
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: portfolio/.nvmrc
+          cache: npm
+          cache-dependency-path: portfolio/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chrome
+      - run: PLAYWRIGHT_CHANNEL=chrome npm run verify:template-consumer -- .

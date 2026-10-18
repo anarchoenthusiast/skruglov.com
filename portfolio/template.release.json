@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "id": "brightfutures-studio",
+  "schemaVersion": 1,
+  "routes": [
+    "/",
+    "/projects",
+    "/projects/sample-project",
+    "/office",
+    "/contact",
+    "/impressum",
+    "/datenschutz",
+    "/de",
+    "/de/projects",
+    "/de/projects/sample-project",
+    "/de/office",
+    "/de/contact",
+    "/de/impressum",
+    "/de/datenschutz"
+  ],
+  "projectPaths": [
+    "src/content/site-data.ts",
+    "src/content/home.ts",
+    "src/content/projects.ts",
+    "src/content/case-studies/",
+    "src/content/seo.ts",
+    "src/content/locale-data.ts",
+    "src/content/office.ts",
+    "src/content/office-locales.ts",
+    "src/content/projects-locales.ts",
+    "src/content/contact.ts",
+    "src/content/legal.ts",
+    "src/content/media-viewer.ts",
+    "public/images/",
+    "public/project/",
+    "public/fonts/project/",
+    "PROJECT.md"
+  ]
+}

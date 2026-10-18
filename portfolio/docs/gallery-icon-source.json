@@ -1,0 +1,19 @@
+{
+  "library": "Iconoteka",
+  "source": "Iconoteka MCP search_icons/get_icon",
+  "url": "https://iconoteka.com/",
+  "license": "MIT (as reported by the library MCP)",
+  "component": "src/components/media-gallery/GalleryIcon.tsx",
+  "icons": {
+    "close": "cross regular stroke",
+    "play": "triangle_right regular stroke",
+    "pause": "pause regular stroke",
+    "previous": "arrow_left regular stroke",
+    "next": "arrow_right regular stroke",
+    "heart": "heart regular stroke",
+    "liked": "heart regular fill",
+    "contrast": "invert_colors regular fill",
+    "info": "information light stroke; outer ring removed, inner glyph scaled 1.6 about its center"
+  },
+  "rendering": "24-unit viewBox, currentColor; common width/height = 1.25 \u00d7 --text-small; interactive radius = --control-radius in normal and hover states"
+}

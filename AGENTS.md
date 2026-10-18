@@ -34,3 +34,7 @@ Dependencies are installed automatically via `.cursor/environment.json` (`npm in
 ### Verification
 
 After changes, run `npm run build` to typecheck and verify the static site builds. Use `npm run lint` for code style checks.
+
+## Bright Futures portfolio candidate
+
+The independent Next.js consumer is in `portfolio/`, pinned by `portfolio/template.lock.json`. Read `portfolio/AGENTS.md`, `portfolio/PROJECT.md` and `docs/brightfutures-template.md` for work there. Keep Astro/root application files and its deployment separate. Root TypeScript/ESLint exclude the independent package. Run `npm run build` and `npm run lint` in the root for Astro work; use the full native consumer verifier inside `portfolio/` for template work. Never copy template runtime edits into the consumer; improve the upstream Bright Futures template and prepare a checked update. Project-owned content/theme/media are explicitly listed in its lock. This branch does not switch production hosting to Next.js.

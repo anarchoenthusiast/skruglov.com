@@ -1,0 +1,199 @@
+{
+  "date": "2026-10-18",
+  "mode": "existing-source-template",
+  "baseline": "e15bb1a4d02df582c5e7ab5638549da4a4ac99be",
+  "sourceCheck": "pass",
+  "independentGeneratedProjectCheck": "pass",
+  "regressionTests": 14,
+  "browser": {
+    "projects": 2,
+    "locales": [
+      "en",
+      "de"
+    ],
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "basicRouteChecks": 72,
+    "status": "pass",
+    "contactDelivery": "mocked UI states; no real email sent"
+  },
+  "visualInspections": [
+    "default theme",
+    "midnight theme",
+    "independent editorial theme",
+    "header rest/down/up",
+    "Vana title font isolation through computer use",
+    "office lead-role highlighting through computer use",
+    "contact and legal shared typography through computer use",
+    "local font library and phone/footer screenshots",
+    "page-to-settings footer selection through computer use",
+    "focused contact field settings and native DialKit groups through computer use",
+    "Showgrain-inspired media viewer in the mobile Studio preview through computer use",
+    "project-only gallery with compact metadata and matching theme/black surfaces through computer use",
+    "asset caption, project credits, pinned sidebar footer and collapsed gallery controls through computer use",
+    "bottom-center playback, corner paper/Like, default hidden i panel, Vana to Waveroom reverse wrap with project details through computer use",
+    "Iconoteka controls, configured studio name, unringed bottom-left i, close size and project/heart baseline through computer use"
+  ],
+  "scope": "local production checks; no deployed performance or reference pixel parity certification",
+  "studio": {
+    "status": "pass",
+    "projects": 2,
+    "widths": [
+      1440,
+      390
+    ],
+    "tokens": 88,
+    "sourceAudit": {
+      "tokenized": 268,
+      "total": 268,
+      "percentage": 100,
+      "hardcoded": 0,
+      "strictFailureTest": "pass"
+    },
+    "checks": [
+      "unchanged opening paint",
+      "presets and fonts",
+      "undo/redo/reset",
+      "JSON import/export",
+      "reload and locale persistence",
+      "live probes restore values",
+      "responsive typography",
+      "phone panel fit",
+      "exit restores defaults",
+      "numeric adaptive/fixed size folders",
+      "legacy raw-size and saved-version migration",
+      "four independent Are.na palettes",
+      "registered local Areal font",
+      "independent title/lead/body font roles",
+      "local font file picker with browser persistence",
+      "portable JSON font bundle in a fresh profile",
+      "self-contained CSS font export in a fresh profile",
+      "invalid font rejection",
+      "shared legal/body and caption/mobile scales",
+      "exact slider defaults without rounding drift",
+      "explicit content margin token binding",
+      "component role highlighting",
+      "legacy semantic role and named-version migration",
+      "global device controls without hidden-value loss",
+      "real mobile/desktop viewport previews",
+      "primary adaptive size slider",
+      "preview local fonts and internal navigation",
+      "preview highlighting and probe restoration",
+      "page-to-settings style selection",
+      "picking intercepts navigation and submission",
+      "Escape and collapsed panel restore interactions",
+      "focused layer and inherited-style filtering",
+      "native Folder groups with library surfaces",
+      "panel dragging and tab position persistence",
+      "tablet Body breakpoint aligned with device mode"
+    ],
+    "production": "editor disabled by default; explicit QA build flag",
+    "evidence": "docs/semantic-style-audit.md; local .qa/studio/result.json and screenshots"
+  },
+  "themeMatrix": {
+    "status": "pass",
+    "cases": 144,
+    "palettes": [
+      "Are.na Light",
+      "Are.na Dark",
+      "Are.na Dawn",
+      "Are.na Dusk"
+    ],
+    "typography": "Are.na \u00b7 Areal",
+    "locales": [
+      "en",
+      "de"
+    ],
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "routesPerLocale": 6,
+    "checks": [
+      "page/header/footer roles",
+      "actual local font loading",
+      "no horizontal overflow",
+      "header text fits",
+      "inverse footer logo",
+      "form placeholder, keyboard focus and button hover"
+    ],
+    "media": "client artwork and pixels are not recolored"
+  },
+  "devicePreview": {
+    "status": "pass",
+    "projects": 2,
+    "devices": [
+      "desktop",
+      "mobile"
+    ],
+    "framedViewportWidths": [
+      1440,
+      390
+    ],
+    "checks": [
+      "single device control set",
+      "adaptive and mobile heading size changes",
+      "independent values across switching",
+      "history and reload",
+      "local FontFace synchronization",
+      "internal route navigation",
+      "highlighting and probe restoration",
+      "desktop preview on phone"
+    ],
+    "evidence": "local .qa/devices/result.json and screenshots"
+  },
+  "stylePicker": {
+    "status": "pass",
+    "projects": 2,
+    "checks": [
+      "Desktop Body consumers at 888px use the visible size",
+      "separate All styles and Select layer modes",
+      "only selected layer and inherited styles displayed",
+      "no Related styles or Show on page in layer mode",
+      "static home and case media frame corners",
+      "main page, mobile frame and native phone selection",
+      "header drag with viewport bounds, tab persistence and reset",
+      "keyboard nudging and Home reset",
+      "normal links/forms in All styles",
+      "selection prevents link/form actions without mail delivery",
+      "Escape and collapsed panel restore normal interactions"
+    ],
+    "evidence": "local .qa/picker/ready.1440.png; .qa/picker/layer-mobile.1440.png; docs/workflows/template-customization.md"
+  },
+  "mediaViewer": {
+    "status": "pass",
+    "projects": 2,
+    "locales": [
+      "en",
+      "de"
+    ],
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "checks": [
+      "case-only triggers; covers/Image tiles keep links",
+      "server-built published-project catalog from shared block descriptors",
+      "details hidden by default; bottom-right unringed i immediately before Like",
+      "configured top-left studio name; Iconoteka SVGs with a shared size; bottom dock",
+      "complete forward/reverse project circle; no unpublished entries",
+      "per-project counter, caption, metadata and destination follow slide",
+      "cross-project looping slideshow; pause/manual stop",
+      "panel, paper and personal Like continuity",
+      "native modality/focus/scroll restoration; Escape/backdrop",
+      "native video/compositions, retry, live theme tokens; shared 0/2/8px radius in normal and hover states",
+      "Studio selection precedence and mobile preview",
+      "View project and icon pair share a baseline, separated by the Medium gap; responsive second row; heading position unchanged"
+    ],
+    "likes": "browser-local, site-scoped personal 0/1; no public aggregate or account API",
+    "metadata": "structured current-project context only; local project counter; asset caption; no file metadata",
+    "browser": "Chrome (H.264); source and clean starter checked",
+    "production": "enabled without Studio; hidden details, bottom controls and cross-project wrap checked",
+    "evidence": "local .qa/media/result.json, en.1440.png, en.1440.collapsed.png, en.390.png and production screenshots"
+  }
+}

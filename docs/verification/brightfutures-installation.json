@@ -1,0 +1,51 @@
+{
+  "release": "brightfutures-studio@0.1.0",
+  "digest": "ef6a8ec727dee76bb84abecd94716b34d9da7f676eb398c0cb73d9ffcadb2c51",
+  "downloadedArchiveChecksum": true,
+  "payloadIntegrity": true,
+  "consumer": {
+    "fullNativeCheck": true,
+    "nativeTests": 14,
+    "releaseTests": 20,
+    "responsiveCases": 42,
+    "widths": [
+      390,
+      884,
+      1440
+    ],
+    "routes": [
+      "/",
+      "/contact",
+      "/datenschutz",
+      "/de",
+      "/de/contact",
+      "/de/datenschutz",
+      "/de/impressum",
+      "/de/office",
+      "/de/projects",
+      "/de/projects/sample-project",
+      "/impressum",
+      "/office",
+      "/projects",
+      "/projects/sample-project"
+    ]
+  },
+  "updateProof": {
+    "sameVersionRoundtrip": true,
+    "identityThemeContentMediaAndNotesPreserved": true,
+    "locallyEditedRuntimeBlocked": true
+  },
+  "originalApplication": {
+    "framework": "Astro",
+    "build": true,
+    "pages": 14,
+    "lint": {
+      "passed": false,
+      "preExistingErrors": [
+        "scripts/sync-tokens.js:77 no-inner-declarations",
+        "src/components/ProjectFigmaSlide.astro:34 no-unused-vars"
+      ]
+    }
+  },
+  "productionDeployment": false
+}
