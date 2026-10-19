@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "viewports": [
+    1440,
+    390
+  ],
+  "locales": [
+    "en",
+    "de"
+  ],
+  "videoChecked": true,
+  "compositionChecked": true,
+  "slideshowChecked": true,
+  "crossProjectChecked": true,
+  "catalogTotal": 59,
+  "checks": [
+    "case-only media, cover and Image tile navigation",
+    "asset caption and structured project/year/role/skills",
+    "native focus containment and restore",
+    "published project circle; per-project counters; arrows and slideshow across project boundaries",
+    "configured studio title, Iconoteka SVGs, right-side unringed i before Like, aligned project/Like dock",
+    "single binary background icon; initial theme surface",
+    "slideshow start/pause/manual stop/wrap",
+    "local likes across reload and locales",
+    "Escape and backdrop",
+    "video playback and background pause",
+    "composition layout",
+    "retry errors",
+    "current template tokens"
+  ],
+  "browserErrors": []
+}

@@ -1,0 +1,65 @@
+{
+  "source": "0f270889f67bbc96c77dc063f6a07ea09d553276",
+  "nativeCheck": {
+    "passed": true,
+    "nativeTests": 14,
+    "releaseTests": 20,
+    "lint": true,
+    "typecheck": true,
+    "productionBuild": true,
+    "contentValidation": true
+  },
+  "runtimeIntegrity": {
+    "passed": true,
+    "managedRuntimeChanged": false
+  },
+  "copyVerification": {
+    "passed": true,
+    "paragraphs": 35,
+    "assets": 84
+  },
+  "authoredRoutes": {
+    "passed": true,
+    "routes": 28,
+    "widths": [
+      390,
+      884,
+      1440
+    ],
+    "cases": 84,
+    "report": "content-browser/result.json"
+  },
+  "mediaGallery": {
+    "passed": true,
+    "widths": [
+      390,
+      1440
+    ],
+    "locales": [
+      "en",
+      "de"
+    ],
+    "mediaCatalog": 59,
+    "report": "content-gallery/result.json"
+  },
+  "stockWrapper": {
+    "passed": false,
+    "reason": "Frozen starter route /de/projects/sample-project no longer exists; actual authored routes verified separately."
+  },
+  "stockSmoke": {
+    "passed": false,
+    "passedWidths": [
+      1440,
+      390
+    ],
+    "reason": "Known pre-existing document/header overflow on / at 320px."
+  },
+  "stockGallery": {
+    "passed": false,
+    "passedWidths": [
+      1440,
+      390
+    ],
+    "reason": "Known pre-existing document/header overflow at 320px; the 390/1440 suite passes including video, compositions and cross-project navigation."
+  }
+}

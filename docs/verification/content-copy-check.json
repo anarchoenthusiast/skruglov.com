@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "paragraphsPreserved": 35,
+  "assetsByteVerified": 84,
+  "source": {
+    "commit": "0f270889f67bbc96c77dc063f6a07ea09d553276",
+    "deploy": "6ad2431b691ebe70d41dd200",
+    "url": "https://skruglov.com"
+  }
+}

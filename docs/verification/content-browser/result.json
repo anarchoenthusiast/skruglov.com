@@ -1,0 +1,717 @@
+{
+  "passed": true,
+  "widths": [
+    390,
+    884,
+    1440
+  ],
+  "routes": [
+    "/",
+    "/projects/",
+    "/office/",
+    "/contact/",
+    "/impressum/",
+    "/datenschutz/",
+    "/projects/surrly/",
+    "/projects/vana/",
+    "/projects/4k-download/",
+    "/projects/lalal-ai/",
+    "/projects/waveroom/",
+    "/projects/combin/",
+    "/projects/flipp/",
+    "/projects/ai-video-cut/",
+    "/de/",
+    "/de/projects/",
+    "/de/office/",
+    "/de/contact/",
+    "/de/impressum/",
+    "/de/datenschutz/",
+    "/de/projects/surrly/",
+    "/de/projects/vana/",
+    "/de/projects/4k-download/",
+    "/de/projects/lalal-ai/",
+    "/de/projects/waveroom/",
+    "/de/projects/combin/",
+    "/de/projects/flipp/",
+    "/de/projects/ai-video-cut/"
+  ],
+  "caseCount": 84,
+  "results": [
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/office/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/impressum/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/datenschutz/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/surrly/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/vana/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/4k-download/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/lalal-ai/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/waveroom/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/combin/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/flipp/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/ai-video-cut/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/office/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/contact/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/impressum/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/datenschutz/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/surrly/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/vana/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/4k-download/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/lalal-ai/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/waveroom/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/combin/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/flipp/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/ai-video-cut/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/office/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/contact/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/impressum/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/datenschutz/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/surrly/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/vana/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/4k-download/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/lalal-ai/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/waveroom/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/combin/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/flipp/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/ai-video-cut/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/office/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/contact/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/impressum/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/datenschutz/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/surrly/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/vana/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/4k-download/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/lalal-ai/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/waveroom/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/combin/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/flipp/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/ai-video-cut/",
+      "width": 884,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/office/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/impressum/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/datenschutz/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/surrly/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/vana/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/4k-download/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/lalal-ai/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/waveroom/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/combin/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/flipp/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/projects/ai-video-cut/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/office/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/contact/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/impressum/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/datenschutz/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/surrly/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/vana/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/4k-download/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/lalal-ai/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/waveroom/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/combin/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/flipp/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    },
+    {
+      "route": "/de/projects/ai-video-cut/",
+      "width": 1440,
+      "status": 200,
+      "overflow": 0,
+      "brokenImages": 0,
+      "browserErrors": []
+    }
+  ],
+  "projectViews": true,
+  "excludedDrafts": true,
+  "templateIntegrity": true,
+  "note": "Tests actual authored project routes. The stock wrapper retains the starter sample slug in its frozen route list."
+}

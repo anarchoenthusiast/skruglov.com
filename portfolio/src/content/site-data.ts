@@ -5,10 +5,10 @@ export const siteDefinition: SiteDefinition = {
   "shortName": "Sergey Kruglov",
   "baseUrl": "https://skruglov.com",
   "language": "en",
-  "defaultTitle": "Sergey Kruglov \u2014 Senior Product Designer",
+  "defaultTitle": "Sergey Kruglov — Senior Product Designer",
   "defaultDescription": "Sergey Kruglov is a senior product designer helping founders turn complex technology into clear, practical digital products, from research and prototyping to launch and monetisation.",
   "titleSuffix": "Sergey Kruglov",
-  "copyrightRangeLabel": "\u00a9 2026",
+  "copyrightRangeLabel": "© 2026",
   "appearance": {
     "theme": "brightfutures",
     "tokens": {}
@@ -57,8 +57,8 @@ export const siteDefinition: SiteDefinition = {
       "href": "/"
     },
     "aboutTitle": "Sergey Kruglov",
-    "aboutBody": "Sergey Kruglov is a senior product designer helping founders turn complex technology into clear, practical digital products, from research and prototyping to launch and monetisation.",
-    "copyright": "\u00a9 2026 Sergey Kruglov"
+    "aboutBody": "I help founders turn early signals into clear, usable products - from product direction and UX to interface design, frontend, and AI-powered workflows.",
+    "copyright": "© 2026 Sergey Kruglov"
   },
   "contact": {
     "companyName": "Sergey Kruglov",
@@ -97,9 +97,9 @@ export const siteDefinition: SiteDefinition = {
   "seo": {
     "locale": "en_US",
     "openGraphImage": {
-      "url": "/images/sample.svg",
+      "url": "/project/covers/lalal-ai/cover-preview.png",
       "width": 1200,
-      "height": 800
+      "height": 1200
     },
     "icons": {
       "icon": [
