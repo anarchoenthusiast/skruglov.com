@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "mode": "existing-source-template",
+  "framework": "next-app-router",
+  "reusable": true,
+  "locales": [
+    "en",
+    "de"
+  ],
+  "defaultLocale": "en",
+  "contentRoot": "src/content",
+  "themeEntry": "src/theme/presets.ts",
+  "siteEntry": "src/content/site-data.ts",
+  "sharedSurfaces": {
+    "header": "src/components/Header.tsx",
+    "footer": "src/components/Footer.tsx",
+    "project": "src/components/project-blocks/ProjectPageRenderer.tsx",
+    "mediaGallery": "src/components/media-gallery/MediaGallery.tsx"
+  },
+  "blockContract": "src/content/types.ts",
+  "blocks": [
+    "projectHero",
+    "largeIntro",
+    "fullWidthImage",
+    "twoColMedia",
+    "threeColMedia",
+    "twoColText",
+    "threeColText",
+    "ctaLink",
+    "credits",
+    "figmaSlide",
+    "slideVideo",
+    "projectNote"
+  ],
+  "checks": [
+    "validate:content",
+    "test",
+    "lint",
+    "typecheck",
+    "build",
+    "qa:smoke",
+    "audit:tokens",
+    "verify:tokens",
+    "qa:studio",
+    "qa:themes",
+    "qa:devices",
+    "qa:picker",
+    "qa:media"
+  ],
+  "createCommand": "npm run template:create -- <new-directory>",
+  "styleStudio": {
+    "entry": "src/components/template-studio/StudioLauncher.tsx",
+    "toggle": "Shift+D",
+    "query": "?studio=1",
+    "coverageReport": "src/theme/token-coverage.generated.json",
+    "previewBuildFlag": "ENABLE_TEMPLATE_STUDIO=true",
+    "presets": "src/theme/style-presets.ts",
+    "sharedFontAssets": [
+      "public/fonts/areal.woff2"
+    ]
+  },
+  "release": {
+    "id": "brightfutures-studio",
+    "recipe": "template.release.json",
+    "packageCommand": "npm run template:package -- <version> <new-release-directory>",
+    "consumerLock": "template.lock.json",
+    "updateCommand": "npm run template:release -- prepare RELEASE CONSUMER NEW_CANDIDATE"
+  }
+}

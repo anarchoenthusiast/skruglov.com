@@ -1,0 +1,63 @@
+{
+  "name": "example-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Example Studio — selected projects, ideas, and experiments.",
+  "keywords": [
+    "studio",
+    "portfolio",
+    "nextjs",
+    "template",
+    "tailwindcss"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "npm run audit:tokens && npm run validate:content && npm run test && npm run lint && npm run typecheck && npm run build",
+    "test": "node --import tsx --test tests/*.test.ts && npm run test:template-release",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "template:create": "node scripts/create-template.mjs",
+    "qa:smoke": "node scripts/qa-smoke.mjs",
+    "audit:tokens": "tsx scripts/audit-tokens.ts --strict",
+    "verify:tokens": "tsx scripts/audit-tokens.ts --check",
+    "qa:studio": "node scripts/qa-studio.mjs",
+    "predev": "npm run audit:tokens",
+    "prebuild": "npm run audit:tokens",
+    "qa:themes": "tsx scripts/qa-themes.ts",
+    "qa:devices": "node scripts/qa-devices.mjs",
+    "qa:picker": "node scripts/qa-picker.mjs",
+    "qa:media": "node scripts/qa-media.mjs",
+    "template:release": "node scripts/template-release.mjs",
+    "template:package": "node scripts/package-template-release.mjs",
+    "test:template-release": "node --test scripts/lib/template-release.test.mjs",
+    "verify:template-consumer": "node scripts/verify-template-consumer.mjs"
+  },
+  "dependencies": {
+    "dialkit": "2.0.2",
+    "motion": "14.0.0",
+    "next": "16.2.1",
+    "nodemailer": "^9.0.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^24",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "playwright": "1.55.0",
+    "postcss": "8.5.8",
+    "tailwindcss": "^4",
+    "tsx": "4.20.5",
+    "typescript": "^5"
+  }
+}

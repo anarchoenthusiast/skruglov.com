@@ -1,0 +1,890 @@
+{
+  "version": 1,
+  "id": "brightfutures-studio",
+  "release": "0.1.0",
+  "routes": [
+    "/",
+    "/contact",
+    "/datenschutz",
+    "/de",
+    "/de/contact",
+    "/de/datenschutz",
+    "/de/impressum",
+    "/de/office",
+    "/de/projects",
+    "/de/projects/sample-project",
+    "/impressum",
+    "/office",
+    "/projects",
+    "/projects/sample-project"
+  ],
+  "inputDigest": "0723b96b3197889bad6a16caa5a0383e782cf930b289200d9c14f00324708130",
+  "lockHash": "d252b800e3d535324e6dcc40a3039b68dbe654d7ff569f3ba29167b801aa43d3",
+  "files": 139,
+  "integrity": true,
+  "accepted": false,
+  "productionReady": false,
+  "build": true,
+  "smoke": true,
+  "widths": [
+    390,
+    884,
+    1440
+  ],
+  "cases": [
+    {
+      "route": "/",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-home-390.png",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-home-884.png",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-home-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/contact",
+        "/datenschutz",
+        "/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-contact-390.png",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/contact",
+        "/datenschutz",
+        "/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-contact-884.png",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/contact",
+        "/datenschutz",
+        "/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-contact-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/datenschutz",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/datenschutz",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-datenschutz-390.png",
+      "passed": true
+    },
+    {
+      "route": "/datenschutz",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/datenschutz",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-datenschutz-884.png",
+      "passed": true
+    },
+    {
+      "route": "/datenschutz",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/datenschutz",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-datenschutz-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/contact",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/contact",
+        "/de/datenschutz",
+        "/de/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-contact-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/contact",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/contact",
+        "/de/datenschutz",
+        "/de/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-contact-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/contact",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/contact",
+        "/de/datenschutz",
+        "/de/impressum"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-contact-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/datenschutz",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/datenschutz",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-datenschutz-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/datenschutz",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/datenschutz",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-datenschutz-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/datenschutz",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/datenschutz",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-datenschutz-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/impressum",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/impressum",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-impressum-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/impressum",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/impressum",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-impressum-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/impressum",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/impressum",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-impressum-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/office",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/office",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-office-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/office",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/office",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-office-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/office",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/office",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-office-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects",
+        "/de/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects/sample-project",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-sample-project-390.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects/sample-project",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-sample-project-884.png",
+      "passed": true
+    },
+    {
+      "route": "/de/projects/sample-project",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/de",
+        "/de/office",
+        "/de/projects",
+        "/de/contact",
+        "/projects/sample-project",
+        "/de/impressum",
+        "/de/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-de-projects-sample-project-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/impressum",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/impressum",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-impressum-390.png",
+      "passed": true
+    },
+    {
+      "route": "/impressum",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/impressum",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-impressum-884.png",
+      "passed": true
+    },
+    {
+      "route": "/impressum",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/impressum",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-impressum-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/office",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/office",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-office-390.png",
+      "passed": true
+    },
+    {
+      "route": "/office",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/office",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-office-884.png",
+      "passed": true
+    },
+    {
+      "route": "/office",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/office",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-office-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/projects",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-390.png",
+      "passed": true
+    },
+    {
+      "route": "/projects",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-884.png",
+      "passed": true
+    },
+    {
+      "route": "/projects",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects",
+        "/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-1440.png",
+      "passed": true
+    },
+    {
+      "route": "/projects/sample-project",
+      "width": 390,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-sample-project-390.png",
+      "passed": true
+    },
+    {
+      "route": "/projects/sample-project",
+      "width": 884,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-sample-project-884.png",
+      "passed": true
+    },
+    {
+      "route": "/projects/sample-project",
+      "width": 1440,
+      "scrollY": 0,
+      "overflow": 0,
+      "collapsed": [],
+      "brokenImages": [],
+      "localLinks": [
+        "/",
+        "/office",
+        "/projects",
+        "/contact",
+        "/de/projects/sample-project",
+        "/impressum",
+        "/datenschutz"
+      ],
+      "errors": [],
+      "screenshot": "consumer-projects-sample-project-1440.png",
+      "passed": true
+    }
+  ],
+  "verifiedAt": "2026-10-18T21:49:08.605Z",
+  "scope": "build, responsive smoke, image loading and local destinations; source pixel parity, complete interactions, SEO and performance remain separate"
+}

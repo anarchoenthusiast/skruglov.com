@@ -1,0 +1,584 @@
+{
+  "source": {
+    "commit": "0f270889f67bbc96c77dc063f6a07ea09d553276",
+    "deploy": "6ad2431b691ebe70d41dd200",
+    "url": "https://skruglov.com"
+  },
+  "publishedProjects": [
+    {
+      "slug": "4k-download",
+      "title": "4K Download",
+      "blocks": 27,
+      "images": 11,
+      "slides": 4
+    },
+    {
+      "slug": "ai-video-cut",
+      "title": "Ai Video Cut",
+      "blocks": 9,
+      "images": 3,
+      "slides": 1
+    },
+    {
+      "slug": "combin",
+      "title": "Combin",
+      "blocks": 13,
+      "images": 5,
+      "slides": 5
+    },
+    {
+      "slug": "flipp",
+      "title": "Flipp",
+      "blocks": 11,
+      "images": 3,
+      "slides": 2
+    },
+    {
+      "slug": "lalal-ai",
+      "title": "LALAL.AI",
+      "blocks": 10,
+      "images": 4,
+      "slides": 0
+    },
+    {
+      "slug": "surrly",
+      "title": "Surrly",
+      "blocks": 12,
+      "images": 4,
+      "slides": 2
+    },
+    {
+      "slug": "vana",
+      "title": "Vana",
+      "blocks": 13,
+      "images": 4,
+      "slides": 3
+    },
+    {
+      "slug": "waveroom",
+      "title": "Waveroom",
+      "blocks": 13,
+      "images": 5,
+      "slides": 3
+    }
+  ],
+  "excludedDrafts": [
+    "4k-download-site",
+    "corporelle",
+    "intervals-festival"
+  ],
+  "assets": [
+    {
+      "source": "src/assets/projects/typo-project/1.jpg",
+      "target": "/project/typo-project/1.jpg",
+      "bytes": 193233,
+      "sha256": "0606b53ee7d93af378268096618eb88ebc01d7368aa8e4f5603b375909ae78de"
+    },
+    {
+      "source": "src/assets/projects/typo-project/2.jpg",
+      "target": "/project/typo-project/2.jpg",
+      "bytes": 131606,
+      "sha256": "579e1693b50064d498997084278380fbca968650b2b28a3a02e8976de700ad95"
+    },
+    {
+      "source": "src/assets/projects/typo-project/3.jpg",
+      "target": "/project/typo-project/3.jpg",
+      "bytes": 111482,
+      "sha256": "41d20ab03d1ee45674203c0319407f96e792fb8974b199fdb12fbe2c082447c7"
+    },
+    {
+      "source": "src/assets/projects/typo-project/4.jpg",
+      "target": "/project/typo-project/4.jpg",
+      "bytes": 49804,
+      "sha256": "e56d77ba7923ab251f22e3eb817cbaadf17d8a6f7fb4215e4020a8dd2e3cb4b1"
+    },
+    {
+      "source": "src/assets/projects/typo-project/5.jpg",
+      "target": "/project/typo-project/5.jpg",
+      "bytes": 270449,
+      "sha256": "3f02f8f67ee6d4b76a6ad047443baf79906348926cedd70e8482ce1a783826e4"
+    },
+    {
+      "source": "src/assets/projects/typo-project/6.jpg",
+      "target": "/project/typo-project/6.jpg",
+      "bytes": 108788,
+      "sha256": "094fe84a29baa7b2de7d55ada6814aa60863738f585583cb8ff38e11e91b5f0f"
+    },
+    {
+      "source": "src/assets/projects/typo-project/7.jpg",
+      "target": "/project/typo-project/7.jpg",
+      "bytes": 187296,
+      "sha256": "4db253aa063a3c10b03d82e6b8a9729318de237bf8d8d69ed1038f4ce96a168e"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/slide-8-20260924.png",
+      "target": "/project/4k-download-site/slide-8-20260924.png",
+      "bytes": 459132,
+      "sha256": "45125859c0a013c9e7249b08ca41aec763af8f704c1aea2fac310a6cf211b938"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/home.mp4",
+      "target": "/project/4k-download-site/home.mp4",
+      "bytes": 694883,
+      "sha256": "f472beb306ba4470442d576767cc2f9c1a9af6aa9ccb9f5055a84cd92a672b97"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/product.mp4",
+      "target": "/project/4k-download-site/product.mp4",
+      "bytes": 1124848,
+      "sha256": "cfd7fe67d755efff52b178330f0fe2049514312880a8f5509da421c4b88e5544"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/cards.mp4",
+      "target": "/project/4k-download-site/cards.mp4",
+      "bytes": 1147989,
+      "sha256": "98df351aca101d0bd880d7e98580d01b444b7624e412a0a19bc9715d73566782"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/pay.mp4",
+      "target": "/project/4k-download-site/pay.mp4",
+      "bytes": 302543,
+      "sha256": "086a460fa46e4d82a99c07bf371a1f286a89bce2c4cc65f977498d76eebe649b"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/slide-2-20260924.png",
+      "target": "/project/4k-download-site/slide-2-20260924.png",
+      "bytes": 202885,
+      "sha256": "461a8fe9bc027fd8960142e2ef6f88e2e526b0560468e015ec27e3558f96adb6"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/slide-5-20260924.png",
+      "target": "/project/4k-download-site/slide-5-20260924.png",
+      "bytes": 1487914,
+      "sha256": "08762cf86b714de9e40b921e5873bff9f4b5b4f800458cb14e876dbba1b7e015"
+    },
+    {
+      "source": "src/assets/projects/4k-download-site/slide-7-20260924.png",
+      "target": "/project/4k-download-site/slide-7-20260924.png",
+      "bytes": 114146,
+      "sha256": "b51e90cced4da0d9e0f4fe32af37d41429219264a8d5265ad86847ed1a46159b"
+    },
+    {
+      "source": "public/projects/4k-download/cover-preview.png",
+      "target": "/project/covers/4k-download/cover-preview.png",
+      "bytes": 386779,
+      "sha256": "4cd2cb8a4ce898b2a1894fa869b011d3b3d761d115f1f4468cc39d000ddc8a1c"
+    },
+    {
+      "source": "src/assets/projects/ai-video-cut/slide-01.mp4",
+      "target": "/project/ai-video-cut/slide-01.mp4",
+      "bytes": 1203811,
+      "sha256": "b86282623db8b6885b6cee9937b5982ac13e3bf1559d10efae666e48b26ab2b8"
+    },
+    {
+      "source": "src/assets/projects/ai-video-cut/slide-01-poster.jpg",
+      "target": "/project/ai-video-cut/slide-01-poster.jpg",
+      "bytes": 83015,
+      "sha256": "527df6874556a492896ca3e81d62944a5bb988bd9237ba0f8658f8d826d905f9"
+    },
+    {
+      "source": "src/assets/projects/ai-video-cut/2.png",
+      "target": "/project/ai-video-cut/2.png",
+      "bytes": 1368889,
+      "sha256": "22fb3f675ff44a18c3ea266112ac1e0638367aa52c68a99cbb207e461d1ee3fd"
+    },
+    {
+      "source": "src/assets/projects/ai-video-cut/3.png",
+      "target": "/project/ai-video-cut/3.png",
+      "bytes": 1473839,
+      "sha256": "7757751ded812ad14966ce71ae9fae5e6f693332675d2dd14856b93dcbe2775e"
+    },
+    {
+      "source": "src/assets/projects/ai-video-cut/4.png",
+      "target": "/project/ai-video-cut/4.png",
+      "bytes": 777703,
+      "sha256": "572c1c5dffb02f94cbd9e5566312b94f8490f7e7d91bca733360229acac62948"
+    },
+    {
+      "source": "public/projects/ai-video-cut/cover-preview.png",
+      "target": "/project/covers/ai-video-cut/cover-preview.png",
+      "bytes": 759435,
+      "sha256": "0b604e91854f2754edfa5448f4c3bf195e47dd084e29b290be0e7af234387beb"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-04.png",
+      "target": "/project/combin/slide-04.png",
+      "bytes": 527292,
+      "sha256": "e35c71bafc2498c7e8c093d2b2cf40561899fe2a6d6438d90d0776118afdadf9"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-05.png",
+      "target": "/project/combin/slide-05.png",
+      "bytes": 238813,
+      "sha256": "03f9cb266716119eacd7f32535826e73bbb83a111e6c7d77cd03114916fb4ef7"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-07.png",
+      "target": "/project/combin/slide-07.png",
+      "bytes": 1121747,
+      "sha256": "8632b731c2c6ceadac7506935bf65af19dabae6450a58633311374a0790d5e9a"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-08.png",
+      "target": "/project/combin/slide-08.png",
+      "bytes": 1116117,
+      "sha256": "20111e674bb88563f2488c18d11e759d2c3fe0c4922e9f502dfe408dc45ae69b"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-09.png",
+      "target": "/project/combin/slide-09.png",
+      "bytes": 536190,
+      "sha256": "353f32b905bd4db38b231ddc8c1e2539262e5e9861537f42d2512b82ec365e2c"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-01.mp4",
+      "target": "/project/combin/slide-01.mp4",
+      "bytes": 1134948,
+      "sha256": "29addc65e5c6c311c1fd6a2f21efbfd2ffea65c5d67b78360412de45b7ac1946"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-01-poster.jpg",
+      "target": "/project/combin/slide-01-poster.jpg",
+      "bytes": 87734,
+      "sha256": "61656d87b23f011d78be345e47bc74ba5e3a2f35e4d8d77b3d7091f8bad1adb6"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-02.mp4",
+      "target": "/project/combin/slide-02.mp4",
+      "bytes": 1479606,
+      "sha256": "61fbedc70ccc172cad88a716904606bd9c821df49af2d7d5f22ee0af319de797"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-02-poster.jpg",
+      "target": "/project/combin/slide-02-poster.jpg",
+      "bytes": 69672,
+      "sha256": "cfa8643566ac217d8f6c693c3dc9d5690294bc26de8300751047ccabe1e4ec64"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-03.mp4",
+      "target": "/project/combin/slide-03.mp4",
+      "bytes": 1600807,
+      "sha256": "1bd1492fd94719cdeda9a164d56fa1b2a8c15483eb68b02bc028b4fb7477cf14"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-03-poster.jpg",
+      "target": "/project/combin/slide-03-poster.jpg",
+      "bytes": 65527,
+      "sha256": "9b103e9582b3bd9ec0ef0ef5313df1396d9c199091f7a9c2bcccf1cb60a33218"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-06.mp4",
+      "target": "/project/combin/slide-06.mp4",
+      "bytes": 1907755,
+      "sha256": "25f9bf59580b7139fab5fbccacdf0f1b4943d1944df5870970b162c54c0658fa"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-06-poster.jpg",
+      "target": "/project/combin/slide-06-poster.jpg",
+      "bytes": 62461,
+      "sha256": "c189d31bbd8f600d7e4207fad229a83e0f65ff7fee46be34dd239216ce5e07b1"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-10.mp4",
+      "target": "/project/combin/slide-10.mp4",
+      "bytes": 2415429,
+      "sha256": "5c01361d638e7f8670193e0e30aca77865a7737c4975477211030aab3b068413"
+    },
+    {
+      "source": "src/assets/projects/combin/slide-10-poster.jpg",
+      "target": "/project/combin/slide-10-poster.jpg",
+      "bytes": 115093,
+      "sha256": "9069ceb0665ae08c44b1d3808c7df93db581ddac1695408a73ee62ac8c5bb1a1"
+    },
+    {
+      "source": "public/projects/combin/cover-preview.png",
+      "target": "/project/covers/combin/cover-preview.png",
+      "bytes": 749248,
+      "sha256": "4db54a2be7fb5d9d565248f27732aea9ceab0271a1cfff425f595ef17370b4c9"
+    },
+    {
+      "source": "src/assets/projects/flipp/2.png",
+      "target": "/project/flipp/2.png",
+      "bytes": 291088,
+      "sha256": "433483d3ebf687582dd9e0c16d094c4d66a0d2bc21ddd5c2eb952d53dd4fc1a3"
+    },
+    {
+      "source": "src/assets/projects/flipp/4.png",
+      "target": "/project/flipp/4.png",
+      "bytes": 447231,
+      "sha256": "a4967a96ceb8af15eb6cfdc8af6a6fe9cd63818d1ec21baab9dbee07d8327220"
+    },
+    {
+      "source": "src/assets/projects/flipp/5.png",
+      "target": "/project/flipp/5.png",
+      "bytes": 721834,
+      "sha256": "7b318d685e6260847f029528fd8a20d4732f71303a9ed75d7ffc86718742ee15"
+    },
+    {
+      "source": "src/assets/projects/flipp/slide-2-bg.mp4",
+      "target": "/project/flipp/slide-2-bg.mp4",
+      "bytes": 418671,
+      "sha256": "2d4ee01cdbeabba1f6c5e7095289e6a6208a1e5edc63bc97d22fb4debc6d5592"
+    },
+    {
+      "source": "src/assets/projects/flipp/slide-2-poster.jpg",
+      "target": "/project/flipp/slide-2-poster.jpg",
+      "bytes": 251780,
+      "sha256": "39a4953a63b9397c2f0a6a5836973b19a74f4d11ccb5cfd5d158063072439b2e"
+    },
+    {
+      "source": "src/assets/projects/flipp/slide-2-overlay.png",
+      "target": "/project/flipp/slide-2-overlay.png",
+      "bytes": 434091,
+      "sha256": "45bdf0ba95a016f7d801798841651f16d3f9368d6b28211b58ed06dfb50f4b46"
+    },
+    {
+      "source": "src/assets/projects/flipp/3.mp4",
+      "target": "/project/flipp/3.mp4",
+      "bytes": 106647,
+      "sha256": "8a632fcf03853acacf1df0a809e372d7be5f1cb412cab89a3da0796f86a97ce4"
+    },
+    {
+      "source": "src/assets/projects/flipp/3-poster.jpg",
+      "target": "/project/flipp/3-poster.jpg",
+      "bytes": 52318,
+      "sha256": "e5c70218922f8101071086a1c016b538663ea5cd1e055c8bdffb0f921e75ede9"
+    },
+    {
+      "source": "public/projects/flipp/cover-preview.png",
+      "target": "/project/covers/flipp/cover-preview.png",
+      "bytes": 1041033,
+      "sha256": "5b3834fa3a4b812cb58135f043b66047f84e411988c6961341d64aecb1423e36"
+    },
+    {
+      "source": "src/assets/projects/lalal-ai/1.jpg",
+      "target": "/project/lalal-ai/1.jpg",
+      "bytes": 167578,
+      "sha256": "e73f77805cf5005449632ffc4ad54f0d598f57e8514ec6d4188ef1e70c787634"
+    },
+    {
+      "source": "src/assets/projects/lalal-ai/2.jpg",
+      "target": "/project/lalal-ai/2.jpg",
+      "bytes": 90890,
+      "sha256": "a29abd126249dcf77967f9d175ace819364670583e08340f15875b277c2b8238"
+    },
+    {
+      "source": "src/assets/projects/lalal-ai/3.jpg",
+      "target": "/project/lalal-ai/3.jpg",
+      "bytes": 283573,
+      "sha256": "4bff81abe5fd8aaf5e60450878f4255a2e1f619f6949156c63ffc4ba577e89f3"
+    },
+    {
+      "source": "src/assets/projects/lalal-ai/4.jpg",
+      "target": "/project/lalal-ai/4.jpg",
+      "bytes": 172443,
+      "sha256": "52f40363aa5b79b010389061a2429eb47e0b4b5a0688ec276081ed8c1a2d0dc3"
+    },
+    {
+      "source": "public/projects/lalal-ai/cover-preview.png",
+      "target": "/project/covers/lalal-ai/cover-preview.png",
+      "bytes": 36361,
+      "sha256": "86b9311d8bf8dbabe0eda92fd12cc2ebde0e1b5546488302db7adf9eaed86b95"
+    },
+    {
+      "source": "src/assets/projects/surrly/1.png",
+      "target": "/project/surrly/1.png",
+      "bytes": 332343,
+      "sha256": "9a4a4bb045d6fd77bf0b04a268f0e005ad9c4b548c90cdeb0fd375a3f0035072"
+    },
+    {
+      "source": "src/assets/projects/surrly/2.png",
+      "target": "/project/surrly/2.png",
+      "bytes": 320532,
+      "sha256": "60b52eb0fc756bcb4866c67d6a4b413e4637792edd59295dfb8674828525149e"
+    },
+    {
+      "source": "src/assets/projects/surrly/3.png",
+      "target": "/project/surrly/3.png",
+      "bytes": 585054,
+      "sha256": "9471ef925b64d6d8ecf56d3c9c0d84c46306cb4e021455d9c2fe659bffaf6b5d"
+    },
+    {
+      "source": "src/assets/projects/surrly/5.png",
+      "target": "/project/surrly/5.png",
+      "bytes": 902568,
+      "sha256": "9e694b0da53601b073fe944838796b3b1809f2ce287996866a5b4a13cc62ad7a"
+    },
+    {
+      "source": "src/assets/projects/surrly/screencast-dream1-3x2.mp4",
+      "target": "/project/surrly/screencast-dream1-3x2.mp4",
+      "bytes": 1954420,
+      "sha256": "1b37f4502a9c9b1872ed725d19631e6d3c8fa80547d8a7ec4b909380f6634655"
+    },
+    {
+      "source": "src/assets/projects/surrly/screencast-dream1-3x2-poster.jpg",
+      "target": "/project/surrly/screencast-dream1-3x2-poster.jpg",
+      "bytes": 438017,
+      "sha256": "ba4b0788784d7e9197dd426a0e667e9e4573d0611b4df731eeeaf46f9e62e915"
+    },
+    {
+      "source": "src/assets/projects/surrly/onboarding-lottie-composite.mp4",
+      "target": "/project/surrly/onboarding-lottie-composite.mp4",
+      "bytes": 247708,
+      "sha256": "d7b9abdfd2ebf551d58f87d1112f59963dd7b84e319a64617973e22472fc3df5"
+    },
+    {
+      "source": "src/assets/projects/surrly/onboarding-lottie-composite-poster.jpg",
+      "target": "/project/surrly/onboarding-lottie-composite-poster.jpg",
+      "bytes": 57566,
+      "sha256": "6388dc06042b29fa6d094563e5c8fda5647118cf9ca771b5fa05dbea0a7858ea"
+    },
+    {
+      "source": "public/projects/surrly/cover.png",
+      "target": "/project/covers/surrly/cover.png",
+      "bytes": 935405,
+      "sha256": "c0bdc37b42a0e133e86c6284f808b3235046d29c64ea6fc9414c1cf6d3a93be1"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-10.png",
+      "target": "/project/vana/slide-10.png",
+      "bytes": 889002,
+      "sha256": "4342539842dbe720c9b50375fe125ef93b59440f72d91435cd4accb5bf216e47"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-11.png",
+      "target": "/project/vana/slide-11.png",
+      "bytes": 3811123,
+      "sha256": "138c2f012c348a24852858e3d46bd43d02c6eee3d2254752b9909fdc5b97fef3"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-15.png",
+      "target": "/project/vana/slide-15.png",
+      "bytes": 1707699,
+      "sha256": "0a9b17f4dd5dc5321504c5c1b2db205a648f86f5439586230b3d01cea885b8cf"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-16.png",
+      "target": "/project/vana/slide-16.png",
+      "bytes": 1583570,
+      "sha256": "6973ba6e5f31c791adf9f83c663f43e4885a05ad8bfa3ae80364f770fe6fa8f4"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-12-composite.mp4",
+      "target": "/project/vana/slide-12-composite.mp4",
+      "bytes": 291216,
+      "sha256": "04f0720d00747f5b4225010e2b02a971d1c3f6c74ba1d21ec91e57ca3fc7eb64"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-12-composite-poster.jpg",
+      "target": "/project/vana/slide-12-composite-poster.jpg",
+      "bytes": 189987,
+      "sha256": "28f23eef8d0a96842cc1f718353a8bec40688d1ff814fb0eec44f2b58a75149d"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-13-composite.mp4",
+      "target": "/project/vana/slide-13-composite.mp4",
+      "bytes": 170791,
+      "sha256": "0f0ae9a8d541817f4e75d93eefffde0d03bc8d904556e06d02852d32ee8f6f03"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-13-composite-poster.jpg",
+      "target": "/project/vana/slide-13-composite-poster.jpg",
+      "bytes": 74244,
+      "sha256": "911442b15f14be48de7dd0965a6a16f777990bf8207556c76af51c170dca9946"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-14-composite.mp4",
+      "target": "/project/vana/slide-14-composite.mp4",
+      "bytes": 280639,
+      "sha256": "bbd72d1163a4382483f971360d3d8606f1f1741414d5deebc82537590439f6c4"
+    },
+    {
+      "source": "src/assets/projects/vana/slide-14-composite-poster.jpg",
+      "target": "/project/vana/slide-14-composite-poster.jpg",
+      "bytes": 58454,
+      "sha256": "33fa7e4dab11233737c3f08eb8822dad4cf02af5bba21a6acdf06a063d39443e"
+    },
+    {
+      "source": "public/projects/vana/cover-preview.png",
+      "target": "/project/covers/vana/cover-preview.png",
+      "bytes": 1436328,
+      "sha256": "ab1740dd0d4de452a94d58ffa37f7324a166e097f70cc0aae9e4f181e0960728"
+    },
+    {
+      "source": "src/assets/projects/waveroom/1-20260924.jpg",
+      "target": "/project/waveroom/1-20260924.jpg",
+      "bytes": 661146,
+      "sha256": "ca76f2d1251db99a1626c3abedeaa88ed34cda723aee194690e323e01bb2147b"
+    },
+    {
+      "source": "src/assets/projects/waveroom/2.jpg",
+      "target": "/project/waveroom/2.jpg",
+      "bytes": 719286,
+      "sha256": "dfc34803c50cd413e1f56fbd3a79b3b0a902c63655d21f6ad3ab772c18323eec"
+    },
+    {
+      "source": "src/assets/projects/waveroom/3.jpg",
+      "target": "/project/waveroom/3.jpg",
+      "bytes": 585060,
+      "sha256": "f4661439f64346585cbcf8909504e8b8513a2c95b850d73c9e626f80041f9512"
+    },
+    {
+      "source": "src/assets/projects/waveroom/4.jpg",
+      "target": "/project/waveroom/4.jpg",
+      "bytes": 668697,
+      "sha256": "d52b769ff2e8433fcc5fedda8f86740b83ee2758db70d98a03d391797f804cb1"
+    },
+    {
+      "source": "src/assets/projects/waveroom/5.jpg",
+      "target": "/project/waveroom/5.jpg",
+      "bytes": 364912,
+      "sha256": "8fc8191da26beb5e11dd5f8d9a5ab0d5ff9c28bcda4b96e5d8d9c448e36b267a"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-05.mp4",
+      "target": "/project/waveroom/slide-05.mp4",
+      "bytes": 1726140,
+      "sha256": "844437d3e7249dbbdf79650040751f20da0c473e158fcb67a1bc353809483682"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-05-poster.jpg",
+      "target": "/project/waveroom/slide-05-poster.jpg",
+      "bytes": 92354,
+      "sha256": "710b60ff8e3f78d05249c1045fd749594dddab0979b8140c35f5ccc84cc3bddd"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-06.mp4",
+      "target": "/project/waveroom/slide-06.mp4",
+      "bytes": 1110096,
+      "sha256": "d4563293edebbdbc28301d3f486c2fed3582bccf599732453cdba1977cdd4d04"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-06-poster.jpg",
+      "target": "/project/waveroom/slide-06-poster.jpg",
+      "bytes": 52203,
+      "sha256": "faa671489e9ec711bd691bc7d5708e949777814e72d0a2dc08e0028028c883e8"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-07.mp4",
+      "target": "/project/waveroom/slide-07.mp4",
+      "bytes": 1049111,
+      "sha256": "7cf7e54d1507ebca7184344bb40296e3ac3d3a327f9a3cb61259068af9d5715c"
+    },
+    {
+      "source": "src/assets/projects/waveroom/slide-07-poster.jpg",
+      "target": "/project/waveroom/slide-07-poster.jpg",
+      "bytes": 58558,
+      "sha256": "33d9d9a3a7fec6e7c91520761833ee5203a599890e51bacb2a8bff43fc2a9b03"
+    },
+    {
+      "source": "public/projects/waveroom/cover-preview.png",
+      "target": "/project/covers/waveroom/cover-preview.png",
+      "bytes": 964434,
+      "sha256": "557656829f090d556d41d1983ed61a60f450742b21034c1e23120c1cd2d8a220"
+    }
+  ],
+  "notes": [
+    "Case copy, notes, source dimensions, video/poster bytes, Figma coordinates, role/duration/scope and source recognition links preserved.",
+    "Project index Year uses the source frontmatter date; full work periods remain in Project details.",
+    "Homepage follows the three published selected project slugs.",
+    "Footer uses the published homepage CTA description.",
+    "Studio adapts the published About copy into existing fields only; English source is retained in both locale views without inventing a translation.",
+    "No template runtime, schemas, styles or updater files modified."
+  ]
+}

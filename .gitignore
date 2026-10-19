@@ -29,3 +29,8 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Independent template candidates and recovery folders
+portfolio-*/
+/portfolio/verification/*.png
+/portfolio/verification/*.log

@@ -1,0 +1,49 @@
+.launcher { position: fixed; right: 20px; bottom: 20px; z-index: 10000; display: flex; gap: 20px; align-items: center; border: 1px solid #454545; border-radius: 12px; padding: 12px 16px; background: #202020; color: #fff; font: 13px/1.3 system-ui, sans-serif; box-shadow: 0 8px 28px #0003; cursor: pointer; }
+.launcher span { color: #a6a6a6; }
+.report { position: fixed; z-index: 10001; top: 16px; left: 16px; width: min(540px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid #414141; border-radius: 16px; padding: 20px; background: #202020; color: #eee; box-shadow: 0 12px 50px #0005; font: 13px/1.5 system-ui, sans-serif; text-align: left; }
+.report h2 { font: 600 18px/1.3 system-ui, sans-serif; margin: 0 0 12px; }
+.report h3 { font: 600 14px/1.3 system-ui, sans-serif; margin: 20px 0 8px; }
+.report p { margin: 8px 0; }
+.report button { border: 1px solid #555; border-radius: 6px; padding: 6px 9px; margin: 2px; color: #fff; background: #343434; font: inherit; cursor: pointer; }
+.report summary { cursor: pointer; padding: 6px 0; }
+.report code { font: 11px/1.4 monospace; overflow-wrap: anywhere; }
+.report ul { padding-left: 18px; }
+.report li { margin-bottom: 8px; }
+.reportHeader { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.status { position: fixed; z-index: 10000; left: 16px; bottom: 16px; max-width: calc(100vw - 32px); border: 1px solid #555; border-radius: 10px; background: #202020; color: #fff; padding: 10px 14px; font: 12px/1.4 system-ui, sans-serif; pointer-events: none; }
+@media (max-width: 600px) { .report { top: 8px; left: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); } .status { bottom: 68px; } }
+
+.fontCard { border-top: 1px solid #555; margin-top: 16px; padding-top: 8px; }
+.fontDescriptors { display:flex; gap:16px; flex-wrap:wrap; }
+.fontDescriptors label { display:grid; gap:4px; }
+.fontDescriptors select { font:inherit; color:#fff; background:#343434; padding:6px; border:1px solid #555; border-radius:6px; }
+
+.devicePanel { right:16px; bottom:16px; z-index:10000; }
+.deviceToolbar { padding: 2px 0 8px; border-bottom:1px solid #ffffff18; margin-bottom:6px; }
+.deviceToolbar p { color:#aaa; font:11px/1.4 system-ui,sans-serif; margin:4px 0; }
+.previewBackdrop { position:fixed; inset:0; z-index:9990; background:#707070; padding:40px 320px 16px 16px; }
+.previewLabel { position:absolute; top:12px; left:16px; font:12px/1.3 system-ui,sans-serif; color:white; }
+.previewStage { width:100%; height:100%; display:flex; justify-content:center; }
+.previewFrame { flex-shrink:0; box-shadow:0 8px 30px #0005; border-radius:8px; overflow:hidden; background:white; }
+.previewFrame iframe { border:0; display:block; transform-origin:top left; }
+@media (max-width:767px) { .previewBackdrop { padding-right:16px; } }
+
+.deviceToolbar[data-device="desktop"] [data-switch="device"] :global(.dialkit-button:first-child), .deviceToolbar[data-device="mobile"] [data-switch="device"] :global(.dialkit-button:last-child), [data-mode="all"] :global(.dialkit-button:first-child), [data-mode="layer"] :global(.dialkit-button:last-child) { background:var(--dial-text-root); color:var(--dial-glass-bg); }
+.deviceToolbar :global(.dialkit-button-group) { flex-direction:row; gap:6px; }
+.deviceToolbar :global(.dialkit-button) { flex:1; }
+.deviceToolbar { position:sticky; top:var(--dial-panel-header-height,0px); z-index:2; background:var(--dial-glass-bg); display:grid; gap:6px; }
+.layerLabel { color:var(--dial-text-root) !important; }
+.emptySelection { font:12px/1.5 system-ui,sans-serif; color:var(--dial-text-label); padding:12px 4px; }
+.settingsGroup { background:var(--dial-surface); border:1px solid var(--dial-border); border-radius:var(--dial-radius); padding:0 8px; margin:7px 0; }
+.settingsGroup > :global(.dialkit-folder) > :global(.dialkit-folder-header) { border-bottom:1px solid var(--dial-border); }
+.settingsGroup > :global(.dialkit-folder) > :global(.dialkit-folder-header) :global(.dialkit-folder-title) { color:var(--dial-text-root); font-weight:600; }
+.settingsSection + .settingsSection { margin-top:8px; }
+.dragHandle { flex:0 0 28px !important; cursor:grab !important; touch-action:none; font-size:20px; }
+.devicePanel :global(.dialkit-panel-header) { touch-action:none; }
+:global(html[data-studio-dragging="true"]) .devicePanel { cursor:grabbing; user-select:none; }
+.pickerHint { position:fixed; z-index:10005; padding:6px 9px; border:1px solid #58c9ef; border-radius:6px; background:#202020; color:#fff; font:12px/1.3 system-ui,sans-serif; pointer-events:none; max-width:220px; }
+
+/* The collapsed native Folder contains an absolute icon; preserve a visible keyboard/click target. */
+.devicePanel :global(.dialkit-panel-inner[data-collapsed="true"] .dialkit-folder-header-top) { min-height:16px; }
+
+.devicePanel :global(.dialkit-panel-inner) { max-height:inherit; }

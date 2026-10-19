@@ -1,0 +1,19 @@
+{
+  "sourceRepository": "https://github.com/anarchoenthusiast/pagepilot-agent",
+  "sourceCommit": "7c12749c99e7319f2a4e494fbf30bb1fbc1dfbf3",
+  "sourceFiles": [
+    "scripts/template-release.mjs",
+    "scripts/lib/template-release.mjs",
+    "scripts/lib/template-release.test.mjs",
+    "scripts/verify-template-consumer.mjs"
+  ],
+  "purpose": "Same versioned release and consumer transport used by the Granola template",
+  "adaptations": [
+    "Allow the explicitly public .env.example; actual environment files remain rejected",
+    "Exclude local .qa evidence from consumer input graphs",
+    "Run full native npm run check before consumer responsive smoke",
+    "Allow an installed Playwright browser channel and clear SMTP credentials for verification"
+  ],
+  "nativeAdapter": "scripts/package-template-release.mjs",
+  "acceptanceScope": "Native template build and browser integration; no reconstruction parity granted"
+}
